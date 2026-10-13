@@ -784,7 +784,7 @@ TPL.palace={
     program:[F('progTitle','Заголовок'),F('a_time','Час','time',{g:'Подія 1'}),F('a_text','Подія','area',{g:'Подія 1'}),F('b_time','Час','time',{g:'Подія 2'}),F('b_text','Подія','area',{g:'Подія 2'}),F('c_time','Час','time',{g:'Подія 3'}),F('c_text','Подія','area',{g:'Подія 3'}),F('d_time','Час','time',{g:'Подія 4'}),F('d_text','Подія','area',{g:'Подія 4'}),F('e_time','Час','time',{g:'Подія 5 (необовʼязково)'}),F('e_text','Подія','area',{g:'Подія 5 (необовʼязково)'}),F('f_time','Час','time',{g:'Подія 6 (необовʼязково)'}),F('f_text','Подія','area',{g:'Подія 6 (необовʼязково)'})],
     dress:[F('dressTitle','Заголовок'),F('dressText','Текст про дрескод (**жирним** виділяйте подвійними зірочками)','area')].concat(COLORS),
     gifts:[F('wishTitle','Заголовок'),F('wishText','Побажання гостям','area'),F('photo2','Фото внизу розділу','photo')],
-    rsvp:[F('joinTitle','Заголовок'),F('joinText','Текст','area'),F('formTitle','Заголовок анкети'),F('formText','Текст над анкетою','area'),F('calText','Підпис під календарем','area')]
+    rsvp:[F('joinTitle','Заголовок'),F('joinText','Текст (абзаци через порожній рядок)','area'),F('calText','Підпис під календарем','area')]
   },
   defaults:Object.assign({},SHD,{groom:'Roman',bride:'Anna',date:'2027-08-22',
     gateText:'Tap to continue',kicker:'Сьогодні завіса відкриє\nне просто свято',
@@ -796,8 +796,7 @@ TPL.palace={
     dressTitle:'The Dress-Code',dressText:'Нам буде дуже приємно, якщо ваш образ стане частиною загальної атмосфери нашого дня — ніжної, елегантної та світлої.\n\nМи обрали палітру, натхненну **кремовими відтінками, небесною блакиттю та глибоким синім кольором**. Будемо вдячні, якщо в ваших образах зʼявляться ці відтінки або близькі до них тони.\n\nНехай ваш образ буде святковим, витонченим і комфортним для вас.',
     c1:'#e8dcc6',c2:'#a9cdea',c3:'#1e9be0',c4:'#1646c8',c5:'#0b1c4a',
     wishTitle:'Our Wishes',wishText:'Найцінніше для нас у цей день — ваша присутність, щирі усмішки, теплі слова та моменти, які ми розділимо разом.\n\nМи не складали список подарунків, адже мріємо про дещо спільне, тому будемо раді **фінансовому внеску** в початок нашого сімейного життя',
-    joinTitle:'Join Our\nCelebration',joinText:'Нам дуже важливо знати, що ви будете поруч ✨\n\nЗаповніть коротку анкету нижче, і ми подбаємо про кожну деталь, щоб цей день став особливим і для вас 🤍',
-    formTitle:'Анкета',formText:'Будь ласка, підтвердіть свою присутність до 15.07.2027',calText:'Побачимось разом у найщасливішу\nнеділю нашого року!'})
+    joinTitle:'Join Our\nCelebration',joinText:'Нам дуже важливо знати, що ви будете поруч ✨\n\nБудь ласка, підтвердіть свою присутність до 15.07.2027, заповнивши коротку анкету нижче. Так ми подбаємо про кожну деталь, щоб цей день став особливим і для вас 🤍',calText:'Побачимось разом у найщасливішу\nнеділю нашого року!'})
 };
 function palCal(iso,L){
   var p=parts(iso),first=(new Date(Date.UTC(p.y,p.m-1,1)).getUTCDay()+6)%7,n=new Date(Date.UTC(p.y,p.m,0)).getUTCDate(),c='';
@@ -842,7 +841,7 @@ function buildPalace(v,o){
   if(v.on('transfer'))h.push(blkTransfer(v).replace('class="sec"','class="pl-sec"'));
   if(v.on('faq'))h.push(blkFaq(v).replace('class="sec"','class="pl-sec"'));
   if(v.on('rsvp')){
-    h.push('<section class="pl-join" data-sec="rsvp">'+petals(5)+'<h2 class="pl-h2'+pa+'">'+tx(d.joinTitle)+'</h2><div class="pl-tx'+pa+'">'+tx(d.joinText).replace(/<br><br>/g,'</p><p class="pl-t">').replace(/^/,'<p class="pl-t">')+'</p></div>'+palForm(v,o,pa)+'</section>');
+    h.push('<section class="pl-join" data-sec="rsvp">'+petals(6)+'<div class="pl-fl fa1 pa-l'+pa+'"><img loading="lazy" src="'+PAL+'fl1.webp" alt=""></div><div class="pl-fl fa2 pa-r'+pa+'"><img loading="lazy" src="'+PAL+'fl2.webp" alt=""></div><div class="pl-fl fa3'+pa+'"><img loading="lazy" src="'+PAL+'fl3.webp" alt=""></div>'+palForm(v,o,pa)+'</section>');
   }
   if(v.on('save'))h.push('<section class="pl-calw"><i class="pl-gh g1">Save</i><i class="pl-gh g2">the</i><i class="pl-gh g3">Date</i>'+palCal(d.date,L)+'<p class="pl-t'+pa+'">'+tx(d.calText)+'</p></section>');
   h.push('<section class="pl-env"><div class="pl-card'+pa+'"><div class="pl-paper"></div><div class="pl-ph"><img loading="lazy" src="'+ph('photo1')+'" alt=""></div></div><img class="pl-es" loading="lazy" src="'+PAL+'env.webp" alt=""></section>');
@@ -851,12 +850,12 @@ function buildPalace(v,o){
 }
 function palForm(v,o,pa){
   var L=v.L,d=v.d;pa=pa||'';
-  if(o.sent)return '<div class="pl-form pl-thx'+pa+'"><div class="pl-fo"><i class="k k1"></i><i class="k k2"></i><i class="k k3"></i><i class="k k4"></i><img class="pl-stamp" src="'+PAL+'seal.webp" alt=""><h3 class="pl-fh">'+esc(u(L,'thanks'))+'</h3><p class="pl-fs">'+esc(u(L,'thanksSub'))+'</p></div></div>';
+  if(o.sent)return '<div class="pl-form pl-thx'+pa+'"><div class="pl-fo"><i class="k k1"></i><i class="k k2"></i><i class="k k3"></i><i class="k k4"></i><img class="pl-stamp" src="'+PAL+'seal.webp" alt=""><h2 class="pl-fh">'+esc(u(L,'thanks'))+'</h2><div class="pl-fs"><p>'+esc(u(L,'thanksSub'))+'</p></div></div></div>';
   var cnt='';for(var i=1;i<=5;i++)cnt+='<option value="'+i+'">'+i+'</option>';
   var trf=v.on('transfer')?'<label class="pl-chk"><input type="checkbox" id="r_trf"><i></i><span>'+esc(u(L,'transferNeed'))+'</span></label>':'';
   var opt=function(val,t,ck){return '<label class="pl-o"><input type="radio" name="r_st" value="'+val+'"'+(ck?' checked':'')+'><span>'+esc(t)+'</span></label>'};
   return '<div class="pl-form'+pa+'" style="--d:.1s"><img class="pl-fcher pl-bob" src="'+PAL+'cherub.webp" alt=""><div class="pl-fo"><i class="k k1"></i><i class="k k2"></i><i class="k k3"></i><i class="k k4"></i>'+
-  '<h3 class="pl-fh">'+esc(d.formTitle)+'</h3><p class="pl-fs">'+tx(d.formText)+'</p><div class="pl-rl"><i></i><svg viewBox="0 0 24 24"><path d="M12 21S3 15.400 3 9.200A4.800 4.800 0 0 1 12 7a4.800 4.800 0 0 1 9 2.200C21 15.400 12 21 12 21z"/></svg><i></i></div>'+
+  '<h2 class="pl-fh">'+tx(d.joinTitle)+'</h2><div class="pl-fs">'+tx(d.joinText).replace(/<br><br>/g,'</p><p>').replace(/^/,'<p>')+'</p></div><div class="pl-rl"><i></i><svg viewBox="0 0 24 24"><path d="M12 21S3 15.400 3 9.200A4.800 4.800 0 0 1 12 7a4.800 4.800 0 0 1 9 2.200C21 15.400 12 21 12 21z"/></svg><i></i></div>'+
   '<form id="rsvpForm"'+(o.live?'':' inert')+'><label class="pl-f" for="r_name"><span>'+esc(u(L,'yourName'))+'</span><input type="text" id="r_name" maxlength="80" autocomplete="name" placeholder="Тарас Шевченко" required></label>'+
   '<fieldset class="pl-r"><legend>'+esc(u(L,'canCome'))+'</legend>'+opt('yes',u(L,'palYes'),1)+opt('later',u(L,'later'))+opt('no',u(L,'palNo'))+'</fieldset>'+
   '<div id="r_yes"><div class="pl-f pl-sx"><span>'+esc(u(L,'howMany'))+'</span><div class="pl-st"><button type="button" data-st="-1" aria-label="−">−</button><output id="r_out">1</output><button type="button" data-st="1" aria-label="+">+</button></div><select id="r_cnt" class="sr" tabindex="-1" aria-hidden="true">'+cnt+'</select></div>'+
@@ -998,13 +997,32 @@ function reveal(){
 }
 
 /* --- Palace: scratch-off coins, unlock, stepper, parallax --- */
+
+var scrollCancel=0;
+function palGo(sel,dur,off){
+  if(!document.querySelector('.demo-col'))return;
+  if(window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+  var t=document.querySelector(sel);if(!t)return;
+  var y0=window.scrollY,y1=Math.max(0,t.getBoundingClientRect().top+y0+(off||0));
+  if(Math.abs(y1-y0)<30)return;
+  var id=++scrollCancel,t0=null,ev=['wheel','touchstart','keydown','mousedown'];
+  function stop(){scrollCancel++;ev.forEach(function(n){window.removeEventListener(n,stop)})}
+  ev.forEach(function(n){window.addEventListener(n,stop,{passive:true})});
+  function ease(p){return p<.5?4*p*p*p:1-Math.pow(-2*p+2,3)/2}
+  function step(ts){
+    if(id!==scrollCancel)return;if(t0==null)t0=ts;
+    var p=Math.min(1,(ts-t0)/dur);window.scrollTo(0,y0+(y1-y0)*ease(p));
+    if(p<1)requestAnimationFrame(step);else stop();
+  }
+  requestAnimationFrame(step);
+}
 var coinImg=null;
 function palUnlock(sec){
   if(palOn)return;palOn=true;
   var after=app.querySelector('.pl-after');
   sec.classList.add('on');var c=sec.querySelector('.pl-circs');if(c)c.classList.add('on');
   var im=document.createElement('img');im.className='pl-conf';im.alt='';im.src=PAL+'confetti.webp';sec.insertBefore(im,sec.firstChild);
-  setTimeout(function(){if(after)after.classList.remove('pl-lock');reveal()},900);
+  setTimeout(function(){if(after)after.classList.remove('pl-lock');reveal();setTimeout(function(){palGo('.pl-loc',2600,-50)},1500)},1300);
 }
 function palInit(){
   var sec=app.querySelector('.pl-rev');if(!sec||palOn)return;
@@ -1053,7 +1071,8 @@ document.addEventListener('scroll',function(){
 function markInv(){if(rvDone)return;app.querySelectorAll('.inv > section, .inv > .fin, .inv > .banner, .inv > .heroB, .inv > .lead2, .inv > .rsvp').forEach(function(el,i){el.classList.add('rv')})}
 function openEnv(el){if(!el||el.classList.contains('open'))return;el.classList.add('open');envOpen=true;
   if(AUDIO&&AUDIO.paused){var pr=AUDIO.play();if(pr&&pr.catch)pr.catch(function(){})}
-  if(rvWait){rvWait=false;reveal()}setTimeout(function(){if(el.parentNode)el.parentNode.removeChild(el)},el.classList.contains('cgate')?2600:760)}
+  if(rvWait){rvWait=false;reveal()}setTimeout(function(){if(el.parentNode)el.parentNode.removeChild(el)},el.classList.contains('cgate')?1900:760);
+  if(el.classList.contains('cgate'))setTimeout(function(){palGo('.pl-rev',1900,-10)},3300)}
 document.addEventListener('click',function(e){var el=e.target.closest&&e.target.closest('.env');if(el)openEnv(el);
   var nl=e.target.closest&&e.target.closest('[data-nolink]');if(nl)e.preventDefault()});
 document.addEventListener('keydown',function(e){if(e.key==='Escape')closeModal();if((e.key==='Enter'||e.key===' ')&&e.target.classList&&e.target.classList.contains('env')){e.preventDefault();openEnv(e.target)}});
