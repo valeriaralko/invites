@@ -1,0 +1,1245 @@
+<!doctype html>
+<html lang="uk">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Весільні запрошення Valeria</title>
+<style>html{color-scheme:light}body{margin:0}img{max-width:100%}</style>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bad+Script&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Jost:wght@400;500;600&family=Marck+Script&family=Pinyon+Script&display=swap" rel="stylesheet">
+<style>
+/* Layout: storefront and wizard in a calm brown/cream UI; the invitation is a fixed-look paper object with its own theme tokens set per invitation. */
+:root{
+  --bg:#efe7dd; --surface:#fbf7f1; --ink:#2b1f1a; --muted:#6c5b50; --line:#d8cbbb;
+  --accent:#6b3f31; --accent-ink:#fbf4ec; --ok:#3f6b4a; --warn:#8f6218; --bad:#9a3b32;
+  --f-display:'Cormorant Garamond','Times New Roman',serif;
+  --f-body:'Jost',system-ui,-apple-system,'Segoe UI',sans-serif;
+  --i-ink:#3a2922; --i-paper:#ffffff; --i-dark:#3b2a24; --i-mid:#7a5846; --i-acc:#9b4a3c; --i-cream:#f6ede2;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#17110f; --surface:#211916; --ink:#f1e7dc; --muted:#b9a79a; --line:#3b2e28;
+  --accent:#dba98e; --accent-ink:#1b120f; --ok:#8cc29a; --warn:#dbb56c; --bad:#e69b91; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#17110f; --surface:#211916; --ink:#f1e7dc; --muted:#b9a79a; --line:#3b2e28;
+  --accent:#dba98e; --accent-ink:#1b120f; --ok:#8cc29a; --warn:#dbb56c; --bad:#e69b91; color-scheme:dark}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+body{background:var(--bg);color:var(--ink);font:400 16px/1.55 var(--f-body);-webkit-text-size-adjust:100%}
+a{color:inherit}
+h1,h2,h3{font-family:var(--f-display);font-weight:500;line-height:1.08;text-wrap:balance;margin:0}
+p{margin:0}
+button,input,select,textarea{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.muted{color:var(--muted)}
+.wrap{max-width:1120px;margin:0 auto;padding-inline:16px}
+.nav{display:flex;align-items:center;justify-content:space-between;gap:12px;padding-block:14px;flex-wrap:wrap}
+.brand{font-family:var(--f-display);font-size:26px;font-weight:600;text-decoration:none;letter-spacing:.01em}
+.brand i{font-style:italic;font-weight:500;color:var(--accent)}
+.nav nav{display:flex;gap:18px;font-size:14px;flex-wrap:wrap}
+.nav nav a{text-decoration:none;color:var(--muted)}
+.nav nav a:hover{color:var(--ink)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:44px;padding:0 22px;border-radius:999px;border:1px solid var(--accent);background:var(--accent);color:var(--accent-ink);font-weight:500;font-size:15px;text-decoration:none;cursor:pointer;white-space:nowrap}
+.btn:hover{filter:brightness(1.08)}
+.btn[disabled]{opacity:.55;cursor:default}
+.btn.ghost{background:transparent;color:var(--ink);border-color:var(--line)}
+.btn.ghost:hover{border-color:var(--accent)}
+.btn.sm{min-height:36px;padding:0 16px;font-size:14px}
+.btn.on{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.link{background:none;border:0;padding:0;color:var(--accent);text-decoration:underline;cursor:pointer;font-size:14px}
+.pill{display:inline-flex;align-items:center;gap:6px;padding:2px 10px;border-radius:999px;font-size:12px;border:1px solid var(--line);color:var(--muted);white-space:nowrap}
+.pill.ok{color:var(--ok);border-color:currentColor}.pill.no{color:var(--bad);border-color:currentColor}.pill.wait{color:var(--warn);border-color:currentColor}
+.ic{width:28px;height:28px;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round;flex:none}
+/* shop */
+.hero-s{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:40px;align-items:center;padding-block:36px 56px}
+.hero-s h1{font-size:clamp(40px,6vw,68px);letter-spacing:-.01em}
+.hero-s h1 em{color:var(--accent)}
+.lead{font-size:18px;color:var(--muted);max-width:46ch;margin-top:18px}
+.cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}
+.phones{display:flex;gap:18px;justify-content:center;align-items:flex-start}
+.phone{width:264px;height:520px;border:7px solid var(--ink);border-radius:36px;overflow:hidden;position:relative;background:var(--i-paper);flex:none;pointer-events:none}
+.phone:nth-child(2){margin-top:48px}
+.phone .sc{width:430px;transform:scale(.58);transform-origin:top left}
+@media (max-width:860px){.hero-s{grid-template-columns:minmax(0,1fr)}.phones{justify-content:flex-start}}
+@media (max-width:620px){.phone:nth-child(2){display:none}.phones{justify-content:center}}
+.sec-h{display:flex;justify-content:space-between;align-items:end;gap:16px;flex-wrap:wrap;margin-bottom:24px}
+.sec-h h2{font-size:clamp(30px,4vw,44px)}
+.steps{list-style:none;padding:0;margin:0 0 64px;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0;border-top:1px solid var(--line)}
+.steps li{padding:20px 20px 4px 0;display:grid;gap:6px;align-content:start}
+.steps b{font-family:var(--f-display);font-size:24px;font-weight:600;line-height:1.1}
+.steps span{color:var(--muted);font-size:15px}
+.steps .n{font-family:var(--f-display);font-style:italic;color:var(--accent);font-size:17px}
+@media (max-width:860px){.steps{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:480px){.steps{grid-template-columns:minmax(0,1fr)}}
+.cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:28px;margin-bottom:72px}
+@media (max-width:760px){.cards{grid-template-columns:minmax(0,1fr)}}
+.card{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1fr);gap:20px;background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:16px}
+@media (max-width:520px){.card{grid-template-columns:minmax(0,1fr)}}
+.card .im{aspect-ratio:3/4;border-radius:999px 999px 10px 10px;overflow:hidden;background:var(--line)}
+.card .im img{width:100%;height:100%;object-fit:cover;display:block}
+.card .bd{display:flex;flex-direction:column;gap:10px;min-width:0}
+.card h3{font-size:34px}
+.card ul{margin:0;padding-left:18px;color:var(--muted);font-size:15px;display:grid;gap:3px}
+.dots{display:flex;gap:6px;align-items:center}
+.dots i{width:18px;height:18px;border-radius:50%;border:1px solid rgba(0,0,0,.18)}
+.price{font-family:var(--f-display);font-size:34px;font-weight:600;margin-top:auto}
+.price small{font-family:var(--f-body);font-size:13px;font-weight:400;color:var(--muted);margin-right:6px}
+.card .row{display:flex;gap:10px;flex-wrap:wrap}
+footer.ft{border-top:1px solid var(--line);padding-block:28px 40px;color:var(--muted);font-size:14px;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+/* modal */
+.modal{position:fixed;inset:0;z-index:60;background:rgba(20,12,9,.55);display:grid;place-items:center;padding:16px;overflow:auto}
+.mb{position:relative;background:var(--surface);border:1px solid var(--line);border-radius:22px;padding:28px;max-width:760px;width:100%;display:grid;gap:12px;justify-items:center;text-align:center}
+.mb h2{font-size:clamp(28px,4vw,38px)}
+.mb .x{position:absolute;top:12px;right:14px;width:36px;height:36px;border-radius:50%;border:1px solid var(--line);background:transparent;font-size:22px;line-height:1;cursor:pointer}
+.opts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;width:100%;margin-top:8px;text-align:left}
+@media (max-width:620px){.opts{grid-template-columns:minmax(0,1fr)}}
+.opt{border:1px solid var(--line);border-radius:16px;padding:18px;display:flex;flex-direction:column;gap:10px;background:var(--bg)}
+.opt h3{font-size:26px}
+.opt ul{margin:0;padding-left:18px;color:var(--muted);font-size:14px}
+.opt small{color:var(--muted);font-size:13px;margin-top:auto}
+.opt .btn{margin-top:6px}
+/* generic panels */
+.page{max-width:1120px;margin:0 auto;padding:8px 16px 64px}
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:20px}
+.note{font-size:14px;color:var(--muted);border:1px dashed var(--line);border-radius:12px;padding:12px 14px}
+.note.warn{color:var(--warn);border-color:currentColor}
+.bar{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--bg);border-bottom:1px solid var(--line)}
+.bar .in{max-width:1120px;margin:0 auto;padding:10px 16px;display:flex;align-items:center;gap:12px;justify-content:space-between;flex-wrap:wrap}
+.bar .t{display:flex;align-items:center;gap:12px;min-width:0}
+.bar .t b{font-family:var(--f-display);font-size:22px;font-weight:600}
+.demo-col{display:flex;justify-content:center;padding-block:20px}
+.demo-col .inv{box-shadow:0 10px 40px rgba(0,0,0,.25)}
+.fld{display:grid;gap:6px;margin-bottom:14px;min-width:0}
+.fld>span,.fld>label{font-size:13px;color:var(--muted)}
+.fld input,.fld select,.fld textarea{width:100%;min-height:44px;padding:9px 12px;border:1px solid var(--line);border-radius:10px;background:var(--bg);resize:vertical}
+.fld input[type=color]{padding:3px;width:64px}
+.sum{display:flex;justify-content:space-between;gap:12px;padding:10px 0;border-top:1px solid var(--line);font-size:15px}
+.sum.total{font-family:var(--f-display);font-size:26px;font-weight:600}
+.toast{position:fixed;left:50%;bottom:calc(20px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:var(--ink);color:var(--bg);padding:10px 18px;border-radius:999px;font-size:14px;z-index:90;max-width:calc(100% - 32px)}
+.msg{max-width:520px;margin:12vh auto;text-align:center;padding-inline:16px}
+.msg h1{font-size:40px;margin-bottom:12px}
+/* wizard */
+.wz{display:grid;grid-template-columns:minmax(320px,40%) minmax(0,1fr);min-height:100vh}
+.wz-l{position:sticky;top:0;height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;padding:16px;background:var(--surface);border-right:1px solid var(--line)}
+.wz-l .top{display:flex;justify-content:space-between;gap:10px;width:100%;max-width:340px}
+.wz-r{display:flex;flex-direction:column;min-width:0;min-height:100vh}
+.wz-h{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:16px 24px 10px;flex-wrap:wrap}
+.wz-h h1{font-size:30px}
+.wz-h small{display:block;color:var(--muted);font-size:14px}
+.stp{display:flex;align-items:center;overflow-x:auto;padding:12px 24px;border-bottom:1px solid var(--line);border-top:1px solid var(--line);scrollbar-width:thin}
+.stp button{display:flex;align-items:center;gap:10px;background:none;border:0;padding:0;cursor:pointer;white-space:nowrap;color:var(--muted);text-align:left;flex:none}
+.stp .c{width:36px;height:36px;border-radius:50%;display:grid;place-items:center;background:var(--line);font-weight:600;font-size:14px;flex:none}
+.stp .c svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
+.stp .l b{display:block;font-weight:500;font-size:14px;color:var(--ink)}
+.stp .l span{display:block;font-size:12px}
+.stp .done .c,.stp .cur .c{background:var(--accent);color:var(--accent-ink)}
+.stp .ln{flex:0 0 26px;height:2px;background:var(--line);margin:0 12px}
+.stp .ln.done{background:var(--accent)}
+.stp button:not(.cur) .l span{display:none}
+.wz-b{flex:1;padding:22px 24px 28px;max-width:860px;width:100%}
+.wz-b h2{font-size:34px;margin-bottom:6px}
+.wz-b>p.muted{margin-bottom:18px}
+.wz-f{position:sticky;bottom:0;display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;padding:12px 24px calc(12px + env(safe-area-inset-bottom,0px));background:var(--bg);border-top:1px solid var(--line)}
+.wz-f .tot{font-size:14px;color:var(--muted)}
+.wz-f .tot b{font-family:var(--f-display);font-size:24px;color:var(--ink);margin-left:4px}
+.wz-f .go{display:flex;gap:10px}
+.phone-shell{position:relative;width:320px;max-width:100%;height:min(72vh,680px);border:8px solid var(--ink);border-radius:42px;overflow:hidden;background:var(--i-paper);box-shadow:0 18px 50px rgba(0,0,0,.25)}
+.phone-shell::before{content:"";position:absolute;top:8px;left:50%;transform:translateX(-50%);width:84px;height:22px;border-radius:14px;background:var(--ink);z-index:40}
+.pvscroll{position:absolute;inset:0;overflow-y:auto;overflow-x:hidden;scrollbar-width:none}
+.pvscroll::-webkit-scrollbar{display:none}
+.phone-shell .inv{width:390px;max-width:none;zoom:.78}
+.wztabs{display:none;gap:8px;padding:10px 16px;position:sticky;top:env(safe-area-inset-top,0px);z-index:25;background:var(--bg);border-bottom:1px solid var(--line)}
+.wztabs button{flex:1}
+@media (max-width:860px){
+  .wz{grid-template-columns:minmax(0,1fr)}
+  .wztabs{display:flex}
+  .wz{min-height:0}
+  .wz-l{position:static;height:auto;border-right:0;padding-block:20px;justify-content:flex-start}
+  .wz[data-tab="form"] .wz-l{display:none}
+  .wz[data-tab="prev"] .wz-r{display:none}
+  .wz-r{min-height:calc(100vh - 60px)}
+  .stp,.wz-h,.wz-b,.wz-f{padding-inline:16px}
+}
+.themes{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+@media (max-width:620px){.themes{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.theme{border:2px solid var(--line);border-radius:14px;overflow:hidden;background:var(--surface);padding:0;cursor:pointer;text-align:center}
+.theme i{display:block;height:84px}
+.theme span{display:block;padding:8px 6px;font-size:14px}
+.theme[aria-pressed="true"]{border-color:var(--accent);box-shadow:0 0 0 2px var(--accent)}
+.secgrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+@media (max-width:620px){.secgrid{grid-template-columns:minmax(0,1fr)}}
+.seccard{display:flex;gap:14px;align-items:center;text-align:left;border:2px solid var(--line);border-radius:14px;background:var(--surface);padding:14px 16px;cursor:pointer;min-width:0}
+.seccard[aria-pressed="true"]{border-color:var(--accent)}
+.seccard .tx{display:grid;gap:2px;min-width:0;flex:1}
+.seccard b{font-weight:500}
+.seccard small{color:var(--muted);font-size:13px}
+.seccard .chk{width:24px;height:24px;border-radius:6px;border:2px solid var(--line);display:grid;place-items:center;flex:none;color:transparent}
+.seccard[aria-pressed="true"] .chk{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+.chk svg{width:14px;height:14px;fill:none;stroke:currentColor;stroke-width:3;stroke-linecap:round;stroke-linejoin:round}
+.tag{display:inline-block;margin-left:8px;padding:1px 8px;border-radius:999px;font-size:12px;background:var(--line);color:var(--muted)}
+.tag.free{background:color-mix(in srgb,var(--ok) 18%,transparent);color:var(--ok)}
+.langgrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+@media (max-width:620px){.langgrid{grid-template-columns:minmax(0,1fr)}}
+.lang{display:flex;align-items:center;gap:14px;border:2px solid var(--line);border-radius:14px;padding:14px 16px;background:var(--surface);cursor:pointer;text-align:left}
+.lang[aria-pressed="true"]{border-color:var(--accent);background:color-mix(in srgb,var(--accent) 8%,var(--surface))}
+.lang code{font-weight:600;color:var(--muted);width:28px}
+.lang .tx{display:grid;flex:1;gap:0}
+.lang small{color:var(--muted)}
+.switchcard{display:flex;align-items:center;justify-content:space-between;gap:16px;border:1px solid var(--line);border-radius:14px;padding:16px 18px;background:var(--surface);margin-bottom:20px}
+.switchcard b{display:block;font-weight:500}
+.switchcard small{color:var(--muted)}
+.sw{width:52px;height:30px;border-radius:999px;border:0;background:var(--line);position:relative;cursor:pointer;flex:none}
+.sw::after{content:"";position:absolute;top:3px;left:3px;width:24px;height:24px;border-radius:50%;background:#fff;transition:transform .15s}
+.sw[aria-checked="true"]{background:var(--accent)}
+.sw[aria-checked="true"]::after{transform:translateX(22px)}
+.grp{font-family:var(--f-body);font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin:22px 0 10px;font-weight:500}
+.fontgrid{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:18px}
+.fontopt{border:2px solid var(--line);border-radius:12px;padding:8px 18px;background:var(--surface);cursor:pointer;font-size:24px;line-height:1.2}
+.fontopt[aria-pressed="true"]{border-color:var(--accent)}
+.langtabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px;align-items:center}
+.langtabs .btn{min-height:34px;padding:0 14px;font-size:14px}
+.ph-row{display:flex;gap:14px;align-items:center}
+.ph-row img{width:64px;height:84px;object-fit:cover;border-radius:999px 999px 6px 6px;background:var(--line)}
+.ph-row .acts{display:grid;gap:6px;justify-items:start}
+.lines{margin:14px 0}
+.lines .sum:first-child{border-top:0}
+.langsw.low{top:calc(68px + env(safe-area-inset-top,0px))}
+.check{display:flex;gap:10px;align-items:flex-start;margin:14px 0;font-size:14px}
+.check input{width:20px;height:20px;margin-top:2px;accent-color:var(--accent)}
+/* cabinet */
+.stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin:18px 0 24px}
+@media (max-width:520px){.stats{grid-template-columns:minmax(0,1fr)}}
+.stat{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:16px 18px}
+.stat b{display:block;font-family:var(--f-display);font-size:44px;font-weight:600;line-height:1;font-variant-numeric:tabular-nums}
+.stat span{color:var(--muted);font-size:14px}
+.linkrow{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.linkrow code{flex:1;min-width:0;overflow-wrap:anywhere;background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:9px 12px;font-size:13px;user-select:all}
+.tbl{overflow-x:auto;border:1px solid var(--line);border-radius:14px;background:var(--surface)}
+table{border-collapse:collapse;width:100%;min-width:560px;font-size:15px}
+th,td{text-align:left;padding:12px 16px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:500}
+tr:last-child td{border-bottom:0}
+td.num{font-variant-numeric:tabular-nums}
+.empty{padding:36px 20px;text-align:center;color:var(--muted)}
+.list{display:grid;gap:12px}
+.item{display:flex;gap:16px;justify-content:space-between;align-items:center;flex-wrap:wrap;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:16px 18px}
+.item h3{font-size:26px}
+
+/* ===================== INVITATION ===================== */
+.inv{--f-scr:'Pinyon Script','Marck Script','Brush Script MT',cursive;width:100%;max-width:430px;margin:0 auto;background-color:var(--i-paper);background-image:url('img/paper-tile.jpg');background-size:600px 600px;background-repeat:repeat;background-blend-mode:multiply;color:var(--i-ink);font-family:'Cormorant Garamond','Times New Roman',serif;font-size:19px;line-height:1.38;overflow:hidden;text-align:center;position:relative}
+.inv[data-font="2"]{--f-scr:'Marck Script','Brush Script MT',cursive}
+.inv[data-font="3"]{--f-scr:'Bad Script','Marck Script',cursive}
+.inv img{display:block;width:100%;height:100%;object-fit:cover}
+.inv .scr{font-family:var(--f-scr);font-weight:400;line-height:1.1}
+.inv p{margin:0 0 .9em}
+.inv .eyebrow{font-size:13px;letter-spacing:.34em;text-transform:uppercase}
+.inv .sec{padding:44px 30px}
+.inv .small{font-size:17px;opacity:.9}
+.inv .h2{font-size:44px;margin:0 0 14px}
+.inv .arch{width:80%;aspect-ratio:3/4;margin:0 auto 26px;border-radius:999px 999px 0 0;overflow:hidden}
+.inv .rect{width:88%;aspect-ratio:4/3;margin:0 auto 22px;border-radius:12px;overflow:hidden}
+.inv .dark{background:var(--i-dark);color:var(--i-cream);padding:78px 32px 52px;border-radius:50% 50% 0 0/70px 70px 0 0;margin-top:-1px}
+.inv .dark .h2{color:var(--i-cream)}
+.inv .cal-m{font-family:'Cormorant Garamond',serif;font-size:30px;font-style:italic;margin-bottom:14px;text-transform:capitalize}
+.inv .cal-g{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:6px 0;max-width:330px;margin:0 auto 22px;font-size:19px}
+.inv .cal-g b,.inv .cal-g i{font-weight:400;height:34px;display:grid;place-items:center;font-style:normal}
+.inv .cal-g b.on{color:var(--i-acc)}
+.inv .cal-g b.heart{font-size:24px}
+.inv .tl{list-style:none;margin:0;padding:0;text-align:left;display:grid;gap:18px}
+.inv .tl li{display:grid;grid-template-columns:96px minmax(0,1fr);gap:14px;align-items:baseline;padding-bottom:16px;border-bottom:1px solid color-mix(in srgb,currentColor 25%,transparent)}
+.inv .tl li.one{grid-template-columns:minmax(0,1fr)}
+.inv .tl li:last-child{border-bottom:0}
+.inv .tl time{font-size:36px;font-weight:500}
+.inv .tl h4{margin:0 0 2px;font-size:22px;font-weight:600;font-style:italic}
+.inv .tl p{margin:0;font-size:18px;opacity:.92}
+.inv .dayhead{display:flex;align-items:baseline;justify-content:center;gap:14px;margin-bottom:22px;flex-wrap:wrap}
+.inv .dayhead .num{font-size:92px;line-height:.9;font-weight:500}
+.inv .dayhead .mon{font-style:italic;font-size:24px;text-transform:lowercase}
+.inv .dayhead .yr{font-size:18px;letter-spacing:.2em}
+.inv .dayhead .dn{font-size:34px}
+.inv .swt{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin:18px 0 6px}
+.inv .swt i{width:46px;height:46px;border-radius:50%;border:1px solid rgba(0,0,0,.18)}
+.inv .fin{position:relative;aspect-ratio:3/4.2;border-radius:50% 50% 0 0/22% 22% 0 0;overflow:hidden;margin-top:10px}
+.inv .fin::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,color-mix(in srgb,var(--i-dark) 88%,transparent),transparent 55%)}
+.inv .fin .tx{position:absolute;left:0;right:0;bottom:26px;z-index:1;color:#fff4e6;padding:0 24px}
+.inv .fin .tx .scr{font-size:46px}
+.inv .fin .tx .names{font-size:26px;font-style:italic}
+.inv .hero{position:relative;aspect-ratio:3/4.1;border-radius:0 0 50% 50%/0 0 12% 12%;overflow:hidden;color:#fff4e6}
+.inv .hero::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,color-mix(in srgb,var(--i-dark) 90%,transparent),transparent 58%)}
+.inv .hero-t{position:absolute;left:0;right:0;bottom:46px;z-index:1;padding:0 20px}
+.inv .hero-t .big{font-size:64px;margin:6px 0}
+.inv .hero-t .names{font-size:28px;font-style:italic}
+.inv .hero-t .hdate{font-size:20px;letter-spacing:.2em;margin-top:6px}
+.inv.t2 .intro{padding:44px 30px 26px}
+.inv.t2 .intro .scr{font-size:44px;margin-bottom:10px}
+.inv.t2 .banner{background:var(--i-dark);color:var(--i-cream);border-radius:999px 999px 0 0;padding:70px 38px 30px;margin:10px 26px 0;font-size:26px;font-style:italic}
+.inv.t2 .heroB{position:relative;aspect-ratio:3/4;border-radius:999px 999px 0 0;overflow:hidden;margin:0 26px}
+.inv.t2 .heroB::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,color-mix(in srgb,var(--i-dark) 80%,transparent),transparent 50%)}
+.inv.t2 .heroB .scr{position:absolute;left:0;right:0;bottom:22px;z-index:1;color:#fff4e6;font-size:64px}
+.inv.t2 .lead2{background:var(--i-dark);color:var(--i-cream);padding:34px 32px 46px;margin:0 26px}
+.inv.t2 .lead2 .bigdate{font-size:30px;font-style:italic;margin-top:10px}
+.inv .addr{font-size:20px;font-weight:600}
+.inv .cd{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;max-width:340px;margin:0 auto}
+.inv .cd div{display:grid;gap:2px;padding:12px 4px;border:1px solid color-mix(in srgb,currentColor 30%,transparent);border-radius:12px}
+.inv .cd b{font-size:36px;font-weight:500;font-variant-numeric:tabular-nums;line-height:1}
+.inv .cd span{font-size:13px;letter-spacing:.06em;text-transform:lowercase}
+.inv .tips{display:grid;gap:14px;text-align:left}
+.inv .tip{border-left:2px solid var(--i-acc);padding-left:14px}
+.inv .tip h4{margin:0 0 2px;font-size:22px;font-style:italic;font-weight:600}
+.inv .tip p{margin:0;font-size:18px}
+.inv .trf{display:grid;gap:4px;margin-bottom:12px}
+.inv .trf .tm{font-size:44px;font-weight:500;line-height:1}
+.inv .trf .rt{font-size:21px;font-style:italic}
+.inv details.q{text-align:left;border:1px solid color-mix(in srgb,currentColor 30%,transparent);border-radius:14px;padding:12px 16px;margin-bottom:10px}
+.inv details.q summary{cursor:pointer;font-size:20px;font-style:italic;list-style:none;display:flex;justify-content:space-between;gap:10px}
+.inv details.q summary::after{content:"+";font-style:normal}
+.inv details.q[open] summary::after{content:"−"}
+.inv details.q p{margin:10px 0 0;font-size:18px}
+.inv .rsvp{background:var(--i-dark);color:var(--i-cream);padding:56px 30px 60px;text-align:left}
+.inv .rsvp h3{font-family:var(--f-scr);font-weight:400;font-size:44px;text-align:center;margin-bottom:6px}
+.inv .rsvp .sub{text-align:center;font-size:17px;opacity:.85;margin-bottom:22px}
+.inv .rsvp label{display:grid;gap:4px;font-size:15px;margin-bottom:14px;font-family:var(--f-body);opacity:.95}
+.inv .rsvp input[type=text],.inv .rsvp select,.inv .rsvp textarea{width:100%;min-height:44px;padding:9px 12px;border-radius:10px;border:1px solid rgba(255,244,230,.4);background:rgba(255,244,230,.08);color:var(--i-cream);font:inherit;font-size:16px}
+.inv .rsvp select option{color:#222}
+.inv .rsvp .seg{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:14px}
+.inv .rsvp .seg label{margin:0;position:relative}
+.inv .rsvp .seg span{display:grid;place-items:center;min-height:44px;border:1px solid rgba(255,244,230,.4);border-radius:10px;cursor:pointer}
+.inv .rsvp .seg input{position:absolute;opacity:0;pointer-events:none}
+.inv .rsvp .seg input:checked+span{background:var(--i-cream);color:var(--i-dark);border-color:var(--i-cream);font-weight:600}
+.inv .rsvp .seg input:focus-visible+span{outline:2px solid var(--i-cream);outline-offset:2px}
+.inv .rsvp button{width:100%;min-height:48px;border-radius:999px;border:0;background:var(--i-cream);color:var(--i-dark);font:600 16px var(--f-body);cursor:pointer}
+.inv .rsvp .thx{text-align:center;font-size:24px;font-style:italic;padding:14px 0}
+.inv .chatbtn{display:inline-block;margin:6px 0 4px;padding:12px 26px;border-radius:999px;background:var(--i-dark);color:var(--i-cream);text-decoration:none;font:600 15px var(--f-body)}
+/* envelope */
+.env{position:absolute;inset:0;z-index:30;display:grid;align-content:center;justify-items:center;gap:22px;background-color:var(--i-paper);background-image:url('img/paper-tile.jpg');background-size:600px 600px;background-repeat:repeat;background-blend-mode:multiply;color:var(--i-ink);text-align:center;cursor:pointer;transition:opacity .7s ease;font-family:'Cormorant Garamond',serif}
+.env.fix{position:fixed;z-index:70}
+.env.open{opacity:0;pointer-events:none}
+.env-card{position:relative;width:240px;height:160px;background:var(--i-dark);border-radius:6px;box-shadow:0 16px 34px rgba(0,0,0,.28);perspective:600px}
+.env-flap{position:absolute;left:0;right:0;top:0;height:104px;background:color-mix(in srgb,var(--i-dark) 82%,#fff);clip-path:polygon(0 0,100% 0,50% 100%);transform-origin:top center;transition:transform .6s ease}
+.env.open .env-flap{transform:rotateX(180deg)}
+.env-seal{position:absolute;left:50%;top:98px;transform:translate(-50%,-50%);width:50px;height:50px;border-radius:50%;background:var(--i-acc);color:#fff;display:grid;place-items:center;font:600 14px var(--f-body);box-shadow:0 3px 8px rgba(0,0,0,.3)}
+.env-names{font-family:'Pinyon Script','Marck Script',cursive;font-size:34px;line-height:1.1;padding:0 20px}
+.env-hint{font-size:15px;letter-spacing:.14em;text-transform:uppercase}
+.langsw{position:fixed;top:calc(12px + env(safe-area-inset-top,0px));right:12px;z-index:75;display:flex;gap:4px;background:rgba(255,255,255,.85);border:1px solid rgba(0,0,0,.12);border-radius:999px;padding:3px;backdrop-filter:blur(6px)}
+.langsw button{border:0;background:transparent;border-radius:999px;padding:5px 11px;font:500 13px var(--f-body);color:#3a2922;cursor:pointer}
+.langsw button[aria-pressed="true"]{background:#3a2922;color:#fff}
+/* ===== landing v2 ===== */
+.lp{--gold:#a9824f;--deep:#2b1f1a;--deep-ink:#f3e8dc;background-color:var(--bg);background-image:url('img/paper-tile.jpg');background-size:600px 600px;background-blend-mode:multiply}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .lp{background-image:none}}
+:root[data-theme="dark"] .lp{background-image:none}
+.lp .wrap{max-width:1160px;padding-inline:20px}
+.lp-nav{position:sticky;top:0;z-index:30;background:color-mix(in srgb,var(--bg) 86%,transparent);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);border-bottom:1px solid color-mix(in srgb,var(--line) 70%,transparent)}
+.lp-nav .in{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-block:12px}
+.lp-nav nav{display:flex;gap:26px;font-size:14px}
+.lp-nav nav a{text-decoration:none;color:var(--muted)}
+.lp-nav nav a:hover{color:var(--ink)}
+.lp-nav .r{display:flex;gap:10px;align-items:center}
+@media (max-width:860px){.lp-nav nav{display:none}}
+@media (max-width:620px){.lp-nav .r .ghost{display:none}.lp-nav .brand{font-size:22px}}
+.eyebrow{font:500 12px/1.2 var(--f-body);letter-spacing:.24em;text-transform:uppercase;color:var(--accent);display:inline-flex;align-items:center;gap:12px}
+.eyebrow::before{content:"";width:28px;height:1px;background:currentColor;opacity:.7}
+.lp h1,.lp h2{letter-spacing:-.012em}
+.lp h2{font-size:clamp(34px,5vw,58px);font-weight:500}
+.lp h1 em,.lp h2 em{font-style:italic;color:var(--accent);font-weight:500}
+.lp-sec{padding-block:clamp(56px,9vw,112px)}
+.lp-head{display:grid;gap:16px;max-width:760px;margin-bottom:clamp(30px,5vw,56px)}
+.lp-head p{color:var(--muted);font-size:18px;max-width:56ch}
+.lp-head.c{text-align:center;margin-inline:auto;justify-items:center}
+/* hero */
+.lp-hero{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:24px;align-items:center;padding-block:clamp(24px,5vw,56px) clamp(40px,6vw,72px)}
+.lp-hero h1{font-size:clamp(46px,7vw,92px);line-height:.98;margin-top:22px}
+.lp-hero .lead{font-size:19px;max-width:44ch;margin-top:24px}
+.lp-hero .cta{margin-top:34px}
+.btn.lg{min-height:54px;padding:0 32px;font-size:16px;letter-spacing:.01em}
+.lp-proof{display:flex;gap:22px;flex-wrap:wrap;margin-top:34px;color:var(--muted);font-size:14px}
+.lp-proof span{display:inline-flex;align-items:center;gap:8px}
+.lp-proof svg{width:18px;height:18px;color:var(--accent)}
+.lp-stage{position:relative;min-height:620px;display:flex;justify-content:center;align-items:center}
+.lp-oval{position:absolute;left:50%;top:50%;width:min(470px,96%);aspect-ratio:3/4;transform:translate(-50%,-50%);border-radius:50%;border:1px solid var(--gold)}
+.lp-oval::after{content:"";position:absolute;inset:12px;border:1px solid var(--line);border-radius:50%}
+.lp-stage .phone{position:relative;margin:0;box-shadow:0 30px 70px rgba(60,30,20,.28)}
+.lp-stage .phone.a{transform:rotate(-5deg) translateX(-18px)}
+.lp-stage .phone.b{transform:rotate(4deg) translate(0,46px);margin-left:-64px}
+.lp-chip{position:absolute;z-index:3;display:flex;align-items:center;gap:10px;background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:9px 16px 9px 10px;font-size:13px;box-shadow:0 12px 30px rgba(60,30,20,.16);white-space:nowrap}
+.lp-chip i{width:28px;height:28px;border-radius:50%;background:var(--accent);color:var(--accent-ink);display:grid;place-items:center;font-style:normal;font-size:14px}
+.lp-chip b{font-weight:500}
+.lp-chip.c1{left:0;top:18%}.lp-chip.c2{right:0;bottom:16%}
+@media (max-width:980px){.lp-hero{grid-template-columns:minmax(0,1fr)}.lp-stage{min-height:600px}}
+@media (max-width:620px){.lp-stage .phone.b{display:none}.lp-stage .phone.a{display:block;transform:none}.lp-chip.c1{left:-4px;top:6%}.lp-chip.c2{right:-4px;bottom:6%}.lp-stage{min-height:580px}}
+/* marquee */
+.lp-strip{border-block:1px solid var(--line);background:color-mix(in srgb,var(--surface) 60%,transparent);overflow:hidden}
+.lp-strip .row{display:flex;gap:44px;padding-block:18px;white-space:nowrap;width:max-content;animation:lpm 38s linear infinite;font:italic 500 24px/1 var(--f-display);color:var(--muted)}
+.lp-strip .row span::after{content:"✦";font-style:normal;font-size:12px;margin-left:44px;color:var(--gold)}
+@keyframes lpm{to{transform:translateX(-50%)}}
+@media (prefers-reduced-motion:reduce){.lp-strip .row{animation:none}}
+/* how */
+.lp-steps{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px;list-style:none;padding:0;margin:0}
+.lp-steps li{position:relative;background:var(--surface);border:1px solid var(--line);border-radius:999px 999px 22px 22px;padding:58px 22px 28px;display:grid;gap:10px;justify-items:center;text-align:center;align-content:start}
+.lp-steps li::before{content:"";position:absolute;inset:6px;border:1px solid color-mix(in srgb,var(--gold) 55%,transparent);border-radius:inherit;pointer-events:none}
+.lp-steps .n{font:italic 500 64px/1 var(--f-display);color:var(--accent)}
+.lp-steps b{font:600 26px/1.1 var(--f-display)}
+.lp-steps span{color:var(--muted);font-size:15px}
+@media (max-width:980px){.lp-steps{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:520px){.lp-steps{grid-template-columns:minmax(0,1fr)}}
+/* templates */
+.lp-tpls{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:30px}
+@media (max-width:860px){.lp-tpls{grid-template-columns:minmax(0,1fr)}}
+.lp-tpl{background:var(--surface);border:1px solid var(--line);border-radius:26px;padding:18px;display:grid;grid-template-columns:minmax(0,.95fr) minmax(0,1fr);gap:22px}
+@media (max-width:520px){.lp-tpl{grid-template-columns:minmax(0,1fr)}}
+.lp-tpl .im{position:relative;border-radius:999px 999px 14px 14px;overflow:hidden;aspect-ratio:3/4.3;background:var(--line)}
+.lp-tpl .im img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .8s ease}
+.lp-tpl:hover .im img{transform:scale(1.04)}
+.lp-tpl .bd{display:flex;flex-direction:column;gap:12px;min-width:0;padding-block:10px 4px}
+.lp-tpl h3{font-size:44px;font-weight:500}
+.lp-tpl ul{list-style:none;margin:0;padding:0;display:grid;gap:7px;color:var(--muted);font-size:15px}
+.lp-tpl li{display:flex;gap:10px;align-items:flex-start}
+.lp-tpl li::before{content:"";width:6px;height:6px;margin-top:9px;border-radius:50%;background:var(--gold);flex:none}
+.lp-tpl .price{margin-top:auto;font-size:40px}
+.lp-add{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0;margin-top:34px;border:1px solid var(--line);border-radius:20px;background:color-mix(in srgb,var(--surface) 70%,transparent)}
+.lp-add div{padding:20px 24px;display:grid;gap:4px}
+.lp-add div+div{border-left:1px solid var(--line)}
+.lp-add b{font:600 22px/1.15 var(--f-display)}
+.lp-add span{color:var(--muted);font-size:14px}
+.lp-add em{font:italic 500 24px/1 var(--f-display);color:var(--accent)}
+@media (max-width:700px){.lp-add{grid-template-columns:minmax(0,1fr)}.lp-add div+div{border-left:0;border-top:1px solid var(--line)}}
+/* dark band + builder */
+.lp-dark{background:var(--deep);color:var(--deep-ink);background-image:radial-gradient(900px 500px at 85% 0,rgba(169,130,79,.18),transparent 60%)}
+.lp-dark .eyebrow{color:#d9b98c}
+.lp-dark h2 em{color:#e0b995}
+.lp-dark .lp-head p{color:#cdbbab}
+.lp-b{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:36px;align-items:center}
+@media (max-width:940px){.lp-b{grid-template-columns:minmax(0,1fr)}}
+.lp-win{background:var(--surface);color:var(--ink);border-radius:22px;overflow:hidden;box-shadow:0 40px 90px rgba(0,0,0,.4);border:1px solid rgba(255,255,255,.08)}
+.lp-win .top{display:flex;gap:7px;align-items:center;padding:12px 16px;border-bottom:1px solid var(--line);background:color-mix(in srgb,var(--bg) 70%,var(--surface))}
+.lp-win .top i{width:10px;height:10px;border-radius:50%;background:var(--line)}
+.lp-win .top small{margin-left:10px;color:var(--muted);font-size:12px;letter-spacing:.04em}
+.lp-win .bd{padding:22px;display:grid;gap:22px}
+.lp-stp{display:flex;gap:6px;flex-wrap:wrap}
+.lp-stp span{font-size:12px;padding:5px 12px;border-radius:999px;border:1px solid var(--line);color:var(--muted)}
+.lp-stp span.on{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+.lp-b h4{margin:0 0 10px;font:600 13px/1 var(--f-body);letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.lp-tabs{display:flex;gap:8px;flex-wrap:wrap}
+.lp-tabs button{min-height:38px;padding:0 16px;border-radius:999px;border:1px solid var(--line);background:transparent;cursor:pointer;font-size:14px}
+.lp-tabs button[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.lp-sw{display:flex;gap:10px;flex-wrap:wrap}
+.lp-sw button{width:38px;height:38px;border-radius:50%;border:2px solid transparent;box-shadow:0 0 0 1px var(--line);cursor:pointer;padding:0}
+.lp-sw button[aria-pressed="true"]{border-color:var(--surface);box-shadow:0 0 0 2px var(--accent)}
+.lp-tg{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+@media (max-width:520px){.lp-tg{grid-template-columns:minmax(0,1fr)}}
+.lp-tg button{display:flex;align-items:center;gap:10px;text-align:left;min-height:46px;padding:6px 12px;border:1px solid var(--line);border-radius:12px;background:transparent;cursor:pointer;font-size:14px}
+.lp-tg button[aria-pressed="true"]{border-color:var(--accent);background:color-mix(in srgb,var(--accent) 8%,transparent)}
+.lp-tg .ic{width:20px;height:20px}
+.lp-tg .tg{margin-left:auto;font-size:12px;color:var(--muted);white-space:nowrap}
+.lp-tot{display:flex;justify-content:space-between;align-items:baseline;border-top:1px solid var(--line);padding-top:14px;color:var(--muted);font-size:14px}
+.lp-tot b{font:600 30px/1 var(--f-display);color:var(--ink)}
+.lp-pw{display:flex;justify-content:center}
+.lp-shell{position:relative;width:340px;max-width:100%;height:600px;border:8px solid #120c0a;border-radius:44px;overflow:hidden;background:var(--i-paper,#fff);box-shadow:0 30px 80px rgba(0,0,0,.5)}
+.lp-shell::before{content:"";position:absolute;top:8px;left:50%;transform:translateX(-50%);width:84px;height:22px;border-radius:14px;background:#120c0a;z-index:5}
+.lp-shell .sc{height:100%;overflow-y:auto;scrollbar-width:none;overscroll-behavior:contain}
+.lp-shell .sc::-webkit-scrollbar{display:none}
+.lp-shell .z{zoom:.74}
+.lp-hint{text-align:center;color:#bfae9f;font-size:13px;margin-top:14px}
+/* named */
+.lp-n{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:clamp(28px,5vw,70px);align-items:center}
+@media (max-width:940px){.lp-n{grid-template-columns:minmax(0,1fr)}}
+.lp-list{list-style:none;margin:26px 0 0;padding:0;display:grid;gap:14px}
+.lp-list li{display:grid;grid-template-columns:30px minmax(0,1fr);gap:12px;align-items:start;color:var(--muted)}
+.lp-list li b{color:var(--ink);font-weight:500}
+.lp-list .k{width:30px;height:30px;border-radius:50%;border:1px solid var(--gold);display:grid;place-items:center;color:var(--accent)}
+.lp-list .k svg{width:16px;height:16px}
+.lp-soon{font:500 11px/1 var(--f-body);letter-spacing:.14em;text-transform:uppercase;border:1px solid var(--gold);color:var(--accent);border-radius:999px;padding:5px 10px}
+.lp-nv{position:relative;min-height:520px;padding-bottom:60px;display:grid;place-items:center}
+.lp-guest{position:relative;z-index:2;width:min(100%,520px);background:var(--surface);border:1px solid var(--line);border-radius:22px;box-shadow:0 26px 60px rgba(60,30,20,.16);overflow:hidden}
+.lp-guest .h{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:16px 20px;border-bottom:1px solid var(--line)}
+.lp-guest .h b{font:600 22px/1 var(--f-display)}
+.lp-gr{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:4px 12px;align-items:center;padding:14px 20px;border-bottom:1px solid var(--line)}
+.lp-gr:last-child{border-bottom:0}
+.lp-gr b{font-weight:500}
+.lp-gr code{grid-column:1;font-size:12px;color:var(--muted);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.lp-gr .pill{grid-row:1/3;grid-column:2}
+.lp-env{position:absolute;z-index:3;right:-6px;bottom:-70px;width:min(250px,56%);background:#fbf5ea;color:#3a2922;border:1px solid var(--line);border-radius:140px 140px 16px 16px;padding:34px 18px 20px;text-align:center;box-shadow:0 22px 50px rgba(60,30,20,.22);transform:rotate(3deg)}
+.lp-env small{display:block;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:#8a6a5a}
+.lp-env .sc2{font:400 40px/1.05 'Pinyon Script','Marck Script',cursive;margin-block:6px 8px}
+.lp-env p{font:italic 500 16px/1.3 var(--f-display)}
+.lp-packs{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;margin-top:clamp(36px,5vw,64px)}
+@media (max-width:860px){.lp-packs{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.lp-pack{background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:22px;display:grid;gap:6px;text-align:center}
+.lp-pack b{font:600 38px/1 var(--f-display)}
+.lp-pack span{color:var(--muted);font-size:14px}
+.lp-pack em{font:italic 500 26px/1.1 var(--f-display);color:var(--accent);margin-top:6px}
+.lp-pack.pop{border-color:var(--accent);background:color-mix(in srgb,var(--accent) 6%,var(--surface))}
+/* cabinet */
+.lp-c{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);gap:clamp(28px,5vw,70px);align-items:center}
+@media (max-width:940px){.lp-c{grid-template-columns:minmax(0,1fr)}.lp-c .txt{order:-1}}
+.lp-st{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
+@media (max-width:520px){.lp-st{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.lp-st div{border:1px solid var(--line);border-radius:14px;padding:12px 14px}
+.lp-st b{display:block;font:600 34px/1 var(--f-display)}
+.lp-st span{font-size:12px;color:var(--muted)}
+.lp-bar{height:8px;border-radius:99px;background:var(--line);overflow:hidden;display:flex}
+.lp-bar i{display:block;height:100%}
+.lp-tb{display:grid;font-size:14px}
+.lp-tb .r{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:10px;align-items:center;padding:11px 2px;border-top:1px solid var(--line)}
+.lp-tb .r span{color:var(--muted);font-size:13px}
+.lp-lnk{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.lp-lnk code{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:9px 12px;font-size:13px}
+/* faq */
+.lp-faq{max-width:820px;margin-inline:auto;border-top:1px solid var(--line)}
+.lp-faq details{border-bottom:1px solid var(--line)}
+.lp-faq summary{cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:16px;padding:22px 2px;font:500 26px/1.15 var(--f-display)}
+.lp-faq summary::-webkit-details-marker{display:none}
+.lp-faq summary::after{content:"+";font:300 30px/1 var(--f-body);color:var(--accent);flex:none;transition:transform .25s}
+.lp-faq details[open] summary::after{transform:rotate(45deg)}
+.lp-faq details p{padding:0 40px 24px 2px;color:var(--muted);font-size:16px;max-width:64ch}
+/* final */
+.lp-fin{text-align:center;padding-block:clamp(64px,10vw,130px)}
+.lp-fin h2{font-size:clamp(40px,7vw,84px);line-height:1;max-width:14ch;margin:20px auto 0}
+.lp-fin p{color:#cdbbab;margin:22px auto 34px;max-width:46ch;font-size:18px}
+.lp-fin .btn{background:#f3e8dc;color:#2b1f1a;border-color:#f3e8dc}
+.lp-fin .btn.ghost{background:transparent;color:#f3e8dc;border-color:rgba(243,232,220,.4)}
+.lp-fin .cta{justify-content:center}
+.lp-ft{background:var(--deep);color:#bfae9f}
+.lp-ft .ft{border-top:1px solid rgba(255,255,255,.1);color:#bfae9f}
+.lp-ft a{color:#e8d8c6}
+</style>
+</head>
+<body>
+
+<div id="app"></div>
+<div id="toast" class="toast" hidden></div>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.js"></script>
+<script src="config.js"></script>
+<script src="supabase-adapter.js"></script>
+
+<script>
+(function(){
+'use strict';
+var app=document.getElementById('app');
+var esc=function(s){return String(s==null?'':s).replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]})};
+var tx=function(s){return esc(s).replace(/\n/g,'<br>')};
+var sleep=function(ms){return new Promise(function(r){setTimeout(r,ms)})};
+var rid=function(){return Math.random().toString(36).slice(2,10)};
+var money=function(n){return Number(n).toLocaleString('uk-UA')+' ₴'};
+var clone=function(o){return JSON.parse(JSON.stringify(o))};
+var toastT;
+function toast(m){var t=document.getElementById('toast');t.textContent=m;t.hidden=false;clearTimeout(toastT);toastT=setTimeout(function(){t.hidden=true},2600)}
+function copyText(t){
+  var ok=function(){toast('Скопійовано')},no=function(){toast('Виділіть посилання та скопіюйте вручну')};
+  try{navigator.clipboard.writeText(t).then(ok,no)}catch(e){no()}
+}
+
+/* ---------- config (prices are placeholders: edit here) ---------- */
+var PRICING={section:150,lang:250};
+var LANGS=[
+  {id:'uk',name:'Українська',code:'UA',locale:'uk-UA'},
+  {id:'en',name:'English',code:'EN',locale:'en-GB'},
+  {id:'pl',name:'Polski',code:'PL',locale:'pl-PL'},
+  {id:'de',name:'Deutsch',code:'DE',locale:'de-DE'}
+];
+var UI={
+ uk:{countdown:'До нашого дня залишилось',days:'днів',hours:'годин',minutes:'хвилин',seconds:'секунд',location:'Локація',program:'Програма дня',dress:'Дрескод',wishes:'Наші побажання',tips:'Корисне',transfer:'Трансфер',faq:'Питання та відповіді',rsvpTitle:'Чи будете ви з нами?',rsvpSub:'Дайте нам знати до свята',yourName:'Ваше імʼя',yes:'Буду',no:'Не зможу',howMany:'Скільки вас буде',note:'Алергії або побажання',send:'Надіслати відповідь',sending:'Надсилаємо…',thanks:'Дякуємо!',thanksSub:'Ми отримали вашу відповідь.',tapOpen:'Торкніться, щоб відкрити',join:'Доєднатися',open:'Відкрити запрошення'},
+ en:{countdown:'Until our day',days:'days',hours:'hours',minutes:'minutes',seconds:'seconds',location:'Location',program:'Schedule',dress:'Dress code',wishes:'Our wishes',tips:'Good to know',transfer:'Transfer',faq:'Questions & answers',rsvpTitle:'Will you join us?',rsvpSub:'Please let us know',yourName:'Your name',yes:'I will come',no:'I can’t come',howMany:'Number of guests',note:'Allergies or wishes',send:'Send reply',sending:'Sending…',thanks:'Thank you!',thanksSub:'We received your reply.',tapOpen:'Tap to open',join:'Join',open:'Open invitation'},
+ pl:{countdown:'Do naszego dnia zostało',days:'dni',hours:'godzin',minutes:'minut',seconds:'sekund',location:'Lokalizacja',program:'Program dnia',dress:'Dress code',wishes:'Nasze życzenia',tips:'Warto wiedzieć',transfer:'Transfer',faq:'Pytania i odpowiedzi',rsvpTitle:'Czy będziecie z nami?',rsvpSub:'Dajcie nam znać',yourName:'Wasze imię',yes:'Będę',no:'Nie dam rady',howMany:'Ile osób',note:'Alergie lub uwagi',send:'Wyślij odpowiedź',sending:'Wysyłanie…',thanks:'Dziękujemy!',thanksSub:'Otrzymaliśmy Waszą odpowiedź.',tapOpen:'Dotknij, aby otworzyć',join:'Dołącz',open:'Otwórz zaproszenie'},
+ de:{countdown:'Bis zu unserem Tag',days:'Tage',hours:'Stunden',minutes:'Minuten',seconds:'Sekunden',location:'Ort',program:'Tagesablauf',dress:'Dresscode',wishes:'Unsere Wünsche',tips:'Gut zu wissen',transfer:'Transfer',faq:'Fragen & Antworten',rsvpTitle:'Seid ihr dabei?',rsvpSub:'Gebt uns bitte Bescheid',yourName:'Euer Name',yes:'Ich komme',no:'Ich kann nicht',howMany:'Anzahl der Gäste',note:'Allergien oder Wünsche',send:'Antwort senden',sending:'Wird gesendet…',thanks:'Danke!',thanksSub:'Wir haben eure Antwort erhalten.',tapOpen:'Zum Öffnen tippen',join:'Beitreten',open:'Einladung öffnen'}
+};
+var u=function(L,k){return (UI[L]&&UI[L][k])||UI.uk[k]};
+var langOf=function(id){return LANGS.filter(function(x){return x.id===id})[0]||LANGS[0]};
+var THEMES=[
+ {id:'choco',name:'Choco',dark:'#3b2a24',ink:'#3a2922',mid:'#7a5846',acc:'#9b4a3c',paper:'#ffffff'},
+ {id:'mocha',name:'Mocha',dark:'#6d4c41',ink:'#3a2922',mid:'#8a6a5a',acc:'#9b4a3c',paper:'#ffffff'},
+ {id:'bordo',name:'Bordo',dark:'#5a1f27',ink:'#3d1d20',mid:'#8a4a50',acc:'#8f2f3b',paper:'#fbeceb'},
+ {id:'crema',name:'Crema',dark:'#8a7358',ink:'#4a3d2e',mid:'#9a8466',acc:'#a07c4e',paper:'#fffdf6'},
+ {id:'olive',name:'Olive',dark:'#4a5340',ink:'#2f3629',mid:'#6f7a5f',acc:'#6b7d4f',paper:'#f4f6ee'},
+ {id:'sky',name:'Sky',dark:'#46607c',ink:'#26364a',mid:'#6f8aa6',acc:'#4f7aa8',paper:'#eef4fa'},
+ {id:'rose',name:'Rose',dark:'#8a4a58',ink:'#4a2a31',mid:'#b0707e',acc:'#b0505f',paper:'#fcedf0'},
+ {id:'black',name:'Black',dark:'#1f1c1b',ink:'#1f1c1b',mid:'#5a5250',acc:'#7a6a50',paper:'#f4f1ee'},
+ {id:'navy',name:'Navy',dark:'#1f2a44',ink:'#1c2438',mid:'#4b5a7c',acc:'#3c5a9a',paper:'#eef0f6'}
+];
+var themeOf=function(id){return THEMES.filter(function(x){return x.id===id})[0]||THEMES[0]};
+var themeStyle=function(t){return '--i-dark:'+t.dark+';--i-ink:'+t.ink+';--i-mid:'+t.mid+';--i-acc:'+t.acc+';--i-paper:'+t.paper};
+var ICON={
+ countdown:'<circle cx="12" cy="13" r="8"/><path d="M12 9v4l3 2M9 3h6"/>',
+ save:'<rect x="4" y="5" width="16" height="15" rx="2"/><path d="M4 10h16M9 3v4M15 3v4"/>',
+ location:'<path d="M12 21s7-6.2 7-11a7 7 0 1 0-14 0c0 4.8 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/>',
+ program:'<path d="M8 6h12M8 12h12M8 18h12M4 6h.01M4 12h.01M4 18h.01"/>',
+ dress:'<path d="M12 7a2 2 0 1 0-2-2M12 7v2l8 6a1.5 1.5 0 0 1-1 2.7H5A1.5 1.5 0 0 1 4 15l8-6"/>',
+ tips:'<path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-3.5 10.9c.6.5 1 1.2 1 2.1h5c0-.9.4-1.6 1-2.1A6 6 0 0 0 12 3z"/>',
+ gifts:'<rect x="4" y="9" width="16" height="11" rx="1.5"/><path d="M12 9v11M4 13h16M12 9c-3 0-4-4-1.5-4S12 9 12 9zm0 0c3 0 4-4 1.5-4S12 9 12 9z"/>',
+ transfer:'<rect x="4" y="4" width="16" height="13" rx="2"/><path d="M4 11h16M7 20v-3M17 20v-3M8 14h.01M16 14h.01"/>',
+ faq:'<circle cx="12" cy="12" r="9"/><path d="M9.5 9.5a2.5 2.5 0 1 1 3.5 2.3c-.7.4-1 .9-1 1.7M12 17h.01"/>',
+ rsvp:'<circle cx="9" cy="8" r="3"/><path d="M3 20a6 6 0 0 1 12 0M16 5a3 3 0 0 1 0 6M18 20a6 6 0 0 0-3-5"/>'
+};
+var icon=function(k){return '<svg class="ic" viewBox="0 0 24 24" aria-hidden="true">'+ICON[k]+'</svg>'};
+var CHECK='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>';
+var SEC={
+ countdown:{name:'Зворотний відлік',desc:'До дня весілля',price:0},
+ save:{name:'Save the Date',desc:'Дата події',price:0},
+ location:{name:'Локація',desc:'Місце проведення',price:0},
+ program:{name:'Програма дня',desc:'Розклад заходів',price:0},
+ dress:{name:'Дрескод',desc:'Побажання щодо стилю',price:PRICING.section},
+ tips:{name:'Підказки',desc:'Корисна інформація',price:PRICING.section},
+ gifts:{name:'Подарунки',desc:'Побажання щодо подарунків',price:PRICING.section},
+ transfer:{name:'Трансфер',desc:'Розвезення гостей',price:PRICING.section},
+ faq:{name:'Питання та відповіді',desc:'Часті питання гостей',price:PRICING.section},
+ rsvp:{name:'RSVP форма присутності',desc:'Підтвердження та список гостей',price:0}
+};
+var SEC_ORDER=['countdown','save','location','program','dress','tips','gifts','transfer','faq','rsvp'];
+var freeSecs=function(){return SEC_ORDER.filter(function(s){return SEC[s].price===0})};
+
+/* ---------- dates ---------- */
+function parts(iso){var a=String(iso||'').split('-').map(Number);return {y:a[0]||2027,m:a[1]||1,d:a[2]||1}}
+function addDay(iso,n){var p=parts(iso);var dt=new Date(Date.UTC(p.y,p.m-1,p.d+n));return dt.getUTCFullYear()+'-'+String(dt.getUTCMonth()+1).padStart(2,'0')+'-'+String(dt.getUTCDate()).padStart(2,'0')}
+function fmt(iso,L,o){var p=parts(iso);try{return new Intl.DateTimeFormat(langOf(L).locale,Object.assign({timeZone:'UTC'},o)).format(new Date(Date.UTC(p.y,p.m-1,p.d)))}catch(e){return iso}}
+function numDate(iso){var p=parts(iso);return String(p.d).padStart(2,'0')+' / '+String(p.m).padStart(2,'0')+' / '+p.y}
+function calHTML(iso,span,L){
+  var p=parts(iso);
+  var first=(new Date(Date.UTC(p.y,p.m-1,1)).getUTCDay()+6)%7;
+  var n=new Date(Date.UTC(p.y,p.m,0)).getUTCDate();
+  var c='';for(var i=0;i<first;i++)c+='<i></i>';
+  for(var k=1;k<=n;k++){if(k>=p.d&&k<p.d+span)c+='<b class="on heart">♥</b>';else c+='<b>'+k+'</b>'}
+  return '<div class="cal-m">'+esc(fmt(iso,L,{month:'long'}))+'</div><div class="cal-g">'+c+'</div>';
+}
+function tick(){
+  var els=document.querySelectorAll('.cd');
+  for(var i=0;i<els.length;i++){
+    var el=els[i],p=parts(el.getAttribute('data-date'));
+    var ms=Math.max(0,new Date(p.y,p.m-1,p.d,0,0,0).getTime()-Date.now());
+    var v=[Math.floor(ms/864e5),Math.floor(ms/36e5)%24,Math.floor(ms/6e4)%60,Math.floor(ms/1e3)%60];
+    var bs=el.querySelectorAll('b');
+    for(var j=0;j<4&&j<bs.length;j++)bs[j].textContent=String(v[j]).padStart(2,'0');
+  }
+}
+setInterval(tick,1000);
+
+/* ---------- templates ---------- */
+var F=function(k,label,type,o){o=o||{};type=type||'text';return {k:k,label:label,type:type,tr:(type==='text'||type==='area')&&o.tr!==false,g:o.g||'',ph:!!o.ph}};
+var COLORS=[F('c1','Колір 1','color'),F('c2','Колір 2','color'),F('c3','Колір 3','color'),F('c4','Колір 4','color'),F('c5','Колір 5','color')];
+var SH={
+ countdown:[],
+ tips:[F('tip1T','Підказка 1: заголовок',null,{ph:1}),F('tip1X','Підказка 1: текст','area',{ph:1}),F('tip2T','Підказка 2: заголовок'),F('tip2X','Підказка 2: текст','area'),F('tip3T','Підказка 3: заголовок'),F('tip3X','Підказка 3: текст','area')],
+ transfer:[F('trTime','Час відправлення','time'),F('trFrom','Звідки',null,{ph:1}),F('trTo','Куди',null,{ph:1}),F('trText','Деталі для гостей','area',{ph:1})],
+ faq:[F('q1','Питання 1',null,{ph:1}),F('a1','Відповідь 1','area',{ph:1}),F('q2','Питання 2'),F('a2','Відповідь 2','area'),F('q3','Питання 3'),F('a3','Відповідь 3','area')],
+ rsvp:[F('rsvpNote','Підпис над формою','area')]
+};
+var SHD={
+ tip1T:'Корисна інформація',tip1X:'Напишіть тут важливі деталі для гостей: паркування, погода, взуття.',tip2T:'Ще одна підказка',tip2X:'Додайте текст або залиште поле порожнім.',tip3T:'',tip3X:'',
+ trTime:'12:00',trFrom:'Назва місця збору',trTo:'Назва локації',trText:'Напишіть, як гості можуть дістатися до місця свята.',
+ q1:'Де можна припаркуватись?',a1:'Напишіть відповідь для гостей.',q2:'Чи можна прийти з дітьми?',a2:'Напишіть відповідь для гостей.',q3:'Чи можна фотографувати під час церемонії?',a3:'Напишіть відповідь для гостей.',
+ rsvpNote:''
+};
+var TPL={};
+TPL.tishyna={
+  id:'tishyna',name:'Тиша',base:1490,cover:'img/t1-hero.jpg',theme:'choco',span:2,
+  desc:'Весілля на два дні серед природи: календар, програма обох днів, локація, дрескод і побажання.',
+  feats:['Календар і програма двох днів','6 фото та палітра дрескоду','9 тем, 3 шрифти, до 4 мов'],
+  photoDef:{photo1:'img/t1-hero.jpg',photo2:'img/t1-venue.jpg',photo3:'img/t1-rest.jpg',photo4:'img/t1-b.jpg',photo5:'img/t1-c.jpg',photo6:'img/t1-d.jpg'},
+  fields:{
+    head:[F('groom','Імʼя нареченого',null,{ph:1}),F('bride','Імʼя нареченої',null,{ph:1}),F('date','Дата першого дня','date',{ph:1}),F('loveText','Звернення до гостей','area'),F('intro','Про свято','area'),F('closing','Фінальна фраза'),F('photo1','Головне фото','photo'),F('photo6','Фінальне фото','photo')],
+    save:[F('saveText','Підпис під календарем','area')],
+    location:[F('venueTitle','Заголовок'),F('venueText','Про місце церемонії','area',{ph:1}),F('afterText','Після церемонії','area'),F('restName','Назва ресторану',null,{ph:1}),F('photo2','Фото місця церемонії','photo'),F('photo3','Фото ресторану','photo')],
+    program:[F('a_time','Час','time',{g:'День 1'}),F('a_text','Подія','area',{g:'День 1'}),F('b_time','Час','time',{g:'День 1'}),F('b_text','Подія','area',{g:'День 1'}),F('c_time','Час','time',{g:'День 1'}),F('c_text','Подія','area',{g:'День 1'}),F('stayText','Про ночівлю','area',{g:'Між днями'}),F('photo4','Фото','photo',{g:'Між днями'}),F('x_t','Назва',null,{g:'День 2'}),F('x_x','Опис','area',{g:'День 2'}),F('y_t','Назва',null,{g:'День 2'}),F('y_x','Опис','area',{g:'День 2'}),F('z_t','Назва',null,{g:'День 2'}),F('z_x','Опис','area',{g:'День 2'})],
+    dress:[F('dressText','Текст про дрескод','area')].concat(COLORS),
+    gifts:[F('wishText','Побажання гостям','area'),F('photo5','Фото','photo')]
+  },
+  defaults:Object.assign({},SHD,{groom:'Ilya',bride:'Anastasia',date:'2027-06-19',
+    saveText:'Просимо залишити ці дні для нас — обіцяємо тепло, щирість і особливу атмосферу.',
+    loveText:'Любі наші!\n\nЗ особливою радістю ми хочемо розділити з вами найцінніший момент — день, коли наші серця з’єднаються в одне ціле.',
+    intro:'Наше весілля — це два дні єдності, тепла і родинного затишку.\n\nСеред каменів, зелені та тиші природи ми обміняємося обітницями, а разом із вами створимо атмосферу, яку захочеться зберегти в памʼяті все життя.',
+    a_time:'14:00',a_text:'заселення у готель (час, щоб перепочити, перевдягнутися і підготуватися).',b_time:'15:30',b_text:'зустріч біля каменів.',c_time:'16:00',c_text:'весільна церемонія під відкритим небом.',
+    venueTitle:'Місце церемонії',venueText:'Церемонія відбудеться у Emily Resort, серед каменів, зелені й простору, який ніби створений для кохання.',
+    afterText:'Після церемонії нас очікує святкова вечеря та вечір у ресторані, де ми зможемо насолодитися смачними стравами та гарною компанією.',restName:'Тиша',
+    stayText:'Ми хочемо, щоб цей день не закінчився надто швидко. Тому всі залишаємося ночувати в готелі Emily Resort — щоб зберегти тепло нашого вечора, мати час для спокійних розмов та спільного ранку.\n\nА вже наступного дня разом продовжимо святкування у відпочинку й затишку.',
+    x_t:'Пізній сніданок',x_x:'Час насолодитися спокійним ранком, смачними стравами та теплими розмовами з близькими.',
+    y_t:'Релакс у SPA',y_x:'Момент для себе і для відновлення сил після насиченого святкування — тепла вода, спокій і затишок.',
+    z_t:'Пізній виїзд додому',z_x:'Без поспіху, з усмішками, новими враженнями та спогадами, які залишаться у серці назавжди.',
+    dressText:'Ми прагнемо, щоб наші фото і атмосфера свята були гармонійними та відображали наш стиль.\n\nТож просимо дотримуватись кольорової палітри. Нехай ваш одяг буде зручним і водночас святковим — так ми всі разом створимо відчуття єдності й гармонії.',
+    c1:'#3d2b24',c2:'#8a6a55',c3:'#d8c7b2',c4:'#a9bfd8',c5:'#7fa0c8',
+    wishText:'Ваша присутність у цей день — найбільший подарунок для нас. Усмішки, обійми та спільні моменти роблять наше свято справжнім і теплим.\n\nЯкщо ви хочете нас підтримати, будемо раді грошовому подарунку, який допоможе здійснити наші спільні мрії.',
+    closing:'З нетерпінням чекаємо на Вас!'})
+};
+TPL.ivengo={
+  id:'ivengo',name:'Айвенго',base:1290,cover:'img/t2-hero.jpg',theme:'mocha',span:1,
+  desc:'Весілля за один день: локація, таймінг, дрескод, побажання щодо подарунків і чат для гостей.',
+  feats:['Локація і таймінг дня','Палітра дрескоду та побажання','9 тем, 3 шрифти, до 4 мов'],
+  photoDef:{photo1:'img/t2-hero.jpg',photo2:'img/t2-venue.jpg',photo3:'img/t2-final.jpg'},
+  fields:{
+    head:[F('groom','Імʼя нареченого',null,{ph:1}),F('bride','Імʼя нареченої',null,{ph:1}),F('date','Дата весілля','date',{ph:1}),F('famHead','Заголовок вступу'),F('teaser','Вступ','area'),F('banner','Напис в арці','area'),F('intro','Запрошення','area'),F('closing','Фінальна фраза'),F('photo1','Головне фото','photo'),F('photo3','Фінальне фото','photo')],
+    save:[F('saveText','Підпис під календарем','area')],
+    location:[F('locName','Назва місця',null,{ph:1}),F('locAddr','Адреса','area',{ph:1}),F('photo2','Фото локації','photo')],
+    program:[F('a_time','Час','time'),F('a_text','Подія'),F('b_time','Час','time'),F('b_text','Подія'),F('c_time','Час','time'),F('c_text','Подія')],
+    dress:[F('dressText','Текст про дрескод','area')].concat(COLORS),
+    gifts:[F('wishText','Про подарунки','area'),F('flowersText','Про квіти','area'),F('alt1','Ідея подарунка 1','area'),F('alt2','Ідея подарунка 2','area')],
+    rsvp:[F('rsvpNote','Підпис над формою','area'),F('chatText','Текст про чат гостей','area'),F('chatUrl','Посилання на чат (Telegram, Viber)','url')]
+  },
+  defaults:Object.assign({},SHD,{groom:'Oleksandr',bride:'Valeriia',date:'2027-06-26',
+    famHead:'Тепер ми — родина!',
+    teaser:'І кличемо Вас бути поруч у момент, коли наша казка стане офіційною історією кохання.',
+    banner:'В цей день починається наше назавжди!',
+    saveText:'Просимо залишити цей день для нас — обіцяємо тепло, щирість і особливу атмосферу.',
+    intro:'З любов’ю та нетерпінням запрошуємо Вас розділити з нами день радості й святкування — день, у який ми вперше промовимо «ми» під оплески, обійми та світло.',
+    locName:'Ресторан «Айвенго»',locAddr:'вулиця Зелена, 53, Колоденка, Рівненська область',
+    a_time:'12:30',a_text:'збір гостей, фуршет та Welcome зона',b_time:'13:00',b_text:'весільна церемонія',c_time:'14:00',c_text:'святковий бенкет',
+    dressText:'Ми прагнемо, щоб атмосфера нашого весілля була цілісною та відображала наш стиль.\n\nТож просимо дотримуватись кольорової палітри.',
+    c1:'#3d2b24',c2:'#7b5849',c3:'#a68c7a',c4:'#d3c4b4',c5:'#ece2d4',
+    wishText:'Для нас найважливіше — це розділити з вами радість нашого дня.\n\nЯкщо ви хочете нас підтримати, будемо раді грошовому подарунку, який допоможе здійснити наші спільні мрії.',
+    flowersText:'Якщо ви планували привітати нас квітами — просимо розглянути приємну альтернативу. Такі дарунки не зів’януть, а навпаки, залишать по собі приємні вечори та спогади.',
+    alt1:'пляшка хорошого алкоголю (для нас буде цінно, якщо Ви поділитесь Вашим улюбленим)',alt2:'ароматична свічка, що наповнить наш дім затишком',
+    chatText:'Для підтвердження вашої присутності, будь ласка, долучіться до чату та обовʼязково заповніть анкету. Також у ньому ви можете ділитись враженнями, відео та фото з весілля!',
+    chatUrl:'',closing:'З нетерпінням чекаємо на Вас!'})
+};
+var TPL_IDS=['tishyna','ivengo'];
+function fieldsOf(t,sid){return t.fields[sid]||SH[sid]||[]}
+function fieldMap(t){var m={};Object.keys(t.fields).concat(Object.keys(SH)).forEach(function(s){fieldsOf(t,s).forEach(function(f){m[f.k]=f})});return m}
+
+/* ---------- invitation rendering ---------- */
+function view(tid,st,ph){
+  st=st||{};var t=TPL[tid],L=st.lang||'uk';
+  var d=Object.assign({},t.defaults,st.data||{});
+  if(L!=='uk'&&st.tr&&st.tr[L]){var x=st.tr[L];Object.keys(x).forEach(function(k){if(x[k])d[k]=x[k]})}
+  var secs=st.sections||SEC_ORDER;
+  return {tid:tid,t:t,L:L,d:d,ph:ph||{},on:function(s){return secs.indexOf(s)>=0},th:themeOf(st.theme||t.theme),font:st.font||1};
+}
+function photo(v,k){var p=v.ph[k];return (p&&p.dataUrl)||v.t.photoDef[k]}
+function wrap(id,inner,cls){return '<section class="'+(cls||'sec')+'" data-sec="'+id+'">'+inner+'</section>'}
+function tl(rows){return '<ul class="tl">'+rows.map(function(r){return '<li><time>'+esc(r[0])+'</time><p>'+tx(r[1])+'</p></li>'}).join('')+'</ul>'}
+function dayHead(iso,L,n){var p=parts(iso);return '<div class="dayhead"><span class="mon">'+esc(fmt(iso,L,{month:'long'}))+'</span><span class="num">'+p.d+'</span><span class="yr">'+p.y+'</span><span class="scr dn">day '+n+'</span></div>'}
+function swatches(d){return '<div class="swt">'+['c1','c2','c3','c4','c5'].map(function(k){return '<i style="background:'+esc(/^#[0-9a-fA-F]{3,8}$/.test(d[k])?d[k]:'#ccc')+'"></i>'}).join('')+'</div>'}
+function blkCountdown(v){var L=v.L;return wrap('countdown','<div class="scr h2">'+esc(u(L,'countdown'))+'</div><div class="cd" data-date="'+esc(v.d.date)+'"><div><b>00</b><span>'+u(L,'days')+'</span></div><div><b>00</b><span>'+u(L,'hours')+'</span></div><div><b>00</b><span>'+u(L,'minutes')+'</span></div><div><b>00</b><span>'+u(L,'seconds')+'</span></div></div>')}
+function blkSave(v){return wrap('save',calHTML(v.d.date,v.t.span,v.L)+'<p class="small">'+tx(v.d.saveText)+'</p>')}
+function blkTips(v){var d=v.d,h='';[1,2,3].forEach(function(i){var a=d['tip'+i+'T'],b=d['tip'+i+'X'];if(a||b)h+='<div class="tip">'+(a?'<h4>'+esc(a)+'</h4>':'')+(b?'<p>'+tx(b)+'</p>':'')+'</div>'});return wrap('tips','<div class="scr h2">'+esc(u(v.L,'tips'))+'</div><div class="tips">'+h+'</div>')}
+function blkTransfer(v){var d=v.d;return wrap('transfer','<div class="scr h2">'+esc(u(v.L,'transfer'))+'</div><div class="trf"><div class="tm">'+esc(d.trTime)+'</div><div class="rt">'+esc(d.trFrom)+' → '+esc(d.trTo)+'</div></div><p>'+tx(d.trText)+'</p>')}
+function blkFaq(v){var d=v.d,h='';[1,2,3].forEach(function(i){if(d['q'+i])h+='<details class="q"><summary>'+esc(d['q'+i])+'</summary><p>'+tx(d['a'+i])+'</p></details>'});return wrap('faq','<div class="scr h2">'+esc(u(v.L,'faq'))+'</div>'+h)}
+function blkRsvp(v,o,pre){
+  var L=v.L,d=v.d;
+  if(o.sent)return '<section class="rsvp" data-sec="rsvp"><h3>'+esc(u(L,'thanks'))+'</h3><p class="thx">'+esc(u(L,'thanksSub'))+'</p></section>';
+  var cnt='';for(var i=1;i<=5;i++)cnt+='<option value="'+i+'">'+i+'</option>';
+  return (pre||'')+'<section class="rsvp" data-sec="rsvp"><h3>'+esc(u(L,'rsvpTitle'))+'</h3><p class="sub">'+(d.rsvpNote?tx(d.rsvpNote):esc(u(L,'rsvpSub')))+'</p>'+
+  '<form id="rsvpForm"'+(o.live?'':' inert')+'><label for="r_name">'+esc(u(L,'yourName'))+'<input type="text" id="r_name" maxlength="80" autocomplete="name" required></label>'+
+  '<div class="seg"><label><input type="radio" name="r_st" value="yes" checked><span>'+esc(u(L,'yes'))+'</span></label><label><input type="radio" name="r_st" value="no"><span>'+esc(u(L,'no'))+'</span></label></div>'+
+  '<label for="r_cnt">'+esc(u(L,'howMany'))+'<select id="r_cnt">'+cnt+'</select></label>'+
+  '<label for="r_note">'+esc(u(L,'note'))+'<textarea id="r_note" rows="2" maxlength="300"></textarea></label>'+
+  '<button type="submit">'+esc(u(L,'send'))+'</button></form></section>';
+}
+function blkFinal(v,key){var d=v.d;return '<div class="fin" data-sec="final"><img src="'+esc(photo(v,key))+'" alt=""><div class="tx"><div class="scr">'+esc(d.groom)+' &amp; '+esc(d.bride)+'</div><div class="names">'+esc(d.closing)+'</div></div></div>'}
+function buildT1(v,o){
+  var d=v.d,L=v.L,B=[];
+  B.push('<header class="hero" data-sec="head"><img src="'+esc(photo(v,'photo1'))+'" alt=""><div class="hero-t"><div class="eyebrow">Save the Date</div><div class="scr big">Wedding Day</div><div class="names">'+esc(d.groom)+' &amp; '+esc(d.bride)+'</div><div class="hdate">'+numDate(d.date)+'</div></div></header>');
+  if(v.on('countdown'))B.push(blkCountdown(v));
+  if(v.on('save'))B.push(blkSave(v));
+  B.push(wrap('welcome','<div class="scr h2">Wedding Weekend</div><p>'+tx(d.loveText)+'</p><p>'+tx(d.intro)+'</p>','dark'));
+  if(v.on('location'))B.push(wrap('location','<div class="arch"><img src="'+esc(photo(v,'photo2'))+'" alt=""></div><div class="scr h2">'+esc(d.venueTitle)+'</div><p>'+tx(d.venueText)+'</p><p>'+tx(d.afterText)+'</p><div class="rect"><img src="'+esc(photo(v,'photo3'))+'" alt=""></div><div class="scr h2">«'+esc(d.restName)+'»</div>'));
+  if(v.on('program')){
+    var p2=addDay(d.date,1);
+    B.push(wrap('program',dayHead(d.date,L,1)+tl([[d.a_time,d.a_text],[d.b_time,d.b_text],[d.c_time,d.c_text]])+'<div class="arch" style="margin-top:34px"><img src="'+esc(photo(v,'photo4'))+'" alt=""></div><p>'+tx(d.stayText)+'</p>'+dayHead(p2,L,2)+'<ul class="tl">'+[['x_t','x_x'],['y_t','y_x'],['z_t','z_x']].map(function(a){return '<li class="one"><div><h4>'+esc(d[a[0]])+'</h4><p>'+tx(d[a[1]])+'</p></div></li>'}).join('')+'</ul>'));
+  }
+  if(v.on('dress'))B.push(wrap('dress','<div class="scr h2">'+esc(u(L,'dress'))+'</div><p>'+tx(d.dressText)+'</p>'+swatches(d)));
+  if(v.on('gifts'))B.push(wrap('gifts','<div class="arch"><img src="'+esc(photo(v,'photo5'))+'" alt=""></div><div class="scr h2">'+esc(u(L,'wishes'))+'</div><p>'+tx(d.wishText)+'</p>'));
+  if(v.on('tips'))B.push(blkTips(v));
+  if(v.on('transfer'))B.push(blkTransfer(v));
+  if(v.on('faq'))B.push(blkFaq(v));
+  B.push(blkFinal(v,'photo6'));
+  if(v.on('rsvp'))B.push(blkRsvp(v,o));
+  return B.join('');
+}
+function buildT2(v,o){
+  var d=v.d,L=v.L,B=[];
+  B.push('<section class="intro" data-sec="head"><div class="scr">'+esc(d.famHead)+'</div><p>'+tx(d.teaser)+'</p></section><div class="banner">'+tx(d.banner)+'</div>');
+  if(v.on('countdown'))B.push(blkCountdown(v));
+  if(v.on('save'))B.push(blkSave(v));
+  B.push('<div class="heroB" data-sec="hero"><img src="'+esc(photo(v,'photo1'))+'" alt=""><div class="scr">Wedding Day</div></div><div class="lead2"><p>'+tx(d.intro)+'</p><div class="bigdate">'+esc(fmt(d.date,L,{day:'numeric',month:'long',year:'numeric'}))+'</div></div>');
+  if(v.on('location'))B.push(wrap('location','<div class="scr h2">'+esc(u(L,'location'))+'</div><div class="rect"><img src="'+esc(photo(v,'photo2'))+'" alt=""></div><p class="addr">'+esc(d.locName)+'</p><p>'+tx(d.locAddr)+'</p>'));
+  if(v.on('program'))B.push(wrap('program','<div class="scr h2">'+esc(u(L,'program'))+'</div>'+tl([[d.a_time,d.a_text],[d.b_time,d.b_text],[d.c_time,d.c_text]])));
+  if(v.on('dress'))B.push(wrap('dress','<div class="scr h2">'+esc(u(L,'dress'))+'</div><p>'+tx(d.dressText)+'</p>'+swatches(d)));
+  if(v.on('gifts'))B.push(wrap('gifts','<div class="scr h2">'+esc(u(L,'wishes'))+'</div><p>'+tx(d.wishText)+'</p><p>'+tx(d.flowersText)+'</p><p>— '+tx(d.alt1)+'</p><p>— '+tx(d.alt2)+'</p>','dark'));
+  if(v.on('tips'))B.push(blkTips(v));
+  if(v.on('transfer'))B.push(blkTransfer(v));
+  if(v.on('faq'))B.push(blkFaq(v));
+  B.push(blkFinal(v,'photo3'));
+  if(v.on('rsvp')){
+    var chat=d.chatUrl&&/^https?:\/\//.test(d.chatUrl)?'<a class="chatbtn" href="'+esc(d.chatUrl)+'" target="_blank" rel="noopener">'+esc(u(L,'join'))+'</a>':'';
+    B.push(blkRsvp(v,o,d.chatText?'<section class="sec"><p>'+tx(d.chatText)+'</p>'+chat+'</section>':''));
+  }
+  return B.join('');
+}
+function renderInv(tid,st,ph,o){
+  o=o||{};var v=view(tid,st,ph);
+  return '<article class="inv '+(tid==='ivengo'?'t2':'t1')+'" data-font="'+v.font+'" style="'+themeStyle(v.th)+'">'+(tid==='ivengo'?buildT2(v,o):buildT1(v,o))+'</article>';
+}
+function envHTML(tid,st,fixed){
+  var v=view(tid,st,null),d=v.d;
+  var ini=(String(d.groom||'?').trim().charAt(0)+'&amp;'+String(d.bride||'?').trim().charAt(0)).toUpperCase();
+  return '<div class="env'+(fixed?' fix':'')+'" role="button" tabindex="0" aria-label="'+esc(u(v.L,'open'))+'" style="'+themeStyle(v.th)+'"><div class="env-card"><div class="env-flap"></div><div class="env-seal">'+ini+'</div></div><div class="env-names">'+esc(d.groom)+' &amp; '+esc(d.bride)+'</div><div class="env-hint">'+esc(u(v.L,'tapOpen'))+'</div></div>';
+}
+var envOpen=false;
+function openEnv(el){if(!el||el.classList.contains('open'))return;el.classList.add('open');envOpen=true;setTimeout(function(){if(el.parentNode)el.parentNode.removeChild(el)},760)}
+document.addEventListener('click',function(e){var el=e.target.closest&&e.target.closest('.env');if(el)openEnv(el)});
+document.addEventListener('keydown',function(e){if(e.key==='Escape')closeModal();if((e.key==='Enter'||e.key===' ')&&e.target.classList&&e.target.classList.contains('env')){e.preventDefault();openEnv(e.target)}});
+
+/* ---------- capabilities ---------- */
+var db=null,dl=null,uid=null,ready;
+var BETA=(window.APP_CONFIG||{}).payments!==true;   /* поки оплата не підключена, публікація безкоштовна */
+function init(){
+  return (async function(){
+    try{
+      var c=window.claude;if(!c||!c.use)return;
+      var us=await c.use('user');db=await c.use('db');dl=await c.use('downloads');
+      if(us){try{uid=await us.id()}catch(e){uid=null}}
+    }catch(e){db=null}
+  })();
+}
+var unsubs=[];
+function clearSubs(){unsubs.forEach(function(f){try{f()}catch(e){}});unsubs=[]}
+function baseUrl(){return location.href.split('#')[0]}
+
+/* ---------- chrome ---------- */
+function nav(){return '<div class="wrap"><div class="nav"><a class="brand" href="#shop">valeria<i>.dsgn</i></a><nav><a href="#shop" data-go="tpl">Каталог</a><a href="#my">Мої запрошення</a>'+(uid?'<a href="#" data-logout="1">Вийти</a>':'')+'</nav></div></div>'}
+function footer(){return '<div class="wrap"><footer class="ft"><span>Запрошення дизайнерки Валерії</span><span><a href="https://www.instagram.com/valeria.dsgn" target="_blank" rel="noopener">Instagram @valeria.dsgn</a> · <a href="https://t.me/valeriaralko" target="_blank" rel="noopener">Telegram @valeriaralko</a></span></footer></div>'}
+function msg(h,p,link){app.innerHTML=nav()+'<div class="msg"><h1>'+esc(h)+'</h1><p class="muted">'+esc(p)+'</p>'+(link||'')+'</div>'}
+function needDb(){
+  if(!db){msg('Сайт ще не підключено до бази','Відкрийте файл config.js і вкажіть адресу та ключ Supabase (див. README).');return false}
+  if(uid)return true;
+  viewLogin();return false;
+}
+/* ---------- вхід і реєстрація (пошта + пароль) ---------- */
+function viewLogin(){
+  var mode='in';
+  function draw(err){
+    var isIn=mode==='in';
+    app.innerHTML=nav()+'<div class="msg"><h1>'+(isIn?'Вхід':'Реєстрація')+'</h1><p class="muted">Акаунт потрібен, щоб зберігати ваші запрошення й бачити відповіді гостей.</p>'+
+    '<form id="lf" class="panel" style="margin-top:20px;text-align:left"><label class="fld"><span>Пошта</span><input id="le" type="email" required autocomplete="email"></label><label class="fld"><span>Пароль (від 6 символів)</span><input id="lp" type="password" required minlength="6" autocomplete="'+(isIn?'current-password':'new-password')+'"></label><div class="note warn" id="lerr" style="margin-bottom:14px"'+(err?'':' hidden')+'>'+esc(err||'')+'</div><button class="btn" id="lb" style="width:100%">'+(isIn?'Увійти':'Зареєструватися')+'</button></form>'+
+    '<p class="muted" style="margin-top:16px">'+(isIn?'Ще немає акаунта? ':'Вже є акаунт? ')+'<button class="link" id="lsw" type="button">'+(isIn?'Зареєструватися':'Увійти')+'</button></p></div>';
+    document.getElementById('lsw').addEventListener('click',function(){mode=isIn?'up':'in';draw()});
+    document.getElementById('lf').addEventListener('submit',async function(e){
+      e.preventDefault();var b=document.getElementById('lb');b.disabled=true;
+      var em=document.getElementById('le').value.trim(),pw=document.getElementById('lp').value;
+      var r=await window.claude.auth[isIn?'signIn':'signUp'](em,pw);
+      if(r.error){draw(r.error);return}
+      ready=init();await ready;route();
+    });
+  }
+  draw();
+}
+document.addEventListener('click',function(e){
+  var el=e.target.closest&&e.target.closest('[data-logout]');if(!el)return;
+  e.preventDefault();
+  Promise.resolve(window.claude&&window.claude.auth.signOut()).then(function(){uid=null;location.hash='shop';route()});
+});
+function closeModal(){var m=document.getElementById('modal');if(m&&m.parentNode)m.parentNode.removeChild(m)}
+function openChoose(tid){
+  closeModal();var t=TPL[tid];
+  var m=document.createElement('div');m.className='modal';m.id='modal';m.setAttribute('role','dialog');m.setAttribute('aria-modal','true');m.setAttribute('aria-labelledby','mt');
+  m.innerHTML='<div class="mb"><button class="x" data-close="1" aria-label="Закрити">×</button><span class="pill">'+esc(t.name)+'</span><h2 id="mt">Як створимо ваше запрошення?</h2><p class="muted">Оберіть зручний спосіб, результат буде однаковий.</p><div class="opts">'+
+  '<div class="opt"><h3>Створю самостійно</h3><p>Заповніть шаблон у конструкторі покроково, з підказками.</p><ul><li>Одразу бачите результат</li><li>Чернетку можна зберегти й повернутись пізніше</li></ul><a class="btn" id="mgo" href="#new-'+tid+'">Створити запрошення</a></div>'+
+  '<div class="opt"><h3>Довірте це мені</h3><p>Напишіть у Telegram, домовимось про деталі, і я підготую запрошення за вас.</p><a class="btn ghost" href="https://t.me/valeriaralko" target="_blank" rel="noopener">Написати в Telegram</a><small>Або в Instagram: <a href="https://www.instagram.com/valeria.dsgn" target="_blank" rel="noopener">@valeria.dsgn</a></small></div></div></div>';
+  m.addEventListener('click',function(e){if(e.target===m||(e.target.getAttribute&&e.target.getAttribute('data-close')))closeModal()});
+  document.body.appendChild(m);var g=document.getElementById('mgo');if(g)g.focus();
+}
+
+/* ---------- shop / landing ---------- */
+var PACKS=[
+  {n:'До 10',s:'іменних запрошень',p:0},
+  {n:'25',s:'іменних запрошень',p:299},
+  {n:'50',s:'іменних запрошень',p:599,pop:1},
+  {n:'∞',s:'без обмежень',p:999}
+];
+var FAQ=[
+  ['Чи потрібен дизайнер або навички?','Ні. Ви обираєте готовий шаблон і крок за кроком заповнюєте поля, а перегляд на телефоні одразу показує результат. Якщо хочете, щоб усе зробила я, напишіть мені в Telegram.'],
+  ['Скільки часу займає створення?','Зазвичай один вечір: обрати тему, ввімкнути потрібні секції, вписати тексти й додати фото. Чернетка зберігається сама, тож можна повертатися будь-коли.'],
+  ['Як гості відкривають запрошення?','За особистим посиланням, у будь-якому браузері на телефоні. Ніяких застосунків. Запрошення відкривається анімованим конвертом, а гість може обрати мову.'],
+  ['Чи можна щось змінити після публікації?','Так. Ви редагуєте чернетку та публікуєте оновлену версію, посилання залишається тим самим.'],
+  ['Що таке іменні запрошення?','Для кожного гостя створюється окреме посилання, у якому вже написане його ім’я. У кабінеті видно, хто відкрив запрошення, хто відповів, а хто ще ні.'],
+  ['Коли я плачу?','Наприкінці, коли запрошення вже зібране. Вартість складається з шаблону та додаткових секцій і мов, і ви бачите суму на кожному кроці.'],
+  ['Які мови доступні?','Українська входить у вартість. Додатково доступні англійська, польська й німецька. Тексти для кожної мови заповнюються окремо.']
+];
+function lpNav(){
+  return '<header class="lp-nav"><div class="wrap in"><a class="brand" href="#shop">valeria<i>.dsgn</i></a><nav><a href="#shop" data-go="lp-how">Як це працює</a><a href="#shop" data-go="tpl">Шаблони</a><a href="#shop" data-go="lp-build">Конструктор</a><a href="#shop" data-go="lp-named">Іменні запрошення</a><a href="#shop" data-go="lp-cab">Кабінет</a><a href="#shop" data-go="lp-faq">Питання</a></nav><div class="r"><a class="btn ghost sm" href="#my">Мої запрошення</a><a class="btn sm" href="#shop" data-go="tpl">Обрати шаблон</a></div></div></header>';
+}
+function viewShop(){
+  var chk='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>';
+  var hero='<section class="wrap lp-hero"><div><span class="eyebrow">Електронні весільні запрошення</span><h1>Запрошення, яке <em>хочеться відкрити</em></h1><p class="lead">Оберіть шаблон і зберіть своє запрошення самі за один вечір. Гості відповідають в один дотик, а всі відповіді збираються у вашому особистому кабінеті.</p><div class="cta"><a class="btn lg" href="#shop" data-go="tpl">Обрати шаблон</a><a class="btn ghost lg" href="#demo-tishyna">Подивитись демо</a></div><div class="lp-proof"><span>'+chk+'Без дизайнера</span><span>'+chk+'Живий перегляд на телефоні</span><span>'+chk+'Особисті посилання для гостей</span></div></div>'+
+    '<div class="lp-stage" aria-hidden="true"><div class="lp-oval"></div><div class="phone a"><div class="sc">'+renderInv('tishyna',null,null,{})+'</div></div><div class="phone b"><div class="sc">'+renderInv('ivengo',null,null,{})+'</div></div><div class="lp-chip c1"><i>✓</i><span><b>Олена підтвердила</b><br>прийде з +1</span></div><div class="lp-chip c2"><i>♡</i><span><b>Відкрито 38 разів</b><br>за першу добу</span></div></div></section>';
+  var strip=['Анімований конверт','Відлік до весілля','Кілька мов','Програма дня','Дрескод і палітра','Трансфер гостей','RSVP онлайн','Іменні посилання','Кабінет із відповідями'];
+  var strip2='<div class="lp-strip" aria-hidden="true"><div class="row">'+strip.concat(strip).map(function(s){return '<span>'+s+'</span>'}).join('')+'</div></div>';
+  var how='<section class="wrap lp-sec" id="lp-how"><div class="lp-head c"><span class="eyebrow">Інструкція</span><h2>Чотири кроки до <em>готового</em> запрошення</h2><p>Нічого складного: усе підказано, а результат видно одразу.</p></div><ol class="lp-steps"><li><span class="n">1</span><b>Оберіть шаблон</b><span>Подивіться демо та виберіть дизайн, який вам до вподоби.</span></li><li><span class="n">2</span><b>Зберіть запрошення</b><span>Тема, секції, мови, тексти й фото. Усе змінюється на телефоні наживо.</span></li><li><span class="n">3</span><b>Оплатіть і опублікуйте</b><span>Платите наприкінці, коли все готово, і отримуєте особисте посилання.</span></li><li><span class="n">4</span><b>Діліться й слідкуйте</b><span>Надсилайте гостям і дивіться відповіді та кількість місць у кабінеті.</span></li></ol></section>';
+  var cards=TPL_IDS.map(function(id){var t=TPL[id];return '<article class="lp-tpl"><div class="im"><img src="'+t.cover+'" alt="Шаблон '+esc(t.name)+'" loading="lazy"></div><div class="bd"><span class="eyebrow">Шаблон</span><h3>'+esc(t.name)+'</h3><p class="muted">'+esc(t.desc)+'</p><ul>'+t.feats.map(function(f){return '<li>'+esc(f)+'</li>'}).join('')+'</ul><div class="price"><small>від</small>'+money(t.base)+'</div><div class="row" style="display:flex;gap:10px;flex-wrap:wrap"><a class="btn ghost" href="#demo-'+id+'">Демо</a><button class="btn" data-order="'+id+'">Замовити</button></div></div></article>'}).join('');
+  var tpls='<section class="wrap lp-sec" id="tpl"><div class="lp-head"><span class="eyebrow">Шаблони</span><h2>Оберіть свій <em>настрій</em></h2><p>Кожен шаблон має 9 кольорових тем, 3 шрифти та набір секцій, які можна вмикати й вимикати.</p></div><div class="lp-tpls">'+cards+'</div><div class="lp-add"><div><em>+'+money(PRICING.section)+'</em><b>Додаткова секція</b><span>Дрескод, підказки, подарунки, трансфер або питання й відповіді.</span></div><div><em>+'+money(PRICING.lang)+'</em><b>Додаткова мова</b><span>Українська входить у вартість, решту можна додати.</span></div><div><em>від 0 ₴</em><b>Іменні запрошення</b><span>До 10 гостей безкоштовно, далі за пакетами.</span></div></div></section>';
+  var build='<section class="lp-dark lp-sec" id="lp-build"><div class="wrap"><div class="lp-head"><span class="eyebrow">Конструктор</span><h2>Ви збираєте запрошення <em>самі</em></h2><p>Спробуйте просто тут: змініть тему, увімкніть секції й подивіться, як відреагує запрошення.</p></div><div class="lp-b" id="lp-b"></div></div></section>';
+  var named='<section class="wrap lp-sec" id="lp-named"><div class="lp-n"><div><span class="eyebrow">Іменні запрошення</span> <span class="lp-soon">Скоро</span><h2 style="margin-top:20px">Кожному гостю <em>своє</em> запрошення</h2><ul class="lp-list"><li><span class="k">'+chk+'</span><span><b>Звернення на ім’я.</b> «Шановна Олено!» у шапці запрошення, а не загальне «Дорогі гості».</span></li><li><span class="k">'+chk+'</span><span><b>Особисте посилання.</b> Для кожного гостя своє, непередбачуване й готове до відправки.</span></li><li><span class="k">'+chk+'</span><span><b>Відповідь без пошуку імені.</b> Форма вже знає, хто відповідає, і одразу показує кількість місць.</span></li><li><span class="k">'+chk+'</span><span><b>Видно, хто відкрив.</b> Нагадайте лише тим, хто ще не відповів.</span></li></ul></div><div class="lp-nv" aria-hidden="true"><div class="lp-guest"><div class="h"><b>Список гостей</b><span class="pill">12 запрошень</span></div><div class="lp-gr"><b>Олена Коваль</b><span class="pill ok">Підтвердила</span><code>/i/olena-ta-denys/k7x9q2</code></div><div class="lp-gr"><b>Іван і Марія Петренко</b><span class="pill wait">Відкрили</span><code>/i/olena-ta-denys/m4b81z</code></div><div class="lp-gr"><b>Сергій Мельник</b><span class="pill">Не відкривав</span><code>/i/olena-ta-denys/t9c3pw</code></div><div class="lp-gr"><b>Тетяна Бондар</b><span class="pill ok">Підтвердила</span><code>/i/olena-ta-denys/h2r6ud</code></div></div><div class="lp-env"><small>Для гості</small><div class="sc2">Шановна Олено!</div><p>Запрошуємо вас розділити з нами найважливіший день</p></div></div></div>'+
+    '<div class="lp-packs">'+PACKS.map(function(p){return '<div class="lp-pack'+(p.pop?' pop':'')+'"><b>'+p.n+'</b><span>'+p.s+'</span><em>'+(p.p?money(p.p):'безкоштовно')+'</em></div>'}).join('')+'</div></section>';
+  var cab='<section class="lp-sec" id="lp-cab" style="background:color-mix(in srgb,var(--surface) 55%,transparent);border-block:1px solid var(--line)"><div class="wrap"><div class="lp-c"><div class="lp-win" aria-hidden="true"><div class="top"><i></i><i></i><i></i><small>Особистий кабінет</small></div><div class="bd"><div class="lp-st"><div><b>86</b><span>Запрошено</span></div><div><b>54</b><span>Підтвердили</span></div><div><b>7</b><span>Не прийдуть</span></div><div><b>25</b><span>Очікуємо</span></div></div><div class="lp-bar"><i style="width:63%;background:var(--ok)"></i><i style="width:8%;background:var(--bad)"></i></div><div class="lp-lnk"><code>твійсайт.com/i/olena-ta-denys</code><span class="btn sm ghost">Копіювати</span></div><div class="lp-tb"><div class="r"><b>Олена Коваль</b><span class="pill ok">Прийде · 2</span></div><div class="r"><b>Іван і Марія Петренко</b><span class="pill ok">Прийдуть · 2</span></div><div class="r"><b>Сергій Мельник</b><span class="pill no">Не зможе</span></div><div class="r"><b>Тетяна Бондар</b><span class="pill wait">Очікуємо</span></div></div><div style="display:flex;gap:8px;flex-wrap:wrap"><span class="btn sm">Завантажити CSV</span><span class="btn sm ghost">Переглянути запрошення</span></div></div></div><div class="txt"><span class="eyebrow">Особистий кабінет</span><h2 style="margin-top:20px">Усі відповіді гостей <em>в одному місці</em></h2><ul class="lp-list"><li><span class="k">'+chk+'</span><span><b>Хто прийде і з ким.</b> Підтвердження, відмови та кількість місць одразу в таблиці.</span></li><li><span class="k">'+chk+'</span><span><b>Побажання гостей.</b> Коментарі й повідомлення від гостей лежать поруч із відповіддю.</span></li><li><span class="k">'+chk+'</span><span><b>Список у таблицю.</b> Завантажте CSV для рахунку, розсадки та банкету.</span></li><li><span class="k">'+chk+'</span><span><b>Усе приватне.</b> Кабінет бачите лише ви, а гості бачать тільки запрошення.</span></li></ul><div class="cta" style="margin-top:30px"><a class="btn" href="#shop" data-go="tpl">Створити запрошення</a></div></div></div></div></section>';
+  var faq='<section class="wrap lp-sec" id="lp-faq"><div class="lp-head c"><span class="eyebrow">Питання та відповіді</span><h2>Відповідаю <em>наперед</em></h2></div><div class="lp-faq">'+FAQ.map(function(f){return '<details><summary>'+esc(f[0])+'</summary><p>'+esc(f[1])+'</p></details>'}).join('')+'</div></section>';
+  var fin='<section class="lp-dark lp-fin"><div class="wrap"><span class="eyebrow">Почнімо</span><h2>Ваше запрошення <em>вже сьогодні</em></h2><p>Оберіть шаблон і зберіть запрошення за вечір. А якщо хочете довірити це мені, напишіть у Telegram.</p><div class="cta"><a class="btn lg" href="#shop" data-go="tpl">Обрати шаблон</a><a class="btn ghost lg" href="https://t.me/valeriaralko" target="_blank" rel="noopener">Написати в Telegram</a></div></div></section>';
+  app.innerHTML='<div class="lp">'+lpNav()+hero+strip2+how+tpls+build+named+cab+faq+fin+'<div class="lp-ft">'+footer()+'</div></div>';
+  app.querySelectorAll('[data-go]').forEach(function(a){a.addEventListener('click',function(e){e.preventDefault();var el=document.getElementById(a.getAttribute('data-go'));if(el)el.scrollIntoView({behavior:'smooth',block:'start'})})});
+  app.querySelectorAll('[data-order]').forEach(function(b){b.addEventListener('click',function(){openChoose(b.getAttribute('data-order'))})});
+  lpBuilder();
+  tick();
+}
+function lpBuilder(){
+  var box=document.getElementById('lp-b');if(!box)return;
+  var EXTRA=['dress','gifts','tips','transfer','faq'];
+  var S={tid:'tishyna',theme:TPL.tishyna.theme,on:{}};
+  function secs(){return freeSecs().concat(EXTRA.filter(function(s){return S.on[s]}))}
+  function total(){var t=TPL[S.tid].base;EXTRA.forEach(function(s){if(S.on[s])t+=SEC[s].price});return t}
+  function draw(scrollTo){
+    var old=box.querySelector('.sc'),keep=old?old.scrollTop:0;
+    box.innerHTML='<div class="lp-win"><div class="top"><i></i><i></i><i></i><small>Конструктор запрошення</small></div><div class="bd"><div class="lp-stp"><span class="on">Тема</span><span>Секції</span><span>Мови</span><span>Деталі</span><span>Оплата</span></div>'+
+      '<div><h4>Шаблон</h4><div class="lp-tabs">'+TPL_IDS.map(function(id){return '<button type="button" data-tpl="'+id+'" aria-pressed="'+(S.tid===id)+'">'+esc(TPL[id].name)+'</button>'}).join('')+'</div></div>'+
+      '<div><h4>Тема</h4><div class="lp-sw">'+THEMES.map(function(h){return '<button type="button" data-th="'+h.id+'" aria-label="'+h.name+'" title="'+h.name+'" aria-pressed="'+(S.theme===h.id)+'" style="background:'+h.dark+'"></button>'}).join('')+'</div></div>'+
+      '<div><h4>Додаткові секції</h4><div class="lp-tg">'+EXTRA.map(function(s){return '<button type="button" data-sec="'+s+'" aria-pressed="'+(!!S.on[s])+'">'+icon(s)+'<span>'+esc(SEC[s].name)+'</span><span class="tg">+'+money(SEC[s].price)+'</span></button>'}).join('')+'</div></div>'+
+      '<div class="lp-tot"><span>Орієнтовна вартість</span><b>'+money(total())+'</b></div></div></div>'+
+      '<div><div class="lp-pw"><div class="lp-shell"><div class="sc"><div class="z">'+renderInv(S.tid,{theme:S.theme,sections:secs()},null,{})+'</div></div></div></div><p class="lp-hint">Гортайте запрошення, воно живе</p></div>';
+    var sc=box.querySelector('.sc');
+    if(scrollTo){var el=sc.querySelector('[data-sec="'+scrollTo+'"]');if(el){var r=el.getBoundingClientRect(),c=sc.getBoundingClientRect();sc.scrollTop=Math.max(0,r.top-c.top+sc.scrollTop-24)}}
+    else sc.scrollTop=keep;
+    tick();
+  }
+  box.addEventListener('click',function(e){
+    var b=e.target.closest&&e.target.closest('button');if(!b)return;
+    if(b.hasAttribute('data-tpl')){S.tid=b.getAttribute('data-tpl');S.theme=TPL[S.tid].theme;S.on={};draw();return}
+    if(b.hasAttribute('data-th')){S.theme=b.getAttribute('data-th');draw();return}
+    if(b.hasAttribute('data-sec')){var s=b.getAttribute('data-sec');S.on[s]=!S.on[s];draw(S.on[s]?s:null)}
+  });
+  draw();
+}
+function viewDemo(tid){
+  var t=TPL[tid];if(!t)return viewShop();
+  envOpen=false;
+  app.innerHTML='<div class="bar"><div class="in"><div class="t"><a class="btn ghost sm" href="#shop">← Каталог</a><b>Демо: '+esc(t.name)+'</b></div><button class="btn sm" data-order="'+tid+'">Замовити від '+money(t.base)+'</button></div></div><div class="demo-col">'+renderInv(tid,null,null,{live:false})+'</div>'+envHTML(tid,null,true);
+  app.querySelector('[data-order]').addEventListener('click',function(){openChoose(tid)});
+  tick();
+}
+async function viewNew(tid){
+  var t=TPL[tid];if(!t)return viewShop();
+  msg('Готуємо чернетку…','');await ready;if(!needDb())return;
+  var id=rid();
+  try{
+    await db.doc('invitations/'+id).set({tpl:tid,ownerId:uid,paid:false,published:false,createdAt:Date.now(),step:0,theme:t.theme,font:1,envelope:true,sections:freeSecs(),langs:['uk'],data:clone(t.defaults),tr:{}});
+    location.replace(baseUrl()+'#edit-'+id);
+  }catch(e){msg('Не вдалося створити чернетку','Спробуйте ще раз.','<p style="margin-top:20px"><a class="btn ghost" href="#shop">До каталогу</a></p>')}
+}
+
+/* ---------- wizard ---------- */
+function calcPrice(cur){
+  var t=TPL[cur.tpl],lines=[{n:'Шаблон «'+t.name+'»',p:t.base}];
+  cur.sections.forEach(function(s){if(SEC[s]&&SEC[s].price)lines.push({n:'Секція «'+SEC[s].name+'»',p:SEC[s].price})});
+  cur.langs.forEach(function(l){if(l!=='uk')lines.push({n:'Мова: '+langOf(l).name,p:PRICING.lang})});
+  var total=lines.reduce(function(a,x){return a+x.p},0);
+  return {lines:lines,total:total};
+}
+async function viewEdit(id){
+  msg('Завантаження…','');await ready;if(!needDb())return;
+  var ref=db.doc('invitations/'+id),snap;
+  try{snap=await ref.get()}catch(e){return msg('Не вдалося відкрити','Спробуйте оновити сторінку.')}
+  if(!snap.exists)return msg('Запрошення не знайдено','Перевірте посилання або відкрийте «Мої запрошення».','<p style="margin-top:20px"><a class="btn ghost" href="#my">Мої запрошення</a></p>');
+  var cur=clone(snap.data()),t=TPL[cur.tpl];
+  if(cur.ownerId!==uid)return msg('Це чуже запрошення','Редагувати його може тільки той, хто його створив.','<p style="margin-top:20px"><a class="btn ghost" href="#i-'+id+'">Переглянути запрошення</a></p>');
+  cur.data=Object.assign({},t.defaults,cur.data||{});cur.tr=cur.tr||{};
+  cur.langs=cur.langs&&cur.langs.length?cur.langs:['uk'];
+  cur.sections=cur.sections||freeSecs();cur.theme=cur.theme||t.theme;cur.font=cur.font||1;if(cur.envelope==null)cur.envelope=true;
+  var FM=fieldMap(t),ph={},step=cur.step||0,editLang='uk',tab='form',agreed=false,paying=false;
+  envOpen=true;
+
+  function steps(){
+    var s=[{k:'theme',n:'Тема',h:'Оберіть стиль'},{k:'sections',n:'Секції',h:'Виберіть секції'},{k:'langs',n:'Мови',h:'Оберіть мови'},{k:'head',n:'Деталі',h:'Заповніть інформацію'}];
+    SEC_ORDER.forEach(function(sid){if(cur.sections.indexOf(sid)>=0&&fieldsOf(t,sid).length)s.push({k:sid,n:SEC[sid].name,h:'Налаштуйте розділ'})});
+    s.push({k:'pay',n:'Публікація',h:'Перевірте й опублікуйте'});return s;
+  }
+  function stState(){return {data:cur.data,tr:cur.tr,theme:cur.theme,font:cur.font,sections:cur.sections,langs:cur.langs,lang:editLang}}
+  function getVal(f){if(editLang!=='uk'&&f.tr)return (cur.tr[editLang]&&cur.tr[editLang][f.k])||'';return cur.data[f.k]==null?'':cur.data[f.k]}
+  function setVal(f,val){if(editLang!=='uk'&&f.tr){cur.tr[editLang]=cur.tr[editLang]||{};cur.tr[editLang][f.k]=val}else cur.data[f.k]=val}
+
+  app.innerHTML='<div class="wztabs"><button class="btn sm on" data-tab="form">Редагування</button><button class="btn sm ghost" data-tab="prev">Перегляд</button></div>'+
+  '<div class="wz" data-tab="form"><aside class="wz-l"><div class="top"><a class="btn ghost sm" href="#my">← Мої</a><a class="btn ghost sm" href="#i-'+id+'">Переглянути</a></div><div class="phone-shell"><div class="pvscroll" id="pv"></div><div id="pvenv"></div></div><span class="pill">Так запрошення побачать гості</span></aside>'+
+  '<section class="wz-r"><div class="wz-h"><div><h1>Створення запрошення</h1><small id="stepof"></small></div><div class="linkrow"><span class="pill" id="saveSt">Збережено</span><button class="btn ghost sm" id="draftBtn">Зберегти чернетку</button></div></div><div class="stp" id="stp"></div><div class="wz-b" id="body"></div><div class="wz-f"><div class="tot">Разом<b id="tot"></b></div><div class="go"><button class="btn ghost" id="prevBtn">← Назад</button><button class="btn" id="nextBtn">Далі →</button></div></div></section></div>';
+  var wz=app.querySelector('.wz'),pv=document.getElementById('pv'),pvenv=document.getElementById('pvenv'),body=document.getElementById('body'),stpEl=document.getElementById('stp'),sst=document.getElementById('saveSt');
+
+  function draw(){
+    var s=pv.scrollTop;
+    pv.innerHTML=renderInv(cur.tpl,stState(),ph,{live:false});
+    pv.scrollTop=s;
+    pvenv.innerHTML=(cur.envelope&&!envOpen)?envHTML(cur.tpl,stState(),false):'';
+    tick();
+  }
+  function scrollPv(){
+    var k=steps()[step].k,key=k==='head'?'head':(SEC[k]?k:null),top=0;
+    if(key){var el=pv.querySelector('[data-sec="'+key+'"]');if(el)top=el.getBoundingClientRect().top-pv.getBoundingClientRect().top+pv.scrollTop-8}
+    pv.scrollTo({top:Math.max(0,top),behavior:'smooth'});
+  }
+  var timer,saving=false,pend=false;
+  function payload(){return {sections:cur.sections,langs:cur.langs,theme:cur.theme,font:cur.font,envelope:cur.envelope,data:cur.data,tr:cur.tr,step:step}}
+  async function flush(){
+    if(saving){pend=true;return}saving=true;
+    try{await ref.update(payload());sst.textContent='Збережено'}catch(e){sst.textContent='Не збережено'}
+    saving=false;if(pend){pend=false;flush()}
+  }
+  function queue(){sst.textContent='Збереження…';clearTimeout(timer);timer=setTimeout(flush,700)}
+  function updTotal(){document.getElementById('tot').textContent=money(calcPrice(cur).total)}
+
+  function renderStepper(){
+    var S=steps();if(step>=S.length)step=S.length-1;
+    stpEl.innerHTML=S.map(function(s,i){
+      var cls=i<step?'done':(i===step?'cur':'');
+      return (i?'<span class="ln'+(i<=step?' done':'')+'"></span>':'')+'<button type="button" class="'+cls+'" data-step="'+i+'"'+(i===step?' aria-current="step"':'')+'><span class="c">'+(i<step?CHECK:(i+1))+'</span><span class="l"><b>'+esc(s.n)+'</b><span>'+esc(s.h)+'</span></span></button>';
+    }).join('');
+    document.getElementById('stepof').textContent='Крок '+(step+1)+' з '+S.length;
+    document.getElementById('prevBtn').disabled=step===0;
+    var nb=document.getElementById('nextBtn');nb.hidden=step===S.length-1;
+    var cb=stpEl.querySelector('.cur');if(cb&&cb.scrollIntoView)cb.scrollIntoView({inline:'center',block:'nearest'});
+  }
+  function langTabs(fs){
+    if(cur.langs.length<2||!fs.some(function(f){return f.tr}))return '';
+    return '<div class="langtabs" role="group" aria-label="Мова тексту">'+cur.langs.map(function(l){return '<button type="button" class="btn sm '+(l===editLang?'on':'ghost')+'" data-ltab="'+l+'">'+langOf(l).code+'</button>'}).join('')+(editLang!=='uk'?'<button type="button" class="link" data-act="copyua">Заповнити порожні поля текстом з UA</button>':'')+'</div>';
+  }
+  function fieldHTML(f){
+    var idp='f_'+f.k,val=getVal(f);
+    if(f.type==='photo'){return '<div class="fld"><span>'+esc(f.label)+'</span><div class="ph-row"><img id="th_'+f.k+'" alt="" src="'+esc((ph[f.k]&&ph[f.k].dataUrl)||t.photoDef[f.k])+'"><div class="acts"><label class="btn sm ghost" for="'+idp+'">Завантажити фото</label><input class="sr" type="file" accept="image/*" id="'+idp+'" data-photo="'+f.k+'"><button class="link" type="button" data-reset="'+f.k+'">Повернути оригінал</button></div></div></div>'}
+    var lab='<label for="'+idp+'">'+esc(f.label)+'</label>',pl=(editLang!=='uk'&&f.tr)?' placeholder="'+esc(cur.data[f.k]||'')+'"':'';
+    if(f.type==='area')return '<div class="fld">'+lab+'<textarea id="'+idp+'" data-k="'+f.k+'" rows="3" maxlength="700"'+pl+'>'+esc(val)+'</textarea></div>';
+    return '<div class="fld">'+lab+'<input id="'+idp+'" data-k="'+f.k+'" type="'+f.type+'" value="'+esc(val)+'" maxlength="140"'+pl+'></div>';
+  }
+  function fieldsHTML(fs){
+    var g=null,h='';
+    fs.forEach(function(f){if(f.g&&f.g!==g){h+='<h3 class="grp">'+esc(f.g)+'</h3>'}g=f.g;h+=fieldHTML(f)});
+    return h;
+  }
+  function samples(){
+    var out=[];
+    Object.keys(FM).forEach(function(k){var f=FM[k];if(!f.ph||f.type==='photo')return;
+      var sid=null;Object.keys(t.fields).concat(Object.keys(SH)).forEach(function(s){if(fieldsOf(t,s).indexOf(f)>=0)sid=s});
+      if(sid!=='head'&&cur.sections.indexOf(sid)<0)return;
+      if(cur.data[k]===t.defaults[k])out.push(f.label+(sid&&sid!=='head'?' ('+SEC[sid].name+')':''));
+    });
+    return out;
+  }
+  function payHTML(){
+    var pr=calcPrice(cur),paid=cur.paidAmount||0,due=Math.max(0,pr.total-paid),link=baseUrl()+'#i-'+id,h='<h2>Перевірте й опублікуйте</h2>';
+    h+='<p class="muted">Чернетка зберігається сама. Гості бачать лише опубліковану версію.</p>';
+    if(cur.published)h+='<div class="panel" style="margin-bottom:16px"><span class="pill ok">опубліковано</span><div class="linkrow" style="margin-top:12px"><code>'+esc(link)+'</code><button class="btn sm" data-act="copylink">Скопіювати</button></div></div>';
+    h+='<div class="panel lines">'+pr.lines.map(function(l){return '<div class="sum"><span>'+esc(l.n)+'</span><span>'+(l.p?money(l.p):'входить')+'</span></div>'}).join('')+'<div class="sum total"><span>'+(BETA?'Орієнтовна вартість':'Разом')+'</span><span>'+money(pr.total)+'</span></div>'+(paid?'<div class="sum"><span>Вже сплачено</span><span>'+money(paid)+'</span></div><div class="sum"><span>До доплати</span><span>'+money(due)+'</span></div>':'')+'</div>';
+    var sm=samples();
+    if(sm.length)h+='<div class="note warn" style="margin-bottom:14px">Зразковий текст ще не змінено: '+esc(sm.join(', '))+'. Опублікувати можна й так, але гості побачать його.</div>';
+    if(BETA){
+      h+='<div class="note" style="margin-bottom:14px">Сайт працює в тестовому режимі: оплата ще не підключена, публікація безкоштовна. Сума вище показує орієнтовну вартість після запуску.</div><button class="btn" id="payBtn" data-act="pay"'+(paying?' disabled':'')+'>'+(paying?'Публікуємо…':(cur.published?'Опублікувати зміни':'Опублікувати безкоштовно'))+'</button>';
+    }else if(due>0){
+      h+='<label class="check"><input type="checkbox" id="agree"'+(agreed?' checked':'')+'><span>Погоджуюсь з умовами оферти та політикою конфіденційності</span></label><button class="btn" id="payBtn" data-act="pay"'+(paying?' disabled':'')+'>'+(paying?'Обробка платежу…':(paid?'Доплатити ':'Сплатити ')+money(due)+' і опублікувати')+'</button><p class="note" style="margin-top:14px">Демо-оплата: гроші не списуються. У робочій версії тут платіжна сторінка WayForPay або LiqPay.</p>';
+    }else{
+      h+='<button class="btn" id="payBtn" data-act="pay"'+(paying?' disabled':'')+'>'+(cur.published?'Опублікувати зміни':'Опублікувати')+'</button>';
+    }
+    return h;
+  }
+  function renderBody(){
+    var k=steps()[step].k,h='';
+    if(k==='theme'){
+      h='<h2>Оберіть тему запрошення</h2><p class="muted">Колір, який задає настрій вашого свята.</p><div class="themes">'+THEMES.map(function(x){return '<button type="button" class="theme" data-theme-id="'+x.id+'" aria-pressed="'+(cur.theme===x.id)+'"><i style="background:linear-gradient(135deg,'+x.dark+','+x.mid+')"></i><span>'+x.name+'</span></button>'}).join('')+'</div>';
+    }else if(k==='sections'){
+      var extra=cur.sections.reduce(function(a,s){return a+(SEC[s]?SEC[s].price:0)},0);
+      h='<h2>Виберіть секції запрошення</h2><p class="muted">Налаштуйте структуру: які блоки побачать гості. Частина секцій входить у вартість, кожна додаткова коштує '+money(PRICING.section)+'. Зараз доплата за секції: '+money(extra)+'.</p><div class="secgrid">'+SEC_ORDER.map(function(s){var on=cur.sections.indexOf(s)>=0;return '<button type="button" class="seccard" data-sec-toggle="'+s+'" aria-pressed="'+on+'">'+icon(s)+'<span class="tx"><b>'+esc(SEC[s].name)+(SEC[s].price?'<span class="tag">+'+money(SEC[s].price)+'</span>':'<span class="tag free">входить</span>')+'</b><small>'+esc(SEC[s].desc)+'</small></span><span class="chk">'+CHECK+'</span></button>'}).join('')+'</div>';
+    }else if(k==='langs'){
+      h='<h2>Мови запрошення</h2><p class="muted">Оберіть мови, якими гості зможуть читати запрошення. Українська входить у вартість, кожна додаткова коштує '+money(PRICING.lang)+'.</p><div class="langgrid">'+LANGS.map(function(l){var on=cur.langs.indexOf(l.id)>=0;return '<button type="button" class="lang" data-lang-toggle="'+l.id+'" aria-pressed="'+on+'"'+(l.id==='uk'?' aria-disabled="true"':'')+'><code>'+l.code+'</code><span class="tx"><b style="font-weight:500">'+l.name+'</b><small>'+(l.id==='uk'?'Основна':'+'+money(PRICING.lang))+'</small></span><span class="chk" style="width:24px;height:24px;display:grid;place-items:center;border-radius:6px;background:'+(on?'var(--accent)':'transparent')+';color:var(--accent-ink)">'+(on?CHECK:'')+'</span></button>'}).join('')+'</div><div class="note" style="margin-top:16px">Основна мова відкривається за замовчуванням. Решту гість обере перемикачем. Далі кожне текстове поле можна заповнити окремо для кожної мови, а порожні поля показують українську.</div>';
+    }else if(k==='head'){
+      var fs=t.fields.head;
+      h='<h2>Деталі головної сторінки</h2><p class="muted">Заповніть основну інформацію, яка відображатиметься на першому екрані запрошення.</p>'+
+      '<div class="switchcard"><div><b>Чи потрібен конверт відкриття?</b><small>Конверт буде показано перед відкриттям запрошення</small></div><button type="button" class="sw" role="switch" aria-checked="'+cur.envelope+'" aria-label="Конверт відкриття" data-act="env"></button></div>'+
+      '<h3 class="grp" style="margin-top:0">Шрифт</h3><div class="fontgrid">'+[1,2,3].map(function(n){return '<button type="button" class="fontopt" data-font-pick="'+n+'" aria-pressed="'+(cur.font===n)+'" style="font-family:'+(n===1?"'Pinyon Script','Marck Script'":n===2?"'Marck Script'":"'Bad Script'")+',cursive">Шрифт '+n+'</button>'}).join('')+'</div>'+langTabs(fs)+fieldsHTML(fs);
+    }else if(k==='pay'){
+      h=payHTML();
+    }else{
+      var f2=fieldsOf(t,k);
+      h='<h2>'+esc(SEC[k].name)+'</h2><p class="muted">'+esc(SEC[k].desc)+'. Зміни одразу видно в перегляді.</p>'+langTabs(f2)+fieldsHTML(f2);
+    }
+    body.innerHTML=h;
+  }
+  function renderAll(){renderStepper();renderBody();updTotal();draw()}
+  function go(i,noScroll){
+    var S=steps();step=Math.max(0,Math.min(S.length-1,i));renderAll();queue();
+    if(!noScroll)setTimeout(scrollPv,60);
+    window.scrollTo(0,0);
+  }
+  renderAll();setTimeout(scrollPv,120);
+
+  /* events */
+  stpEl.addEventListener('click',function(e){var b=e.target.closest('[data-step]');if(b)go(Number(b.getAttribute('data-step')))});
+  document.getElementById('prevBtn').addEventListener('click',function(){go(step-1)});
+  document.getElementById('nextBtn').addEventListener('click',function(){go(step+1)});
+  document.getElementById('draftBtn').addEventListener('click',async function(){clearTimeout(timer);try{await ref.update(payload());toast('Чернетку збережено');location.hash='my'}catch(e){toast('Не вдалося зберегти. Спробуйте ще раз.')}});
+  app.querySelectorAll('.wztabs button').forEach(function(b){b.addEventListener('click',function(){
+    tab=b.getAttribute('data-tab');wz.setAttribute('data-tab',tab);
+    app.querySelectorAll('.wztabs button').forEach(function(x){var on=x===b;x.classList.toggle('on',on);x.classList.toggle('ghost',!on)});
+    if(tab==='prev')setTimeout(scrollPv,60);
+  })});
+  body.addEventListener('input',function(e){
+    var k=e.target.getAttribute&&e.target.getAttribute('data-k');if(!k)return;
+    setVal(FM[k],e.target.value);draw();queue();
+  });
+  body.addEventListener('change',async function(e){
+    if(e.target.id==='agree'){agreed=e.target.checked;return}
+    var k=e.target.getAttribute&&e.target.getAttribute('data-photo');if(!k||!e.target.files[0])return;
+    sst.textContent='Завантаження фото…';
+    try{var url=await shrink(e.target.files[0]);await db.doc('photos/'+id+'_'+k).set({inv:id,key:k,dataUrl:url,at:Date.now()});sst.textContent='Збережено'}
+    catch(err){sst.textContent='Фото не завантажено';toast('Не вдалося завантажити фото. Спробуйте менший файл.')}
+    e.target.value='';
+  });
+  body.addEventListener('click',async function(e){
+    var el=e.target.closest('button');if(!el)return;
+    var a;
+    if((a=el.getAttribute('data-theme-id'))){cur.theme=a;renderBody();draw();queue();return}
+    if((a=el.getAttribute('data-sec-toggle'))){
+      var i=cur.sections.indexOf(a);if(i>=0)cur.sections.splice(i,1);else cur.sections.push(a);
+      cur.sections.sort(function(x,y){return SEC_ORDER.indexOf(x)-SEC_ORDER.indexOf(y)});
+      renderStepper();renderBody();updTotal();draw();queue();return;
+    }
+    if((a=el.getAttribute('data-lang-toggle'))){
+      if(a==='uk')return;
+      var j=cur.langs.indexOf(a);if(j>=0){cur.langs.splice(j,1);if(editLang===a)editLang='uk'}else{cur.langs.push(a);cur.tr[a]=cur.tr[a]||{}}
+      cur.langs.sort(function(x,y){return LANGS.indexOf(langOf(x))-LANGS.indexOf(langOf(y))});
+      renderBody();updTotal();draw();queue();return;
+    }
+    if((a=el.getAttribute('data-font-pick'))){cur.font=Number(a);renderBody();draw();queue();return}
+    if((a=el.getAttribute('data-ltab'))){editLang=a;renderBody();draw();return}
+    if((a=el.getAttribute('data-reset'))){db.doc('photos/'+id+'_'+a).delete().catch(function(){toast('Не вдалося скинути фото')});return}
+    a=el.getAttribute('data-act');
+    if(a==='env'){cur.envelope=!cur.envelope;envOpen=false;renderBody();draw();queue()}
+    else if(a==='copyua'){
+      var fs=steps()[step].k==='head'?t.fields.head:fieldsOf(t,steps()[step].k);
+      cur.tr[editLang]=cur.tr[editLang]||{};
+      fs.forEach(function(f){if(f.tr&&!cur.tr[editLang][f.k])cur.tr[editLang][f.k]=cur.data[f.k]||''});
+      renderBody();draw();queue();
+    }
+    else if(a==='copylink')copyText(baseUrl()+'#i-'+id);
+    else if(a==='pay')await publish();
+  });
+  async function publish(){
+    var pr=calcPrice(cur),paid=cur.paidAmount||0,due=Math.max(0,pr.total-paid);
+    if(!BETA&&due>0&&!agreed){toast('Підтвердіть згоду з умовами оферти');return}
+    paying=true;renderBody();
+    if(!BETA&&due>0)await sleep(1100);
+    var snapshot={sections:cur.sections,langs:cur.langs,theme:cur.theme,font:cur.font,envelope:cur.envelope,data:cur.data,tr:cur.tr};
+    try{
+      var up=Object.assign(payload(),{pub:snapshot,published:true,paid:!BETA,paidAmount:BETA?0:Math.max(paid,pr.total),amount:pr.total,publishedAt:Date.now()});
+      await ref.update(up);
+      toast(BETA?'Запрошення опубліковано':(due>0?'Оплату отримано, запрошення опубліковано':'Зміни опубліковано'));
+      location.hash='cab-'+id;
+    }catch(e){paying=false;renderBody();toast('Не вдалося опублікувати. Спробуйте ще раз.')}
+  }
+  unsubs.push(db.collection('photos').where('inv','==',id).onSnapshot(function(s){
+    ph={};s.docs.forEach(function(x){var v=x.data();ph[v.key]=v});
+    Object.keys(t.photoDef).forEach(function(k){var im=document.getElementById('th_'+k);if(im)im.src=(ph[k]&&ph[k].dataUrl)||t.photoDef[k]});
+    draw();
+  },function(){}));
+}
+function shrink(file){
+  return new Promise(function(res,rej){
+    var fr=new FileReader();fr.onerror=rej;
+    fr.onload=function(){
+      var img=new Image();img.onerror=rej;
+      img.onload=function(){
+        var max=1000,q=.78;
+        for(var n=0;n<8;n++){
+          var r=Math.min(1,max/Math.max(img.width,img.height));
+          var c=document.createElement('canvas');c.width=Math.round(img.width*r);c.height=Math.round(img.height*r);
+          c.getContext('2d').drawImage(img,0,0,c.width,c.height);
+          var url=c.toDataURL('image/jpeg',q);
+          if(url.length<190000)return res(url);
+          q=Math.max(.35,q-.08);max-=100;
+        }
+        rej(new Error('too big'));
+      };
+      img.src=fr.result;
+    };
+    fr.readAsDataURL(file);
+  });
+}
+
+/* ---------- public invitation ---------- */
+async function viewPublic(id){
+  msg('Завантаження…','');await ready;
+  if(!db)return msg('Сайт ще не підключено до бази','Власнику сайту потрібно заповнити config.js.');
+  var snap;try{snap=await db.doc('invitations/'+id).get()}catch(e){return msg('Не вдалося відкрити','Спробуйте оновити сторінку.')}
+  if(!snap.exists)return msg('Запрошення не знайдено','Перевірте посилання.');
+  var cur=snap.data(),t=TPL[cur.tpl],mine=uid&&cur.ownerId===uid;
+  var st0=cur.pub||(mine?cur:null);
+  if(!st0)return msg('Запрошення ще не опубліковано','Автори ще готують його. Спробуйте трохи пізніше.');
+  var live=!!cur.pub,ph={},sent=false,lang='uk',base=clone(st0);envOpen=false;
+  try{sent=localStorage.getItem('rsvp_'+id)==='1'}catch(e){}
+  var langs=(base.langs&&base.langs.length)?base.langs:['uk'];
+  function stt(){return {data:base.data,tr:base.tr,theme:base.theme,font:base.font,sections:base.sections||freeSecs(),lang:lang}}
+  function draw(){
+    var top=mine?'<div class="bar"><div class="in"><div class="t"><b>Так бачать гості</b>'+(live?'':'<span class="pill wait">чернетка, ще не опубліковано</span>')+'</div><div class="linkrow"><a class="btn ghost sm" href="#edit-'+id+'">Редагувати</a><a class="btn sm" href="#cab-'+id+'">Кабінет</a></div></div></div>':'';
+    var sw=langs.length>1?'<div class="langsw'+(mine?' low':'')+'" role="group" aria-label="Мова">'+langs.map(function(l){return '<button type="button" data-l="'+l+'" aria-pressed="'+(l===lang)+'">'+langOf(l).code+'</button>'}).join('')+'</div>':'';
+    app.innerHTML=top+sw+'<div class="demo-col" style="padding-block:0">'+renderInv(cur.tpl,stt(),ph,{live:live,sent:sent})+'</div>'+((base.envelope&&!envOpen)?envHTML(cur.tpl,stt(),true):'');
+    app.querySelectorAll('[data-l]').forEach(function(b){b.addEventListener('click',function(){lang=b.getAttribute('data-l');var y=window.scrollY;draw();window.scrollTo(0,y)})});
+    var f=document.getElementById('rsvpForm');
+    if(f&&live)f.addEventListener('submit',async function(e){
+      e.preventDefault();
+      var name=document.getElementById('r_name').value.trim();if(!name)return;
+      var s=f.querySelector('input[name=r_st]:checked').value,cnt=s==='yes'?Number(document.getElementById('r_cnt').value):0;
+      var b=f.querySelector('button');b.disabled=true;b.textContent=u(lang,'sending');
+      try{
+        await db.collection('rsvps').add({inv:id,name:name,status:s,count:cnt,note:document.getElementById('r_note').value.trim(),lang:lang,at:Date.now(),by:uid||null});
+        sent=true;try{localStorage.setItem('rsvp_'+id,'1')}catch(e2){}
+        var y=window.scrollY;draw();window.scrollTo(0,y);
+      }catch(err){b.disabled=false;b.textContent=u(lang,'send');toast('Не вдалося надіслати. Спробуйте ще раз.')}
+    });
+    tick();
+  }
+  draw();
+  unsubs.push(db.collection('photos').where('inv','==',id).onSnapshot(function(s){
+    ph={};s.docs.forEach(function(x){var v=x.data();ph[v.key]=v});
+    var y=window.scrollY,keep=document.getElementById('r_name'),val=keep?keep.value:'';
+    draw();window.scrollTo(0,y);var k2=document.getElementById('r_name');if(k2&&val)k2.value=val;
+  },function(){}));
+}
+
+/* ---------- cabinet ---------- */
+async function viewCab(id){
+  msg('Завантаження…','');await ready;if(!needDb())return;
+  var snap;try{snap=await db.doc('invitations/'+id).get()}catch(e){return msg('Не вдалося відкрити','Спробуйте оновити сторінку.')}
+  if(!snap.exists)return msg('Запрошення не знайдено','Перевірте посилання.');
+  var cur=snap.data(),t=TPL[cur.tpl];
+  if(cur.ownerId!==uid)return msg('Кабінет доступний автору','Список гостей бачить тільки той, хто створив запрошення.');
+  var d=Object.assign({},t.defaults,(cur.pub||cur).data||{}),link=baseUrl()+'#i-'+id;
+  app.innerHTML=nav()+'<div class="page"><div class="sec-h"><div><h1 style="font-size:clamp(32px,5vw,52px)">'+esc(d.groom)+' &amp; '+esc(d.bride)+'</h1><p class="muted">'+esc(fmt(d.date,'uk',{day:'numeric',month:'long',year:'numeric'}))+' · шаблон «'+esc(t.name)+'» '+(cur.published?'<span class="pill ok">опубліковано</span>':'<span class="pill wait">чернетка</span>')+'</p></div><div class="linkrow"><a class="btn ghost sm" href="#edit-'+id+'">Редагувати</a><a class="btn ghost sm" href="#i-'+id+'">Відкрити</a></div></div>'+
+  (cur.published?'<div class="panel"><div class="fld" style="margin:0"><span>Посилання для гостей</span></div><div class="linkrow"><code id="lnk">'+esc(link)+'</code><button class="btn sm" id="cp">Скопіювати</button></div></div>':'<div class="note">Запрошення ще не опубліковано. Відкрийте редактор, на останньому кроці натисніть «Опублікувати», і зʼявиться посилання для гостей.</div>')+
+  '<div class="stats"><div class="stat"><b id="s_yes">0</b><span>гостей прийдуть</span></div><div class="stat"><b id="s_no">0</b><span>не зможуть</span></div><div class="stat"><b id="s_all">0</b><span>відповідей</span></div></div>'+
+  '<div class="sec-h" style="margin-bottom:14px"><h2 style="font-size:32px">Список гостей</h2><button class="btn ghost sm" id="csv">Завантажити CSV</button></div><div class="tbl" id="gt"><div class="empty">Відповідей поки немає. Надішліть гостям посилання, і вони зʼявляться тут одразу.</div></div></div>';
+  var cp=document.getElementById('cp');if(cp)cp.addEventListener('click',function(){copyText(link)});
+  var rows=[];
+  document.getElementById('csv').addEventListener('click',async function(){
+    if(!rows.length)return toast('Поки немає що експортувати');
+    var q=function(s){return '"'+String(s==null?'':s).replace(/"/g,'""')+'"'};
+    var csv='﻿'+['Імʼя','Відповідь','Кількість','Побажання','Дата'].map(q).join(',')+'\n'+rows.map(function(r){return [r.name,r.status==='yes'?'Буде':'Не зможе',r.count,r.note,new Date(r.at).toLocaleString('uk-UA')].map(q).join(',')}).join('\n');
+    if(!dl)return toast('Експорт недоступний у цьому вікні');
+    try{await dl.save({filename:'guests.csv',data:csv});toast('Файл збережено')}catch(e){toast('Збереження скасовано')}
+  });
+  unsubs.push(db.collection('rsvps').where('inv','==',id).onSnapshot(function(s){
+    rows=s.docs.map(function(x){return x.data()}).sort(function(a,b){return b.at-a.at});
+    var yes=0,no=0;rows.forEach(function(r){if(r.status==='yes')yes+=Number(r.count)||1;else no++});
+    document.getElementById('s_yes').textContent=yes;document.getElementById('s_no').textContent=no;document.getElementById('s_all').textContent=rows.length;
+    document.getElementById('gt').innerHTML=rows.length?'<table><thead><tr><th>Гість</th><th>Відповідь</th><th>Осіб</th><th>Побажання</th><th>Коли</th></tr></thead><tbody>'+rows.map(function(r){return '<tr><td>'+esc(r.name)+'</td><td><span class="pill '+(r.status==='yes'?'ok':'no')+'">'+(r.status==='yes'?'Буде':'Не зможе')+'</span></td><td class="num">'+(r.status==='yes'?esc(r.count):'—')+'</td><td>'+esc(r.note||'—')+'</td><td class="num">'+esc(new Date(r.at).toLocaleDateString('uk-UA'))+'</td></tr>'}).join('')+'</tbody></table>':'<div class="empty">Відповідей поки немає. Надішліть гостям посилання, і вони зʼявляться тут одразу.</div>';
+  },function(){}));
+}
+async function viewMy(){
+  msg('Завантаження…','');await ready;if(!needDb())return;
+  app.innerHTML=nav()+'<div class="page"><div class="sec-h"><h2>Мої запрошення</h2><a class="btn sm" href="#shop" data-go="tpl">Обрати шаблон</a></div><div class="list" id="my"><div class="empty">Завантаження…</div></div></div>';
+  unsubs.push(db.collection('invitations').where('ownerId','==',uid).onSnapshot(function(s){
+    var el=document.getElementById('my');if(!el)return;
+    var items=s.docs.map(function(x){return {id:x.id,v:x.data()}}).sort(function(a,b){return b.v.createdAt-a.v.createdAt});
+    el.innerHTML=items.length?items.map(function(it){var t=TPL[it.v.tpl]||{name:''},d=it.v.data||{};return '<div class="item"><div><h3>'+esc(d.groom||'')+' &amp; '+esc(d.bride||'')+'</h3><span class="muted" style="font-size:14px">Шаблон «'+esc(t.name)+'» · '+(it.v.published?'опубліковано':'чернетка')+'</span></div><div class="linkrow"><a class="btn ghost sm" href="#edit-'+it.id+'">'+(it.v.published?'Редагувати':'Продовжити')+'</a><a class="btn sm" href="#cab-'+it.id+'">Кабінет</a></div></div>'}).join(''):'<div class="empty">Запрошень ще немає. Оберіть шаблон і створіть запрошення в конструкторі.</div>';
+  },function(){}));
+}
+
+/* ---------- router ---------- */
+function route(){
+  clearSubs();closeModal();
+  var h=location.hash.slice(1)||'shop',i=h.indexOf('-'),name=i<0?h:h.slice(0,i),arg=i<0?'':h.slice(i+1);
+  var v={shop:viewShop,demo:viewDemo,new:viewNew,edit:viewEdit,i:viewPublic,cab:viewCab,my:viewMy}[name]||viewShop;
+  window.scrollTo(0,0);v(arg);
+}
+ready=init();
+window.addEventListener('hashchange',route);
+route();
+})();
+</script>
+</body>
+</html>
