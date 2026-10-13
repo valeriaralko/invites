@@ -95,6 +95,8 @@
     if(/at least 6|Password should/i.test(m))return 'Пароль має містити щонайменше 6 символів.';
     if(/valid email|invalid format|Unable to validate email/i.test(m))return 'Перевірте адресу пошти.';
     if(/rate limit|too many/i.test(m))return 'Забагато спроб. Зачекайте кілька хвилин.';
+    if(/already been registered|email.*exists|email_exists/i.test(m))return 'Ця пошта вже зареєстрована. Увійдіть через «Моє запрошення».';
+    if(/Anonymous sign-ins are disabled/i.test(m))return 'Створення без реєстрації вимкнене. Увійдіть або зареєструйтесь.';
     if(/Email not confirmed/i.test(m))return 'Підтвердіть пошту за листом, який ми надіслали.';
     return 'Не вдалося виконати. Спробуйте ще раз.';
   };
@@ -106,7 +108,13 @@
       if(!r.data.session)return {error:'Ми надіслали лист для підтвердження пошти. Підтвердіть її й увійдіть.'};
       return {};
     },
-    signOut:async function(){await sb.auth.signOut()}
+    signOut:async function(){await sb.auth.signOut()},
+    /* без реєстрації: анонімний акаунт (у Supabase має бути ввімкнено Anonymous sign-ins) */
+    guest:async function(){var r=await sb.auth.signInAnonymously();return r.error?{error:errUa(r.error.message)}:{}},
+    /* прив'язати пошту до анонімного акаунта: Supabase надішле лист для підтвердження */
+    linkEmail:async function(email,back){var r=await sb.auth.updateUser({email:email},{emailRedirectTo:back});return r.error?{error:errUa(r.error.message)}:{}},
+    /* вхід за посиланням на пошту, без пароля */
+    magic:async function(email,back){var r=await sb.auth.signInWithOtp({email:email,options:{emailRedirectTo:back,shouldCreateUser:false}});return r.error?{error:/Signups not allowed|not found|Otp/i.test(r.error.message)?'Не знайшли акаунт з такою поштою. Перевірте адресу або створіть запрошення.':errUa(r.error.message)}:{}}
   };
 
   /* ---------- збереження файлу (CSV) ---------- */
@@ -119,7 +127,7 @@
 
   window.claude={auth:auth,use:async function(name){
     if(name==='db')return {doc:doc,collection:collection};
-    if(name==='user')return {id:sessionUid};
+    if(name==='user')return {id:sessionUid,isGuest:async function(){var r=await sb.auth.getSession();var u=r&&r.data&&r.data.session&&r.data.session.user;return !!(u&&u.is_anonymous)}};
     if(name==='downloads')return downloads;
     return null;
   }};
