@@ -106,6 +106,16 @@
       if(!r.data.session)return {error:'Ми надіслали лист для підтвердження пошти. Підтвердіть її й увійдіть.'};
       return {};
     },
+    /* вхід за посиланням на пошту, без пароля */
+    magicLink:async function(email){
+      var r=await sb.auth.signInWithOtp({email:email,options:{emailRedirectTo:location.origin+location.pathname+location.hash}});
+      return r.error?{error:errUa(r.error.message)}:{};
+    },
+    /* лист для відновлення пароля */
+    resetPassword:async function(email){
+      var r=await sb.auth.resetPasswordForEmail(email,{redirectTo:location.origin+location.pathname});
+      return r.error?{error:errUa(r.error.message)}:{};
+    },
     signOut:async function(){await sb.auth.signOut()}
   };
 

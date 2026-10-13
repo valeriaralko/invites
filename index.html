@@ -5,6 +5,12 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>Inviteri — електронні запрошення на весілля</title>
 <meta name="description" content="Анімовані запрошення-сайти на весілля: ваша історія, програма дня, мапа й онлайн-відповіді гостей. Дизайн від Валерії, valeria.dsgn.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 64 64%27%3E%3Crect width=%2764%27 height=%2764%27 rx=%2714%27 fill=%27%233b2a24%27/%3E%3Ctext x=%2732%27 y=%2746%27 font-family=%27Georgia,serif%27 font-size=%2742%27 text-anchor=%27middle%27 fill=%27%23f7f1ea%27%3EI%3C/text%3E%3C/svg%3E">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Inviteri — електронні запрошення на весілля">
+<meta property="og:description" content="Анімовані запрошення-сайти: програма дня, мапа й онлайн-відповіді гостей в особистому кабінеті.">
+<meta property="og:image" content="https://invites-1tr.pages.dev/img/cov-story.webp">
+<meta name="twitter:card" content="summary_large_image">
 <style>html{color-scheme:light}body{margin:0}img{max-width:100%}</style>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Bad+Script&family=Forum&family=Onest:wght@300;400;500;600&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Jost:wght@400;500;600&family=Marck+Script&family=Pinyon+Script&display=swap" rel="stylesheet">
@@ -336,6 +342,13 @@ td.num{font-variant-numeric:tabular-nums}
 .lp-nav nav a{text-decoration:none;color:var(--muted)}
 .lp-nav nav a:hover{color:var(--ink)}
 .lp-nav .r{display:flex;gap:10px;align-items:center}
+.lp-bg{display:none;width:44px;height:44px;align-items:center;justify-content:center;border:1px solid var(--line);border-radius:50%;background:transparent;color:var(--ink);cursor:pointer}
+.lp-mm{display:flex;flex-direction:column;border-top:1px solid var(--line);background:var(--bg)}
+.lp-mm[hidden]{display:none}
+.lp-mm a{padding:14px 20px;min-height:44px;text-decoration:none;color:var(--ink);border-bottom:1px solid var(--line)}
+@media (max-width:1040px){.lp-bg{display:inline-flex}}
+@media (min-width:1041px){.lp-mm{display:none!important}}
+@media (max-width:620px){.lp-nav .r .btn.sm{min-height:44px}}
 @media (max-width:1040px){.lp-nav nav{display:none}}
 @media (max-width:620px){.lp-nav .r .ghost{display:none}.lp-nav .brand{font-size:22px}}
 .eyebrow{font:500 12px/1.2 var(--f-body);letter-spacing:.24em;text-transform:uppercase;color:var(--accent);display:inline-flex;align-items:center;gap:12px}
@@ -677,6 +690,10 @@ td.num{font-variant-numeric:tabular-nums}
 .lx-ct{display:flex;justify-content:space-between;align-items:baseline;gap:10px}
 .lx-card h3{font:400 clamp(24px,2vw,30px)/1.05 var(--f-display);color:var(--choc)}
 .lx-ct .pr{font-size:13.5px;color:var(--muted);white-space:nowrap}
+.lx-mode{font-size:13px;color:var(--ink);margin:2px 0 10px}
+.lx-mode:before{content:"";display:inline-block;width:7px;height:7px;border-radius:50%;background:#6b7d4f;margin-right:7px;vertical-align:1px}
+.lx-mode.adp:before{background:var(--gold,#a07c4e)}
+.btn.off{opacity:.55;pointer-events:none}
 .lx-card .vibe{font:italic 400 16px/1.25 var(--f-display);color:var(--muted)}
 .lx-bt{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px}
 .lx-bt .btn{width:100%}
@@ -917,6 +934,12 @@ html.emb body{background:#fff}html.emb .demo-col{padding:0}html.emb .inv{max-wid
 @media (max-width:900px){.lx-ways{grid-template-columns:minmax(0,1fr)}}
 .lp-plan .pr.lvl{font:400 30px/1.1 var(--f-display)}
 .lp-pnote{text-align:center;margin-top:26px;color:var(--muted);font-size:15px}
+.lx-incl{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin-top:8px}
+.lx-incl article{padding:22px 22px 20px;border-radius:22px;border:1px solid var(--line);background:var(--surface)}
+.lx-incl h3{font:400 22px/1.15 var(--f-display);color:var(--choc);margin-bottom:8px}
+.lx-incl p{font-size:15px;line-height:1.45;color:var(--muted)}
+.lx-incl b{color:var(--ink)}
+@media (max-width:900px){.lx-incl{grid-template-columns:minmax(0,1fr)}}
 .lx-tinfo h2.lx-ph2{font:400 clamp(24px,2.4vw,30px)/1.1 var(--f-display);color:var(--choc);margin-top:12px}
 .lx-pick{margin-top:0}
 .lx-opt em svg{width:16px;height:16px;vertical-align:-3px;margin-left:4px}
@@ -1153,6 +1176,9 @@ var SEC={
 };
 var SEC_ORDER=['countdown','save','location','program','dress','tips','gifts','transfer','faq','rsvp'];
 var freeSecs=function(){return SEC_ORDER.filter(function(s){return SEC[s].price===0})};
+/* ціна за секції: PRICING.freeSecs секцій входять у ціну тарифу, кожна наступна коштує PRICING.section */
+var secExtra=function(secs){return Math.max(0,(secs||[]).length-PRICING.freeSecs)};
+var secCost=function(secs){return secExtra(secs)*PRICING.section};
 
 /* ---------- dates ---------- */
 function parts(iso){var a=String(iso||'').split('-').map(Number);return {y:a[0]||2027,m:a[1]||1,d:a[2]||1}}
@@ -1222,7 +1248,7 @@ TPL.tishyna={
     z_t:'Пізній виїзд додому',z_x:'Без поспіху, з усмішками, новими враженнями та спогадами, які залишаться у серці назавжди.',
     dressText:'Ми прагнемо, щоб наші фото і атмосфера свята були гармонійними та відображали наш стиль.\n\nТож просимо дотримуватись кольорової палітри. Нехай ваш одяг буде зручним і водночас святковим — так ми всі разом створимо відчуття єдності й гармонії.',
     c1:'#3d2b24',c2:'#8a6a55',c3:'#d8c7b2',c4:'#a9bfd8',c5:'#7fa0c8',
-    wishText:'Ваша присутність у цей день — найбільший подарунок для нас. Усмішки, обійми та спільні моменти роблять наше свято справжнім і теплим.\n\nЯкщо ви хочете нас підтримати, будемо раді грошовому подарунку, який допоможе здійснити наші спільні мрії.',
+    wishText:'Ваша присутність у цей день — найбільший подарунок для нас. Усмішки, обійми та спільні моменти роблять наше свято справжнім і теплим.\n\nЯкщо ви хочете нас порадувати, будемо вдячні за подарунок, який стане теплою згадкою про цей день.',
     closing:'З нетерпінням чекаємо на Вас!'})
 };
 TPL.ivengo={
@@ -1249,7 +1275,7 @@ TPL.ivengo={
     a_time:'12:30',a_text:'збір гостей, фуршет та Welcome зона',b_time:'13:00',b_text:'весільна церемонія',c_time:'14:00',c_text:'святковий бенкет',
     dressText:'Ми прагнемо, щоб атмосфера нашого весілля була цілісною та відображала наш стиль.\n\nТож просимо дотримуватись кольорової палітри.',
     c1:'#3d2b24',c2:'#7b5849',c3:'#a68c7a',c4:'#d3c4b4',c5:'#ece2d4',
-    wishText:'Для нас найважливіше — це розділити з вами радість нашого дня.\n\nЯкщо ви хочете нас підтримати, будемо раді грошовому подарунку, який допоможе здійснити наші спільні мрії.',
+    wishText:'Для нас найважливіше — це розділити з вами радість нашого дня.\n\nЯкщо ви хочете нас порадувати, будемо вдячні за подарунок, який стане теплою згадкою про цей день.',
     flowersText:'Якщо ви планували привітати нас квітами — просимо розглянути приємну альтернативу. Такі дарунки не зів’януть, а навпаки, залишать по собі приємні вечори та спогади.',
     alt1:'пляшка хорошого алкоголю (для нас буде цінно, якщо Ви поділитесь Вашим улюбленим)',alt2:'ароматична свічка, що наповнить наш дім затишком',
     chatText:'Для підтвердження вашої присутності, будь ласка, долучіться до чату та обовʼязково заповніть анкету. Також у ньому ви можете ділитись враженнями, відео та фото з весілля!',
@@ -1394,7 +1420,7 @@ TPL.story={
     progTitle:'Таймінг дня',a_time:'12:30',a_text:'збір гостей, фуршет\nта Welcome зона',b_time:'13:00',b_text:'весільна церемонія',c_time:'14:00',c_text:'святковий бенкет',d_time:'',d_text:'',e_time:'',e_text:'',
     dressA:'Dress-',dressB:'Code',dressText:'Ми прагнемо, щоб атмосфера нашого весілля\nбула цілісною та відображала наш стиль.\n\nТож просимо дотримуватись кольорової палітри:',
     c1:'#ffffff',c2:'#eae4d9',c3:'#b9a894',c4:'#d7ccc8',c5:'#6d4c41',m1:'#f7f5f1',m2:'#b9a894',m3:'#6d4c41',m4:'#3e2723',m5:'#000000',
-    wishTitle:'Побажання',wishText:'Для нас найважливіше — це розділити з вами\nрадість нашого дня.\n\nЯкщо ви хочете нас підтримати, будемо раді\nгрошовому подарунку, який допоможе\nздійснити наші спільні мрії.',
+    wishTitle:'Побажання',wishText:'Для нас найважливіше — це розділити з вами\nрадість нашого дня.\n\nЯкщо ви хочете нас порадувати, будемо вдячні\nза подарунок, який стане теплою\nзгадкою про цей день.',
     altText:'Якщо ви планували привітати нас квітами — просимо\nрозглянути приємну альтернативу:',alt1:'пляшка хорошого алкоголю (для нас буде цінно, якщо Ви поділитесь Вашим улюбленим)',alt2:'ароматичну свічку, що наповнить наш дім затишком',
     wishEnd:'Такі дарунки не зівʼянуть —\nа навпаки, залишать по собі приємні вечори та спогади.',wishSign:'З любовʼю,',
     finA:'З нетерпінням',finB:'чекаємо на Вас!',joinTitle:'Підтвердіть присутність',joinText:'Будь ласка, дайте нам знати, чи будете Ви з нами. Так ми зможемо подбати про кожну деталь 🤍'})
@@ -1487,14 +1513,14 @@ var pr=function(n){return SHOW_PRICES?'від '+money(n):''};
 var TARIFFS=[
   {id:'self',n:'01',name:'Самостійно',sub:'Готовий шаблон: ви лише додаєте свої дані.',for:'Для тих, хто хоче швидко і самостійно.',level:'Найдоступніший',from:1699,
    spec:[['Кольори й шрифти','не змінюються'],['Структура й анімації','як у шаблоні'],['Хто налаштовує','ви самі']],
-   feats:['Готовий дизайн шаблону','Покроковий конструктор: імена, дата, фото, локація, програма','Анкета RSVP та кабінет з відповідями гостей','Персональне посилання, яке ви придумаєте, і QR-код'],
+   feats:['Готовий дизайн шаблону','Покроковий конструктор: імена, дата, фото, локація, програма','5 секцій у ціні, кожна наступна +'+money(PRICING.section),'Анкета RSVP та кабінет з відповідями гостей','Персональне посилання, яке ви придумаєте, і QR-код'],
    no:['Кольори, шрифти й розташування блоків змінити не можна'],cta:'Обрати шаблон'},
   {id:'adapt',n:'02',name:'Зміню під мене',sub:'Готовий шаблон, який дизайнер підлаштує під вашу пару.',for:'Для тих, хто хоче готовий дизайн, але з індивідуальними змінами.',level:'Середній',from:2499,
    spec:[['Кольори й шрифти','змінюємо під вас'],['Структура й анімації','з правками'],['Хто налаштовує','дизайнер']],
    feats:['Усе з тарифу «Самостійно»','Ваші кольори та шрифти','Ваші фото й тексти','Окремі декоративні елементи та правки в блоках'],cta:'Обрати шаблон'},
   {id:'key',n:'03',name:'Під ключ',sub:'Повністю індивідуальний дизайн, створений спеціально для вас.',for:'Для тих, хто хоче щось абсолютно унікальне.',level:'Преміальний',from:4499,
    spec:[['Кольори й шрифти','будь-які'],['Структура й анімації','з нуля'],['Хто налаштовує','дизайнер']],
-   feats:['Дизайн з нуля під вашу пару','Будь-які кольори, шрифти й типографіка','Авторські анімації та композиція','Особливі секції, графіка й деталі','Анкета RSVP та кабінет з відповідями'],cta:'Замовити дизайн'}
+   feats:['Дизайн з нуля під вашу пару','Будь-які кольори, шрифти й типографіка','Авторські анімації та композиція','Особливі секції, графіка й деталі','Анкета RSVP та кабінет з відповідями'],cta:'Індивідуальний дизайн'}
 ];
 function fieldsOf(t,sid){return t.fields[sid]||SH[sid]||[]}
 function fieldMap(t){var m={};Object.keys(t.fields).concat(Object.keys(SH)).forEach(function(s){fieldsOf(t,s).forEach(function(f){m[f.k]=f})});return m}
@@ -1724,10 +1750,21 @@ function viewLogin(){
   var mode='in';
   function draw(err){
     var isIn=mode==='in';
-    app.innerHTML=nav()+'<div class="msg"><h1>'+(isIn?'Вхід':'Реєстрація')+'</h1><p class="muted">Акаунт потрібен, щоб зберігати ваші запрошення й бачити відповіді гостей.</p>'+
-    '<form id="lf" class="panel" style="margin-top:20px;text-align:left"><label class="fld"><span>Пошта</span><input id="le" type="email" required autocomplete="email"></label><label class="fld"><span>Пароль (від 6 символів)</span><input id="lp" type="password" required minlength="6" autocomplete="'+(isIn?'current-password':'new-password')+'"></label><div class="note warn" id="lerr" style="margin-bottom:14px"'+(err?'':' hidden')+'>'+esc(err||'')+'</div><button class="btn" id="lb" style="width:100%">'+(isIn?'Увійти':'Зареєструватися')+'</button></form>'+
+    var hm=(location.hash||'').match(/^#(?:new|edit)-(\w+)/),tn=hm&&TPL[hm[1]]?TPL[hm[1]].name:'';
+    var lead=tn?'Створюємо запрошення за шаблоном «'+esc(tn)+'». Увійдіть або зареєструйтеся, щоб ми зберігали вашу чернетку.':'Акаунт потрібен, щоб зберігати ваші запрошення й бачити відповіді гостей.';
+    app.innerHTML=nav()+'<div class="msg"><h1>'+(isIn?'Вхід':'Реєстрація')+'</h1><p class="muted">'+lead+'</p>'+
+    '<p class="muted" style="margin-top:6px">Далі: придумаєте адресу запрошення, заповните дані за кроками (10–15 хвилин) і опублікуєте. Чернетка зберігається сама.</p>'+
+    '<form id="lf" class="panel" style="margin-top:20px;text-align:left"><label class="fld"><span>Пошта</span><input id="le" type="email" required autocomplete="email"></label><label class="fld"><span>Пароль (від 6 символів)</span><input id="lp" type="password" required minlength="6" autocomplete="'+(isIn?'current-password':'new-password')+'"></label><div class="note warn" id="lerr" style="margin-bottom:14px"'+(err?'':' hidden')+'>'+esc(err||'')+'</div><button class="btn" id="lb" style="width:100%">'+(isIn?'Увійти':'Зареєструватися')+'</button>'+
+    '<div class="linkrow" style="margin-top:14px;justify-content:space-between">'+(isIn?'<button class="link" id="lfp" type="button">Забули пароль?</button>':'')+'<button class="link" id="lml" type="button">Без пароля: надіслати посилання на пошту</button></div></form>'+
     '<p class="muted" style="margin-top:16px">'+(isIn?'Ще немає акаунта? ':'Вже є акаунт? ')+'<button class="link" id="lsw" type="button">'+(isIn?'Зареєструватися':'Увійти')+'</button></p></div>';
     document.getElementById('lsw').addEventListener('click',function(){mode=isIn?'up':'in';draw()});
+    function mailAct(fn,okText){
+      var em=document.getElementById('le').value.trim(),er=document.getElementById('lerr');
+      if(!em){er.hidden=false;er.textContent='Спочатку вкажіть пошту.';return}
+      Promise.resolve(window.claude.auth[fn](em)).then(function(r){er.hidden=false;er.textContent=r&&r.error?r.error:okText});
+    }
+    document.getElementById('lml').addEventListener('click',function(){mailAct('magicLink','Ми надіслали лист із посиланням для входу. Відкрийте його на цьому пристрої.')});
+    var fp=document.getElementById('lfp');if(fp)fp.addEventListener('click',function(){mailAct('resetPassword','Ми надіслали лист для відновлення пароля.')});
     document.getElementById('lf').addEventListener('submit',async function(e){
       e.preventDefault();var b=document.getElementById('lb');b.disabled=true;
       var em=document.getElementById('le').value.trim(),pw=document.getElementById('lp').value;
@@ -1749,6 +1786,7 @@ var FAQ=[
   ['Чи потрібні дизайнерські навички?','Ні. Ви обираєте готовий шаблон і лише додаєте свої дані: імена, фото, дату й місце. Оформлення вже готове, ним не треба керувати.'],
   ['Скільки часу займає створення?','Зазвичай 10–15 хвилин. Чернетка зберігається сама, тож можна повернутися пізніше.'],
   ['Чим відрізняються три тарифи?','«Самостійно»: ви заповнюєте готовий шаблон. «Зміню під мене»: шаблон лишається основою, а дизайнер змінює кольори, шрифти, фото й деталі під вашу пару. «Під ключ»: дизайн з нуля, з будь-якими кольорами й шрифтами. Результат у всіх трьох однаковий: запрошення-сайт з особистим посиланням і збором відповідей гостей.'],
+  ['Що таке секції і скільки вони коштують?','Секція — це окремий блок запрошення: дата, локація, програма дня, дрескод, подарунки, підказки, трансфер, питання й відповіді, анкета гостей. У ціну входить '+PRICING.freeSecs+' секцій, кожна наступна коштує +'+money(PRICING.section)+'. У конструкторі видно, скільки секцій ви вже використали й яка буде доплата.'],
   ['Чи можна змінити кольори чи шрифти в тарифі «Самостійно»?','Ні. Дизайн шаблону зафіксований, тож запрошення завжди виглядає так, як задумано. Якщо хочете змін, оберіть «Зміню під мене».'],
   ['Як гості відкривають запрошення?','За особистим посиланням у браузері на телефоні, без застосунків. Також можна показати QR-код.'],
   ['Як я бачу відповіді гостей?','В особистому кабінеті: скільки гостей прийде, хто відмовився, хто ще не відповів, хто буде з +1 і які харчові побажання.'],
@@ -1808,7 +1846,7 @@ function slInit(root){
   });
 }
 function lpNav(){
-  return '<header class="lp-nav"><div class="wrap in"><a class="brand lx-logo" href="#shop">Inviteri<small>by valeria.dsgn</small></a><nav><a href="#shop">Головна</a><a href="#shop" data-go="tpl">Шаблони</a><a href="#shop" data-go="lp-how">Як це працює</a><a href="#key">Під ключ</a><a href="#shop" data-go="lp-plans">Ціни</a></nav><div class="r"><a class="btn ghost sm" href="#my">Увійти</a><a class="btn sm" href="#shop" data-go="tpl">Обрати шаблон</a></div></div></header>';
+  return '<header class="lp-nav"><div class="wrap in"><a class="brand lx-logo" href="#shop">Inviteri<small>by valeria.dsgn</small></a><nav><a href="#shop">Головна</a><a href="#shop" data-go="tpl">Шаблони</a><a href="#shop" data-go="lp-how">Як це працює</a><a href="#key">Під ключ</a><a href="#shop" data-go="lp-plans">Ціни</a></nav><div class="r"><a class="btn ghost sm" href="#my">Увійти</a><a class="btn sm" href="#shop" data-go="tpl">Обрати шаблон</a><button class="lp-bg" type="button" aria-label="Меню" aria-expanded="false"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button></div></div><div class="lp-mm" hidden><a href="#shop" data-go="tpl">Шаблони</a><a href="#shop" data-go="lp-plans">Тарифи</a><a href="#key">Під ключ</a><a href="#shop" data-go="lp-faq">Питання</a><a href="#my">Увійти</a></div></header>';
 }
 /* прокрутка до секції: працює і зі сторінки шаблону чи «Під ключ» */
 var pendingGo=null;
@@ -1830,7 +1868,7 @@ function viewShop(){
     '<span class="lx-live stg" style="--d:0s">Електронні запрошення від дизайнерки</span>'+
     '<h1>'+h1w('Електронні запрошення для вашого свята')+'</h1>'+
     '<p class="lead stg" style="--d:.45s">Одне посилання для гостей: програма, локація й анкета, а відповіді збираються в особистому кабінеті. Створіть самостійно або довірте дизайн дизайнерці.</p>'+
-    '<div class="cta stg" style="--d:.6s"><a class="btn lg" href="#shop" data-go="tpl">Обрати шаблон '+arr+'</a><a class="btn ghost lg" href="#key">Замовити дизайн</a></div>'+
+    '<div class="cta stg" style="--d:.6s"><a class="btn lg" href="#shop" data-go="tpl">Обрати шаблон '+arr+'</a><a class="btn ghost lg" href="#key">Індивідуальний дизайн</a></div>'+
     '<p class="lx-price stg" style="--d:.7s">Весілля, день народження та інші події · <a href="#shop" data-go="lp-plans">тарифи від '+money(TARIFFS[0].from)+'</a></p></div>'+
     '<div class="lx-stage" aria-hidden="true"><div class="lx-halo"></div>'+
       phoneSlides(COLL[2],'back',true)+phoneSlides(COLL[0],'front',true)+
@@ -1861,14 +1899,19 @@ function viewShop(){
   var plans='<section class="wrap lp-sec" id="lp-plans"><div class="lx-head c rv"><h2>Тарифи</h2><p>Чим вищий тариф, тим більше свободи в дизайні. Результат у всіх один: готове запрошення з анкетою й кабінетом.</p></div><div class="lp-plans">'+TARIFFS.map(function(t,i){
     var cta=t.id==='key'?'<a class="btn" href="#key">'+esc(t.cta)+'</a>':'<a class="btn'+(t.id==='adapt'?'':' ghost')+'" href="#shop" data-go="tpl">'+esc(t.cta)+'</a>';
     return '<article class="lp-plan rv'+(t.id==='adapt'?' pop':'')+'" style="--d:'+(i*.12)+'s"><h3>'+esc(t.name)+'</h3><p class="sub">'+esc(t.sub)+'</p><div class="pr"><small>від</small>'+money(t.from)+'</div><div class="lp-spec">'+t.spec.map(function(x){return '<p><span>'+esc(x[0])+'</span><b>'+esc(x[1])+'</b></p>'}).join('')+'</div><ul>'+t.feats.map(function(f){return '<li>'+chk+'<span>'+esc(f)+'</span></li>'}).join('')+(t.no||[]).map(function(f){return '<li class="no"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg><span>'+esc(f)+'</span></li>'}).join('')+'</ul>'+cta+'</article>'}).join('')+'</div><p class="lp-pnote">Хочете змінити кольори чи шрифти? Це тарифи «Зміню під мене» та «Під ключ».</p></section>';
+  var incl='<section class="wrap lp-sec" id="lp-incl"><div class="lx-head c rv"><h2>Що входить у ціну</h2><p>Ціна тарифу вже містить усе потрібне, щоб запрошення працювало.</p></div><div class="lx-incl">'+
+    '<article class="rv"><h3>'+PRICING.freeSecs+' секцій</h3><p>Дата, локація, програма дня, анкета гостей та ще одна секція на вибір. <b>Кожна наступна +'+money(PRICING.section)+'.</b></p></article>'+
+    '<article class="rv" style="--d:.1s"><h3>Анкета й кабінет</h3><p>Гості відповідають у запрошенні, а ви бачите, хто прийде, з ким і які в них побажання.</p></article>'+
+    '<article class="rv" style="--d:.2s"><h3>Своє посилання й QR</h3><p>Адреса з вашими іменами, QR-код для друку та правки після публікації без зміни посилання.</p></article>'+
+    '</div></section>';
   var msgTxt='Привіт, Валеріє! Хочу індивідуальне запрошення.\nПодія: \nДата: \nМісто і локація: \nНастрій і кольори: \nПриклади, що сподобались (посилання або скріни): ';
   var custom='<section class="lp-sec lx-soft" id="lp-custom"><div class="wrap"><div class="lp-cu"><div class="rv"><h2>Індивідуально</h2><p class="lead2">Дизайн з нуля під вашу історію, кольори й локацію. Для весілля, дня народження, хрестин чи ювілею.</p><div class="lp-msg"><b class="lx-cap">Що написати в Telegram</b><pre id="lp-msg">'+esc(msgTxt)+'</pre><div class="row"><a class="btn" href="'+tgLink(msgTxt)+'" target="_blank" rel="noopener">Написати в Telegram</a><button class="btn ghost" type="button" id="lp-copy">Скопіювати текст</button></div></div></div><ol class="lp-cs"><li class="rv"><span class="n">1</span><span><b>Пишете в Telegram</b><span class="t">Подія, дата, 2–3 приклади, що подобаються, і кілька слів про настрій свята.</span></span></li><li class="rv" style="--d:.12s"><span class="n">2</span><span><b>Погоджуємо концепцію</b><span class="t">Надсилаю мудборд і ескіз головного екрана, ви кажете, що змінити.</span></span></li><li class="rv" style="--d:.24s"><span class="n">3</span><span><b>Отримуєте готове запрошення</b><span class="t">Анімоване, з анкетою й кабінетом. Посилання одразу можна надсилати гостям.</span></span></li></ol></div></div></section>';
   var rev=REVIEWS.length?'<section class="lp-sec" id="lp-rev"><div class="wrap"><div class="lx-row rv"><div class="lx-head" style="margin:0"><h2>Відгуки пар</h2></div><div class="lx-rn"><button type="button" data-rv="-1" aria-label="Попередній відгук">'+ICO.l+'</button><button type="button" data-rv="1" aria-label="Наступний відгук">'+ICO.r+'</button></div></div><div class="lx-rev" id="lx-rev">'+REVIEWS.map(function(r){return '<figure class="lx-rc"><blockquote>'+esc(r.text)+'</blockquote><figcaption><b>'+esc(r.name)+'</b><span>'+esc([r.tpl,r.date].filter(Boolean).join(' · '))+'</span></figcaption></figure>'}).join('')+'</div></div></section>':'';
   var faq='<section class="wrap lp-sec" id="lp-faq"><div class="lx-head c rv"><h2>Часті питання</h2></div><div class="lp-faq">'+FAQ.map(function(f){return '<details><summary>'+esc(f[0])+'</summary><p>'+esc(f[1])+'</p></details>'}).join('')+'</div></section>';
-  var fin='<section class="lx-fin"><div class="wrap"><div class="lx-finb"><h2>Готові створити запрошення?</h2><p>Оберіть шаблон і заповніть його за 10–15 хвилин. Або замовте адаптацію чи індивідуальний дизайн.</p><div class="cta"><a class="btn lg" href="#shop" data-go="tpl">Обрати шаблон</a><a class="btn ghost lg" href="#key">Замовити дизайн</a></div></div></div></section>';
+  var fin='<section class="lx-fin"><div class="wrap"><div class="lx-finb"><h2>Готові створити запрошення?</h2><p>Оберіть шаблон і заповніть його за 10–15 хвилин. Або замовте адаптацію чи індивідуальний дизайн.</p><div class="cta"><a class="btn lg" href="#shop" data-go="tpl">Обрати шаблон</a><a class="btn ghost lg" href="#key">Індивідуальний дизайн</a></div></div></div></section>';
   var ft='<footer class="lx-ft"><div class="wrap"><div class="lx-ftg"><div><a class="lx-logo big" href="#shop">Inviteri</a><p>Електронні запрошення від дизайнерки Валерії.</p></div><nav><b>Сайт</b><a href="#shop" data-go="tpl">Шаблони</a><a href="#key">Під ключ</a><a href="#shop" data-go="lp-plans">Ціни</a><a href="#shop" data-go="lp-faq">Питання</a><a href="#my">Моє запрошення</a></nav><nav><b>Зв’язок</b><a href="https://t.me/valeriaralko" target="_blank" rel="noopener">Telegram @valeriaralko</a><a href="https://www.instagram.com/valeria.dsgn" target="_blank" rel="noopener">Instagram @valeria.dsgn</a></nav></div><div class="lx-ftb"><span>© '+new Date().getFullYear()+' Inviteri</span><span>by valeria.dsgn</span></div></div></footer>';
   var sticky='<div class="lx-sticky" id="lx-sticky"><a class="btn" href="#shop" data-go="tpl">Обрати шаблон</a><a class="lx-tg" href="https://t.me/valeriaralko" target="_blank" rel="noopener" aria-label="Написати в Telegram">'+ICO.tg+'</a></div>';
-  app.innerHTML='<div class="lp lx">'+lpNav()+hero+tpls+feat+how+cmp+plans+custom+rev+faq+fin+ft+sticky+'</div>';
+  app.innerHTML='<div class="lp lx">'+lpNav()+hero+tpls+feat+how+cmp+plans+incl+custom+rev+faq+fin+ft+sticky+'</div>';
   phReady(app);slInit(app);
   var grid=document.getElementById('lp-tpls');
   app.querySelectorAll('[data-cat]').forEach(function(b){b.addEventListener('click',function(){
@@ -1914,7 +1957,8 @@ function tplCards(st){
   var h=list.map(function(c,i){
     return '<article class="lx-card rv" style="--d:'+(i*.08)+'s"><a href="#t-'+c.id+'" class="lx-pl" style="--bg:'+c.bg+'" aria-label="'+esc(c.name)+'">'+(c.tag?'<span class="tag">'+esc(c.tag)+'</span>':'')+phoneSlides(c,'')+'</a>'+
       '<div class="lx-cb"><div class="lx-ct"><h3>'+esc(c.name)+'</h3></div><p class="vibe">'+esc(c.vibe)+'</p><p class="sd">'+esc(c.short||'')+'</p>'+
-      '<div class="lx-bt"><a class="btn ghost sm" href="'+(c.tpl?'#demo-'+c.tpl:'#t-'+c.id)+'">Демо</a><button class="btn sm" type="button" data-make="'+c.id+'">Замовити</button></div></div></article>';
+      '<p class="lx-mode'+(c.tpl?'':' adp')+'">'+(c.tpl?'Можна створити самостійно':'Тільки адаптація дизайнером')+'</p>'+
+      '<div class="lx-bt">'+(c.tpl?'<a class="btn ghost sm" href="#demo-'+c.tpl+'">Демо</a>':'<span class="btn ghost sm off" aria-disabled="true">Скоро демо</span>')+'<button class="btn sm" type="button" data-make="'+c.id+'">Обрати</button></div></div></article>';
   }).join('');
   if(!st||st==='all')h+='<article class="lx-card soon rv"><div class="lx-cb"><h3>Нові дизайни на підході</h3><p class="vibe">Хочете щось унікальне? Є тариф «Під ключ».</p><a class="btn ghost sm" href="#key">Індивідуальний дизайн</a></div></article>';
   return h;
@@ -1930,6 +1974,11 @@ function openMake(id){
   m.addEventListener('click',function(e){if(e.target===m||(e.target.getAttribute&&e.target.getAttribute('data-close')))closeModal()});
   document.body.appendChild(m);requestAnimationFrame(function(){m.classList.add('on')});
 }
+document.addEventListener('click',function(e){
+  var b=e.target.closest&&e.target.closest('.lp-bg');
+  if(b){var m=b.closest('.lp-nav').querySelector('.lp-mm');if(m){m.hidden=!m.hidden;b.setAttribute('aria-expanded',String(!m.hidden))}return}
+  var a=e.target.closest&&e.target.closest('.lp-mm a');if(a){var mm=a.closest('.lp-mm');mm.hidden=true}
+});
 document.addEventListener('click',function(e){var b=e.target.closest&&e.target.closest('[data-make]');if(!b)return;e.preventDefault();openMake(b.getAttribute('data-make'))});
 /* два шляхи від шаблону: створити самій або замовити адаптацію */
 function pickWays(c,t){
@@ -2061,6 +2110,15 @@ async function viewEdit(id){
   var PVKEY={about:'head',wedding:'location',text:'save',dress:'dress',rsvp:'rsvp'};
   function isAbout(f){return f.k==='groom'||f.k==='bride'||f.type==='photo'}
   function has(s){return cur.sections.indexOf(s)>=0}
+  /* ціна секцій: підказка біля перемикача й підсумок */
+  function secTag(x){
+    var over=has(x)?cur.sections.indexOf(x)>=PRICING.freeSecs:cur.sections.length>=PRICING.freeSecs;
+    return over?'+'+money(PRICING.section):'входить у ціну';
+  }
+  function secNote(){
+    var n=cur.sections.length,ex=secExtra(cur.sections);
+    return '<div class="note" style="margin:0 0 14px">Секцій у запрошенні: <b>'+n+'</b>. '+PRICING.freeSecs+' секцій входять у ціну, кожна наступна +'+money(PRICING.section)+'.'+(ex?' Зараз додатково: <b>'+ex+' × '+money(PRICING.section)+' = '+money(secCost(cur.sections))+'</b>.':'')+'</div>';
+  }
 
   function stState(){return {data:cur.data,tr:cur.tr,theme:cur.theme,font:cur.font,sections:cur.sections,rsvpQ:cur.rsvpQ,lang:'uk'}}
   function getVal(f){return cur.data[f.k]==null?'':cur.data[f.k]}
@@ -2144,6 +2202,7 @@ async function viewEdit(id){
       h+='<h2>Усе готово?</h2><p class="muted">Після публікації гості зможуть відкрити запрошення за особистим посиланням, а відповіді зʼявляться в кабінеті.</p>';
       var sm=samples();
       if(sm.length)h+='<div class="note warn" style="margin-bottom:14px">Зразковий текст ще не змінено: '+esc(sm.join(', '))+'. Опублікувати можна й так, але гості побачать його.</div>';
+      h+=secExtra(cur.sections)?'<div class="note" style="margin-bottom:14px">Додаткові секції: '+secExtra(cur.sections)+' × '+money(PRICING.section)+' = <b>'+money(secCost(cur.sections))+'</b> до ціни тарифу.</div>':'';
       h+='<button class="btn lg" id="payBtn" data-act="pay"'+(paying?' disabled':'')+'>'+(paying?'Публікуємо…':'Опублікувати запрошення')+'</button>';
       return h;
     }
@@ -2167,8 +2226,8 @@ async function viewEdit(id){
       h='<h2>Текст запрошення</h2><p class="muted">Змінюйте лише слова, оформлення лишається як у шаблоні.</p>'+fieldsHTML(rest)+(sv.length&&has('save')?'<h3 class="grp">Підпис до дати</h3>'+fieldsHTML(sv):'')+
         (music.length?'<h3 class="grp">Музика</h3>'+fieldsHTML(music):'');
       if(EXTRAS.length){
-        h+='<h3 class="grp">Додатково, за бажанням</h3><p class="muted" style="margin-top:-4px">Увімкніть лише те, що потрібне. Вимкнені розділи гості не бачать.</p>';
-        EXTRAS.forEach(function(x){h+=sw(SEC[x].name,SEC[x].desc,'data-sec-toggle="'+x+'"',has(x));if(has(x))h+='<div class="subf">'+fieldsHTML(fieldsOf(t,x))+'</div>'});
+        h+='<h3 class="grp">Додатково, за бажанням</h3><p class="muted" style="margin-top:-4px">Увімкніть лише те, що потрібне. Вимкнені розділи гості не бачать.</p>'+secNote();
+        EXTRAS.forEach(function(x){h+=sw(SEC[x].name,SEC[x].desc+' · '+secTag(x),'data-sec-toggle="'+x+'"',has(x));if(has(x))h+='<div class="subf">'+fieldsHTML(fieldsOf(t,x))+'</div>'});
       }
     }else if(k==='dress'){
       h='<h2>Дрескод</h2><p class="muted">Розділ за бажанням. Якщо вимкнений, на сайті його не буде.</p>'+sw('Додати дрескод','Побажання щодо стилю й палітра','data-sec-toggle="dress"',has('dress'));
@@ -2178,7 +2237,7 @@ async function viewEdit(id){
     }else if(k==='check'){
       var sm=samples(),yes=function(b){return b?'так':'ні'};
       h='<h2>Перевірка</h2><p class="muted">Перегляньте запрошення так, як його побачать гості. За потреби поверніться назад і змініть дані.</p>'+
-        '<div class="panel"><ul class="ck"><li><span>Пара</span><b>'+esc([d.groom,d.bride].filter(Boolean).join(' та ')||'не вказано')+'</b></li><li><span>Дата</span><b>'+esc(d.date?fmt(d.date,'uk',{day:'numeric',month:'long',year:'numeric'}):'не вказано')+'</b></li><li><span>Дрескод</span><b>'+yes(has('dress'))+'</b></li><li><span>Питання в анкеті</span><b>відповідь'+(cur.rsvpQ.plus?', +1':'')+(cur.rsvpQ.diet?', харчові побажання':'')+(cur.rsvpQ.note?', повідомлення':'')+'</b></li></ul></div>'+
+        '<div class="panel"><ul class="ck"><li><span>Пара</span><b>'+esc([d.groom,d.bride].filter(Boolean).join(' та ')||'не вказано')+'</b></li><li><span>Дата</span><b>'+esc(d.date?fmt(d.date,'uk',{day:'numeric',month:'long',year:'numeric'}):'не вказано')+'</b></li><li><span>Секції</span><b>'+cur.sections.length+' з '+PRICING.freeSecs+' у ціні'+(secExtra(cur.sections)?', додатково +'+money(secCost(cur.sections)):'')+'</b></li><li><span>Дрескод</span><b>'+yes(has('dress'))+'</b></li><li><span>Питання в анкеті</span><b>відповідь'+(cur.rsvpQ.plus?', +1':'')+(cur.rsvpQ.diet?', харчові побажання':'')+(cur.rsvpQ.note?', повідомлення':'')+'</b></li></ul></div>'+
         (sm.length?'<div class="note warn" style="margin:14px 0">Зразковий текст ще не змінено: '+esc(sm.join(', '))+'.</div>':'<div class="note" style="margin:14px 0">Усі основні поля заповнено.</div>')+
         '<button class="btn" data-act="preview">Переглянути запрошення</button>';
     }else{
@@ -2241,7 +2300,7 @@ async function viewEdit(id){
     paying=true;renderBody();
     var snapshot={sections:cur.sections,langs:['uk'],theme:cur.theme,font:cur.font,envelope:true,rsvpQ:cur.rsvpQ,data:cur.data,tr:cur.tr};
     try{
-      var up=Object.assign(payload(),{pub:snapshot,published:true,paid:false,paidAmount:0,amount:0,publishedAt:Date.now()});
+      var up=Object.assign(payload(),{pub:snapshot,published:true,paid:false,paidAmount:0,amount:0,sectionsCount:cur.sections.length,sectionsExtra:secExtra(cur.sections),sectionsExtraAmount:secCost(cur.sections),publishedAt:Date.now()});
       await ref.update(up);
       cur.published=true;paying=false;renderBody();
       toast('Запрошення опубліковано');
