@@ -610,49 +610,52 @@ td.num{font-variant-numeric:tabular-nums}
 .lx .lp-nav nav a::after{content:"";position:absolute;left:0;right:0;bottom:-6px;height:1px;background:var(--choc);transform:scaleX(0);transform-origin:left;transition:transform .35s}
 .lx .lp-nav nav a:hover::after{transform:scaleX(1)}
 @media (max-width:620px){.lx-logo small{display:none}.lx .lp-nav .r .btn:not(.ghost){display:none}.lx .lp-nav .r .ghost{display:inline-flex}}
-/* phone mockup */
-.ph{--w:280px;width:var(--w);aspect-ratio:9/19.5;position:relative;flex:none;border-radius:calc(var(--w)*.17);padding:calc(var(--w)*.03);background:linear-gradient(145deg,#3a2e28,#120d0a 55%,#3a2e28);box-shadow:0 0 0 1px rgba(255,255,255,.07) inset,0 calc(var(--w)*.14) calc(var(--w)*.26) rgba(43,26,18,.24),0 calc(var(--w)*.03) calc(var(--w)*.06) rgba(43,26,18,.16);opacity:0;transition:opacity .7s ease}
+/* phone mockup: realistic iPhone */
+.ph{--w:280px;width:var(--w);aspect-ratio:71.5/147;position:relative;flex:none;border-radius:calc(var(--w)*.165);padding:calc(var(--w)*.04);background:#0d0b0a;box-shadow:0 0 0 calc(var(--w)*.008) #6d655f,0 0 0 calc(var(--w)*.014) #2a2522,0 calc(var(--w)*.12) calc(var(--w)*.22) rgba(43,26,18,.22),0 calc(var(--w)*.03) calc(var(--w)*.06) rgba(43,26,18,.14);opacity:0;transition:opacity .7s ease}
 .ph.ok{opacity:1}
-.ph::before{content:"";position:absolute;z-index:3;top:calc(var(--w)*.058);left:50%;width:calc(var(--w)*.3);height:calc(var(--w)*.085);transform:translateX(-50%);border-radius:99px;background:#0b0807}
-.ph::after{content:"";position:absolute;z-index:2;inset:calc(var(--w)*.03);border-radius:calc(var(--w)*.14);pointer-events:none;background:linear-gradient(118deg,rgba(255,255,255,.16),transparent 28%)}
-.ph-scr{position:relative;height:100%;border-radius:calc(var(--w)*.14);overflow:hidden;background:#efe8de}
-.ph-scr>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 0;transition:object-position 6s cubic-bezier(.45,.05,.35,1)}
+.ph::before{content:"";position:absolute;z-index:4;top:calc(var(--w)*.068);left:50%;width:calc(var(--w)*.29);height:calc(var(--w)*.085);transform:translateX(-50%);border-radius:99px;background:#000}
+.ph::after{content:"";position:absolute;z-index:3;inset:calc(var(--w)*.04);border-radius:calc(var(--w)*.13);pointer-events:none;background:linear-gradient(115deg,rgba(255,255,255,.14),transparent 26%)}
+.ph-b{position:absolute;left:calc(var(--w)*-.016);top:22%;width:calc(var(--w)*.012);height:9%;border-radius:2px;background:#4a433e;box-shadow:0 calc(var(--w)*.16) 0 #4a433e,calc(var(--w)*1.02) calc(var(--w)*.08) 0 #4a433e}
+.ph-scr{position:relative;height:100%;border-radius:calc(var(--w)*.13);overflow:hidden;background:#efe8de}
+.ph-scr>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 0}
 .ph.fit .ph-scr>img{object-position:50% 50%}
-.ph.auto .ph-scr>img{animation:phs 20s cubic-bezier(.45,.05,.35,1) infinite}
-@keyframes phs{0%,10%{object-position:50% 0}45%,58%{object-position:50% 100%}92%,100%{object-position:50% 0}}
+.ph-tr{display:flex;height:100%;transition:transform .9s cubic-bezier(.65,.05,.25,1)}
+.ph-tr img{flex:0 0 100%;width:100%;height:100%;object-fit:cover}
+.ph-dots{position:absolute;z-index:5;left:50%;top:calc(100% + 14px);transform:translateX(-50%);display:none;gap:5px}
+.ph-dots i{width:6px;height:6px;border-radius:99px;background:color-mix(in srgb,var(--choc) 25%,transparent);transition:width .4s,background .4s}
+.ph-dots i.on{width:20px;background:var(--choc)}
+.ph iframe{position:absolute;left:0;top:0;width:390px;border:0;background:#fff;transform-origin:0 0}
 /* hero */
-.lx-hero{position:relative;padding-block:clamp(34px,6vw,80px) 0;overflow:hidden;background:radial-gradient(1100px 600px at 50% 105%,var(--sky),transparent 70%)}
-.lx-hc{position:relative;z-index:3;display:grid;justify-items:center;text-align:center}
-.lx-hc .eyebrow::before,.lx-head.c .eyebrow::before{display:none}
-.lx-hero h1{font-size:clamp(46px,7.2vw,112px);line-height:.95;margin-top:22px;max-width:15ch;letter-spacing:-.025em;color:var(--choc)}
-.lx-hero .nw{white-space:nowrap}
-.lx-hero h1 em{font-style:italic;color:var(--choc2);position:relative;display:inline-block;padding-inline:.04em;isolation:isolate}
-.lx-hero h1 em::after{content:"";position:absolute;left:-3%;right:-3%;bottom:.08em;height:.26em;background:var(--sky2);opacity:.7;z-index:-1;border-radius:4px;transform-origin:left;animation:lxmark 1s 1s cubic-bezier(.2,.7,.2,1) backwards}
+.lx-hero{position:relative;padding-block:clamp(24px,4vw,56px) clamp(30px,4vw,60px);overflow:hidden;background:radial-gradient(900px 600px at 78% 60%,var(--sky),transparent 65%)}
+.lx-hg{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:clamp(20px,4vw,60px);align-items:center;min-height:min(760px,calc(100vh - 80px))}
+.lx-hc{position:relative;z-index:3}
+.lx-live{display:inline-flex;align-items:center;gap:10px;padding:8px 16px 8px 12px;border-radius:99px;background:var(--surface);border:1px solid var(--line);font:500 13px/1 var(--f-body);color:var(--ink)}
+.lx-live i{width:8px;height:8px;border-radius:50%;background:var(--choc);animation:lxpulseC 2s infinite}
+@keyframes lxpulseC{0%{box-shadow:0 0 0 0 rgba(61,36,24,.45)}70%{box-shadow:0 0 0 9px rgba(61,36,24,0)}100%{box-shadow:0 0 0 0 rgba(61,36,24,0)}}
+.lx-hero h1{font-size:clamp(42px,5.6vw,92px);line-height:.98;margin-top:22px;max-width:12ch;letter-spacing:-.02em;color:var(--choc)}
+.lx-hero h1 .w{display:inline-block}
+.lx-hero h1 em{font-style:italic;color:var(--choc2);position:relative;isolation:isolate;white-space:nowrap}
+.lx-hero h1 em::after{content:"";position:absolute;left:-2%;right:-2%;bottom:.06em;height:.24em;background:var(--sky2);opacity:.75;z-index:-1;border-radius:4px;transform-origin:left;animation:lxmark 1s 1.2s cubic-bezier(.2,.7,.2,1) backwards}
 @keyframes lxmark{from{transform:scaleX(0)}}
-.lx-hero .lead{font-size:clamp(16px,1.4vw,19px);max-width:54ch;margin-top:24px;color:var(--muted)}
-.lx-hero .cta{margin-top:30px;justify-content:center}
+.lx-hero .lead{font-size:clamp(16px,1.35vw,19px);max-width:46ch;margin-top:22px;color:var(--muted)}
+.lx-hero .cta{margin-top:28px}
 .lx-price{margin-top:16px;font-size:13.5px;color:var(--muted)}
 .lx-price a{color:var(--choc);font-weight:500}
-.lx-stage{position:relative;height:clamp(520px,58vw,700px);margin-top:clamp(30px,4vw,50px)}
-.lx-stage .ph.hero{--w:clamp(240px,23vw,310px);position:absolute;left:50%;top:0;transform:translateX(-50%);z-index:3}
-.lx-d{position:absolute;z-index:2;pointer-events:none;filter:drop-shadow(0 14px 18px rgba(43,26,18,.16))}
-.lx-d.line{filter:none;opacity:.8}
-.lx-d.flip{transform:scaleX(-1) rotate(-14deg)}
-.lx-d.d1{width:clamp(110px,13vw,190px);left:calc(50% - clamp(320px,34vw,470px));top:6%}
-.lx-d.d2{width:clamp(70px,8vw,110px);left:calc(50% - clamp(250px,26vw,360px));top:56%;transform:scaleX(-1)}
-.lx-d.d3{width:clamp(64px,6.5vw,92px);left:calc(50% + clamp(190px,19vw,260px));top:12%}
-.lx-d.d4{width:clamp(56px,5.5vw,80px);left:calc(50% + clamp(270px,28vw,380px));top:40%}
-.lx-d.d5{width:clamp(100px,12vw,170px);left:calc(50% + clamp(200px,21vw,300px));top:62%}
-.lx-d.d6{width:clamp(110px,12vw,170px);left:calc(50% - clamp(360px,38vw,520px));top:66%}
+.lx-stage{position:relative;height:clamp(520px,48vw,680px)}
+.lx-halo{position:absolute;left:50%;top:50%;width:78%;aspect-ratio:1;transform:translate(-50%,-50%);border-radius:50%;background:radial-gradient(closest-side,rgba(255,255,255,.9),rgba(255,255,255,0));animation:lxhalo 8s ease-in-out infinite}
+@keyframes lxhalo{50%{transform:translate(-50%,-50%) scale(1.08)}}
+.lx-stage .ph{position:absolute;top:50%;left:50%}
+.lx-stage .ph.front{--w:clamp(230px,20vw,290px);transform:translate(-30%,-50%) rotate(4deg);z-index:3}
+.lx-stage .ph.back{--w:clamp(190px,16vw,240px);transform:translate(-112%,-46%) rotate(-8deg);z-index:2}
 .lx-chip{position:absolute;z-index:4;display:flex;align-items:center;gap:10px;background:color-mix(in srgb,var(--surface) 90%,transparent);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,.7);border-radius:18px;padding:10px 16px 10px 10px;font-size:13px;line-height:1.3;box-shadow:0 18px 40px rgba(43,26,18,.12);text-align:left}
-.lx-chip i{width:34px;height:34px;border-radius:12px;background:var(--choc);color:var(--accent-ink);display:grid;place-items:center;font:500 14px/1 var(--f-body)}
-.lx-chip.c2 i{background:var(--sky2);color:var(--choc)}
+.lx-chip i{width:34px;height:34px;border-radius:12px;background:var(--choc);color:var(--accent-ink);display:grid;place-items:center;font:500 14px/1 var(--f-body);font-style:normal}
+.lx-chip.c2 i{background:var(--sky2);color:var(--choc)}.lx-chip.c3 i{background:var(--milk);color:var(--choc)}
 .lx-chip b{font-weight:600}
-.lx-chip.c1{left:calc(50% + clamp(110px,11vw,150px));top:30%}
-.lx-chip.c2{right:calc(50% + clamp(110px,11vw,150px));top:40%}
-@media (max-width:760px){.lx-stage{height:480px}.lx-stage .ph.hero{--w:210px}
- .lx-d.d1{width:96px;left:-14px;top:2%}.lx-d.d2{width:60px;left:8px;top:58%}.lx-d.d3{width:58px;left:auto;right:10px;top:6%}.lx-d.d4{width:48px;left:auto;right:4px;top:44%}.lx-d.d5{width:90px;left:auto;right:-10px;top:72%}.lx-d.d6{width:90px;left:-16px;top:80%}
- .lx-chip{font-size:12px;padding:8px 12px 8px 8px}.lx-chip i{width:28px;height:28px}.lx-chip.c1{left:auto;right:6px;top:26%}.lx-chip.c2{right:auto;left:6px;top:46%}}
+.lx-chip.c1{right:0;top:16%}.lx-chip.c2{left:0;bottom:16%}.lx-chip.c3{right:4%;bottom:8%}
+@media (max-width:980px){.lx-hg{grid-template-columns:minmax(0,1fr);min-height:0;text-align:center}.lx-hc{display:grid;justify-items:center}.lx-hero h1{max-width:14ch}.lx-hero .cta{justify-content:center}}
+@media (max-width:620px){.lx-hero{padding-top:18px}.lx-hero h1{font-size:40px;margin-top:16px}.lx-hero .lead{font-size:15.5px;margin-top:14px}.lx-hero .cta{margin-top:20px;gap:8px}.lx-hero .btn.lg{min-height:50px;padding:0 22px;font-size:15px}
+ .lx-stage{height:430px;margin-top:6px}.lx-stage .ph.front{--w:200px;transform:translate(-36%,-50%) rotate(4deg)}.lx-stage .ph.back{--w:160px;transform:translate(-100%,-44%) rotate(-8deg)}
+ .lx-chip{font-size:12px;padding:8px 12px 8px 8px}.lx-chip i{width:28px;height:28px}.lx-chip.c1{right:-4px;top:8%}.lx-chip.c2{left:-4px;bottom:14%}.lx-chip.c3{display:none}}
 /* marquee */
 .lx-strip{background:var(--choc);color:var(--milk);overflow:hidden}
 .lx-strip .row{display:flex;gap:36px;padding-block:18px;white-space:nowrap;width:max-content;animation:lpm 46s linear infinite;font:italic 400 clamp(20px,2.2vw,28px)/1 var(--f-display)}
@@ -662,28 +665,25 @@ td.num{font-variant-numeric:tabular-nums}
 .lx .lp-cats{margin:0 0 28px}
 .lx .lp-cats button{font:500 14px/1 var(--f-body)}
 .lx .lp-cats button[aria-pressed="true"]{background:var(--choc);border-color:var(--choc);color:var(--accent-ink)}
-.lx-coll{display:flex;gap:24px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;padding:6px max(clamp(16px,4vw,40px),calc((100vw - 1240px)/2 + 40px)) 20px;scroll-padding-inline:max(clamp(16px,4vw,40px),calc((100vw - 1240px)/2 + 40px))}
+.lx-coll{display:flex;gap:22px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;padding:6px max(clamp(16px,4vw,40px),calc((100vw - 1240px)/2 + 40px)) 24px;scroll-padding-inline:max(clamp(16px,4vw,40px),calc((100vw - 1240px)/2 + 40px))}
 .lx-coll::-webkit-scrollbar{display:none}
-.lx-card{flex:0 0 clamp(250px,24vw,300px);scroll-snap-align:start;display:flex;flex-direction:column;gap:16px}
-.lx-pl{position:relative;display:grid;place-items:center;aspect-ratio:3/4.1;border-radius:28px;overflow:hidden;background:var(--milk);text-decoration:none;color:inherit}
-.lx-card:nth-child(3n+2) .lx-pl{background:var(--sky)}.lx-card:nth-child(3n) .lx-pl{background:#ece4dc}
-.lx-pl .ph{--w:62%;transition:transform .7s cubic-bezier(.2,.7,.2,1),opacity .7s}
-.lx-pl:hover .ph{transform:translateY(-10px) rotate(-2deg) scale(1.03)}
-.lx-pl:hover .ph:not(.fit) .ph-scr>img{object-position:50% 100%}
-.lx-pl .tag{position:absolute;z-index:4;top:16px;left:16px;font:500 10px/1 var(--f-body);letter-spacing:.16em;text-transform:uppercase;padding:7px 11px;border-radius:99px;background:var(--choc);color:var(--accent-ink)}
-.lx-pl .go{position:absolute;z-index:4;left:50%;bottom:16px;transform:translate(-50%,12px);opacity:0;display:inline-flex;align-items:center;gap:6px;white-space:nowrap;font-size:13px;font-weight:500;padding:9px 16px;border-radius:99px;background:var(--surface);color:var(--choc);box-shadow:0 10px 24px rgba(43,26,18,.16);transition:opacity .4s,transform .4s}
-.lx-pl .go svg{width:15px;height:15px}
-.lx-pl:hover .go,.lx-pl:focus-visible .go{opacity:1;transform:translate(-50%,0)}
-@media (hover:none){.lx-pl .go{opacity:1;transform:translate(-50%,0)}}
-.lx-cb{display:grid;gap:4px;padding-inline:4px;text-align:center}
-.lx-card h3{font:400 clamp(24px,2vw,30px)/1.05 var(--f-display);letter-spacing:.06em;text-transform:uppercase;color:var(--choc)}
-.lx-card .vibe{font:italic 400 17px/1.25 var(--f-display);color:var(--muted)}
-.lx-card .pr{font-size:13.5px;color:var(--ink);margin-top:4px}
-.lx-card.soon{border:1px dashed var(--line);border-radius:28px;justify-content:center;align-items:center;padding:30px;aspect-ratio:3/4.1}
-.lx-card.soon .lx-cb{gap:12px;justify-items:center}
-.lx-card.soon h3{text-transform:none;letter-spacing:0}
-.lx-cnote{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;align-items:center;margin-top:18px;color:var(--muted);font-size:15px}
-@media (max-width:620px){.lx-card{flex-basis:76%}.lx-row .lx-rn{display:none}}
+.lx-card{flex:0 0 clamp(270px,25vw,310px);scroll-snap-align:start;display:flex;flex-direction:column;gap:16px;border-radius:30px;background:var(--surface);border:1px solid var(--line);padding:10px 10px 18px;transition:translate .6s cubic-bezier(.2,.7,.2,1),box-shadow .6s}
+.lx-card:hover{translate:0 -6px;box-shadow:0 30px 60px rgba(43,26,18,.12)}
+.lx-pl{position:relative;display:flex;justify-content:center;align-items:flex-start;padding-top:12%;height:clamp(320px,30vw,380px);border-radius:22px;overflow:hidden;background:linear-gradient(180deg,var(--bg),color-mix(in srgb,var(--bg) 55%,#fff));text-decoration:none;color:inherit}
+.lx-pl .ph{--w:68%;transition:transform .8s cubic-bezier(.2,.7,.2,1),opacity .7s}
+.lx-card:hover .lx-pl .ph{transform:translateY(-12px) rotate(-1.5deg)}
+.lx-pl .tag{position:absolute;z-index:6;top:14px;left:14px;font:500 10px/1 var(--f-body);letter-spacing:.16em;text-transform:uppercase;padding:7px 11px;border-radius:99px;background:var(--choc);color:var(--accent-ink)}
+.lx-cb{display:grid;gap:6px;padding-inline:10px}
+.lx-ct{display:flex;justify-content:space-between;align-items:baseline;gap:10px}
+.lx-card h3{font:400 clamp(24px,2vw,30px)/1.05 var(--f-display);color:var(--choc)}
+.lx-ct .pr{font-size:13.5px;color:var(--muted);white-space:nowrap}
+.lx-card .vibe{font:italic 400 16px/1.25 var(--f-display);color:var(--muted)}
+.lx-bt{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px}
+.lx-bt .btn{width:100%}
+.lx-card.soon{justify-content:center;align-items:center;padding:30px;border-style:dashed;background:transparent;min-height:420px}
+.lx-card.soon .lx-cb{gap:12px;justify-items:center;text-align:center}
+.lx-cnote{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;align-items:center;margin-top:14px;color:var(--muted);font-size:15px}
+@media (max-width:620px){.lx-card{flex-basis:80%}.lx-row .lx-rn{display:none}.lx-pl{height:330px}}
 /* feature phone */
 .lx-featw{background:linear-gradient(180deg,var(--bg),var(--sky) 55%,var(--bg))}
 .lx-fx{display:flex;align-items:center;justify-content:center;gap:clamp(14px,4vw,60px)}
@@ -823,22 +823,84 @@ td.num{font-variant-numeric:tabular-nums}
 .lx-tg{flex:none;width:52px;height:52px;border-radius:50%;display:grid;place-items:center;background:#2aabee;color:#fff;box-shadow:0 12px 28px rgba(42,171,238,.35)}
 .lx-tg svg{width:24px;height:24px}
 @media (min-width:1041px){.lx-sticky{width:auto;left:auto;right:24px;transform:translateY(140%)}.lx-sticky.on{transform:none}.lx-sticky .btn{padding-inline:26px}}
+/* sheet modal */
+.lx-sheet{align-items:flex-end}
+.lx-sheet .mb{max-width:640px;width:100%;border-radius:28px 28px 0 0;transform:translateY(40px);opacity:0;transition:transform .5s cubic-bezier(.2,.7,.2,1),opacity .4s;background:#fffaf4;color:#2b1a12}
+@media (min-width:700px){.lx-sheet{align-items:center}.lx-sheet .mb{border-radius:28px}}
+.lx-sheet.on .mb{transform:none;opacity:1}
+.lx-sheet .eyebrow{font:500 11px/1 var(--f-body);letter-spacing:.2em;text-transform:uppercase;color:#7a6558}
+.lx-sheet h2{font:400 clamp(28px,3vw,38px)/1.05 var(--f-display);color:#3d2418;margin:10px 0 6px}
+.lx-opts{display:grid;gap:10px;margin-top:20px}
+.lx-opt{text-align:left;display:grid;grid-template-columns:auto 1fr auto;gap:4px 14px;align-items:baseline;padding:18px 20px;border-radius:20px;border:1px solid #e8dccd;background:#fff;text-decoration:none;color:inherit;transition:border-color .3s,transform .3s,box-shadow .3s}
+.lx-opt:hover{border-color:#3d2418;transform:translateY(-2px);box-shadow:0 14px 30px rgba(43,26,18,.1)}
+.lx-opt .n{grid-row:1/3;font:italic 400 18px/1 var(--f-display);color:#7a6558}
+.lx-opt b{grid-column:2;grid-row:1;font:400 22px/1.1 var(--f-display);color:#3d2418}
+.lx-opt em{grid-column:3;grid-row:1;font-style:normal;font-size:14px;font-weight:500;color:#3d2418;white-space:nowrap}
+.lx-opt span:not(.n){grid-column:2/4;color:#7a6558;font-size:14px}
+.lx-opt.pop{background:#3d2418;border-color:#3d2418}.lx-opt.pop b,.lx-opt.pop em,.lx-opt.pop .n{color:#f7f1ea}.lx-opt.pop span:not(.n){color:#d6c6b6}
+.lx-opt.off{opacity:.6}.lx-opt.off:hover{transform:none;box-shadow:none;border-color:#e8dccd}
+.lx-mnote{margin-top:16px;font-size:13px;color:#7a6558}.lx-mnote a{color:#3d2418}
+/* template page */
+.lx-tp{padding-block:clamp(18px,3vw,36px) clamp(40px,6vw,80px)}
+.lx-bc{display:flex;gap:8px;font-size:13px;color:var(--muted);margin-bottom:20px}.lx-bc a{color:var(--muted)}.lx-bc b{color:var(--ink);font-weight:500}
+.lx-tg2{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(24px,5vw,80px);align-items:start}
+.lx-tdemo{position:sticky;top:90px}
+.lx-tst{display:grid;place-items:center;padding:clamp(28px,4vw,50px) 0;border-radius:32px;background:linear-gradient(180deg,var(--bg),color-mix(in srgb,var(--bg) 55%,#fff))}
+.lx-tst .ph{--w:min(300px,64vw)}
+.lx-tst .ph.big{margin-bottom:30px}.lx-tst .ph.big .ph-dots{display:flex}
+.lx-thint{text-align:center;color:var(--muted);font-size:13.5px;margin-top:14px}
+.lx-tinfo{display:grid;gap:14px;align-content:start}
+.lx-tag{justify-self:start;font:500 10px/1 var(--f-body);letter-spacing:.16em;text-transform:uppercase;padding:7px 11px;border-radius:99px;background:var(--choc);color:var(--accent-ink)}
+.lx-tinfo h1{font:400 clamp(44px,5vw,76px)/1 var(--f-display);color:var(--choc)}
+.lx-tinfo .vibe{font:italic 400 20px/1.3 var(--f-display);color:var(--muted)}
+.lx-tinfo .d{color:var(--muted);font-size:16px;max-width:52ch}
+.lx-tinfo .pr{font:400 40px/1 var(--f-display);color:var(--choc);margin-top:6px}.lx-tinfo .pr small{font:400 14px var(--f-body);color:var(--muted);margin-right:6px}
+.lx-tick{list-style:none;padding:0;margin:4px 0 0;display:flex;gap:16px;flex-wrap:wrap;font-size:13.5px;color:var(--muted)}
+.lx-tick li{display:flex;gap:6px;align-items:center}.lx-tick svg{width:16px;height:16px;color:var(--choc)}
+.lx-tl{display:grid;grid-template-columns:repeat(3,1fr);margin-top:10px;border-radius:20px;background:var(--surface);border:1px solid var(--line);padding:18px 18px 16px;position:relative}
+.lx-tl::before{content:"";position:absolute;left:18px;right:18px;top:18px;height:2px;background:linear-gradient(90deg,var(--choc) 33%,var(--line) 33%)}
+.lx-tl div{display:grid;gap:4px;padding-top:14px;padding-right:10px;font-size:12.5px;color:var(--muted)}
+.lx-tl b{font:500 11px/1 var(--f-body);letter-spacing:.14em;text-transform:uppercase;color:var(--ink)}
+.lx-tinfo details{border-top:1px solid var(--line);padding-block:4px}
+.lx-tinfo details:last-of-type{border-bottom:1px solid var(--line)}
+.lx-tinfo summary{cursor:pointer;list-style:none;display:flex;justify-content:space-between;padding:16px 0;font:400 22px/1.2 var(--f-display);color:var(--choc)}
+.lx-tinfo summary::-webkit-details-marker{display:none}
+.lx-tinfo summary::after{content:"+";color:var(--choc);transition:transform .3s}
+.lx-tinfo details[open] summary::after{transform:rotate(45deg)}
+.lx-tinfo details p{color:var(--muted);font-size:15px;padding-bottom:14px}
+.lx-ul{list-style:none;padding:0 0 14px;margin:0;display:grid;gap:9px;font-size:15px}
+.lx-ul li{display:flex;gap:10px}.lx-ul svg{width:18px;height:18px;color:var(--choc);flex:none;margin-top:2px}
+.lx-chips{display:flex;flex-wrap:wrap;gap:8px;padding-bottom:16px}.lx-chips span{font-size:13px;padding:7px 12px;border-radius:99px;background:var(--surface);border:1px solid var(--line)}
+.lx-more{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+.lx-mc{display:grid;justify-items:center;gap:6px;padding:26px 10px 20px;border-radius:26px;background:var(--bg);text-decoration:none;color:var(--ink);overflow:hidden;transition:transform .5s}
+.lx-mc:hover{transform:translateY(-5px)}
+.lx-mc .ph{--w:min(170px,60%);margin-bottom:10px}
+.lx-mc b{font:400 24px/1 var(--f-display);color:var(--choc)}.lx-mc span{font-size:13px;color:var(--muted)}
+@media (max-width:900px){.lx-tg2{grid-template-columns:minmax(0,1fr)}.lx-tdemo{position:relative;top:0}.lx-mc b{font-size:18px}}
+@media (max-width:560px){.lx-more{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:10px}.lx-mc{flex:0 0 62%;scroll-snap-align:start}}
+html.emb body{background:#fff}html.emb .demo-col{padding:0}html.emb .inv{max-width:none;width:100%}
 /* motion */
 @media (prefers-reduced-motion:no-preference){
  .lx-hero .stg{animation:lpUp 1.1s cubic-bezier(.2,.7,.2,1) backwards;animation-delay:var(--d,0s)}
- .lx-stage .ph.hero.ok{animation:lxRise 1.4s .2s cubic-bezier(.2,.7,.2,1) backwards}
- @keyframes lxRise{from{opacity:0;translate:0 90px}}
- .lx-stage .ph.hero{translate:calc(var(--px,0)*10px) calc(var(--py,0)*8px + var(--sy,0)*-40px);transition:translate .6s cubic-bezier(.2,.7,.2,1),opacity .7s}
- .lx-d{animation:lxFloat 7s ease-in-out infinite,lxIn 1.2s cubic-bezier(.2,.7,.2,1) backwards;translate:calc(var(--px,0)*-26px) calc(var(--py,0)*-18px + var(--sy,0)*-90px);transition:translate .8s cubic-bezier(.2,.7,.2,1)}
- .lx-d.d1{animation-delay:0s,.5s}.lx-d.d2{animation-delay:-2s,.65s}.lx-d.d3{animation-delay:-4s,.8s}.lx-d.d4{animation-delay:-1s,.95s}.lx-d.d5{animation-delay:-3s,1.1s}.lx-d.d6{animation-delay:-5s,1.25s}
- .lx-d.d2,.lx-d.d6{animation-name:lxFloatM,lxIn}
- @keyframes lxFloat{50%{transform:translateY(-14px) rotate(3deg)}}
- @keyframes lxFloatM{0%,100%{transform:scaleX(-1)}50%{transform:scaleX(-1) translateY(-14px) rotate(-3deg)}}
- @keyframes lxIn{from{opacity:0;scale:.6}}
- .lx-chip.c1{animation:lpFl 6s ease-in-out infinite,lpUp 1s 1.2s backwards}
- .lx-chip.c2{animation:lpFl 7s -2s ease-in-out infinite,lpUp 1s 1.4s backwards}
+ .lx-hero h1 .w{animation:lxWord 1s cubic-bezier(.2,.7,.2,1) backwards;animation-delay:calc(.08s + var(--i)*.07s)}
+ @keyframes lxWord{from{opacity:0;transform:translateY(.45em) rotate(2deg);filter:blur(6px)}}
+ .lx-stage .ph.front.ok{animation:lxRiseF 1.4s .3s cubic-bezier(.2,.7,.2,1) backwards}
+ .lx-stage .ph.back.ok{animation:lxRiseB 1.4s .5s cubic-bezier(.2,.7,.2,1) backwards}
+ @keyframes lxRiseF{from{opacity:0;translate:0 90px;rotate:6deg}}
+ @keyframes lxRiseB{from{opacity:0;translate:60px 60px;rotate:6deg}}
+ .lx-stage .ph{transition:translate .7s cubic-bezier(.2,.7,.2,1),opacity .7s}
+ .lx-stage .ph.front{translate:calc(var(--px,0)*14px) calc(var(--py,0)*10px + var(--sy,0)*-30px)}
+ .lx-stage .ph.back{translate:calc(var(--px,0)*-12px) calc(var(--py,0)*-8px + var(--sy,0)*-60px)}
+ .lx-chip.c1{animation:lpFl 6s ease-in-out infinite,lpUp 1s 1.1s backwards}
+ .lx-chip.c2{animation:lpFl 7s -2s ease-in-out infinite,lpUp 1s 1.3s backwards}
+ .lx-chip.c3{animation:lpFl 8s -4s ease-in-out infinite,lpUp 1s 1.5s backwards}
+ .rv-on .lx-card.rv{opacity:0;transform:translateY(50px) scale(.97)}
+ .rv-on .lx-card.rv.in{opacity:1;transform:none;transition:opacity 1s cubic-bezier(.2,.7,.2,1),transform 1s cubic-bezier(.2,.7,.2,1);transition-delay:var(--d,0s)}
+ .lx .btn:not(.ghost){position:relative;overflow:hidden}
+ .lx .btn:not(.ghost)::after{content:"";position:absolute;top:0;left:-60%;width:40%;height:100%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.28),transparent);transform:skewX(-20deg);transition:left .7s}
+ .lx .btn:not(.ghost):hover::after{left:130%}
 }
-@media (prefers-reduced-motion:reduce){.ph.auto .ph-scr>img,.lx-strip .row,.mk-live .live i{animation:none}.ph-scr>img,.fx-s{transition:none}.lx-sc{transform:none;filter:none}}
+@media (prefers-reduced-motion:reduce){.lx-strip .row,.mk-live .live i,.lx-halo,.lx-live i{animation:none}.ph-tr,.fx-s{transition:none}.lx-sc{transform:none;filter:none}}
 </style>
 </head>
 <body>
@@ -868,7 +930,7 @@ function copyText(t){
 }
 
 /* ---------- config (prices are placeholders: edit here) ---------- */
-var PRICING={section:150,lang:250};
+var PRICING={section:150,lang:250,freeSecs:5};
 var LANGS=[
   {id:'uk',name:'Українська',code:'UA',locale:'uk-UA'},
   {id:'en',name:'English',code:'EN',locale:'en-GB'},
@@ -1037,7 +1099,7 @@ var PAL='tpl/palace/',palOn=false;
 var mk=function(s){return esc(s).replace(/\*\*(.+?)\*\*/g,'<b>$1</b>').replace(/\n/g,'<br>')};
 TPL.palace={
   id:'palace',name:'The Blue Palace',base:2490,cover:PAL+'cover.jpg',theme:'navy',span:1,noTheme:true,noFont:true,
-  gate:true,gateName:'завіса',secs:['save','location','program','dress','gifts','rsvp'],incl:['dress','gifts'],
+  gate:true,gateName:'завіса',secs:['save','location','program','dress','gifts','rsvp'],newSecs:['save','location','program','dress','rsvp'],incl:['dress','gifts'],
   desc:'Королівський синій оксамит, гортензії й тоаль: завіса, що відкривається дотиком, дата, що проявляється, конверт із вашим фото й анкета гостя.',
   feats:['Завіса відкривається дотиком, дата проявляється при дотику','Тоаль-рамка програми, дрескод із палітрою та конверт із фото','Анкета гостя в стилі шаблону, музика, до 4 мов'],
   photoDef:{photo1:PAL+'couple.jpg',photo2:PAL+'hands.jpg'},
@@ -1425,11 +1487,17 @@ var FAQ=[
   ['Які мови доступні?','Українська входить у вартість. Додатково доступні англійська, польська й німецька. Тексти для кожної мови заповнюються окремо.']
 ];
 var COLL=[
-  {id:'story',name:'Our Story',cov:'img/cov-story.webp',tag:'Хіт',vibe:'Вінтаж · ваша історія з дитячих фото',base:2490},
-  {id:'vows',name:'Warm Vows',cov:'img/cov-vows.webp',vibe:'Тепло · кава · арки',base:2490},
-  {id:'palace',name:'The Blue Palace',cov:'img/cov-palace.webp',tpl:'palace',vibe:'Оксамитова завіса · гортензії',base:2490},
-  {id:'dofa',name:'dofamin',cov:'img/cov-dofa.webp',tag:'Новинка',vibe:'Колір · гербери · драйв',base:2490}
+  {id:'story',name:'Our Story',cov:'img/cov-story.webp',tag:'Хіт',vibe:'Вінтаж · ваша історія з дитячих фото',base:2490,bg:'#efe3d3',
+   desc:'Історія кохання з дитячих фото: паперова текстура, рукописні акценти й теплий вінтаж. Гості усміхаються вже на першому екрані.'},
+  {id:'vows',name:'Warm Vows',cov:'img/cov-vows.webp',vibe:'Тепло · кава · арки',base:2490,bg:'#eadfd5',
+   desc:'Великий портрет пари в арці й кавові відтінки. Спокійна елегантність для тих, хто цінує затишок і родинну атмосферу.'},
+  {id:'palace',name:'The Blue Palace',cov:'img/cov-palace.webp',tpl:'palace',vibe:'Оксамитова завіса · гортензії',base:2490,bg:'#dfe9f1',
+   slides:['img/feat/cover.webp','img/feat/hero.webp','img/feat/coins.webp','img/feat/loc.webp','img/feat/prog.webp','img/feat/rsvp.webp'],
+   desc:'Оксамитова завіса розкривається від дотику, а дату гості стирають, як золоту монетку. Королівський синій, білі гортензії й палацова графіка.'},
+  {id:'dofa',name:'dofamin',cov:'img/cov-dofa.webp',tag:'Новинка',vibe:'Колір · гербери · драйв',base:2490,bg:'#f3e6d4',
+   desc:'Яскраві гербери, сміливі форми й грайлива типографіка. Для пар, які хочуть, щоб запрошення посміхалося разом із ними.'}
 ];
+function collById(id){for(var i=0;i<COLL.length;i++)if(COLL[i].id===id||COLL[i].tpl===id)return COLL[i];return null}
 var FEATS=[
   {img:'img/feat/cover.webp',t:'Обкладинка, яку хочеться відкрити',d:'Конверт із сургучем, завіса чи мереживо: у кожного дизайну свій перший кадр, який відкривається від дотику.'},
   {img:'img/feat/hero.webp',t:'Ваші імена й музика',d:'Головний екран з іменами, датою та вашою піснею, яка вмикається з першим дотиком.'},
@@ -1453,8 +1521,24 @@ var ICO={
   chk:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>',
   tg:'<svg viewBox="0 0 24 24" fill="currentColor"><path d="M21.9 4.3c.3-1.2-.9-2.1-2-1.7L2.8 9.2c-1.2.5-1.1 2.2.1 2.6l4.4 1.4 1.7 5.3c.3 1 1.6 1.3 2.4.6l2.5-2.3 4.6 3.4c.9.6 2.1.1 2.4-.9l3-14.9zM9.4 14.4l8.4-7.6-6.9 8.8-.3 3.1-1.2-4.3z"/></svg>'
 };
-function phone(src,cls,alt,eager){return '<div class="ph'+(cls?' '+cls:'')+'"><div class="ph-scr"><img src="'+src+'" alt="'+esc(alt||'')+'"'+(eager?' fetchpriority="high"':' loading="lazy"')+' decoding="async" onload="this.closest(\'.ph\').classList.add(\'ok\')"></div></div>'}
-function phReady(root){(root||document).querySelectorAll('.ph:not(.ok) img').forEach(function(i){if(i.complete&&i.naturalWidth)i.closest('.ph').classList.add('ok')})}
+function phone(src,cls,alt,eager){return '<div class="ph'+(cls?' '+cls:'')+'"><i class="ph-b" aria-hidden="true"></i><div class="ph-scr"><img src="'+src+'" alt="'+esc(alt||'')+'"'+(eager?' fetchpriority="high"':' loading="lazy"')+' decoding="async" onload="this.closest(\'.ph\').classList.add(\'ok\')"></div></div>'}
+function slidesOf(c){return c.slides?c.slides.map(function(x){return {src:x,pos:'50% 0'}}):[{src:c.cov,pos:'50% 0'},{src:c.cov,pos:'50% 50%'},{src:c.cov,pos:'50% 100%'}]}
+function phoneSlides(c,cls,eager){var sl=slidesOf(c);return '<div class="ph sl'+(cls?' '+cls:'')+'" data-phs><i class="ph-b" aria-hidden="true"></i><div class="ph-scr"><div class="ph-tr">'+sl.map(function(x,i){return '<img src="'+x.src+'" style="object-position:'+x.pos+'" alt="'+(i===0?esc(c.name):'')+'"'+(eager&&i===0?' fetchpriority="high"':' loading="lazy"')+' decoding="async"'+(i===0?' onload="this.closest(\'.ph\').classList.add(\'ok\')"':'')+'>'}).join('')+'</div></div><div class="ph-dots">'+sl.map(function(x,i){return '<i'+(i===0?' class="on"':'')+'></i>'}).join('')+'</div></div>'}
+function phReady(root){(root||document).querySelectorAll('.ph:not(.ok)').forEach(function(p){var i=p.querySelector('img');if(i&&i.complete&&i.naturalWidth)p.classList.add('ok')})}
+var slTimers=[];
+function slInit(root){
+  var calm=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
+  (root||document).querySelectorAll('[data-phs]').forEach(function(ph,k){
+    if(ph._sl)return;ph._sl=1;
+    var tr=ph.querySelector('.ph-tr'),n=tr.children.length,dots=[].slice.call(ph.querySelectorAll('.ph-dots i')),i=0,vis=false;
+    function go(j){i=(j+n)%n;tr.style.transform='translateX('+(-100*i)+'%)';dots.forEach(function(d,x){d.classList.toggle('on',x===i)})}
+    ph._go=go;
+    if(calm||n<2)return;
+    if('IntersectionObserver' in window){var io=new IntersectionObserver(function(es){vis=es[0].isIntersecting},{threshold:.4});io.observe(ph)}else vis=true;
+    var hov=false;ph.addEventListener('mouseenter',function(){hov=true});ph.addEventListener('mouseleave',function(){hov=false});
+    setTimeout(function(){var t=setInterval(function(){if(!document.body.contains(ph)){clearInterval(t);return}if(vis&&!hov)go(i+1)},2800);slTimers.push(t)},k*450);
+  });
+}
 function lpNav(){
   return '<header class="lp-nav"><div class="wrap in"><a class="brand lx-logo" href="#shop">Inviteri<small>by valeria.dsgn</small></a><nav><a href="#shop" data-go="tpl">Колекція</a><a href="#shop" data-go="lp-feat">Можливості</a><a href="#shop" data-go="lp-how">Як це працює</a><a href="#shop" data-go="lp-plans">Тарифи</a><a href="#shop" data-go="lp-faq">Питання</a></nav><div class="r"><a class="btn ghost sm" href="#my">Мої запрошення</a><a class="btn sm" href="#shop" data-go="tpl">Обрати дизайн</a></div></div></header>';
 }
@@ -1465,24 +1549,25 @@ function featScreen(f){
 }
 function viewShop(){
   var chk=ICO.chk,arr=ICO.arr;
-  var deco=[['tpl/palace/fl2.webp','d1'],['tpl/palace/cherub.webp','d2 line'],['tpl/palace/seal.webp','d3'],['tpl/palace/coin.webp','d4'],['tpl/palace/fl3.webp','d5'],['tpl/palace/fl3.webp','d6 flip']];
-  var hero='<section class="lx-hero"><div class="wrap"><div class="lx-hc">'+
-    '<span class="eyebrow stg" style="--d:0s">Електронні запрошення на весілля</span>'+
-    '<h1 class="stg" style="--d:.1s">Надішліть гостям <span class="nw"><em>вау</em>,</span> а не листівку</h1>'+
-    '<p class="lead stg" style="--d:.25s">Анімоване запрошення-сайт з вашою історією, програмою, мапою й анкетою для гостей. Одне посилання замість друку, конвертів і сотні дзвінків.</p>'+
-    '<div class="cta stg" style="--d:.4s"><a class="btn lg" href="#shop" data-go="tpl">Обрати дизайн '+arr+'</a></div>'+
-    '<p class="lx-price stg" style="--d:.5s">від '+money(2490)+' · один платіж · без підписок · <a href="#shop" data-go="lp-plans">Порівняти тарифи</a></p></div>'+
-    '<div class="lx-stage" aria-hidden="true">'+deco.map(function(d){return '<img class="lx-d '+d[1]+'" src="'+d[0]+'" alt="" decoding="async">'}).join('')+
-      phone('img/cov-story.webp','hero auto','',1)+
+  var h1w=function(t){return t.split(' ').map(function(w,i){return '<span class="w" style="--i:'+i+'">'+w+'</span>'}).join(' ')};
+  var hero='<section class="lx-hero"><div class="wrap lx-hg"><div class="lx-hc">'+
+    '<span class="lx-live stg" style="--d:0s"><i></i>Анімовані запрошення-сайти від дизайнерки</span>'+
+    '<h1>'+h1w('Весільне запрошення, яке гості')+' <em class="w" style="--i:5">не забудуть</em></h1>'+
+    '<p class="lead stg" style="--d:.45s">Ваша історія, програма дня, мапа й анкета для гостей в одному красивому посиланні. Без друку, конвертів і сотні дзвінків.</p>'+
+    '<div class="cta stg" style="--d:.6s"><a class="btn lg" href="#shop" data-go="tpl">Обрати дизайн '+arr+'</a><a class="btn ghost lg" href="#t-palace">Подивитися демо</a></div>'+
+    '<p class="lx-price stg" style="--d:.7s">від '+money(2490)+' · один платіж · 5 секцій у вартості · <a href="#shop" data-go="lp-plans">Тарифи</a></p></div>'+
+    '<div class="lx-stage" aria-hidden="true"><div class="lx-halo"></div>'+
+      phoneSlides(COLL[2],'back',true)+phoneSlides(COLL[0],'front',true)+
       '<div class="lx-chip c1"><i>♥</i><span><b>Олена підтвердила</b><br>прийде з +1</span></div>'+
       '<div class="lx-chip c2"><i>54</i><span><b>гостей відповіли</b><br>з 86 запрошених</span></div>'+
+      '<div class="lx-chip c3"><i>♪</i><span><b>Ваша пісня</b><br>з першого дотику</span></div>'+
     '</div></div></section>';
   var strip=['Дизайн ручної роботи','Одне посилання для всіх гостей','Анімації та ваша музика','Анкета й відповіді онлайн','Кілька мов в одному запрошенні','Без друку й застосунків','Зміни без нового тиражу'];
   var strip2='<div class="lx-strip" aria-hidden="true"><div class="row">'+strip.concat(strip).map(function(s){return '<span>'+s+'</span>'}).join('')+'</div></div>';
   var tpls='<section class="lp-sec lx-collw" id="tpl"><div class="wrap"><div class="lx-row rv"><div class="lx-head" style="margin:0"><span class="eyebrow">Колекція</span><h2>Дизайни, які я <em>малюю вручну</em></h2></div><div class="lx-rn"><button type="button" data-sl="-1" aria-label="Назад">'+ICO.l+'</button><button type="button" data-sl="1" aria-label="Далі">'+ICO.r+'</button></div></div>'+
     '<div class="lp-cats" role="group" aria-label="Категорія">'+CATS.map(function(c,i){return '<button type="button" data-cat="'+c.id+'" aria-pressed="'+(i===0)+'">'+esc(c.name)+'</button>'}).join('')+'</div></div>'+
     '<div class="lx-coll" id="lp-tpls">'+tplCards('wedding')+'</div>'+
-    '<div class="wrap lx-cnote"><span>Кожен дизайн адаптуємо під вас: імена, фото, кольори, секції.</span><a class="lnk" href="#shop" data-go="lp-plans">Що входить у тарифи '+arr+'</a></div></section>';
+    '<div class="wrap lx-cnote"><span>5 секцій входять у вартість, кожна наступна +'+money(PRICING.section)+'. Імена, фото й тексти ваші.</span><a class="lnk" href="#shop" data-go="lp-plans">Що входить у тарифи '+arr+'</a></div></section>';
   var feat='<section class="lp-sec lx-featw" id="lp-feat"><div class="wrap"><div class="lx-head c rv"><span class="eyebrow">Можливості</span><h2>Усе, що потрібно гостям. <em>Нічого зайвого</em></h2><p>Гортайте, як гортав би гість. Секції вмикаєте ті, що потрібні саме вам.</p></div>'+
     '<div class="lx-fx rv"><button class="lx-fb" type="button" data-fx="-1" aria-label="Попередня">'+ICO.l+'</button>'+
     '<div class="ph lx-fph ok"><div class="ph-scr">'+FEATS.map(function(f,i){return '<div class="fx-s'+(i===0?' on':'')+'">'+featScreen(f)+'</div>'}).join('')+'</div></div>'+
@@ -1507,12 +1592,12 @@ function viewShop(){
   var build='<section class="lp-dark lp-sec" id="lp-build"><div class="wrap"><div class="lx-head rv"><span class="eyebrow">Конструктор</span><h2>Спробуйте <em>просто зараз</em></h2><p>Змініть тему, увімкніть секції й погортайте запрошення. Так виглядає робота в конструкторі.</p></div><div class="lp-b" id="lp-b"></div></div></section>';
   var plans='<section class="wrap lp-sec" id="lp-plans"><div class="lx-head c rv"><span class="eyebrow">Тарифи</span><h2>Три рівні <em>персоналізації</em></h2><p>Один і той самий дизайн, різна глибина роботи. Платите один раз, без підписок.</p></div><div class="lp-plans">'+TARIFFS.map(function(t,i){
     var cta=t.id==='self'?'<a class="btn ghost" href="#shop" data-go="tpl">'+t.cta+'</a>':'<a class="btn" href="'+tgLink(t.id==='key'?'Привіт! Хочу замовити запрошення за тарифом «Під ключ».\nПодія: \nДата: \nШаблон: ':'Привіт! Хочу індивідуальне запрошення.\nПодія: \nДата: \nПриклади, що подобаються: ')+'" target="_blank" rel="noopener">'+t.cta+'</a>';
-    return '<article class="lp-plan rv'+(t.tag?' pop':'')+'" style="--d:'+(i*.12)+'s">'+(t.tag?'<span class="tag">'+esc(t.tag)+'</span>':'')+'<h3>'+esc(t.name)+'</h3><p class="sub">'+esc(t.sub)+'</p><div class="pr"><small>від</small>'+money(t.from)+'</div>'+(t.id==='self'&&BETA?'<span class="free">Зараз публікація безкоштовна</span>':'')+'<ul>'+t.feats.map(function(f){return '<li>'+chk+'<span>'+esc(f)+'</span></li>'}).join('')+'</ul>'+cta+'</article>'}).join('')+'</div><p class="lp-pnote">Додаткова мова +'+money(PRICING.lang)+', додаткова секція +'+money(PRICING.section)+'. Іменні запрошення для кожного гостя скоро.</p></section>';
+    return '<article class="lp-plan rv'+(t.tag?' pop':'')+'" style="--d:'+(i*.12)+'s">'+(t.tag?'<span class="tag">'+esc(t.tag)+'</span>':'')+'<h3>'+esc(t.name)+'</h3><p class="sub">'+esc(t.sub)+'</p><div class="pr"><small>від</small>'+money(t.from)+'</div>'+(t.id==='self'&&BETA?'<span class="free">Зараз публікація безкоштовна</span>':'')+'<ul>'+t.feats.map(function(f){return '<li>'+chk+'<span>'+esc(f)+'</span></li>'}).join('')+'</ul>'+cta+'</article>'}).join('')+'</div><p class="lp-pnote">Додаткова мова +'+money(PRICING.lang)+'. 5 секцій входять у вартість, кожна наступна +'+money(PRICING.section)+'. Іменні запрошення для кожного гостя скоро.</p></section>';
   var msgTxt='Привіт, Валеріє! Хочу індивідуальне запрошення.\nПодія: \nДата: \nМісто і локація: \nНастрій і кольори: \nПриклади, що сподобались (посилання або скріни): ';
   var custom='<section class="lp-sec lx-soft" id="lp-custom"><div class="wrap"><div class="lp-cu"><div class="rv"><span class="eyebrow">Індивідуально</span><h2 style="margin-top:20px">Дизайн, <em>якого немає ні в кого</em></h2><p class="lead2">Я намалюю запрошення з нуля під вашу історію, кольори й локацію. Для весілля, дня народження, хрестин чи ювілею.</p><div class="lp-msg"><b class="lx-cap">Що написати мені в Telegram</b><pre id="lp-msg">'+esc(msgTxt)+'</pre><div class="row"><a class="btn" href="'+tgLink(msgTxt)+'" target="_blank" rel="noopener">Написати в Telegram</a><button class="btn ghost" type="button" id="lp-copy">Скопіювати текст</button></div></div></div><ol class="lp-cs"><li class="rv"><span class="n">1</span><span><b>Пишете мені в Telegram</b><span class="t">Подія, дата, 2–3 приклади, що подобаються, і кілька слів про настрій свята.</span></span></li><li class="rv" style="--d:.12s"><span class="n">2</span><span><b>Погоджуємо концепцію</b><span class="t">Я надсилаю мудборд і ескіз головного екрана, ви кажете, що змінити.</span></span></li><li class="rv" style="--d:.24s"><span class="n">3</span><span><b>Отримуєте готове запрошення</b><span class="t">Анімоване, з анкетою й кабінетом. Посилання одразу можна надсилати гостям.</span></span></li></ol></div></div></section>';
   var rev=REVIEWS.length?'<section class="lp-sec" id="lp-rev"><div class="wrap"><div class="lx-row rv"><div class="lx-head" style="margin:0"><span class="eyebrow">Відгуки</span><h2>Що кажуть <em>пари</em></h2></div><div class="lx-rn"><button type="button" data-rv="-1" aria-label="Попередній відгук">'+ICO.l+'</button><button type="button" data-rv="1" aria-label="Наступний відгук">'+ICO.r+'</button></div></div><div class="lx-rev" id="lx-rev">'+REVIEWS.map(function(r){return '<figure class="lx-rc"><blockquote>'+esc(r.text)+'</blockquote><figcaption><b>'+esc(r.name)+'</b><span>'+esc([r.tpl,r.date].filter(Boolean).join(' · '))+'</span></figcaption></figure>'}).join('')+'</div></div></section>':'';
   var faq='<section class="wrap lp-sec" id="lp-faq"><div class="lx-head c rv"><span class="eyebrow">Питання</span><h2>Відповідаю <em>наперед</em></h2></div><div class="lp-faq">'+FAQ.map(function(f){return '<details><summary>'+esc(f[0])+'</summary><p>'+esc(f[1])+'</p></details>'}).join('')+'</div></section>';
-  var fin='<section class="lx-fin"><div class="wrap"><div class="lx-finb"><img class="fl a" src="tpl/palace/fl2.webp" alt="" loading="lazy"><img class="fl b" src="tpl/palace/fl3.webp" alt="" loading="lazy"><span class="eyebrow">Почнімо</span><h2>Ваші гості вже чекають <em>на посилання</em></h2><p>Оберіть дизайн і зберіть запрошення за вечір. А якщо хочете довірити все мені, напишіть у Telegram.</p><div class="cta"><a class="btn lg" href="#shop" data-go="tpl">Обрати дизайн</a><a class="btn ghost lg" href="https://t.me/valeriaralko" target="_blank" rel="noopener">Написати в Telegram</a></div></div></div></section>';
+  var fin='<section class="lx-fin"><div class="wrap"><div class="lx-finb"><span class="eyebrow">Почнімо</span><h2>Ваші гості вже чекають <em>на посилання</em></h2><p>Оберіть дизайн і зберіть запрошення за вечір. А якщо хочете довірити все мені, напишіть у Telegram.</p><div class="cta"><a class="btn lg" href="#shop" data-go="tpl">Обрати дизайн</a><a class="btn ghost lg" href="https://t.me/valeriaralko" target="_blank" rel="noopener">Написати в Telegram</a></div></div></div></section>';
   var ft='<footer class="lx-ft"><div class="wrap"><div class="lx-ftg"><div><a class="lx-logo big" href="#shop">Inviteri</a><p>Електронні запрошення від дизайнерки Валерії.</p></div><nav><b>Сайт</b><a href="#shop" data-go="tpl">Колекція</a><a href="#shop" data-go="lp-plans">Тарифи</a><a href="#shop" data-go="lp-faq">Питання</a><a href="#my">Мої запрошення</a></nav><nav><b>Зв’язок</b><a href="https://t.me/valeriaralko" target="_blank" rel="noopener">Telegram @valeriaralko</a><a href="https://www.instagram.com/valeria.dsgn" target="_blank" rel="noopener">Instagram @valeria.dsgn</a></nav></div><div class="lx-ftb"><span>© '+new Date().getFullYear()+' Inviteri</span><span>Зроблено з любов’ю в Україні</span></div></div></footer>';
   var sticky='<div class="lx-sticky" id="lx-sticky"><a class="btn" href="#shop" data-go="tpl">Обрати дизайн · від '+money(2490)+'</a><a class="lx-tg" href="https://t.me/valeriaralko" target="_blank" rel="noopener" aria-label="Написати в Telegram">'+ICO.tg+'</a></div>';
   app.innerHTML='<div class="lp lx">'+lpNav()+hero+strip2+tpls+feat+say+how+rev+cmp+plans+build+custom+faq+fin+ft+sticky+'</div>';
@@ -1520,11 +1605,11 @@ function viewShop(){
   function bindOrder(root){root.querySelectorAll('[data-order]').forEach(function(b){b.addEventListener('click',function(){openChoose(b.getAttribute('data-order'))})})}
   bindOrder(app);
   lpBuilder();
-  phReady(app);
+  phReady(app);slInit(app);
   var grid=document.getElementById('lp-tpls');
   app.querySelectorAll('[data-cat]').forEach(function(b){b.addEventListener('click',function(){
     app.querySelectorAll('[data-cat]').forEach(function(x){x.setAttribute('aria-pressed',String(x===b))});
-    grid.innerHTML=tplCards(b.getAttribute('data-cat'));bindOrder(grid);phReady(grid);reveal();
+    grid.innerHTML=tplCards(b.getAttribute('data-cat'));bindOrder(grid);phReady(grid);slInit(grid);reveal();
   })});
   app.querySelectorAll('[data-sl]').forEach(function(b){b.addEventListener('click',function(){var c=grid.querySelector('.lx-card');grid.scrollBy({left:(c?c.offsetWidth+24:300)*Number(b.getAttribute('data-sl')),behavior:'smooth'})})});
   var rv=document.getElementById('lx-rev');if(rv)app.querySelectorAll('[data-rv]').forEach(function(b){b.addEventListener('click',function(){var c=rv.querySelector('.lx-rc');rv.scrollBy({left:(c?c.offsetWidth+20:320)*Number(b.getAttribute('data-rv')),behavior:'smooth'})})});
@@ -1551,7 +1636,7 @@ function viewShop(){
     if(!calm){
       words.forEach(function(w){var t=w.getBoundingClientRect().top;var k=Math.min(1,Math.max(0,(vh*.85-t)/(vh*.35)));w.style.opacity=(.14+.86*k).toFixed(3)});
       cards.forEach(function(c,i){var nx=cards[i+1];if(!nx){c.style.setProperty('--k',0);return}var a=c.getBoundingClientRect().top,b=nx.getBoundingClientRect().top;var k=Math.min(1,Math.max(0,1-(b-a)/(vh*.7)));c.style.setProperty('--k',k.toFixed(3))});
-      stg.style.setProperty('--sy',Math.min(1,scrollY/vh).toFixed(3));
+      if(stg)stg.style.setProperty('--sy',Math.min(1,scrollY/vh).toFixed(3));
     }
     var tp=document.getElementById('tpl'),ft=app.querySelector('.lx-fin');
     stk.classList.toggle('on',scrollY>vh*.8&&!(ft&&ft.getBoundingClientRect().top<vh));
@@ -1564,27 +1649,69 @@ function tplCards(cat){
   var arr=ICO.ne;
   if(cat==='wedding')return COLL.map(function(c,i){
     var t=c.tpl&&TPL[c.tpl];
-    var href=t?'#demo-'+c.tpl:tgLink('Привіт! Хочу запрошення «'+c.name+'».\nПодія: весілля\nДата: ');
-    var ext=t?'':' target="_blank" rel="noopener"';
-    return '<article class="lx-card rv" style="--d:'+(i*.08)+'s"><a href="'+href+'"'+ext+' class="lx-pl" aria-label="'+esc(c.name)+'">'+(c.tag?'<span class="tag">'+esc(c.tag)+'</span>':'')+phone(c.cov,'',c.name)+'<span class="go">'+(t?'Відкрити демо':'Замовити')+' '+arr+'</span></a>'+
-      '<div class="lx-cb"><h3>'+esc(c.name)+'</h3><p class="vibe">'+esc(c.vibe)+'</p><p class="pr">від '+money(t?t.base:c.base)+'</p></div></article>';
+    return '<article class="lx-card rv" style="--d:'+(i*.08)+'s"><a href="#t-'+c.id+'" class="lx-pl" style="--bg:'+c.bg+'" aria-label="'+esc(c.name)+'">'+(c.tag?'<span class="tag">'+esc(c.tag)+'</span>':'')+phoneSlides(c,'')+'</a>'+
+      '<div class="lx-cb"><div class="lx-ct"><h3>'+esc(c.name)+'</h3><span class="pr">від '+money(t?t.base:c.base)+'</span></div><p class="vibe">'+esc(c.vibe)+'</p>'+
+      '<div class="lx-bt"><a class="btn ghost sm" href="#t-'+c.id+'">Демо</a><button class="btn sm" type="button" data-make="'+c.id+'">Створити</button></div></div></article>';
   }).join('');
   var h=Object.keys(SHOW).filter(function(k){return SHOW[k].cat===cat}).map(function(k,i){var t=SHOW[k];
-    return '<article class="lx-card rv" style="--d:'+(i*.08)+'s"><a href="#demo-'+k+'" class="lx-pl" aria-label="'+esc(t.name)+'">'+phone(t.cover,'fit',t.name)+'<span class="go">Відкрити демо '+arr+'</span></a><div class="lx-cb"><h3>'+esc(t.name)+'</h3><p class="vibe">День народження · 1920-ті</p><p class="pr">від '+money(t.base)+'</p></div></article>'}).join('');
+    return '<article class="lx-card rv" style="--d:'+(i*.08)+'s"><a href="#demo-'+k+'" class="lx-pl" style="--bg:#efe3d3" aria-label="'+esc(t.name)+'">'+phone(t.cover,'fit',t.name)+'</a><div class="lx-cb"><div class="lx-ct"><h3>'+esc(t.name)+'</h3><span class="pr">від '+money(t.base)+'</span></div><p class="vibe">День народження · 1920-ті</p><div class="lx-bt"><a class="btn ghost sm" href="#demo-'+k+'">Демо</a><a class="btn sm" href="'+tgLink('Привіт! Хочу запрошення «'+t.name+'».\nПодія: \nДата: ')+'" target="_blank" rel="noopener">Замовити</a></div></div></article>'}).join('');
   return h+'<article class="lx-card soon rv"><div class="lx-cb"><span class="eyebrow">Скоро</span><h3>Нові дизайни на підході</h3><p class="vibe">Маєте ідею? Напишіть мені.</p><a class="btn ghost sm" href="'+tgLink('Привіт! Є ідея для шаблону запрошення: ')+'" target="_blank" rel="noopener">Запропонувати тему</a></div></article>';
+}
+/* «Створити»: конструктор або під ключ */
+function openMake(id){
+  closeModal();var c=collById(id),t=c&&c.tpl&&TPL[c.tpl];if(!c)return;
+  var m=document.createElement('div');m.className='modal lx-sheet';m.id='modal';m.setAttribute('role','dialog');m.setAttribute('aria-modal','true');m.setAttribute('aria-labelledby','mt');
+  var self=t?'<a class="lx-opt" href="#new-'+c.tpl+'"><span class="n">01</span><b>Сама в конструкторі</b><span>Покроково заповнюєте шаблон, бачите результат одразу. Чернетка зберігається.</span><em>від '+money(TARIFFS[0].from)+'</em></a>':'<div class="lx-opt off"><span class="n">01</span><b>Сама в конструкторі</b><span>Для цього дизайну конструктор готуємо. Поки можна замовити під ключ.</span><em>скоро</em></div>';
+  var key='<a class="lx-opt pop" href="'+tgLink('Привіт! Хочу запрошення «'+c.name+'» під ключ.\nІмена: \nДата: \nМісто: ')+'" target="_blank" rel="noopener"><span class="n">02</span><b>Під ключ</b><span>Я наповню дизайн вашими іменами, фото й деталями. 2 раунди правок, готово за 3–5 днів.</span><em>від '+money(TARIFFS[1].from)+'</em></a>';
+  var own='<a class="lx-opt" href="'+tgLink('Привіт! Хочу індивідуальне запрошення на основі «'+c.name+'».\nДата: \nПобажання: ')+'" target="_blank" rel="noopener"><span class="n">03</span><b>Індивідуально</b><span>Дизайн з нуля під вашу історію, кольори й локацію.</span><em>від '+money(TARIFFS[2].from)+'</em></a>';
+  m.innerHTML='<div class="mb"><button class="x" data-close="1" aria-label="Закрити">×</button><span class="eyebrow">'+esc(c.name)+'</span><h2 id="mt">Як створимо ваше запрошення?</h2><p class="muted">Дизайн однаковий, різниться лише, хто його наповнює.</p><div class="lx-opts">'+self+key+own+'</div><p class="lx-mnote">Питання? <a href="https://t.me/valeriaralko" target="_blank" rel="noopener">Напишіть мені в Telegram</a></p></div>';
+  m.addEventListener('click',function(e){if(e.target===m||(e.target.getAttribute&&e.target.getAttribute('data-close')))closeModal()});
+  document.body.appendChild(m);requestAnimationFrame(function(){m.classList.add('on')});
+}
+document.addEventListener('click',function(e){var b=e.target.closest&&e.target.closest('[data-make]');if(!b)return;e.preventDefault();openMake(b.getAttribute('data-make'))});
+/* окрема сторінка шаблону */
+function viewTpl(id){
+  var c=collById(id);if(!c)return viewShop();
+  var t=c.tpl&&TPL[c.tpl],arr=ICO.arr,chk=ICO.chk;
+  var demo=t?'<div class="ph live ok"><i class="ph-b" aria-hidden="true"></i><div class="ph-scr"><iframe src="#embed-'+c.tpl+'" title="Демо '+esc(c.name)+'" loading="lazy"></iframe></div></div>':phoneSlides(c,'big',true);
+  var incl=['Ваші імена, дата, фото й тексти','Анімації та музика','Анкета для гостей і особистий кабінет','Особисте посилання для розсилки','5 секцій на вибір у вартості','Українська мова (інші +'+money(PRICING.lang)+')'];
+  var secs=['Обкладинка й імена','Save the Date','Відлік до свята','Локація з маршрутом','Програма дня','Дрескод','Подарунки','Підказки й трансфер','Питання й відповіді','Анкета гостя'];
+  var other=COLL.filter(function(x){return x.id!==c.id});
+  app.innerHTML='<div class="lp lx">'+lpNav()+'<section class="lx-tp"><div class="wrap"><nav class="lx-bc"><a href="#shop">Колекція</a><span>/</span><b>'+esc(c.name)+'</b></nav><div class="lx-tg2">'+
+    '<div class="lx-tdemo"><div class="lx-tst" style="--bg:'+c.bg+'">'+demo+'</div><p class="lx-thint">'+(t?'Спробуйте самі: торкніться, гортайте й відповідайте, як гість.':'Екрани дизайну. Повне демо з’явиться разом із конструктором.')+'</p></div>'+
+    '<div class="lx-tinfo">'+(c.tag?'<span class="lx-tag">'+esc(c.tag)+'</span>':'')+'<h1>'+esc(c.name)+'</h1><p class="vibe">'+esc(c.vibe)+'</p><p class="d">'+esc(c.desc)+'</p><p class="pr"><small>від</small>'+money(t?t.base:c.base)+'</p>'+
+    '<div class="cta"><button class="btn lg" type="button" data-make="'+c.id+'">Створити запрошення '+arr+'</button>'+(t?'<a class="btn ghost lg" href="#demo-'+c.tpl+'">Відкрити на весь екран</a>':'')+'</div>'+
+    '<ul class="lx-tick"><li>'+chk+'Дизайн ручної роботи</li><li>'+chk+'Правки до запуску</li><li>'+chk+'Один платіж, без підписок</li></ul>'+
+    '<div class="lx-tl"><div><b>Деталі</b><span>ви заповнюєте або надсилаєте мені</span></div><div><b>Чернетка</b><span>переглядаєте й просите правки</span></div><div><b>Готово</b><span>за вечір самостійно або 3–5 днів під ключ</span></div></div>'+
+    '<details open><summary>Що входить</summary><ul class="lx-ul">'+incl.map(function(x){return '<li>'+chk+esc(x)+'</li>'}).join('')+'</ul></details>'+
+    '<details><summary>Секції запрошення</summary><p>Оберіть будь-які 5 секцій, вони входять у вартість. Кожна наступна +'+money(PRICING.section)+'.</p><div class="lx-chips">'+secs.map(function(x){return '<span>'+esc(x)+'</span>'}).join('')+'</div></details>'+
+    '<details><summary>Як це працює</summary><p>Обираєте, хто наповнює запрошення: ви в конструкторі або я під ключ. Після погодження отримуєте посилання для гостей і доступ до кабінету з відповідями.</p></details>'+
+    '<details><summary>Правки й терміни</summary><p>У тарифі «Під ключ» 2 раунди правок, готово за 3–5 днів. Після публікації текст можна змінювати, посилання лишається тим самим.</p></details>'+
+    '</div></div></div></section>'+
+    '<section class="lp-sec"><div class="wrap"><div class="lx-head"><span class="eyebrow">Вам також сподобається</span></div><div class="lx-more">'+other.map(function(x){return '<a class="lx-mc" href="#t-'+x.id+'" style="--bg:'+x.bg+'">'+phone(x.cov,'',x.name)+'<b>'+esc(x.name)+'</b><span>від '+money(x.base)+'</span></a>'}).join('')+'</div></div></section>'+
+    '<div class="lx-sticky on" id="lx-sticky"><button class="btn" type="button" data-make="'+c.id+'">Створити · від '+money(t?t.base:c.base)+'</button><a class="lx-tg" href="https://t.me/valeriaralko" target="_blank" rel="noopener" aria-label="Написати в Telegram">'+ICO.tg+'</a></div></div>';
+  phReady(app);slInit(app);reveal();
+  var fr=app.querySelector('.ph.live iframe');
+  if(fr){var fit=function(){var sc=fr.parentNode,w=sc.clientWidth,h=sc.clientHeight;if(!w)return;var k=w/390;fr.style.height=(h/k)+'px';fr.style.transform='scale('+k+')'};fit();addEventListener('resize',fit)}
+}
+function viewEmbed(tid){
+  var t=TPL[tid];if(!t)return;
+  document.documentElement.classList.add('emb');envOpen=false;
+  app.innerHTML='<div class="demo-col">'+renderInv(tid,null,null,{live:false,anim:true})+'</div>'+envHTML(tid,null,true);
+  markInv();reveal();tick();
 }
 function lpBuilder(){
   var box=document.getElementById('lp-b');if(!box)return;
   var EXTRA=['dress','gifts','tips','transfer','faq'];
   var S={tid:'tishyna',theme:TPL.tishyna.theme,on:{}};
   function secs(){return freeSecs().concat(EXTRA.filter(function(s){return S.on[s]}))}
-  function total(){var t=TPL[S.tid].base;EXTRA.forEach(function(s){if(S.on[s])t+=SEC[s].price});return t}
+  function total(){return TPL[S.tid].base+secExtra(secs())*PRICING.section}
   function draw(scrollTo){
     var old=box.querySelector('.sc'),keep=old?old.scrollTop:0;
     box.innerHTML='<div class="lp-win"><div class="top"><i></i><i></i><i></i><small>Конструктор запрошення</small></div><div class="bd"><div class="lp-stp"><span class="on">Тема</span><span>Секції</span><span>Мови</span><span>Деталі</span><span>Оплата</span></div>'+
       '<div><h4>Шаблон</h4><div class="lp-tabs">'+TPL_IDS.map(function(id){return '<button type="button" data-tpl="'+id+'" aria-pressed="'+(S.tid===id)+'">'+esc(TPL[id].name)+'</button>'}).join('')+'</div></div>'+
       '<div><h4>Тема</h4><div class="lp-sw">'+THEMES.map(function(h){return '<button type="button" data-th="'+h.id+'" aria-label="'+h.name+'" title="'+h.name+'" aria-pressed="'+(S.theme===h.id)+'" style="background:'+h.dark+'"></button>'}).join('')+'</div></div>'+
-      '<div><h4>Додаткові секції</h4><div class="lp-tg">'+EXTRA.map(function(s){return '<button type="button" data-sec="'+s+'" aria-pressed="'+(!!S.on[s])+'">'+icon(s)+'<span>'+esc(SEC[s].name)+'</span><span class="tg">+'+money(SEC[s].price)+'</span></button>'}).join('')+'</div></div>'+
+      '<div><h4>Додаткові секції</h4><div class="lp-tg">'+EXTRA.map(function(s){return '<button type="button" data-sec="'+s+'" aria-pressed="'+(!!S.on[s])+'">'+icon(s)+'<span>'+esc(SEC[s].name)+'</span><span class="tg">'+(secPrice(null,s,secs())?'+'+money(PRICING.section):'входить')+'</span></button>'}).join('')+'</div></div>'+
       '<div class="lp-tot"><span>Орієнтовна вартість</span><b>'+money(total())+'</b></div></div></div>'+
       '<div><div class="lp-pw"><div class="lp-shell"><div class="sc"><div class="z">'+renderInv(S.tid,{theme:S.theme,sections:secs()},null,{})+'</div></div></div></div><p class="lp-hint">Гортайте запрошення, воно живе</p></div>';
     var sc=box.querySelector('.sc');
@@ -1618,16 +1745,17 @@ async function viewNew(tid){
   msg('Готуємо чернетку…','');await ready;if(!needDb())return;
   var id=rid();
   try{
-    await db.doc('invitations/'+id).set({tpl:tid,ownerId:uid,paid:false,published:false,createdAt:Date.now(),step:0,theme:t.theme,font:1,envelope:true,sections:(t.secs||freeSecs()),langs:['uk'],data:clone(t.defaults),tr:{}});
+    await db.doc('invitations/'+id).set({tpl:tid,ownerId:uid,paid:false,published:false,createdAt:Date.now(),step:0,theme:t.theme,font:1,envelope:true,sections:(t.newSecs||t.secs||freeSecs()),langs:['uk'],data:clone(t.defaults),tr:{}});
     location.replace(baseUrl()+'#edit-'+id);
   }catch(e){msg('Не вдалося створити чернетку','Спробуйте ще раз.','<p style="margin-top:20px"><a class="btn ghost" href="#shop">До каталогу</a></p>')}
 }
 
 /* ---------- wizard ---------- */
-function secPrice(t,s){return (t.incl&&t.incl.indexOf(s)>=0)?0:(SEC[s]?SEC[s].price:0)}
+function secPrice(t,s,list){list=list||[];var on=SEC_ORDER.filter(function(x){return list.indexOf(x)>=0});var i=on.indexOf(s);if(i<0)return on.length>=PRICING.freeSecs?PRICING.section:0;return i<PRICING.freeSecs?0:PRICING.section}
+function secExtra(list){return Math.max(0,SEC_ORDER.filter(function(x){return list.indexOf(x)>=0}).length-PRICING.freeSecs)}
 function calcPrice(cur){
   var t=TPL[cur.tpl],lines=[{n:'Шаблон «'+t.name+'»',p:t.base}];
-  cur.sections.forEach(function(s){var sp=secPrice(t,s);if(sp)lines.push({n:'Секція «'+SEC[s].name+'»',p:sp})});
+  var ex=secExtra(cur.sections);if(ex)lines.push({n:'Додаткові секції × '+ex,p:ex*PRICING.section});
   cur.langs.forEach(function(l){if(l!=='uk')lines.push({n:'Мова: '+langOf(l).name,p:PRICING.lang})});
   var total=lines.reduce(function(a,x){return a+x.p},0);
   return {lines:lines,total:total};
@@ -1738,8 +1866,8 @@ async function viewEdit(id){
     if(k==='theme'){
       h='<h2>Оберіть тему запрошення</h2><p class="muted">Колір, який задає настрій вашого свята.</p><div class="themes">'+THEMES.map(function(x){return '<button type="button" class="theme" data-theme-id="'+x.id+'" aria-pressed="'+(cur.theme===x.id)+'"><i style="background:linear-gradient(135deg,'+x.dark+','+x.mid+')"></i><span>'+x.name+'</span></button>'}).join('')+'</div>';
     }else if(k==='sections'){
-      var extra=cur.sections.reduce(function(a,s){return a+secPrice(t,s)},0);
-      h='<h2>Виберіть секції запрошення</h2><p class="muted">Налаштуйте структуру: які блоки побачать гості. Частина секцій входить у вартість, кожна додаткова коштує '+money(PRICING.section)+'. Зараз доплата за секції: '+money(extra)+'.</p><div class="secgrid">'+SEC_ORDER.map(function(s){var on=cur.sections.indexOf(s)>=0;return '<button type="button" class="seccard" data-sec-toggle="'+s+'" aria-pressed="'+on+'">'+icon(s)+'<span class="tx"><b>'+esc(SEC[s].name)+(secPrice(t,s)?'<span class="tag">+'+money(secPrice(t,s))+'</span>':'<span class="tag free">входить</span>')+'</b><small>'+esc(SEC[s].desc)+'</small></span><span class="chk">'+CHECK+'</span></button>'}).join('')+'</div>';
+      var extra=secExtra(cur.sections)*PRICING.section,nsel=SEC_ORDER.filter(function(x){return cur.sections.indexOf(x)>=0}).length;
+      h='<h2>Виберіть секції запрошення</h2><p class="muted">Налаштуйте структуру: які блоки побачать гості. У вартість входять '+PRICING.freeSecs+' секцій, кожна наступна +'+money(PRICING.section)+'. Обрано: '+nsel+(extra?', доплата '+money(extra):', доплати немає')+'.</p><div class="secgrid">'+SEC_ORDER.map(function(s){var on=cur.sections.indexOf(s)>=0;return '<button type="button" class="seccard" data-sec-toggle="'+s+'" aria-pressed="'+on+'">'+icon(s)+'<span class="tx"><b>'+esc(SEC[s].name)+(secPrice(t,s,cur.sections)?'<span class="tag">+'+money(secPrice(t,s,cur.sections))+'</span>':'<span class="tag free">входить</span>')+'</b><small>'+esc(SEC[s].desc)+'</small></span><span class="chk">'+CHECK+'</span></button>'}).join('')+'</div>';
     }else if(k==='langs'){
       h='<h2>Мови запрошення</h2><p class="muted">Оберіть мови, якими гості зможуть читати запрошення. Українська входить у вартість, кожна додаткова коштує '+money(PRICING.lang)+'.</p><div class="langgrid">'+LANGS.map(function(l){var on=cur.langs.indexOf(l.id)>=0;return '<button type="button" class="lang" data-lang-toggle="'+l.id+'" aria-pressed="'+on+'"'+(l.id==='uk'?' aria-disabled="true"':'')+'><code>'+l.code+'</code><span class="tx"><b style="font-weight:500">'+l.name+'</b><small>'+(l.id==='uk'?'Основна':'+'+money(PRICING.lang))+'</small></span><span class="chk" style="width:24px;height:24px;display:grid;place-items:center;border-radius:6px;background:'+(on?'var(--accent)':'transparent')+';color:var(--accent-ink)">'+(on?CHECK:'')+'</span></button>'}).join('')+'</div><div class="note" style="margin-top:16px">Основна мова відкривається за замовчуванням. Решту гість обере перемикачем. Далі кожне текстове поле можна заповнити окремо для кожної мови, а порожні поля показують українську.</div>';
     }else if(k==='head'){
@@ -1948,9 +2076,9 @@ async function viewMy(){
 
 /* ---------- router ---------- */
 function route(){
-  clearSubs();closeModal();unmountMusic();rvWait=false;rvDone=false;palOn=false;
+  clearSubs();closeModal();unmountMusic();slTimers.forEach(clearInterval);slTimers=[];rvWait=false;rvDone=false;palOn=false;
   var h=location.hash.slice(1)||'shop',i=h.indexOf('-'),name=i<0?h:h.slice(0,i),arg=i<0?'':h.slice(i+1);
-  var v={shop:viewShop,demo:viewDemo,new:viewNew,edit:viewEdit,i:viewPublic,cab:viewCab,my:viewMy}[name]||viewShop;
+  var v={shop:viewShop,t:viewTpl,embed:viewEmbed,demo:viewDemo,new:viewNew,edit:viewEdit,i:viewPublic,cab:viewCab,my:viewMy}[name]||viewShop;
   window.scrollTo(0,0);v(arg);
 }
 ready=init();
