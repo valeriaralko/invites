@@ -806,7 +806,7 @@ function palCal(iso,L){
 }
 function palGate(v){
   var d=v.d;
-  return '<div class="env cgate" role="button" tabindex="0" aria-label="'+esc(u(v.L,'open'))+'"><div class="cg-in"><div class="cg-a cg-l"></div><div class="cg-a cg-r"></div><div class="cg-t"><img src="'+PAL+'cherub.webp" alt=""><span>'+esc(d.gateText||u(v.L,'tapCurtain'))+'</span></div></div></div>';
+  return '<div class="env cgate" role="button" tabindex="0" aria-label="'+esc(u(v.L,'open'))+'"><div class="cg-in"><div class="cg-a cg-l"></div><div class="cg-a cg-r"></div><img class="cg-v" src="'+PAL+'valance-g.webp" alt=""><div class="cg-t"><img src="'+PAL+'cherub.webp" alt=""><span>'+esc(d.gateText||u(v.L,'tapCurtain'))+'</span></div></div></div>';
 }
 function petals(n){var s='';for(var i=0;i<n;i++)s+='<i class="pt"></i>';return '<div class="pl-pts" aria-hidden="true">'+s+'</div>'}
 function buildPalace(v,o){
