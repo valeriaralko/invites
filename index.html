@@ -330,11 +330,12 @@ td.num{font-variant-numeric:tabular-nums}
 .lp .wrap{max-width:1160px;padding-inline:20px}
 .lp-nav{position:sticky;top:0;z-index:30;background:color-mix(in srgb,var(--bg) 86%,transparent);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);border-bottom:1px solid color-mix(in srgb,var(--line) 70%,transparent)}
 .lp-nav .in{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-block:12px}
-.lp-nav nav{display:flex;gap:26px;font-size:14px}
+.lp-nav nav{display:flex;gap:22px;font-size:14px}
+.lp-nav nav a{white-space:nowrap}
 .lp-nav nav a{text-decoration:none;color:var(--muted)}
 .lp-nav nav a:hover{color:var(--ink)}
 .lp-nav .r{display:flex;gap:10px;align-items:center}
-@media (max-width:860px){.lp-nav nav{display:none}}
+@media (max-width:1040px){.lp-nav nav{display:none}}
 @media (max-width:620px){.lp-nav .r .ghost{display:none}.lp-nav .brand{font-size:22px}}
 .eyebrow{font:500 12px/1.2 var(--f-body);letter-spacing:.24em;text-transform:uppercase;color:var(--accent);display:inline-flex;align-items:center;gap:12px}
 .eyebrow::before{content:"";width:28px;height:1px;background:currentColor;opacity:.7}
@@ -501,6 +502,79 @@ td.num{font-variant-numeric:tabular-nums}
 .lp-ft{background:var(--deep);color:#bfae9f}
 .lp-ft .ft{border-top:1px solid rgba(255,255,255,.1);color:#bfae9f}
 .lp-ft a{color:#e8d8c6}
+
+/* ===== v3: categories, plans, individual order, motion, music ===== */
+.lp-cats{display:flex;gap:8px;flex-wrap:wrap;margin:-14px 0 30px}
+.lp-cats button{min-height:44px;padding:0 22px;border-radius:999px;border:1px solid var(--line);background:transparent;color:var(--ink);cursor:pointer;font:500 15px var(--f-body);transition:background .25s,color .25s,border-color .25s}
+.lp-cats button:hover{border-color:var(--accent)}
+.lp-cats button[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.lp-tpl.soon{grid-template-columns:minmax(0,1fr);align-content:center;justify-items:center;text-align:center;min-height:340px;border-style:dashed;background:transparent}
+.lp-tpl.soon h3{font-size:34px}
+.lp-tpl .tgl{display:inline-flex;align-self:flex-start;font:500 11px/1 var(--f-body);letter-spacing:.14em;text-transform:uppercase;border:1px solid var(--gold);color:var(--accent);border-radius:999px;padding:6px 10px}
+.lp-plans{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px;align-items:stretch}
+@media (max-width:940px){.lp-plans{grid-template-columns:minmax(0,1fr);max-width:520px;margin-inline:auto}}
+.lp-plan{position:relative;display:flex;flex-direction:column;gap:14px;background:var(--surface);border:1px solid var(--line);border-radius:26px;padding:32px 26px 26px;transition:transform .35s,box-shadow .35s}
+.lp-plan:hover{transform:translateY(-6px);box-shadow:0 26px 54px rgba(60,30,20,.14)}
+.lp-plan.pop{background:var(--deep);color:var(--deep-ink);border-color:var(--deep);box-shadow:0 30px 60px rgba(43,31,26,.28)}
+.lp-plan .tag{position:absolute;top:-13px;left:26px;font:500 11px/1 var(--f-body);letter-spacing:.14em;text-transform:uppercase;background:var(--gold);color:#fff;border-radius:999px;padding:7px 12px}
+.lp-plan h3{font:500 36px/1 var(--f-display)}
+.lp-plan .sub{color:var(--muted);font-size:15px}
+@media (min-width:941px){.lp-plan .sub{min-height:70px}}
+.lp-plan.pop .sub{color:#cdbbab}
+.lp-plan .pr{font:500 48px/1 var(--f-display)}
+.lp-plan .pr small{font:400 14px var(--f-body);color:var(--muted);margin-right:6px}
+.lp-plan.pop .pr small{color:#cdbbab}
+.lp-plan ul{list-style:none;padding:0;margin:6px 0 14px;display:grid;gap:11px;font-size:15px}
+.lp-plan li{display:grid;grid-template-columns:18px minmax(0,1fr);gap:10px}
+.lp-plan li svg{width:18px;height:18px;color:var(--accent);margin-top:2px}
+.lp-plan.pop li svg{color:#e0b995}
+.lp-plan .btn{margin-top:auto}
+.lp-plan.pop .btn{background:#f3e8dc;color:#2b1f1a;border-color:#f3e8dc}
+.lp-plan .free{align-self:flex-start;font:500 11px/1 var(--f-body);letter-spacing:.12em;text-transform:uppercase;border:1px solid var(--gold);color:var(--accent);border-radius:999px;padding:6px 10px}
+.lp-pnote{text-align:center;color:var(--muted);font-size:14px;margin-top:26px}
+.lp-cu{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(28px,5vw,64px);align-items:center}
+@media (max-width:940px){.lp-cu{grid-template-columns:minmax(0,1fr)}}
+.lp-cu p.lead2{color:var(--muted);font-size:18px;max-width:46ch;margin-top:20px}
+.lp-cs{list-style:none;margin:0;padding:0;display:grid;gap:14px}
+.lp-cs li{display:grid;grid-template-columns:58px minmax(0,1fr);gap:14px;align-items:start;background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:20px 22px}
+.lp-cs .n{font:italic 500 46px/1 var(--f-display);color:var(--accent)}
+.lp-cs b{display:block;font:600 22px/1.15 var(--f-display);margin-bottom:4px}
+.lp-cs .t{color:var(--muted);font-size:15px}
+.lp-msg{margin-top:26px;border:1px dashed var(--gold);border-radius:18px;padding:16px 18px;display:grid;gap:12px}
+.lp-msg pre{margin:0;white-space:pre-wrap;font:14px/1.55 var(--f-body);color:var(--muted)}
+.lp-msg .row{display:flex;gap:10px;flex-wrap:wrap}
+.showf{display:block;width:100%;height:calc(100vh - 62px);height:calc(100dvh - 62px);border:0;background:#fbf9f4}
+.mus{position:fixed;right:16px;bottom:calc(env(safe-area-inset-bottom,0px) + 16px);z-index:60;width:48px;height:48px;border-radius:50%;border:1px solid rgba(255,255,255,.5);background:rgba(43,31,26,.82);color:#f3e8dc;display:grid;place-items:center;cursor:pointer;box-shadow:0 8px 24px rgba(0,0,0,.25);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}
+.mus svg{width:22px;height:22px}
+.mus.on::after{content:"";position:absolute;inset:-6px;border-radius:50%;border:1px solid rgba(243,232,220,.7);animation:musP 1.8s ease-out infinite}
+@keyframes musP{from{transform:scale(.85);opacity:.9}to{transform:scale(1.35);opacity:0}}
+.inv .rsvp [hidden]{display:none!important}
+.inv .rsvp .chk{display:flex;align-items:center;gap:10px;cursor:pointer}
+.inv .rsvp .chk input{width:20px;height:20px;accent-color:var(--i-cream);flex:none}
+.inv .rsvp input[type=text]::placeholder,.inv .rsvp textarea::placeholder{color:rgba(255,244,230,.45)}
+@media (prefers-reduced-motion:no-preference){
+ .rv-on .rv{opacity:0;transform:translateY(34px);transition:opacity 1s cubic-bezier(.2,.7,.2,1),transform 1s cubic-bezier(.2,.7,.2,1);transition-delay:var(--d,0s)}
+ .rv-on .rv.in{opacity:1;transform:none}
+ .rv-on .lp-head.rv .eyebrow::before{width:0;transition:width 1.1s .35s cubic-bezier(.2,.7,.2,1)}
+ .rv-on .lp-head.rv.in .eyebrow::before{width:28px}
+ .lp-hero .stg{animation:lpUp 1.1s cubic-bezier(.2,.7,.2,1) backwards;animation-delay:var(--d,0s)}
+ @keyframes lpUp{from{opacity:0;transform:translateY(30px)}}
+ .lp-stage .phone.a{animation:lpPh 1.5s .25s cubic-bezier(.2,.7,.2,1) backwards}
+ .lp-stage .phone.b{animation:lpPh 1.5s .5s cubic-bezier(.2,.7,.2,1) backwards}
+ @keyframes lpPh{from{opacity:0;translate:0 70px}}
+ .lp-chip.c1{animation:lpFl 6s ease-in-out infinite,lpUp 1s 1.2s backwards}
+ .lp-chip.c2{animation:lpFl 7s -2s ease-in-out infinite,lpUp 1s 1.5s backwards}
+ @keyframes lpFl{50%{transform:translateY(-12px)}}
+ .lp-oval{animation:lpOv 9s ease-in-out infinite}
+ @keyframes lpOv{50%{transform:translate(-50%,-50%) scale(1.035)}}
+ .lp-stage .phone,.lp-chip{translate:calc(var(--px,0)*12px) calc(var(--py,0)*9px);transition:translate .5s cubic-bezier(.2,.7,.2,1)}
+ .lp-stage .lp-chip{translate:calc(var(--px,0)*-18px) calc(var(--py,0)*-12px)}
+ .inv .hero img,.inv .heroB img{animation:kb 26s ease-in-out infinite alternate}
+ @keyframes kb{to{transform:scale(1.09)}}
+ .inv .hero-t>*{animation:lpUp 1.2s cubic-bezier(.2,.7,.2,1) backwards}
+ .inv .hero-t>*:nth-child(2){animation-delay:.15s}.inv .hero-t>*:nth-child(3){animation-delay:.3s}.inv .hero-t>*:nth-child(4){animation-delay:.45s}
+ .lp-plan,.lp-tpl{will-change:transform}
+}
 </style>
 </head>
 <body>
@@ -537,10 +611,10 @@ var LANGS=[
   {id:'de',name:'Deutsch',code:'DE',locale:'de-DE'}
 ];
 var UI={
- uk:{countdown:'До нашого дня залишилось',days:'днів',hours:'годин',minutes:'хвилин',seconds:'секунд',location:'Локація',program:'Програма дня',dress:'Дрескод',wishes:'Наші побажання',tips:'Корисне',transfer:'Трансфер',faq:'Питання та відповіді',rsvpTitle:'Чи будете ви з нами?',rsvpSub:'Дайте нам знати до свята',yourName:'Ваше імʼя',yes:'Буду',no:'Не зможу',howMany:'Скільки вас буде',note:'Алергії або побажання',send:'Надіслати відповідь',sending:'Надсилаємо…',thanks:'Дякуємо!',thanksSub:'Ми отримали вашу відповідь.',tapOpen:'Торкніться, щоб відкрити',join:'Доєднатися',open:'Відкрити запрошення'},
- en:{countdown:'Until our day',days:'days',hours:'hours',minutes:'minutes',seconds:'seconds',location:'Location',program:'Schedule',dress:'Dress code',wishes:'Our wishes',tips:'Good to know',transfer:'Transfer',faq:'Questions & answers',rsvpTitle:'Will you join us?',rsvpSub:'Please let us know',yourName:'Your name',yes:'I will come',no:'I can’t come',howMany:'Number of guests',note:'Allergies or wishes',send:'Send reply',sending:'Sending…',thanks:'Thank you!',thanksSub:'We received your reply.',tapOpen:'Tap to open',join:'Join',open:'Open invitation'},
- pl:{countdown:'Do naszego dnia zostało',days:'dni',hours:'godzin',minutes:'minut',seconds:'sekund',location:'Lokalizacja',program:'Program dnia',dress:'Dress code',wishes:'Nasze życzenia',tips:'Warto wiedzieć',transfer:'Transfer',faq:'Pytania i odpowiedzi',rsvpTitle:'Czy będziecie z nami?',rsvpSub:'Dajcie nam znać',yourName:'Wasze imię',yes:'Będę',no:'Nie dam rady',howMany:'Ile osób',note:'Alergie lub uwagi',send:'Wyślij odpowiedź',sending:'Wysyłanie…',thanks:'Dziękujemy!',thanksSub:'Otrzymaliśmy Waszą odpowiedź.',tapOpen:'Dotknij, aby otworzyć',join:'Dołącz',open:'Otwórz zaproszenie'},
- de:{countdown:'Bis zu unserem Tag',days:'Tage',hours:'Stunden',minutes:'Minuten',seconds:'Sekunden',location:'Ort',program:'Tagesablauf',dress:'Dresscode',wishes:'Unsere Wünsche',tips:'Gut zu wissen',transfer:'Transfer',faq:'Fragen & Antworten',rsvpTitle:'Seid ihr dabei?',rsvpSub:'Gebt uns bitte Bescheid',yourName:'Euer Name',yes:'Ich komme',no:'Ich kann nicht',howMany:'Anzahl der Gäste',note:'Allergien oder Wünsche',send:'Antwort senden',sending:'Wird gesendet…',thanks:'Danke!',thanksSub:'Wir haben eure Antwort erhalten.',tapOpen:'Zum Öffnen tippen',join:'Beitreten',open:'Einladung öffnen'}
+ uk:{countdown:'До нашого дня залишилось',days:'днів',hours:'годин',minutes:'хвилин',seconds:'секунд',location:'Локація',program:'Програма дня',dress:'Дрескод',wishes:'Наші побажання',tips:'Корисне',transfer:'Трансфер',faq:'Питання та відповіді',rsvpTitle:'Чи будете ви з нами?',rsvpSub:'Дайте нам знати до свята',yourName:'Ваше імʼя',yes:'Буду',no:'Не зможу',howMany:'Скільки вас буде',note:'Алергії або побажання',guests:'Імена гостей, які будуть з вами',diet:'Алергії або дієта',transferNeed:'Потрібен трансфер',comment:'Побажання або повідомлення',send:'Надіслати відповідь',sending:'Надсилаємо…',thanks:'Дякуємо!',thanksSub:'Ми отримали вашу відповідь.',tapOpen:'Торкніться, щоб відкрити',join:'Доєднатися',open:'Відкрити запрошення'},
+ en:{countdown:'Until our day',days:'days',hours:'hours',minutes:'minutes',seconds:'seconds',location:'Location',program:'Schedule',dress:'Dress code',wishes:'Our wishes',tips:'Good to know',transfer:'Transfer',faq:'Questions & answers',rsvpTitle:'Will you join us?',rsvpSub:'Please let us know',yourName:'Your name',yes:'I will come',no:'I can’t come',howMany:'Number of guests',note:'Allergies or wishes',guests:'Names of the guests with you',diet:'Allergies or diet',transferNeed:'I need a transfer',comment:'Wishes or a message',send:'Send reply',sending:'Sending…',thanks:'Thank you!',thanksSub:'We received your reply.',tapOpen:'Tap to open',join:'Join',open:'Open invitation'},
+ pl:{countdown:'Do naszego dnia zostało',days:'dni',hours:'godzin',minutes:'minut',seconds:'sekund',location:'Lokalizacja',program:'Program dnia',dress:'Dress code',wishes:'Nasze życzenia',tips:'Warto wiedzieć',transfer:'Transfer',faq:'Pytania i odpowiedzi',rsvpTitle:'Czy będziecie z nami?',rsvpSub:'Dajcie nam znać',yourName:'Wasze imię',yes:'Będę',no:'Nie dam rady',howMany:'Ile osób',note:'Alergie lub uwagi',guests:'Imiona osób, które będą z Wami',diet:'Alergie lub dieta',transferNeed:'Potrzebuję transferu',comment:'Życzenia lub wiadomość',send:'Wyślij odpowiedź',sending:'Wysyłanie…',thanks:'Dziękujemy!',thanksSub:'Otrzymaliśmy Waszą odpowiedź.',tapOpen:'Dotknij, aby otworzyć',join:'Dołącz',open:'Otwórz zaproszenie'},
+ de:{countdown:'Bis zu unserem Tag',days:'Tage',hours:'Stunden',minutes:'Minuten',seconds:'Sekunden',location:'Ort',program:'Tagesablauf',dress:'Dresscode',wishes:'Unsere Wünsche',tips:'Gut zu wissen',transfer:'Transfer',faq:'Fragen & Antworten',rsvpTitle:'Seid ihr dabei?',rsvpSub:'Gebt uns bitte Bescheid',yourName:'Euer Name',yes:'Ich komme',no:'Ich kann nicht',howMany:'Anzahl der Gäste',note:'Allergien oder Wünsche',guests:'Namen eurer Begleitung',diet:'Allergien oder Ernährung',transferNeed:'Ich brauche einen Transfer',comment:'Wünsche oder Nachricht',send:'Antwort senden',sending:'Wird gesendet…',thanks:'Danke!',thanksSub:'Wir haben eure Antwort erhalten.',tapOpen:'Zum Öffnen tippen',join:'Beitreten',open:'Einladung öffnen'}
 };
 var u=function(L,k){return (UI[L]&&UI[L][k])||UI.uk[k]};
 var langOf=function(id){return LANGS.filter(function(x){return x.id===id})[0]||LANGS[0]};
@@ -621,7 +695,7 @@ var SH={
  faq:[F('q1','Питання 1',null,{ph:1}),F('a1','Відповідь 1','area',{ph:1}),F('q2','Питання 2'),F('a2','Відповідь 2','area'),F('q3','Питання 3'),F('a3','Відповідь 3','area')],
  rsvp:[F('rsvpNote','Підпис над формою','area')]
 };
-var SHD={
+var SHD={musicUrl:'',
  tip1T:'Корисна інформація',tip1X:'Напишіть тут важливі деталі для гостей: паркування, погода, взуття.',tip2T:'Ще одна підказка',tip2X:'Додайте текст або залиште поле порожнім.',tip3T:'',tip3X:'',
  trTime:'12:00',trFrom:'Назва місця збору',trTo:'Назва локації',trText:'Напишіть, як гості можуть дістатися до місця свята.',
  q1:'Де можна припаркуватись?',a1:'Напишіть відповідь для гостей.',q2:'Чи можна прийти з дітьми?',a2:'Напишіть відповідь для гостей.',q3:'Чи можна фотографувати під час церемонії?',a3:'Напишіть відповідь для гостей.',
@@ -634,7 +708,7 @@ TPL.tishyna={
   feats:['Календар і програма двох днів','6 фото та палітра дрескоду','9 тем, 3 шрифти, до 4 мов'],
   photoDef:{photo1:'img/t1-hero.jpg',photo2:'img/t1-venue.jpg',photo3:'img/t1-rest.jpg',photo4:'img/t1-b.jpg',photo5:'img/t1-c.jpg',photo6:'img/t1-d.jpg'},
   fields:{
-    head:[F('groom','Імʼя нареченого',null,{ph:1}),F('bride','Імʼя нареченої',null,{ph:1}),F('date','Дата першого дня','date',{ph:1}),F('loveText','Звернення до гостей','area'),F('intro','Про свято','area'),F('closing','Фінальна фраза'),F('photo1','Головне фото','photo'),F('photo6','Фінальне фото','photo')],
+    head:[F('groom','Імʼя нареченого',null,{ph:1}),F('bride','Імʼя нареченої',null,{ph:1}),F('date','Дата першого дня','date',{ph:1}),F('loveText','Звернення до гостей','area'),F('intro','Про свято','area'),F('closing','Фінальна фраза'),F('photo1','Головне фото','photo'),F('photo6','Фінальне фото','photo'),F('musicUrl','Музика: посилання на mp3 (необовʼязково)',null,{tr:false})],
     save:[F('saveText','Підпис під календарем','area')],
     location:[F('venueTitle','Заголовок'),F('venueText','Про місце церемонії','area',{ph:1}),F('afterText','Після церемонії','area'),F('restName','Назва ресторану',null,{ph:1}),F('photo2','Фото місця церемонії','photo'),F('photo3','Фото ресторану','photo')],
     program:[F('a_time','Час','time',{g:'День 1'}),F('a_text','Подія','area',{g:'День 1'}),F('b_time','Час','time',{g:'День 1'}),F('b_text','Подія','area',{g:'День 1'}),F('c_time','Час','time',{g:'День 1'}),F('c_text','Подія','area',{g:'День 1'}),F('stayText','Про ночівлю','area',{g:'Між днями'}),F('photo4','Фото','photo',{g:'Між днями'}),F('x_t','Назва',null,{g:'День 2'}),F('x_x','Опис','area',{g:'День 2'}),F('y_t','Назва',null,{g:'День 2'}),F('y_x','Опис','area',{g:'День 2'}),F('z_t','Назва',null,{g:'День 2'}),F('z_x','Опис','area',{g:'День 2'})],
@@ -663,7 +737,7 @@ TPL.ivengo={
   feats:['Локація і таймінг дня','Палітра дрескоду та побажання','9 тем, 3 шрифти, до 4 мов'],
   photoDef:{photo1:'img/t2-hero.jpg',photo2:'img/t2-venue.jpg',photo3:'img/t2-final.jpg'},
   fields:{
-    head:[F('groom','Імʼя нареченого',null,{ph:1}),F('bride','Імʼя нареченої',null,{ph:1}),F('date','Дата весілля','date',{ph:1}),F('famHead','Заголовок вступу'),F('teaser','Вступ','area'),F('banner','Напис в арці','area'),F('intro','Запрошення','area'),F('closing','Фінальна фраза'),F('photo1','Головне фото','photo'),F('photo3','Фінальне фото','photo')],
+    head:[F('groom','Імʼя нареченого',null,{ph:1}),F('bride','Імʼя нареченої',null,{ph:1}),F('date','Дата весілля','date',{ph:1}),F('famHead','Заголовок вступу'),F('teaser','Вступ','area'),F('banner','Напис в арці','area'),F('intro','Запрошення','area'),F('closing','Фінальна фраза'),F('photo1','Головне фото','photo'),F('photo3','Фінальне фото','photo'),F('musicUrl','Музика: посилання на mp3 (необовʼязково)',null,{tr:false})],
     save:[F('saveText','Підпис під календарем','area')],
     location:[F('locName','Назва місця',null,{ph:1}),F('locAddr','Адреса','area',{ph:1}),F('photo2','Фото локації','photo')],
     program:[F('a_time','Час','time'),F('a_text','Подія'),F('b_time','Час','time'),F('b_text','Подія'),F('c_time','Час','time'),F('c_text','Подія')],
@@ -688,6 +762,24 @@ TPL.ivengo={
     chatUrl:'',closing:'З нетерпінням чекаємо на Вас!'})
 };
 var TPL_IDS=['tishyna','ivengo'];
+/* Дизайнерські шаблони (ціна й текст змінюються тут). Ці запрошення я адаптую під клієнта вручну. */
+var TG='valeriaralko';
+var tgLink=function(t){return 'https://t.me/'+TG+(t?'?text='+encodeURIComponent(t):'')};
+var SHOW={
+  gatsby:{id:'gatsby',name:'White Gatsby',cat:'birthday',cover:'img/g-cover.jpg',url:'gatsby/index.html',base:2490,
+    desc:'Вечірка в стилі 1920-х: анімований конверт, перли й пір’я, локація, дрескод з ідеями образів, побажання й чат гостей.',
+    feats:['Конверт, що відкривається, і анімації при прокручуванні','Локація з маршрутом, дрескод та ідеї образів','Побажання, wish-list і кнопка «Я в ділі»']}
+};
+var CATS=[{id:'wedding',name:'Весілля'},{id:'birthday',name:'День народження'}];
+/* Тарифи: ціни тут умовні, поставте свої */
+var TARIFFS=[
+  {id:'self',name:'Сама',sub:'Обираєте шаблон і збираєте запрошення самі в конструкторі.',from:1290,tag:'',
+   feats:['Шаблон і живий перегляд на телефоні','9 тем, 3 шрифти, до 4 мов','RSVP і особистий кабінет з відповідями','Особисте посилання для гостей','Іменні запрошення: до 10 безкоштовно'],cta:'Обрати шаблон'},
+  {id:'key',name:'Під ключ',sub:'Ви обираєте шаблон, а я наповнюю його вашими іменами, фото та деталями.',from:2490,tag:'Рекомендую',
+   feats:['Усе з тарифу «Сама»','Я вношу тексти, фото й налаштовую секції','Налаштовую кольори й шрифти під ваше свято','2 раунди правок','Готово за 3–5 днів','Музика в подарунок'],cta:'Замовити в Telegram'},
+  {id:'own',name:'Індивідуальне',sub:'Дизайн з нуля під вашу історію, локацію й настрій свята.',from:5900,tag:'',
+   feats:['Унікальний дизайн, а не шаблон','Мудборд і ескіз головного екрана','Авторські анімації та музика','До 5 раундів правок','Кабінет, RSVP та іменні посилання','Пріоритетна підтримка'],cta:'Обговорити в Telegram'}
+];
 function fieldsOf(t,sid){return t.fields[sid]||SH[sid]||[]}
 function fieldMap(t){var m={};Object.keys(t.fields).concat(Object.keys(SH)).forEach(function(s){fieldsOf(t,s).forEach(function(f){m[f.k]=f})});return m}
 
@@ -713,11 +805,14 @@ function blkRsvp(v,o,pre){
   var L=v.L,d=v.d;
   if(o.sent)return '<section class="rsvp" data-sec="rsvp"><h3>'+esc(u(L,'thanks'))+'</h3><p class="thx">'+esc(u(L,'thanksSub'))+'</p></section>';
   var cnt='';for(var i=1;i<=5;i++)cnt+='<option value="'+i+'">'+i+'</option>';
+  var trf=v.on('transfer')?'<label class="chk"><input type="checkbox" id="r_trf"><span>'+esc(u(L,'transferNeed'))+'</span></label>':'';
   return (pre||'')+'<section class="rsvp" data-sec="rsvp"><h3>'+esc(u(L,'rsvpTitle'))+'</h3><p class="sub">'+(d.rsvpNote?tx(d.rsvpNote):esc(u(L,'rsvpSub')))+'</p>'+
   '<form id="rsvpForm"'+(o.live?'':' inert')+'><label for="r_name">'+esc(u(L,'yourName'))+'<input type="text" id="r_name" maxlength="80" autocomplete="name" required></label>'+
   '<div class="seg"><label><input type="radio" name="r_st" value="yes" checked><span>'+esc(u(L,'yes'))+'</span></label><label><input type="radio" name="r_st" value="no"><span>'+esc(u(L,'no'))+'</span></label></div>'+
-  '<label for="r_cnt">'+esc(u(L,'howMany'))+'<select id="r_cnt">'+cnt+'</select></label>'+
-  '<label for="r_note">'+esc(u(L,'note'))+'<textarea id="r_note" rows="2" maxlength="300"></textarea></label>'+
+  '<div id="r_yes"><label for="r_cnt">'+esc(u(L,'howMany'))+'<select id="r_cnt">'+cnt+'</select></label>'+
+  '<label for="r_guests" id="r_gw" hidden>'+esc(u(L,'guests'))+'<input type="text" id="r_guests" maxlength="90"></label>'+
+  '<label for="r_diet">'+esc(u(L,'diet'))+'<input type="text" id="r_diet" maxlength="60"></label>'+trf+'</div>'+
+  '<label for="r_note">'+esc(u(L,'comment'))+'<textarea id="r_note" rows="2" maxlength="100"></textarea></label>'+
   '<button type="submit">'+esc(u(L,'send'))+'</button></form></section>';
 }
 function blkFinal(v,key){var d=v.d;return '<div class="fin" data-sec="final"><img src="'+esc(photo(v,key))+'" alt=""><div class="tx"><div class="scr">'+esc(d.groom)+' &amp; '+esc(d.bride)+'</div><div class="names">'+esc(d.closing)+'</div></div></div>'}
@@ -771,7 +866,33 @@ function envHTML(tid,st,fixed){
   return '<div class="env'+(fixed?' fix':'')+'" role="button" tabindex="0" aria-label="'+esc(u(v.L,'open'))+'" style="'+themeStyle(v.th)+'"><div class="env-card"><div class="env-flap"></div><div class="env-seal">'+ini+'</div></div><div class="env-names">'+esc(d.groom)+' &amp; '+esc(d.bride)+'</div><div class="env-hint">'+esc(u(v.L,'tapOpen'))+'</div></div>';
 }
 var envOpen=false;
-function openEnv(el){if(!el||el.classList.contains('open'))return;el.classList.add('open');envOpen=true;setTimeout(function(){if(el.parentNode)el.parentNode.removeChild(el)},760)}
+var AUDIO=null,musBtn=null,rvIO=null,rvWait=false,rvDone=false;
+function unmountMusic(){if(AUDIO){try{AUDIO.pause()}catch(e){}AUDIO=null}if(musBtn&&musBtn.parentNode)musBtn.parentNode.removeChild(musBtn);musBtn=null}
+function mountMusic(url){
+  if(AUDIO&&AUDIO._u===url)return;
+  unmountMusic();url=String(url||'').trim();
+  if(!url||!(/^https:\/\//i.test(url)||/^audio\/[\w\-. ]+\.(mp3|m4a|ogg|wav)$/i.test(url)))return;
+  var a=new Audio();a._u=url;a.src=url;a.loop=true;a.preload='none';AUDIO=a;
+  var b=document.createElement('button');b.type='button';b.className='mus';b.setAttribute('aria-label','Музика');
+  b.innerHTML='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V6l10-2v12"/><circle cx="6.5" cy="18" r="2.5"/><circle cx="16.5" cy="16" r="2.5"/></svg>';
+  var sync=function(){b.classList.toggle('on',!a.paused)};
+  a.addEventListener('play',sync);a.addEventListener('pause',sync);
+  b.addEventListener('click',function(){if(a.paused){var r=a.play();if(r&&r.catch)r.catch(function(){toast('Не вдалося відтворити музику')})}else a.pause()});
+  document.body.appendChild(b);musBtn=b;
+}
+function reveal(){
+  var items=app.querySelectorAll('.rv');if(!items.length)return;
+  if(!('IntersectionObserver' in window)||(window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches))return;
+  if(rvIO)rvIO.disconnect();
+  if(document.querySelector('.env.fix:not(.open)')){rvWait=true;return}
+  document.documentElement.classList.add('rv-on');rvDone=true;
+  rvIO=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting||e.boundingClientRect.top<0){e.target.classList.add('in');rvIO.unobserve(e.target)}})},{rootMargin:'0px 0px -8% 0px',threshold:.06});
+  items.forEach(function(el){rvIO.observe(el)});
+}
+function markInv(){if(rvDone)return;app.querySelectorAll('.inv > section, .inv > .fin, .inv > .banner, .inv > .heroB, .inv > .lead2, .inv > .rsvp').forEach(function(el,i){el.classList.add('rv')})}
+function openEnv(el){if(!el||el.classList.contains('open'))return;el.classList.add('open');envOpen=true;
+  if(AUDIO&&AUDIO.paused){var pr=AUDIO.play();if(pr&&pr.catch)pr.catch(function(){})}
+  if(rvWait){rvWait=false;reveal()}setTimeout(function(){if(el.parentNode)el.parentNode.removeChild(el)},760)}
 document.addEventListener('click',function(e){var el=e.target.closest&&e.target.closest('.env');if(el)openEnv(el)});
 document.addEventListener('keydown',function(e){if(e.key==='Escape')closeModal();if((e.key==='Enter'||e.key===' ')&&e.target.classList&&e.target.classList.contains('env')){e.preventDefault();openEnv(e.target)}});
 
@@ -843,37 +964,65 @@ var PACKS=[
   {n:'∞',s:'без обмежень',p:999}
 ];
 var FAQ=[
-  ['Чи потрібен дизайнер або навички?','Ні. Ви обираєте готовий шаблон і крок за кроком заповнюєте поля, а перегляд на телефоні одразу показує результат. Якщо хочете, щоб усе зробила я, напишіть мені в Telegram.'],
+  ['Чи потрібен дизайнер або навички?','Ні. Ви обираєте готовий шаблон і крок за кроком заповнюєте поля, а перегляд на телефоні одразу показує результат. Якщо хочете, щоб усе зробила я, оберіть тариф «Під ключ» і напишіть мені в Telegram.'],
   ['Скільки часу займає створення?','Зазвичай один вечір: обрати тему, ввімкнути потрібні секції, вписати тексти й додати фото. Чернетка зберігається сама, тож можна повертатися будь-коли.'],
   ['Як гості відкривають запрошення?','За особистим посиланням, у будь-якому браузері на телефоні. Ніяких застосунків. Запрошення відкривається анімованим конвертом, а гість може обрати мову.'],
   ['Чи можна щось змінити після публікації?','Так. Ви редагуєте чернетку та публікуєте оновлену версію, посилання залишається тим самим.'],
   ['Що таке іменні запрошення?','Для кожного гостя створюється окреме посилання, у якому вже написане його ім’я. У кабінеті видно, хто відкрив запрошення, хто відповів, а хто ще ні.'],
   ['Коли я плачу?','Наприкінці, коли запрошення вже зібране. Вартість складається з шаблону та додаткових секцій і мов, і ви бачите суму на кожному кроці.'],
+  ['Чи є запрошення на день народження?','Так, у каталозі є вкладка «День народження». Зараз там White Gatsby, нові шаблони з’являтимуться поступово. Якщо потрібна інша тема, замовте індивідуальне запрошення.'],
+  ['Чи можна замовити індивідуальний дизайн?','Так. Напишіть мені в Telegram: я підготую мудборд і ескіз головного екрана, а потім зроблю запрошення з нуля. Орієнтовну вартість дивіться в тарифі «Індивідуальне».'],
   ['Які мови доступні?','Українська входить у вартість. Додатково доступні англійська, польська й німецька. Тексти для кожної мови заповнюються окремо.']
 ];
 function lpNav(){
-  return '<header class="lp-nav"><div class="wrap in"><a class="brand" href="#shop">valeria<i>.dsgn</i></a><nav><a href="#shop" data-go="lp-how">Як це працює</a><a href="#shop" data-go="tpl">Шаблони</a><a href="#shop" data-go="lp-build">Конструктор</a><a href="#shop" data-go="lp-named">Іменні запрошення</a><a href="#shop" data-go="lp-cab">Кабінет</a><a href="#shop" data-go="lp-faq">Питання</a></nav><div class="r"><a class="btn ghost sm" href="#my">Мої запрошення</a><a class="btn sm" href="#shop" data-go="tpl">Обрати шаблон</a></div></div></header>';
+  return '<header class="lp-nav"><div class="wrap in"><a class="brand" href="#shop">valeria<i>.dsgn</i></a><nav><a href="#shop" data-go="lp-how">Як це працює</a><a href="#shop" data-go="tpl">Шаблони</a><a href="#shop" data-go="lp-build">Конструктор</a><a href="#shop" data-go="lp-plans">Тарифи</a><a href="#shop" data-go="lp-custom">Індивідуально</a><a href="#shop" data-go="lp-faq">Питання</a></nav><div class="r"><a class="btn ghost sm" href="#my">Мої запрошення</a><a class="btn sm" href="#shop" data-go="tpl">Обрати шаблон</a></div></div></header>';
 }
 function viewShop(){
   var chk='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>';
-  var hero='<section class="wrap lp-hero"><div><span class="eyebrow">Електронні весільні запрошення</span><h1>Запрошення, яке <em>хочеться відкрити</em></h1><p class="lead">Оберіть шаблон і зберіть своє запрошення самі за один вечір. Гості відповідають в один дотик, а всі відповіді збираються у вашому особистому кабінеті.</p><div class="cta"><a class="btn lg" href="#shop" data-go="tpl">Обрати шаблон</a><a class="btn ghost lg" href="#demo-tishyna">Подивитись демо</a></div><div class="lp-proof"><span>'+chk+'Без дизайнера</span><span>'+chk+'Живий перегляд на телефоні</span><span>'+chk+'Особисті посилання для гостей</span></div></div>'+
+  var hero='<section class="wrap lp-hero"><div><span class="eyebrow stg" style="--d:0s">Електронні запрошення · весілля і дні народження</span><h1 class="stg" style="--d:.1s">Запрошення, яке <em>хочеться відкрити</em></h1><p class="lead stg" style="--d:.25s">Оберіть шаблон і зберіть своє запрошення самі за один вечір. Гості відповідають в один дотик, а всі відповіді збираються у вашому особистому кабінеті.</p><div class="cta stg" style="--d:.4s"><a class="btn lg" href="#shop" data-go="tpl">Обрати шаблон</a><a class="btn ghost lg" href="#demo-tishyna">Подивитись демо</a></div><div class="lp-proof stg" style="--d:.55s"><span>'+chk+'Без дизайнера</span><span>'+chk+'Живий перегляд на телефоні</span><span>'+chk+'Особисті посилання для гостей</span></div></div>'+
     '<div class="lp-stage" aria-hidden="true"><div class="lp-oval"></div><div class="phone a"><div class="sc">'+renderInv('tishyna',null,null,{})+'</div></div><div class="phone b"><div class="sc">'+renderInv('ivengo',null,null,{})+'</div></div><div class="lp-chip c1"><i>✓</i><span><b>Олена підтвердила</b><br>прийде з +1</span></div><div class="lp-chip c2"><i>♡</i><span><b>Відкрито 38 разів</b><br>за першу добу</span></div></div></section>';
-  var strip=['Анімований конверт','Відлік до весілля','Кілька мов','Програма дня','Дрескод і палітра','Трансфер гостей','RSVP онлайн','Іменні посилання','Кабінет із відповідями'];
+  var strip=['Анімований конверт','Весілля та дні народження','Відлік до свята','Кілька мов','Музика в запрошенні','Програма дня','Дрескод і палітра','Трансфер гостей','RSVP онлайн','Іменні посилання','Кабінет із відповідями'];
   var strip2='<div class="lp-strip" aria-hidden="true"><div class="row">'+strip.concat(strip).map(function(s){return '<span>'+s+'</span>'}).join('')+'</div></div>';
-  var how='<section class="wrap lp-sec" id="lp-how"><div class="lp-head c"><span class="eyebrow">Інструкція</span><h2>Чотири кроки до <em>готового</em> запрошення</h2><p>Нічого складного: усе підказано, а результат видно одразу.</p></div><ol class="lp-steps"><li><span class="n">1</span><b>Оберіть шаблон</b><span>Подивіться демо та виберіть дизайн, який вам до вподоби.</span></li><li><span class="n">2</span><b>Зберіть запрошення</b><span>Тема, секції, мови, тексти й фото. Усе змінюється на телефоні наживо.</span></li><li><span class="n">3</span><b>Оплатіть і опублікуйте</b><span>Платите наприкінці, коли все готово, і отримуєте особисте посилання.</span></li><li><span class="n">4</span><b>Діліться й слідкуйте</b><span>Надсилайте гостям і дивіться відповіді та кількість місць у кабінеті.</span></li></ol></section>';
-  var cards=TPL_IDS.map(function(id){var t=TPL[id];return '<article class="lp-tpl"><div class="im"><img src="'+t.cover+'" alt="Шаблон '+esc(t.name)+'" loading="lazy"></div><div class="bd"><span class="eyebrow">Шаблон</span><h3>'+esc(t.name)+'</h3><p class="muted">'+esc(t.desc)+'</p><ul>'+t.feats.map(function(f){return '<li>'+esc(f)+'</li>'}).join('')+'</ul><div class="price"><small>від</small>'+money(t.base)+'</div><div class="row" style="display:flex;gap:10px;flex-wrap:wrap"><a class="btn ghost" href="#demo-'+id+'">Демо</a><button class="btn" data-order="'+id+'">Замовити</button></div></div></article>'}).join('');
-  var tpls='<section class="wrap lp-sec" id="tpl"><div class="lp-head"><span class="eyebrow">Шаблони</span><h2>Оберіть свій <em>настрій</em></h2><p>Кожен шаблон має 9 кольорових тем, 3 шрифти та набір секцій, які можна вмикати й вимикати.</p></div><div class="lp-tpls">'+cards+'</div><div class="lp-add"><div><em>+'+money(PRICING.section)+'</em><b>Додаткова секція</b><span>Дрескод, підказки, подарунки, трансфер або питання й відповіді.</span></div><div><em>+'+money(PRICING.lang)+'</em><b>Додаткова мова</b><span>Українська входить у вартість, решту можна додати.</span></div><div><em>від 0 ₴</em><b>Іменні запрошення</b><span>До 10 гостей безкоштовно, далі за пакетами.</span></div></div></section>';
-  var build='<section class="lp-dark lp-sec" id="lp-build"><div class="wrap"><div class="lp-head"><span class="eyebrow">Конструктор</span><h2>Ви збираєте запрошення <em>самі</em></h2><p>Спробуйте просто тут: змініть тему, увімкніть секції й подивіться, як відреагує запрошення.</p></div><div class="lp-b" id="lp-b"></div></div></section>';
+  var how='<section class="wrap lp-sec" id="lp-how"><div class="lp-head c rv"><span class="eyebrow">Інструкція</span><h2>Чотири кроки до <em>готового</em> запрошення</h2><p>Нічого складного: усе підказано, а результат видно одразу.</p></div><ol class="lp-steps"><li class="rv"><span class="n">1</span><b>Оберіть шаблон</b><span>Подивіться демо та виберіть дизайн, який вам до вподоби.</span></li><li class="rv" style="--d:.1s"><span class="n">2</span><b>Зберіть запрошення</b><span>Тема, секції, мови, тексти й фото. Усе змінюється на телефоні наживо.</span></li><li class="rv" style="--d:.2s"><span class="n">3</span><b>Оплатіть і опублікуйте</b><span>Платите наприкінці, коли все готово, і отримуєте особисте посилання.</span></li><li class="rv" style="--d:.3s"><span class="n">4</span><b>Діліться й слідкуйте</b><span>Надсилайте гостям і дивіться відповіді та кількість місць у кабінеті.</span></li></ol></section>';
+  var cards=tplCards('wedding');
+  var tpls='<section class="wrap lp-sec" id="tpl"><div class="lp-head rv"><span class="eyebrow">Шаблони</span><h2>Оберіть свій <em>настрій</em></h2><p>Кожен шаблон має кольорові теми, шрифти та набір секцій, які можна вмикати й вимикати.</p></div><div class="lp-cats" role="group" aria-label="Категорія">'+CATS.map(function(c,i){return '<button type="button" data-cat="'+c.id+'" aria-pressed="'+(i===0)+'">'+esc(c.name)+'</button>'}).join('')+'</div><div class="lp-tpls" id="lp-tpls">'+cards+'</div><div class="lp-add"><div><em>+'+money(PRICING.section)+'</em><b>Додаткова секція</b><span>Дрескод, підказки, подарунки, трансфер або питання й відповіді.</span></div><div><em>+'+money(PRICING.lang)+'</em><b>Додаткова мова</b><span>Українська входить у вартість, решту можна додати.</span></div><div><em>від 0 ₴</em><b>Іменні запрошення</b><span>До 10 гостей безкоштовно, далі за пакетами.</span></div></div></section>';
+  var build='<section class="lp-dark lp-sec" id="lp-build"><div class="wrap"><div class="lp-head rv"><span class="eyebrow">Конструктор</span><h2>Ви збираєте запрошення <em>самі</em></h2><p>Спробуйте просто тут: змініть тему, увімкніть секції й подивіться, як відреагує запрошення.</p></div><div class="lp-b" id="lp-b"></div></div></section>';
   var named='<section class="wrap lp-sec" id="lp-named"><div class="lp-n"><div><span class="eyebrow">Іменні запрошення</span> <span class="lp-soon">Скоро</span><h2 style="margin-top:20px">Кожному гостю <em>своє</em> запрошення</h2><ul class="lp-list"><li><span class="k">'+chk+'</span><span><b>Звернення на ім’я.</b> «Шановна Олено!» у шапці запрошення, а не загальне «Дорогі гості».</span></li><li><span class="k">'+chk+'</span><span><b>Особисте посилання.</b> Для кожного гостя своє, непередбачуване й готове до відправки.</span></li><li><span class="k">'+chk+'</span><span><b>Відповідь без пошуку імені.</b> Форма вже знає, хто відповідає, і одразу показує кількість місць.</span></li><li><span class="k">'+chk+'</span><span><b>Видно, хто відкрив.</b> Нагадайте лише тим, хто ще не відповів.</span></li></ul></div><div class="lp-nv" aria-hidden="true"><div class="lp-guest"><div class="h"><b>Список гостей</b><span class="pill">12 запрошень</span></div><div class="lp-gr"><b>Олена Коваль</b><span class="pill ok">Підтвердила</span><code>/i/olena-ta-denys/k7x9q2</code></div><div class="lp-gr"><b>Іван і Марія Петренко</b><span class="pill wait">Відкрили</span><code>/i/olena-ta-denys/m4b81z</code></div><div class="lp-gr"><b>Сергій Мельник</b><span class="pill">Не відкривав</span><code>/i/olena-ta-denys/t9c3pw</code></div><div class="lp-gr"><b>Тетяна Бондар</b><span class="pill ok">Підтвердила</span><code>/i/olena-ta-denys/h2r6ud</code></div></div><div class="lp-env"><small>Для гості</small><div class="sc2">Шановна Олено!</div><p>Запрошуємо вас розділити з нами найважливіший день</p></div></div></div>'+
     '<div class="lp-packs">'+PACKS.map(function(p){return '<div class="lp-pack'+(p.pop?' pop':'')+'"><b>'+p.n+'</b><span>'+p.s+'</span><em>'+(p.p?money(p.p):'безкоштовно')+'</em></div>'}).join('')+'</div></section>';
+  var plans='<section class="wrap lp-sec" id="lp-plans"><div class="lp-head c rv"><span class="eyebrow">Тарифи</span><h2>Скільки роботи <em>довірити</em> мені</h2><p>Збираєте запрошення самі або віддаєте його дизайнерці. Один платіж, без підписок.</p></div><div class="lp-plans">'+TARIFFS.map(function(t,i){
+    var cta=t.id==='self'?'<a class="btn ghost" href="#shop" data-go="tpl">'+t.cta+'</a>':'<a class="btn" href="'+tgLink(t.id==='key'?'Привіт! Хочу замовити запрошення за тарифом «Під ключ».\nПодія: \nДата: \nШаблон: ':'Привіт! Хочу індивідуальне запрошення.\nПодія: \nДата: \nПриклади, що подобаються: ')+'" target="_blank" rel="noopener">'+t.cta+'</a>';
+    return '<article class="lp-plan rv'+(t.tag?' pop':'')+'" style="--d:'+(i*.12)+'s">'+(t.tag?'<span class="tag">'+esc(t.tag)+'</span>':'')+'<h3>'+esc(t.name)+'</h3><p class="sub">'+esc(t.sub)+'</p><div class="pr"><small>від</small>'+money(t.from)+'</div>'+(t.id==='self'&&BETA?'<span class="free">Зараз публікація безкоштовна</span>':'')+'<ul>'+t.feats.map(function(f){return '<li>'+chk+'<span>'+esc(f)+'</span></li>'}).join('')+'</ul>'+cta+'</article>'}).join('')+'</div><p class="lp-pnote">Ціни орієнтовні. Додаткова мова +'+money(PRICING.lang)+', додаткова секція +'+money(PRICING.section)+'.</p></section>';
+  var msgTxt='Привіт, Валеріє! Хочу індивідуальне запрошення.\nПодія: \nДата: \nМісто і локація: \nНастрій і кольори: \nПриклади, що сподобались (посилання або скріни): ';
+  var custom='<section class="lp-sec" id="lp-custom" style="background:color-mix(in srgb,var(--surface) 55%,transparent);border-block:1px solid var(--line)"><div class="wrap"><div class="lp-cu"><div class="rv"><span class="eyebrow">Індивідуальне запрошення</span><h2 style="margin-top:20px">Не знайшли <em>свій</em> шаблон?</h2><p class="lead2">Я намалюю запрошення саме під вас: з вашою історією, кольорами та локацією. Для весілля, дня народження, хрестин чи ювілею.</p><div class="lp-msg"><b style="font:600 13px/1 var(--f-body);letter-spacing:.14em;text-transform:uppercase;color:var(--muted)">Що написати мені в Telegram</b><pre id="lp-msg">'+esc(msgTxt)+'</pre><div class="row"><a class="btn" href="'+tgLink(msgTxt)+'" target="_blank" rel="noopener">Написати в Telegram</a><button class="btn ghost" type="button" id="lp-copy">Скопіювати текст</button></div></div></div><ol class="lp-cs"><li class="rv"><span class="n">1</span><span><b>Пишете мені в Telegram</b><span class="t">Назвіть подію й дату, надішліть 2–3 приклади, що подобаються, і кілька слів про настрій свята.</span></span></li><li class="rv" style="--d:.12s"><span class="n">2</span><span><b>Погоджуємо концепцію</b><span class="t">Я надішлю мудборд і ескіз головного екрана. Ви кажете, що змінити, і я доопрацьовую.</span></span></li><li class="rv" style="--d:.24s"><span class="n">3</span><span><b>Отримуєте готове запрошення</b><span class="t">Анімоване, з формою відповіді та особистим кабінетом. Посилання одразу можна надсилати гостям.</span></span></li></ol></div></div></section>';
   var cab='<section class="lp-sec" id="lp-cab" style="background:color-mix(in srgb,var(--surface) 55%,transparent);border-block:1px solid var(--line)"><div class="wrap"><div class="lp-c"><div class="lp-win" aria-hidden="true"><div class="top"><i></i><i></i><i></i><small>Особистий кабінет</small></div><div class="bd"><div class="lp-st"><div><b>86</b><span>Запрошено</span></div><div><b>54</b><span>Підтвердили</span></div><div><b>7</b><span>Не прийдуть</span></div><div><b>25</b><span>Очікуємо</span></div></div><div class="lp-bar"><i style="width:63%;background:var(--ok)"></i><i style="width:8%;background:var(--bad)"></i></div><div class="lp-lnk"><code>твійсайт.com/i/olena-ta-denys</code><span class="btn sm ghost">Копіювати</span></div><div class="lp-tb"><div class="r"><b>Олена Коваль</b><span class="pill ok">Прийде · 2</span></div><div class="r"><b>Іван і Марія Петренко</b><span class="pill ok">Прийдуть · 2</span></div><div class="r"><b>Сергій Мельник</b><span class="pill no">Не зможе</span></div><div class="r"><b>Тетяна Бондар</b><span class="pill wait">Очікуємо</span></div></div><div style="display:flex;gap:8px;flex-wrap:wrap"><span class="btn sm">Завантажити CSV</span><span class="btn sm ghost">Переглянути запрошення</span></div></div></div><div class="txt"><span class="eyebrow">Особистий кабінет</span><h2 style="margin-top:20px">Усі відповіді гостей <em>в одному місці</em></h2><ul class="lp-list"><li><span class="k">'+chk+'</span><span><b>Хто прийде і з ким.</b> Підтвердження, відмови та кількість місць одразу в таблиці.</span></li><li><span class="k">'+chk+'</span><span><b>Побажання гостей.</b> Коментарі й повідомлення від гостей лежать поруч із відповіддю.</span></li><li><span class="k">'+chk+'</span><span><b>Список у таблицю.</b> Завантажте CSV для рахунку, розсадки та банкету.</span></li><li><span class="k">'+chk+'</span><span><b>Усе приватне.</b> Кабінет бачите лише ви, а гості бачать тільки запрошення.</span></li></ul><div class="cta" style="margin-top:30px"><a class="btn" href="#shop" data-go="tpl">Створити запрошення</a></div></div></div></div></section>';
-  var faq='<section class="wrap lp-sec" id="lp-faq"><div class="lp-head c"><span class="eyebrow">Питання та відповіді</span><h2>Відповідаю <em>наперед</em></h2></div><div class="lp-faq">'+FAQ.map(function(f){return '<details><summary>'+esc(f[0])+'</summary><p>'+esc(f[1])+'</p></details>'}).join('')+'</div></section>';
+  var faq='<section class="wrap lp-sec" id="lp-faq"><div class="lp-head c rv"><span class="eyebrow">Питання та відповіді</span><h2>Відповідаю <em>наперед</em></h2></div><div class="lp-faq">'+FAQ.map(function(f){return '<details><summary>'+esc(f[0])+'</summary><p>'+esc(f[1])+'</p></details>'}).join('')+'</div></section>';
   var fin='<section class="lp-dark lp-fin"><div class="wrap"><span class="eyebrow">Почнімо</span><h2>Ваше запрошення <em>вже сьогодні</em></h2><p>Оберіть шаблон і зберіть запрошення за вечір. А якщо хочете довірити це мені, напишіть у Telegram.</p><div class="cta"><a class="btn lg" href="#shop" data-go="tpl">Обрати шаблон</a><a class="btn ghost lg" href="https://t.me/valeriaralko" target="_blank" rel="noopener">Написати в Telegram</a></div></div></section>';
-  app.innerHTML='<div class="lp">'+lpNav()+hero+strip2+how+tpls+build+named+cab+faq+fin+'<div class="lp-ft">'+footer()+'</div></div>';
+  app.innerHTML='<div class="lp">'+lpNav()+hero+strip2+how+tpls+build+plans+named+cab+custom+faq+fin+'<div class="lp-ft">'+footer()+'</div></div>';
   app.querySelectorAll('[data-go]').forEach(function(a){a.addEventListener('click',function(e){e.preventDefault();var el=document.getElementById(a.getAttribute('data-go'));if(el)el.scrollIntoView({behavior:'smooth',block:'start'})})});
   app.querySelectorAll('[data-order]').forEach(function(b){b.addEventListener('click',function(){openChoose(b.getAttribute('data-order'))})});
   lpBuilder();
+  var grid=document.getElementById('lp-tpls');
+  app.querySelectorAll('[data-cat]').forEach(function(b){b.addEventListener('click',function(){
+    app.querySelectorAll('[data-cat]').forEach(function(x){x.setAttribute('aria-pressed',String(x===b))});
+    grid.innerHTML=tplCards(b.getAttribute('data-cat'));
+    grid.querySelectorAll('[data-order]').forEach(function(o){o.addEventListener('click',function(){openChoose(o.getAttribute('data-order'))})});
+    reveal();
+  })});
+  var cpb=document.getElementById('lp-copy');if(cpb)cpb.addEventListener('click',function(){copyText(document.getElementById('lp-msg').textContent)});
+  var hero0=app.querySelector('.lp-hero'),stg=app.querySelector('.lp-stage');
+  if(hero0&&stg&&window.matchMedia&&matchMedia('(pointer:fine)').matches)hero0.addEventListener('pointermove',function(e){var r=hero0.getBoundingClientRect();stg.style.setProperty('--px',((e.clientX-r.left)/r.width-.5).toFixed(3));stg.style.setProperty('--py',((e.clientY-r.top)/r.height-.5).toFixed(3))});
+  var nums=app.querySelectorAll('.lp-st b');
+  if(nums.length&&'IntersectionObserver' in window&&!(window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches)){
+    var cio=new IntersectionObserver(function(es){es.forEach(function(e){if(!e.isIntersecting)return;cio.unobserve(e.target);var el=e.target,to=Number(el.textContent)||0,t0=performance.now();(function f(t){var k=Math.min(1,(t-t0)/1400);el.textContent=Math.round(to*(1-Math.pow(1-k,3)));if(k<1)requestAnimationFrame(f)})(t0)})},{threshold:.6});
+    nums.forEach(function(n){cio.observe(n)});
+  }
+  reveal();
   tick();
+}
+function tplCards(cat){
+  if(cat==='wedding')return TPL_IDS.map(function(id,i){var t=TPL[id];return '<article class="lp-tpl rv" style="--d:'+(i*.1)+'s"><div class="im"><img src="'+t.cover+'" alt="Шаблон '+esc(t.name)+'" loading="lazy"></div><div class="bd"><span class="eyebrow">Шаблон</span><h3>'+esc(t.name)+'</h3><p class="muted">'+esc(t.desc)+'</p><ul>'+t.feats.map(function(f){return '<li>'+esc(f)+'</li>'}).join('')+'</ul><div class="price"><small>від</small>'+money(t.base)+'</div><div class="row" style="display:flex;gap:10px;flex-wrap:wrap"><a class="btn ghost" href="#demo-'+id+'">Демо</a><button class="btn" data-order="'+id+'">Замовити</button></div></div></article>'}).join('');
+  var h=Object.keys(SHOW).filter(function(k){return SHOW[k].cat===cat}).map(function(k,i){var t=SHOW[k];return '<article class="lp-tpl rv" style="--d:'+(i*.1)+'s"><div class="im"><img src="'+t.cover+'" alt="Шаблон '+esc(t.name)+'" loading="lazy"></div><div class="bd"><span class="tgl">Дизайнерський шаблон</span><h3>'+esc(t.name)+'</h3><p class="muted">'+esc(t.desc)+'</p><ul>'+t.feats.map(function(f){return '<li>'+esc(f)+'</li>'}).join('')+'</ul><div class="price"><small>від</small>'+money(t.base)+'</div><div class="row" style="display:flex;gap:10px;flex-wrap:wrap"><a class="btn ghost" href="#demo-'+k+'">Демо</a><a class="btn" href="'+tgLink('Привіт! Хочу запрошення «'+t.name+'».\nПодія: \nДата: ')+'" target="_blank" rel="noopener">Замовити в Telegram</a></div></div></article>'}).join('');
+  return h+'<article class="lp-tpl soon rv"><div class="bd"><span class="eyebrow">Скоро</span><h3>Нові шаблони на підході</h3><p class="muted">Готую ще кілька тем для дня народження. Якщо маєте ідею, напишіть мені.</p><a class="btn ghost" href="'+tgLink('Привіт! Є ідея для шаблону запрошення: ')+'" target="_blank" rel="noopener">Запропонувати тему</a></div></article>';
 }
 function lpBuilder(){
   var box=document.getElementById('lp-b');if(!box)return;
@@ -902,11 +1051,17 @@ function lpBuilder(){
   });
   draw();
 }
+function viewShowDemo(t){
+  unmountMusic();
+  app.innerHTML='<div class="bar"><div class="in"><div class="t"><a class="btn ghost sm" href="#shop">← Каталог</a><b>Демо: '+esc(t.name)+'</b></div><a class="btn sm" href="'+tgLink('Привіт! Хочу запрошення «'+t.name+'».\nПодія: \nДата: ')+'" target="_blank" rel="noopener">Замовити від '+money(t.base)+'</a></div></div><iframe class="showf" src="'+esc(t.url)+'" title="Демо '+esc(t.name)+'"></iframe>';
+}
 function viewDemo(tid){
-  var t=TPL[tid];if(!t)return viewShop();
+  var t=TPL[tid];if(!t&&SHOW[tid])return viewShowDemo(SHOW[tid]);
+  if(!t)return viewShop();
   envOpen=false;
   app.innerHTML='<div class="bar"><div class="in"><div class="t"><a class="btn ghost sm" href="#shop">← Каталог</a><b>Демо: '+esc(t.name)+'</b></div><button class="btn sm" data-order="'+tid+'">Замовити від '+money(t.base)+'</button></div></div><div class="demo-col">'+renderInv(tid,null,null,{live:false})+'</div>'+envHTML(tid,null,true);
   app.querySelector('[data-order]').addEventListener('click',function(){openChoose(tid)});
+  markInv();reveal();
   tick();
 }
 async function viewNew(tid){
@@ -1160,7 +1315,7 @@ async function viewPublic(id){
   var cur=snap.data(),t=TPL[cur.tpl],mine=uid&&cur.ownerId===uid;
   var st0=cur.pub||(mine?cur:null);
   if(!st0)return msg('Запрошення ще не опубліковано','Автори ще готують його. Спробуйте трохи пізніше.');
-  var live=!!cur.pub,ph={},sent=false,lang='uk',base=clone(st0);envOpen=false;
+  var live=!!cur.pub,ph={},sent=false,lang='uk',base=clone(st0),firstDraw=true;envOpen=false;
   try{sent=localStorage.getItem('rsvp_'+id)==='1'}catch(e){}
   var langs=(base.langs&&base.langs.length)?base.langs:['uk'];
   function stt(){return {data:base.data,tr:base.tr,theme:base.theme,font:base.font,sections:base.sections||freeSecs(),lang:lang}}
@@ -1170,17 +1325,28 @@ async function viewPublic(id){
     app.innerHTML=top+sw+'<div class="demo-col" style="padding-block:0">'+renderInv(cur.tpl,stt(),ph,{live:live,sent:sent})+'</div>'+((base.envelope&&!envOpen)?envHTML(cur.tpl,stt(),true):'');
     app.querySelectorAll('[data-l]').forEach(function(b){b.addEventListener('click',function(){lang=b.getAttribute('data-l');var y=window.scrollY;draw();window.scrollTo(0,y)})});
     var f=document.getElementById('rsvpForm');
+    if(f&&live){
+      var yo=document.getElementById('r_yes'),gw=document.getElementById('r_gw'),cs=document.getElementById('r_cnt');
+      f.querySelectorAll('input[name=r_st]').forEach(function(r){r.addEventListener('change',function(){yo.hidden=f.querySelector('input[name=r_st]:checked').value==='no'})});
+      cs.addEventListener('change',function(){gw.hidden=Number(cs.value)<2});
+    }
     if(f&&live)f.addEventListener('submit',async function(e){
       e.preventDefault();
       var name=document.getElementById('r_name').value.trim();if(!name)return;
       var s=f.querySelector('input[name=r_st]:checked').value,cnt=s==='yes'?Number(document.getElementById('r_cnt').value):0;
+      var gv=function(i){var e=document.getElementById(i);return e?e.value.trim():''},tr=document.getElementById('r_trf');
+      var np=[];if(s==='yes'){if(cnt>1&&gv('r_guests'))np.push('Гості: '+gv('r_guests'));if(gv('r_diet'))np.push('Дієта: '+gv('r_diet'));if(tr&&tr.checked)np.push('Трансфер: так')}
+      if(gv('r_note'))np.push(gv('r_note'));
+      var noteText=np.join(' · ').slice(0,300);
       var b=f.querySelector('button');b.disabled=true;b.textContent=u(lang,'sending');
       try{
-        await db.collection('rsvps').add({inv:id,name:name,status:s,count:cnt,note:document.getElementById('r_note').value.trim(),lang:lang,at:Date.now(),by:uid||null});
+        await db.collection('rsvps').add({inv:id,name:name,status:s,count:cnt,note:noteText,lang:lang,at:Date.now(),by:uid||null});
         sent=true;try{localStorage.setItem('rsvp_'+id,'1')}catch(e2){}
         var y=window.scrollY;draw();window.scrollTo(0,y);
       }catch(err){b.disabled=false;b.textContent=u(lang,'send');toast('Не вдалося надіслати. Спробуйте ще раз.')}
     });
+    markInv();
+    reveal();mountMusic((base.data||{}).musicUrl);
     tick();
   }
   draw();
@@ -1216,7 +1382,7 @@ async function viewCab(id){
     rows=s.docs.map(function(x){return x.data()}).sort(function(a,b){return b.at-a.at});
     var yes=0,no=0;rows.forEach(function(r){if(r.status==='yes')yes+=Number(r.count)||1;else no++});
     document.getElementById('s_yes').textContent=yes;document.getElementById('s_no').textContent=no;document.getElementById('s_all').textContent=rows.length;
-    document.getElementById('gt').innerHTML=rows.length?'<table><thead><tr><th>Гість</th><th>Відповідь</th><th>Осіб</th><th>Побажання</th><th>Коли</th></tr></thead><tbody>'+rows.map(function(r){return '<tr><td>'+esc(r.name)+'</td><td><span class="pill '+(r.status==='yes'?'ok':'no')+'">'+(r.status==='yes'?'Буде':'Не зможе')+'</span></td><td class="num">'+(r.status==='yes'?esc(r.count):'—')+'</td><td>'+esc(r.note||'—')+'</td><td class="num">'+esc(new Date(r.at).toLocaleDateString('uk-UA'))+'</td></tr>'}).join('')+'</tbody></table>':'<div class="empty">Відповідей поки немає. Надішліть гостям посилання, і вони зʼявляться тут одразу.</div>';
+    document.getElementById('gt').innerHTML=rows.length?'<table><thead><tr><th>Гість</th><th>Відповідь</th><th>Осіб</th><th>Побажання</th><th>Коли</th></tr></thead><tbody>'+rows.map(function(r){return '<tr><td>'+esc(r.name)+'</td><td><span class="pill '+(r.status==='yes'?'ok':'no')+'">'+(r.status==='yes'?'Буде':'Не зможе')+'</span></td><td class="num">'+(r.status==='yes'?esc(r.count):'—')+'</td><td>'+esc(r.note||'—').split(' · ').join('<br>')+'</td><td class="num">'+esc(new Date(r.at).toLocaleDateString('uk-UA'))+'</td></tr>'}).join('')+'</tbody></table>':'<div class="empty">Відповідей поки немає. Надішліть гостям посилання, і вони зʼявляться тут одразу.</div>';
   },function(){}));
 }
 async function viewMy(){
@@ -1231,7 +1397,7 @@ async function viewMy(){
 
 /* ---------- router ---------- */
 function route(){
-  clearSubs();closeModal();
+  clearSubs();closeModal();unmountMusic();rvWait=false;rvDone=false;
   var h=location.hash.slice(1)||'shop',i=h.indexOf('-'),name=i<0?h:h.slice(0,i),arg=i<0?'':h.slice(i+1);
   var v={shop:viewShop,demo:viewDemo,new:viewNew,edit:viewEdit,i:viewPublic,cab:viewCab,my:viewMy}[name]||viewShop;
   window.scrollTo(0,0);v(arg);
