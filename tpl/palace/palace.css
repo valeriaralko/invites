@@ -76,7 +76,7 @@
 .pal .pl-dress .pl-tx{margin-top:calc(var(--u)*72)}
 .pal .pl-ppl{margin:calc(var(--u)*50) calc(var(--u)*-172) 0;width:calc(100% + var(--u)*344)!important;max-width:none}
 .pal .pl-sw{display:flex;justify-content:center;gap:calc(var(--u)*30);margin-top:calc(var(--u)*40)}
-.pal .pl-sw i{width:calc(var(--u)*165);height:calc(var(--u)*165);border-radius:50%;display:block;background:radial-gradient(circle at 30% 22%,rgba(255,255,255,.7),rgba(255,255,255,0) 34%),conic-gradient(from 200deg at 55% 62%,color-mix(in srgb,var(--c) 65%,#fff),var(--c),color-mix(in srgb,var(--c) 70%,#000),var(--c),color-mix(in srgb,var(--c) 55%,#fff),color-mix(in srgb,var(--c) 85%,#000),color-mix(in srgb,var(--c) 65%,#fff));box-shadow:0 calc(var(--u)*10) calc(var(--u)*22) rgba(21,43,92,.18);transition:transform .5s}
+.pal .pl-sw i{width:calc(var(--u)*165);height:calc(var(--u)*165);border-radius:50%;display:block;background:url('fabric.webp') center/cover,var(--c);background-blend-mode:overlay,normal;box-shadow:0 calc(var(--u)*10) calc(var(--u)*22) rgba(21,43,92,.18);transition:transform .5s}
 .pal .pl-sw i:hover{transform:scale(1.08) rotate(20deg)}
 .rv-on .pal .pl-sw.pa i{opacity:0;transform:scale(.4);transition:opacity .6s,transform .8s cubic-bezier(.3,1.5,.4,1)}
 .rv-on .pal .pl-sw.pa.in i{opacity:1;transform:none}
@@ -132,7 +132,8 @@
 @keyframes plconf{0%{transform:translateY(-30%) rotate(-2deg);opacity:0}15%{opacity:1}100%{transform:none;opacity:1}}
 @keyframes plflut{to{transform:translateY(2.2%) rotate(.8deg)}}
 .pal .pl-circs{display:flex;justify-content:center;gap:calc(var(--u)*14);margin-top:calc(var(--u)*92)}
-.pal .pl-circs .c{width:calc(var(--u)*302);height:calc(var(--u)*302);position:relative;border-radius:50%;display:grid;place-items:center;border:1.5px solid var(--navy);cursor:grab;outline:0}
+.pal .pl-circs .c{width:calc(var(--u)*302);height:calc(var(--u)*302);position:relative;border-radius:50%;display:grid;place-items:center;border:1.5px solid var(--navy);cursor:grab;outline:0;border-color:transparent;transition:border-color .8s}
+.pal .pl-circs .c.done,.pal .pl-circs.on .c{border-color:var(--navy)}
 .pal .pl-circs .c:focus-visible{box-shadow:0 0 0 3px #b89a5e}
 .pal .pl-circs em{font:400 calc(var(--u)*100)/1 var(--fd);font-style:normal;color:var(--navy)}
 .pal .pl-circs .sc{position:absolute;inset:0;width:100%;height:100%;border-radius:50%;touch-action:none;cursor:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='28'%3E%3Ccircle cx='14' cy='14' r='10' fill='%23fff' fill-opacity='.35' stroke='%23152b5c' stroke-width='2'/%3E%3C/svg%3E") 14 14,grab;transition:opacity .7s,transform .7s;animation:plshine 3s ease-in-out infinite}
@@ -180,13 +181,13 @@
 .pal .pl-cg b.on::before{animation:plheartb 2.4s 2s ease-in-out infinite}
 @keyframes plheartb{0%,100%{transform:translate(-50%,-50%) scale(1)}50%{transform:translate(-50%,-50%) scale(1.14)}}
 /* ---------- FORM ---------- */
-.pal .pl-join{margin-top:calc(var(--u)*136);padding:calc(var(--u)*250) calc(var(--u)*56) calc(var(--u)*270);background:#efe3c9;overflow:hidden}
+.pal .pl-join{margin-top:calc(var(--u)*136);padding:calc(var(--u)*250) calc(var(--u)*56) calc(var(--u)*270);background:#f4ead3;overflow:hidden}
 .pal .pl-join .pl-form{margin:0}
 .pal .pl-join .pl-h2{font-size:calc(var(--u)*86);line-height:calc(var(--u)*96)}
 .pal .pl-join .pl-tx{margin:calc(var(--u)*56) auto 0;padding:0 calc(var(--u)*165)}
 .pal .pl-form{margin:calc(var(--u)*150) calc(var(--u)*56) 0;position:relative;padding-top:calc(var(--u)*40)}
 .pal .pl-fcher{position:absolute;left:50%;top:calc(var(--u)*62);width:calc(var(--u)*140);margin-left:calc(var(--u)*-70);z-index:3}
-.pal .pl-fo{position:relative;padding:calc(var(--u)*230) calc(var(--u)*92) calc(var(--u)*96);text-align:left;background:linear-gradient(180deg,#fffdf7,#fbf5e6);border:1px solid var(--navy);box-shadow:0 calc(var(--u)*30) calc(var(--u)*60) rgba(21,43,92,.12),inset 0 0 0 calc(var(--u)*12) #fffdf7,inset 0 0 0 calc(var(--u)*13) #b89a5e}
+.pal .pl-fo{position:relative;padding:calc(var(--u)*230) calc(var(--u)*92) calc(var(--u)*96);text-align:left;background:#ede0c4;border:1px solid var(--navy);box-shadow:0 calc(var(--u)*30) calc(var(--u)*60) rgba(21,43,92,.10),inset 0 0 0 calc(var(--u)*12) #ede0c4,inset 0 0 0 calc(var(--u)*13) #b89a5e}
 .pal .pl-fo .k{position:absolute;width:calc(var(--u)*92);height:calc(var(--u)*92);background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 60 60' fill='none' stroke='%23b89a5e' stroke-width='1.4' stroke-linecap='round'%3E%3Cpath d='M6 54V20C6 12 12 6 20 6h34'/%3E%3Cpath d='M14 54V28c0-8 6-14 14-14h26' opacity='.55'/%3E%3Ccircle cx='20' cy='20' r='3' fill='%23b89a5e'/%3E%3C/svg%3E") center/contain no-repeat}
 .pal .pl-fo .k1{left:calc(var(--u)*22);top:calc(var(--u)*22)}.pal .pl-fo .k2{right:calc(var(--u)*22);top:calc(var(--u)*22);transform:scaleX(-1)}
 .pal .pl-fo .k3{left:calc(var(--u)*22);bottom:calc(var(--u)*22);transform:scaleY(-1)}.pal .pl-fo .k4{right:calc(var(--u)*22);bottom:calc(var(--u)*22);transform:scale(-1)}
@@ -233,12 +234,12 @@
 /* ---------- CURTAIN GATE ---------- */
 .env.cgate{background:#0b2a6e;display:block;overflow:hidden;container-type:inline-size;font-family:'Gilroy','Onest',sans-serif;transition:none}
 .env.cgate.fix{left:50%;right:auto;width:min(100vw,460px);transform:translateX(-50%)}
-.env.cgate.open{opacity:1;background:transparent;animation:cgout .5s 1.5s forwards}
+.env.cgate.open{opacity:1;background:transparent;animation:cgout .4s 1.7s forwards}
 @keyframes cgout{to{opacity:0}}
 .cg-in{position:absolute;inset:0;--u:calc(100cqw/1235)}
-.cg-a{position:absolute;inset:0;background:#0b2a6e url('curtain-panel.webp') center top/cover no-repeat;transition:transform 1.6s cubic-bezier(.7,0,.25,1)}
+.cg-a{position:absolute;inset:0;background:#0b2a6e url('gate-panel.webp') left top/100% auto no-repeat;transition:transform 1.6s cubic-bezier(.7,0,.25,1)}
 .cg-l{clip-path:inset(0 50% 0 0);transform-origin:0 50%}.cg-r{clip-path:inset(0 0 0 50%);transform-origin:100% 50%}
-.env.cgate.open .cg-l{transform:translateX(-54%) scale(1.05)}.env.cgate.open .cg-r{transform:translateX(54%) scale(1.05)}
+.env.cgate.open .cg-l{transform:translateX(-52%)}.env.cgate.open .cg-r{transform:translateX(52%)}
 .cg-a::after{content:'';position:absolute;inset:0;pointer-events:none;opacity:0;transition:opacity 1s}.cg-l::after{background:linear-gradient(90deg,transparent 80%,rgba(0,10,50,.45))}.cg-r::after{background:linear-gradient(270deg,transparent 80%,rgba(0,10,50,.45))}
 .env.cgate.open .cg-a::after{opacity:1}
 .cg-t{position:absolute;left:0;right:0;top:46%;display:grid;gap:calc(var(--u)*30);justify-items:center;color:#fff;text-align:center;transition:opacity .5s,transform .8s}
@@ -253,7 +254,7 @@
 /* FLOWERS */
 .pal .pl-fl{position:absolute;pointer-events:none;z-index:1}
 .pal .pl-fl img{display:block;width:100%;transform-origin:50% 100%;animation:plfsway 7s ease-in-out infinite}
-.pal .pl-fl.fa1{left:calc(var(--u)*-80);bottom:calc(var(--u)*110);width:calc(var(--u)*390);z-index:3}
+.pal .pl-fl.fa1{left:calc(var(--u)*-230);bottom:calc(var(--u)*60);width:calc(var(--u)*560);z-index:3}
 .pal .pl-fl.fa2{right:calc(var(--u)*-70);top:calc(var(--u)*120);width:calc(var(--u)*380);z-index:3}.pal .pl-fl.fa2 img{animation-delay:-2.5s;transform-origin:100% 50%}
 .pal .pl-fl.fa3{right:calc(var(--u)*-30);bottom:calc(var(--u)*110);width:calc(var(--u)*320);z-index:3}.pal .pl-fl.fa3 img{animation-delay:-4s}
 @keyframes plfsway{0%,100%{transform:rotate(-2.2deg) scale(1)}50%{transform:rotate(2.6deg) scale(1.03)}}
@@ -264,7 +265,9 @@
 @media (prefers-reduced-motion:reduce){.pal .pl-fl img{animation:none}}
 .rv-on .pal .pl-kick.pa,.rv-on .pal .pl-names.pa,.rv-on .pal .pl-lead.pa,.rv-on .pal .pl-cher.pa:not(.pl-bob2){transition-delay:calc(var(--d,0s) + 1s)}
 
-.cg-v{position:absolute;left:0;top:0;width:100%;z-index:3;pointer-events:none}
+.cg-f{position:absolute;left:0;top:0;width:100%;height:auto;z-index:3;pointer-events:none;transition:opacity .7s 1.05s}
+.env.cgate.open .cg-f{opacity:0}
+.pal .pl-cv{position:absolute;left:0;top:0;width:100%;z-index:3;pointer-events:none}
 .cg-a{z-index:1}
 .cg-t{z-index:4}
 .pal .pl-join .pl-form{padding-top:0}

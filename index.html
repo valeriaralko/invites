@@ -794,7 +794,7 @@ TPL.palace={
     locText:'Саме тут розпочнеться один із найважливіших днів нашого життя.\n\nМи чекатимемо на вас у затишному передмісті Варшави, у просторі **Dwór Afrodyta** — місце, де хочеться зупинити час, підняти келих шампанського і прожити кожну мить особливо.\n\nТут ми зберемося разом, щоб розділити любов, радість, щирі обійми, теплі слова й атмосферу свята, яку створюють лише найближчі люди.',
     progTitle:'Our Wedding Day',a_time:'14:00',a_text:'Welcome-зона',b_time:'15:00',b_text:'Весільна церемонія',c_time:'16:00',c_text:'Привітання\nвід гостей',d_time:'17:00',d_text:'Святкова вечеря',e_time:'',e_text:'',f_time:'',f_text:'',
     dressTitle:'The Dress-Code',dressText:'Нам буде дуже приємно, якщо ваш образ стане частиною загальної атмосфери нашого дня — ніжної, елегантної та світлої.\n\nМи обрали палітру, натхненну **кремовими відтінками, небесною блакиттю та глибоким синім кольором**. Будемо вдячні, якщо в ваших образах зʼявляться ці відтінки або близькі до них тони.\n\nНехай ваш образ буде святковим, витонченим і комфортним для вас.',
-    c1:'#e8dcc6',c2:'#a9cdea',c3:'#1e9be0',c4:'#1646c8',c5:'#0b1c4a',
+    c1:'#dac7b2',c2:'#8bb1cb',c3:'#2386bc',c4:'#17489a',c5:'#253953',
     wishTitle:'Our Wishes',wishText:'Найцінніше для нас у цей день — ваша присутність, щирі усмішки, теплі слова та моменти, які ми розділимо разом.\n\nМи не складали список подарунків, адже мріємо про дещо спільне, тому будемо раді **фінансовому внеску** в початок нашого сімейного життя',
     joinTitle:'Join Our\nCelebration',joinText:'Нам дуже важливо знати, що ви будете поруч ✨\n\nБудь ласка, підтвердіть свою присутність до 15.07.2027, заповнивши коротку анкету нижче. Так ми подбаємо про кожну деталь, щоб цей день став особливим і для вас 🤍',calText:'Побачимось разом у найщасливішу\nнеділю нашого року!'})
 };
@@ -806,7 +806,7 @@ function palCal(iso,L){
 }
 function palGate(v){
   var d=v.d;
-  return '<div class="env cgate" role="button" tabindex="0" aria-label="'+esc(u(v.L,'open'))+'"><div class="cg-in"><div class="cg-a cg-l"></div><div class="cg-a cg-r"></div><img class="cg-v" src="'+PAL+'valance-g.webp" alt=""><div class="cg-t"><img src="'+PAL+'cherub.webp" alt=""><span>'+esc(d.gateText||u(v.L,'tapCurtain'))+'</span></div></div></div>';
+  return '<div class="env cgate" role="button" tabindex="0" aria-label="'+esc(u(v.L,'open'))+'"><div class="cg-in"><div class="cg-a cg-l"></div><div class="cg-a cg-r"></div><img class="cg-f" src="'+PAL+'gate-frame.webp" alt=""><div class="cg-t"><img src="'+PAL+'cherub.webp" alt=""><span>'+esc(d.gateText||u(v.L,'tapCurtain'))+'</span></div></div></div>';
 }
 function petals(n){var s='';for(var i=0;i<n;i++)s+='<i class="pt"></i>';return '<div class="pl-pts" aria-hidden="true">'+s+'</div>'}
 function buildPalace(v,o){
@@ -815,7 +815,7 @@ function buildPalace(v,o){
   var sw=['c1','c2','c3','c4','c5'].map(function(k){var c=/^#[0-9a-fA-F]{3,8}$/.test(d[k])?d[k]:'#ccc';return '<i style="--c:'+c+'"></i>'}).join('');
   var circ=function(a){return '<span class="c" tabindex="0" role="button" aria-label="'+a+'"><em>'+a+'</em></span>'};
   var pp=parts(d.date),mon=fmt(d.date,L==='uk'?'en':L,{month:'short'}).replace('.','');
-  h.push('<header class="pl-hero" data-sec="head"><img class="pl-val" src="'+PAL+'valance.webp" alt=""><img class="pl-cl pl-sway" src="'+PAL+'curtain-l.webp" alt=""><img class="pl-cr pl-sway" src="'+PAL+'curtain-r.webp" alt="">'+
+  h.push('<header class="pl-hero" data-sec="head"><img class="pl-cv" src="'+PAL+'curtains-open.webp" alt="">'+
    '<p class="pl-kick'+pa+'" style="--d:.1s">'+tx(d.kicker)+'</p><h1 class="pl-names'+pa+'" style="--d:.3s"><span>'+esc(d.groom)+'</span><i>&amp;</i><span>'+esc(d.bride)+'</span></h1>'+
    '<div class="pl-lead'+pa+'" style="--d:.55s">'+mk(d.intro).replace(/<br><br>/g,'</p><p>').replace(/^/,'<p>')+'</p></div>'+
    '<img class="pl-cher pl-bob'+pa+'" style="--d:.8s" src="'+PAL+'cherub.webp" alt=""></header>');
@@ -1071,7 +1071,7 @@ document.addEventListener('scroll',function(){
 function markInv(){if(rvDone)return;app.querySelectorAll('.inv > section, .inv > .fin, .inv > .banner, .inv > .heroB, .inv > .lead2, .inv > .rsvp').forEach(function(el,i){el.classList.add('rv')})}
 function openEnv(el){if(!el||el.classList.contains('open'))return;el.classList.add('open');envOpen=true;
   if(AUDIO&&AUDIO.paused){var pr=AUDIO.play();if(pr&&pr.catch)pr.catch(function(){})}
-  if(rvWait){rvWait=false;reveal()}setTimeout(function(){if(el.parentNode)el.parentNode.removeChild(el)},el.classList.contains('cgate')?1900:760);
+  if(rvWait){rvWait=false;reveal()}setTimeout(function(){if(el.parentNode)el.parentNode.removeChild(el)},el.classList.contains('cgate')?2200:760);
   if(el.classList.contains('cgate'))setTimeout(function(){palGo('.pl-rev',1900,-10)},3300)}
 document.addEventListener('click',function(e){var el=e.target.closest&&e.target.closest('.env');if(el)openEnv(el);
   var nl=e.target.closest&&e.target.closest('[data-nolink]');if(nl)e.preventDefault()});
