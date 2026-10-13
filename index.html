@@ -6,7 +6,7 @@
 <title>Весільні запрошення Valeria</title>
 <style>html{color-scheme:light}body{margin:0}img{max-width:100%}</style>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Bad+Script&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Jost:wght@400;500;600&family=Marck+Script&family=Pinyon+Script&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bad+Script&family=Forum&family=Onest:wght@300;400;500;600&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Jost:wght@400;500;600&family=Marck+Script&family=Pinyon+Script&display=swap" rel="stylesheet">
 <style>
 /* Layout: storefront and wizard in a calm brown/cream UI; the invitation is a fixed-look paper object with its own theme tokens set per invitation. */
 :root{
@@ -581,6 +581,7 @@ td.num{font-variant-numeric:tabular-nums}
 
 <div id="app"></div>
 <div id="toast" class="toast" hidden></div>
+<link rel="stylesheet" href="tpl/palace/palace.css">
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.js"></script>
 <script src="config.js"></script>
 <script src="supabase-adapter.js"></script>
@@ -616,6 +617,11 @@ var UI={
  pl:{countdown:'Do naszego dnia zostało',days:'dni',hours:'godzin',minutes:'minut',seconds:'sekund',location:'Lokalizacja',program:'Program dnia',dress:'Dress code',wishes:'Nasze życzenia',tips:'Warto wiedzieć',transfer:'Transfer',faq:'Pytania i odpowiedzi',rsvpTitle:'Czy będziecie z nami?',rsvpSub:'Dajcie nam znać',yourName:'Wasze imię',yes:'Będę',no:'Nie dam rady',howMany:'Ile osób',note:'Alergie lub uwagi',guests:'Imiona osób, które będą z Wami',diet:'Alergie lub dieta',transferNeed:'Potrzebuję transferu',comment:'Życzenia lub wiadomość',send:'Wyślij odpowiedź',sending:'Wysyłanie…',thanks:'Dziękujemy!',thanksSub:'Otrzymaliśmy Waszą odpowiedź.',tapOpen:'Dotknij, aby otworzyć',join:'Dołącz',open:'Otwórz zaproszenie'},
  de:{countdown:'Bis zu unserem Tag',days:'Tage',hours:'Stunden',minutes:'Minuten',seconds:'Sekunden',location:'Ort',program:'Tagesablauf',dress:'Dresscode',wishes:'Unsere Wünsche',tips:'Gut zu wissen',transfer:'Transfer',faq:'Fragen & Antworten',rsvpTitle:'Seid ihr dabei?',rsvpSub:'Gebt uns bitte Bescheid',yourName:'Euer Name',yes:'Ich komme',no:'Ich kann nicht',howMany:'Anzahl der Gäste',note:'Allergien oder Wünsche',guests:'Namen eurer Begleitung',diet:'Allergien oder Ernährung',transferNeed:'Ich brauche einen Transfer',comment:'Wünsche oder Nachricht',send:'Antwort senden',sending:'Wird gesendet…',thanks:'Danke!',thanksSub:'Wir haben eure Antwort erhalten.',tapOpen:'Zum Öffnen tippen',join:'Beitreten',open:'Einladung öffnen'}
 };
+
+Object.assign(UI.uk,{tapCurtain:'торкніться, щоб відкрити завісу',route:'побудувати маршрут',canCome:'Чи зможете ви бути присутнім?',palYes:'Так, зможу',later:'Повідомлю пізніше',palNo:'Не зможу прийти'});
+Object.assign(UI.en,{tapCurtain:'tap to open the curtain',route:'get directions',canCome:'Will you be able to attend?',palYes:'Yes, I will',later:'I will let you know later',palNo:'I can’t make it'});
+Object.assign(UI.pl,{tapCurtain:'dotknij, aby odsłonić kurtynę',route:'wyznacz trasę',canCome:'Czy będziecie z nami?',palYes:'Tak, będę',later:'Dam znać później',palNo:'Nie dam rady'});
+Object.assign(UI.de,{tapCurtain:'tippen, um den Vorhang zu öffnen',route:'Route planen',canCome:'Könnt ihr dabei sein?',palYes:'Ja, ich komme',later:'Sage ich später Bescheid',palNo:'Ich kann nicht'});
 var u=function(L,k){return (UI[L]&&UI[L][k])||UI.uk[k]};
 var langOf=function(id){return LANGS.filter(function(x){return x.id===id})[0]||LANGS[0]};
 var THEMES=[
@@ -761,7 +767,100 @@ TPL.ivengo={
     chatText:'Для підтвердження вашої присутності, будь ласка, долучіться до чату та обовʼязково заповніть анкету. Також у ньому ви можете ділитись враженнями, відео та фото з весілля!',
     chatUrl:'',closing:'З нетерпінням чекаємо на Вас!'})
 };
-var TPL_IDS=['tishyna','ivengo'];
+
+/* ---------- The Blue Palace ---------- */
+var PAL='tpl/palace/',palOn=false;
+var mk=function(s){return esc(s).replace(/\*\*(.+?)\*\*/g,'<b>$1</b>').replace(/\n/g,'<br>')};
+TPL.palace={
+  id:'palace',name:'The Blue Palace',base:2490,cover:PAL+'cover.jpg',theme:'navy',span:1,noTheme:true,noFont:true,
+  gate:true,gateName:'завіса',secs:['save','location','program','dress','gifts','rsvp'],incl:['dress','gifts'],
+  desc:'Королівський синій оксамит, гортензії й тоаль: завіса, що відкривається дотиком, дата, що проявляється, конверт із вашим фото й анкета гостя.',
+  feats:['Завіса відкривається дотиком, дата проявляється при дотику','Тоаль-рамка програми, дрескод із палітрою та конверт із фото','Анкета гостя в стилі шаблону, музика, до 4 мов'],
+  photoDef:{photo1:PAL+'couple.jpg',photo2:PAL+'hands.jpg'},
+  fields:{
+    head:[F('groom','Імʼя нареченого',null,{ph:1}),F('bride','Імʼя нареченої',null,{ph:1}),F('date','Дата весілля','date',{ph:1}),F('kicker','Фраза над іменами','area'),F('intro','Вступ (два абзаци через порожній рядок)','area'),F('photo1','Фото у конверті (знизу сторінки)','photo'),F('musicUrl','Музика: посилання на mp3 (необовʼязково)',null,{tr:false})],
+    save:[F('revealTitle','Заголовок'),F('revealSub','Підпис під заголовком','area'),F('saveHead','Фраза під датою'),F('saveText','Текст під датою','area')],
+    location:[F('placeKick','Підзаголовок'),F('venueName','Назва місця (кожне слово можна з нового рядка)','area',{ph:1}),F('venueAddr','Адреса',null,{ph:1}),F('mapUrl','Посилання на маршрут (Google Maps), якщо порожньо, зробимо за адресою','url'),F('locText','Текст про місце (абзаци через порожній рядок, **жирним** виділяйте подвійними зірочками)','area')],
+    program:[F('progTitle','Заголовок'),F('a_time','Час','time',{g:'Подія 1'}),F('a_text','Подія','area',{g:'Подія 1'}),F('b_time','Час','time',{g:'Подія 2'}),F('b_text','Подія','area',{g:'Подія 2'}),F('c_time','Час','time',{g:'Подія 3'}),F('c_text','Подія','area',{g:'Подія 3'}),F('d_time','Час','time',{g:'Подія 4'}),F('d_text','Подія','area',{g:'Подія 4'}),F('e_time','Час','time',{g:'Подія 5 (необовʼязково)'}),F('e_text','Подія','area',{g:'Подія 5 (необовʼязково)'}),F('f_time','Час','time',{g:'Подія 6 (необовʼязково)'}),F('f_text','Подія','area',{g:'Подія 6 (необовʼязково)'})],
+    dress:[F('dressTitle','Заголовок'),F('dressText','Текст про дрескод (**жирним** виділяйте подвійними зірочками)','area')].concat(COLORS),
+    gifts:[F('wishTitle','Заголовок'),F('wishText','Побажання гостям','area'),F('photo2','Фото внизу розділу','photo')],
+    rsvp:[F('joinTitle','Заголовок'),F('joinText','Текст','area'),F('chatBtn','Напис на кнопці'),F('chatUrl','Посилання на чат гостей (Telegram, Viber)','url'),F('formTitle','Заголовок анкети'),F('formText','Текст над анкетою','area'),F('calText','Підпис під календарем','area')]
+  },
+  defaults:Object.assign({},SHD,{groom:'Roman',bride:'Anna',date:'2027-08-22',
+    kicker:'Сьогодні завіса відкриє\nне просто свято',
+    intro:'Вона відкриє історію кохання,\nяку ми хочемо прожити\nв оточенні найдорожчих людей.\n\nЗапрошуємо вас\nбути поруч у цей особливий день.',
+    revealTitle:'Reveal',revealSub:'Легким дотиком відкрийте день,\nякий стане для нас особливим.',saveHead:'We’re getting married!',saveText:'З любов’ю запрошуємо вас розділити\nцю мить з нами.',
+    placeKick:'The place where it begins',venueName:'Dwór\nAfrodyta',venueAddr:'Letniskowa 2, 96-325 Tartak Brzózki',mapUrl:'',
+    locText:'Саме тут розпочнеться один із найважливіших днів нашого життя.\n\nМи чекатимемо на вас у затишному передмісті Варшави, у просторі **Dwór Afrodyta** — місце, де хочеться зупинити час, підняти келих шампанського і прожити кожну мить особливо.\n\nТут ми зберемося разом, щоб розділити любов, радість, щирі обійми, теплі слова й атмосферу свята, яку створюють лише найближчі люди.',
+    progTitle:'Our Wedding Day',a_time:'14:00',a_text:'Welcome-зона',b_time:'15:00',b_text:'Весільна церемонія',c_time:'16:00',c_text:'Привітання\nвід гостей',d_time:'17:00',d_text:'Святкова вечеря',e_time:'',e_text:'',f_time:'',f_text:'',
+    dressTitle:'The Dress-Code',dressText:'Нам буде дуже приємно, якщо ваш образ стане частиною загальної атмосфери нашого дня — ніжної, елегантної та світлої.\n\nМи обрали палітру, натхненну **кремовими відтінками, небесною блакиттю та глибоким синім кольором**. Будемо вдячні, якщо в ваших образах зʼявляться ці відтінки або близькі до них тони.\n\nНехай ваш образ буде святковим, витонченим і комфортним для вас.',
+    c1:'#e8dcc6',c2:'#a9cdea',c3:'#1e9be0',c4:'#1646c8',c5:'#0b1c4a',
+    wishTitle:'Our Wishes',wishText:'Найцінніше для нас у цей день — ваша присутність, щирі усмішки, теплі слова та моменти, які ми розділимо разом.\n\nМи не складали список подарунків, адже мріємо про дещо спільне, тому будемо раді **фінансовому внеску** в початок нашого сімейного життя',
+    joinTitle:'Join Our\nCelebration',joinText:'Будь ласка, підтвердіть свою присутність, приєднавшись до нашої групи за кнопкою нижче ✨\n\nтам буде вся актуальна інформація, деталі та ще трохи атмосфери нашого свята 🤍',chatBtn:'доєднатися до групи',chatUrl:'',
+    formTitle:'Анкета',formText:'Будь ласка, підтвердіть свою присутність до 15.07.2027',calText:'Побачимось разом у найщасливішу\nнеділю нашого року!'})
+};
+function palCal(iso,L){
+  var p=parts(iso),first=(new Date(Date.UTC(p.y,p.m-1,1)).getUTCDay()+6)%7,n=new Date(Date.UTC(p.y,p.m,0)).getUTCDate(),c='';
+  for(var i=0;i<first;i++)c+='<i></i>';
+  for(var k=1;k<=n;k++)c+=k===p.d?'<b class="on"><em>'+k+'</em></b>':'<b>'+k+'</b>';
+  return '<div class="pl-cm">'+esc(fmt(iso,L==='uk'?'en':L,{month:'long'}))+'</div><div class="pl-cg">'+c+'</div>';
+}
+function palGate(v){
+  var d=v.d;
+  return '<div class="env cgate'+'" role="button" tabindex="0" aria-label="'+esc(u(v.L,'open'))+'"><div class="cg-in"><div class="cg-l"></div><div class="cg-r"></div><img class="cg-v" src="'+PAL+'valance.webp" alt=""><div class="cg-t"><b>'+esc(d.groom)+' &amp; '+esc(d.bride)+'</b><span>'+esc(u(v.L,'tapCurtain'))+'</span></div></div></div>';
+}
+function buildPalace(v,o){
+  var d=v.d,L=v.L,pa=(o.anim&&!rvDone)?' pa':'',ph=function(k){return esc(photo(v,k))};
+  var h=[];
+  var sw=['c1','c2','c3','c4','c5'].map(function(k){var c=/^#[0-9a-fA-F]{3,8}$/.test(d[k])?d[k]:'#ccc';return '<i style="--c:'+c+'"></i>'}).join('');
+  var circ=function(a,b){return '<span class="c"><span class="f"><em>'+a+'</em></span></span>'};
+  var pp=parts(d.date),mon=fmt(d.date,L==='uk'?'en':L,{month:'short'}).replace('.','');
+  h.push('<header class="pl-hero" data-sec="head"><img class="pl-val" src="'+PAL+'valance.webp" alt=""><img class="pl-cl pl-sway" src="'+PAL+'curtain-l.webp" alt=""><img class="pl-cr pl-sway" src="'+PAL+'curtain-r.webp" alt="">'+
+   '<p class="pl-kick'+pa+'" style="--d:.1s">'+tx(d.kicker)+'</p><h1 class="pl-names'+pa+'" style="--d:.3s"><span>'+esc(d.groom)+'</span><i>&amp;</i><span>'+esc(d.bride)+'</span></h1>'+
+   '<div class="pl-lead'+pa+'" style="--d:.55s">'+mk(d.intro).replace(/<br><br>/g,'</p><p>').replace(/^/,'<p>')+'</p></div>'+
+   '<img class="pl-cher'+pa+'" style="--d:.8s" src="'+PAL+'cherub.webp" alt=""></header>');
+  if(v.on('save'))h.push('<section class="pl-rev" data-sec="save"><h2 class="pl-h1'+pa+'">'+esc(d.revealTitle)+'</h2><p class="pl-cap'+pa+'" style="--d:.1s">'+tx(d.revealSub)+'</p>'+
+   '<div class="pl-circs'+(palOn?' on':'')+pa+'" style="--d:.2s" role="button" tabindex="0" aria-label="'+esc(d.revealSub)+'">'+circ(String(pp.d).padStart(2,'0'))+circ(esc(mon))+circ(pp.y)+'</div>'+
+   '<h3 class="pl-script'+pa+'">'+esc(d.saveHead)+'</h3><p class="pl-t'+pa+'">'+tx(d.saveText)+'</p><img class="pl-garden'+pa+'" loading="lazy" src="'+PAL+'garden.webp" alt=""></section>');
+  if(v.on('countdown'))h.push('<section class="pl-sec pl-cdw'+pa+'" data-sec="countdown"><h2 class="pl-h2">'+esc(u(L,'countdown'))+'</h2><div class="cd" data-date="'+esc(d.date)+'"><div><b>00</b><span>'+u(L,'days')+'</span></div><div><b>00</b><span>'+u(L,'hours')+'</span></div><div><b>00</b><span>'+u(L,'minutes')+'</span></div><div><b>00</b><span>'+u(L,'seconds')+'</span></div></div></section>');
+  if(v.on('location')){
+    var map=/^https?:\/\//.test(d.mapUrl||'')?d.mapUrl:'https://www.google.com/maps/search/?api=1&query='+encodeURIComponent(d.venueAddr||'');
+    h.push('<section class="pl-loc" data-sec="location"><p class="pl-kk'+pa+'">'+esc(d.placeKick)+'</p><h2 class="pl-h1 pl-vn'+pa+'" style="--d:.1s">'+tx(d.venueName)+'</h2><p class="pl-addr'+pa+'" style="--d:.2s"><svg viewBox="0 0 24 24"><path d="M12 22s7-6.5 7-12a7 7 0 0 0-14 0c0 5.5 7 12 7 12z" fill="currentColor"/><circle cx="12" cy="10" r="2.6" fill="#fbf4e4"/></svg>'+esc(d.venueAddr)+'</p>'+
+     '<a class="pl-btn'+pa+'" style="--d:.3s" href="'+esc(map)+'" target="_blank" rel="noopener">'+esc(u(L,'route'))+'</a><img class="pl-engr'+pa+'" loading="lazy" src="'+PAL+'engr.webp" alt="">'+
+     '<div class="pl-lt"><img class="pl-hl pa-l'+pa+'" loading="lazy" src="'+PAL+'hyd-l1.webp" alt="">'+mk(d.locText).replace(/<br><br>/g,'</p><p class="pl-t">').replace(/^/,'<p class="pl-t">')+'</p></div></section>');
+  }
+  if(v.on('program')){
+    var it=[['a_time','a_text'],['b_time','b_text'],['c_time','c_text'],['d_time','d_text'],['e_time','e_text'],['f_time','f_text']].filter(function(a){return d[a[0]]||d[a[1]]});
+    h.push('<section class="pl-prog" data-sec="program"><img class="pl-hr2 pa-r'+pa+'" loading="lazy" src="'+PAL+'hyd-r1.webp" alt=""><img class="pl-tt" loading="lazy" src="'+PAL+'toile-top.webp" alt=""><div class="pl-tm"><h2 class="pl-h3">'+esc(d.progTitle)+'</h2><ol class="pl-tl">'+it.map(function(a,i){return '<li class="'+(i%2?'r':'l')+pa+'" style="--d:'+(i*.12)+'s"><div class="tm">'+esc(d[a[0]])+'</div><div class="tt">'+tx(d[a[1]])+'</div><span class="hr"><svg viewBox="0 0 24 24"><path d="M12 21s-8-5.4-8-11a4.6 4.6 0 0 1 8-3 4.6 4.6 0 0 1 8 3c0 5.600-8 11-8 11z" fill="#fbf4e4" stroke="#152b5c" stroke-width="1.4"/></svg></span></li>'}).join('')+'</ol><img class="pl-cher2'+pa+'" src="'+PAL+'cherub.webp" alt=""></div><img class="pl-tb" loading="lazy" src="'+PAL+'toile-bot.webp" alt=""></section>');
+  }
+  if(v.on('dress'))h.push('<section class="pl-dress" data-sec="dress"><h2 class="pl-h2'+pa+'">'+esc(d.dressTitle)+'</h2><div class="pl-tx'+pa+'">'+mk(d.dressText).replace(/<br><br>/g,'</p><p class="pl-t">').replace(/^/,'<p class="pl-t">')+'</p></div><img class="pl-ppl'+pa+'" loading="lazy" src="'+PAL+'people.webp" alt=""><div class="pl-sw'+pa+'">'+sw+'</div></section>');
+  if(v.on('gifts'))h.push('<section class="pl-wish" data-sec="gifts"><h2 class="pl-h2'+pa+'">'+esc(d.wishTitle)+'</h2><div class="pl-tx'+pa+'">'+mk(d.wishText).replace(/<br><br>/g,'</p><p class="pl-t">').replace(/^/,'<p class="pl-t">')+'</p></div><div class="pl-hands'+pa+'"><img loading="lazy" src="'+ph('photo2')+'" alt=""></div></section>');
+  if(v.on('tips'))h.push(blkTips(v).replace('class="sec"','class="pl-sec"'));
+  if(v.on('transfer'))h.push(blkTransfer(v).replace('class="sec"','class="pl-sec"'));
+  if(v.on('faq'))h.push(blkFaq(v).replace('class="sec"','class="pl-sec"'));
+  if(v.on('rsvp')){
+    var chat=/^https?:\/\//.test(d.chatUrl||'')?'href="'+esc(d.chatUrl)+'" target="_blank" rel="noopener"':'href="#" data-nolink="1"';
+    h.push('<section class="pl-join" data-sec="rsvp"><h2 class="pl-h2'+pa+'">'+tx(d.joinTitle)+'</h2><div class="pl-tx'+pa+'">'+tx(d.joinText).replace(/<br><br>/g,'</p><p class="pl-t">').replace(/^/,'<p class="pl-t">')+'</p><a class="pl-btn'+pa+'" '+chat+'>'+esc(d.chatBtn)+'</a>'+palForm(v,o)+'</section>');
+  }
+  if(v.on('save'))h.push('<section class="pl-calw"><i class="pl-gh g1">Save</i><i class="pl-gh g2">the</i><i class="pl-gh g3">Date</i>'+palCal(d.date,L)+'<p class="pl-t'+pa+'">'+tx(d.calText)+'</p></section>');
+  h.push('<section class="pl-env"><div class="pl-card'+pa+'"><div class="pl-paper"></div><div class="pl-ph"><img loading="lazy" src="'+ph('photo1')+'" alt=""></div></div><img class="pl-es" loading="lazy" src="'+PAL+'env.webp" alt=""></section>');
+  return '<div class="pl">'+h.join('')+'</div>';
+}
+function palForm(v,o){
+  var L=v.L,d=v.d;
+  if(o.sent)return '<div class="pl-form pl-thx" data-sec="rsvp-form"><h3 class="pl-h3">'+esc(u(L,'thanks'))+'</h3><p class="pl-t">'+esc(u(L,'thanksSub'))+'</p></div>';
+  var cnt='';for(var i=1;i<=5;i++)cnt+='<option value="'+i+'">'+i+'</option>';
+  var trf=v.on('transfer')?'<label class="pl-chk"><input type="checkbox" id="r_trf"><span>'+esc(u(L,'transferNeed'))+'</span></label>':'';
+  return '<div class="pl-form"><h3 class="pl-fh">'+esc(d.formTitle)+'</h3><p class="pl-fs">'+tx(d.formText)+'</p>'+
+  '<form id="rsvpForm"'+(o.live?'':' inert')+'><label class="pl-f" for="r_name"><span>'+esc(u(L,'yourName'))+'</span><input type="text" id="r_name" maxlength="80" autocomplete="name" placeholder="Тарас Шевченко" required></label>'+
+  '<fieldset class="pl-r"><legend>'+esc(u(L,'canCome'))+'</legend><label><input type="radio" name="r_st" value="yes" checked><i></i><span>'+esc(u(L,'palYes'))+'</span></label><label><input type="radio" name="r_st" value="later"><i></i><span>'+esc(u(L,'later'))+'</span></label><label><input type="radio" name="r_st" value="no"><i></i><span>'+esc(u(L,'palNo'))+'</span></label></fieldset>'+
+  '<div id="r_yes"><label class="pl-f" for="r_cnt"><span>'+esc(u(L,'howMany'))+'</span><select id="r_cnt">'+cnt+'</select></label>'+
+  '<label class="pl-f" for="r_guests" id="r_gw" hidden><span>'+esc(u(L,'guests'))+'</span><input type="text" id="r_guests" maxlength="90"></label>'+
+  '<label class="pl-f" for="r_diet"><span>'+esc(u(L,'diet'))+'</span><input type="text" id="r_diet" maxlength="60"></label>'+trf+'</div>'+
+  '<label class="pl-f" for="r_note"><span>'+esc(u(L,'comment'))+'</span><input type="text" id="r_note" maxlength="100" placeholder="Чекаю з нетерпінням"></label>'+
+  '<button type="submit" class="pl-btn">'+esc(u(L,'send'))+'</button></form></div>';
+}
+var TPL_IDS=['palace','tishyna','ivengo'];
 /* Дизайнерські шаблони (ціна й текст змінюються тут). Ці запрошення я адаптую під клієнта вручну. */
 var TG='valeriaralko';
 var tgLink=function(t){return 'https://t.me/'+TG+(t?'?text='+encodeURIComponent(t):'')};
@@ -788,7 +887,7 @@ function view(tid,st,ph){
   st=st||{};var t=TPL[tid],L=st.lang||'uk';
   var d=Object.assign({},t.defaults,st.data||{});
   if(L!=='uk'&&st.tr&&st.tr[L]){var x=st.tr[L];Object.keys(x).forEach(function(k){if(x[k])d[k]=x[k]})}
-  var secs=st.sections||SEC_ORDER;
+  var secs=st.sections||t.secs||SEC_ORDER;
   return {tid:tid,t:t,L:L,d:d,ph:ph||{},on:function(s){return secs.indexOf(s)>=0},th:themeOf(st.theme||t.theme),font:st.font||1};
 }
 function photo(v,k){var p=v.ph[k];return (p&&p.dataUrl)||v.t.photoDef[k]}
@@ -858,10 +957,12 @@ function buildT2(v,o){
 }
 function renderInv(tid,st,ph,o){
   o=o||{};var v=view(tid,st,ph);
+  if(v.t.gate)return '<article class="inv pal" style="--i-dark:#152b5c">'+buildPalace(v,o)+'</article>';
   return '<article class="inv '+(tid==='ivengo'?'t2':'t1')+'" data-font="'+v.font+'" style="'+themeStyle(v.th)+'">'+(tid==='ivengo'?buildT2(v,o):buildT1(v,o))+'</article>';
 }
 function envHTML(tid,st,fixed){
   var v=view(tid,st,null),d=v.d;
+  if(v.t.gate){return palGate(v).replace('env cgate','env cgate'+(fixed?' fix':''))}
   var ini=(String(d.groom||'?').trim().charAt(0)+'&amp;'+String(d.bride||'?').trim().charAt(0)).toUpperCase();
   return '<div class="env'+(fixed?' fix':'')+'" role="button" tabindex="0" aria-label="'+esc(u(v.L,'open'))+'" style="'+themeStyle(v.th)+'"><div class="env-card"><div class="env-flap"></div><div class="env-seal">'+ini+'</div></div><div class="env-names">'+esc(d.groom)+' &amp; '+esc(d.bride)+'</div><div class="env-hint">'+esc(u(v.L,'tapOpen'))+'</div></div>';
 }
@@ -881,7 +982,7 @@ function mountMusic(url){
   document.body.appendChild(b);musBtn=b;
 }
 function reveal(){
-  var items=app.querySelectorAll('.rv');if(!items.length)return;
+  var items=app.querySelectorAll('.rv,.pa');if(!items.length)return;
   if(!('IntersectionObserver' in window)||(window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches))return;
   if(rvIO)rvIO.disconnect();
   if(document.querySelector('.env.fix:not(.open)')){rvWait=true;return}
@@ -892,9 +993,11 @@ function reveal(){
 function markInv(){if(rvDone)return;app.querySelectorAll('.inv > section, .inv > .fin, .inv > .banner, .inv > .heroB, .inv > .lead2, .inv > .rsvp').forEach(function(el,i){el.classList.add('rv')})}
 function openEnv(el){if(!el||el.classList.contains('open'))return;el.classList.add('open');envOpen=true;
   if(AUDIO&&AUDIO.paused){var pr=AUDIO.play();if(pr&&pr.catch)pr.catch(function(){})}
-  if(rvWait){rvWait=false;reveal()}setTimeout(function(){if(el.parentNode)el.parentNode.removeChild(el)},760)}
-document.addEventListener('click',function(e){var el=e.target.closest&&e.target.closest('.env');if(el)openEnv(el)});
-document.addEventListener('keydown',function(e){if(e.key==='Escape')closeModal();if((e.key==='Enter'||e.key===' ')&&e.target.classList&&e.target.classList.contains('env')){e.preventDefault();openEnv(e.target)}});
+  if(rvWait){rvWait=false;reveal()}setTimeout(function(){if(el.parentNode)el.parentNode.removeChild(el)},el.classList.contains('cgate')?2600:760)}
+document.addEventListener('click',function(e){var el=e.target.closest&&e.target.closest('.env');if(el)openEnv(el);
+  var c=e.target.closest&&e.target.closest('.pl-circs');if(c){palOn=true;c.classList.add('on')}
+  var nl=e.target.closest&&e.target.closest('[data-nolink]');if(nl)e.preventDefault()});
+document.addEventListener('keydown',function(e){if(e.key==='Escape')closeModal();if((e.key==='Enter'||e.key===' ')&&e.target.classList&&e.target.classList.contains('env')){e.preventDefault();openEnv(e.target)}if((e.key==='Enter'||e.key===' ')&&e.target.classList&&e.target.classList.contains('pl-circs')){e.preventDefault();palOn=true;e.target.classList.add('on')}});
 
 /* ---------- capabilities ---------- */
 var db=null,dl=null,uid=null,ready;
@@ -1059,7 +1162,7 @@ function viewDemo(tid){
   var t=TPL[tid];if(!t&&SHOW[tid])return viewShowDemo(SHOW[tid]);
   if(!t)return viewShop();
   envOpen=false;
-  app.innerHTML='<div class="bar"><div class="in"><div class="t"><a class="btn ghost sm" href="#shop">← Каталог</a><b>Демо: '+esc(t.name)+'</b></div><button class="btn sm" data-order="'+tid+'">Замовити від '+money(t.base)+'</button></div></div><div class="demo-col">'+renderInv(tid,null,null,{live:false})+'</div>'+envHTML(tid,null,true);
+  app.innerHTML='<div class="bar"><div class="in"><div class="t"><a class="btn ghost sm" href="#shop">← Каталог</a><b>Демо: '+esc(t.name)+'</b></div><button class="btn sm" data-order="'+tid+'">Замовити від '+money(t.base)+'</button></div></div><div class="demo-col">'+renderInv(tid,null,null,{live:false,anim:true})+'</div>'+envHTML(tid,null,true);
   app.querySelector('[data-order]').addEventListener('click',function(){openChoose(tid)});
   markInv();reveal();
   tick();
@@ -1069,15 +1172,16 @@ async function viewNew(tid){
   msg('Готуємо чернетку…','');await ready;if(!needDb())return;
   var id=rid();
   try{
-    await db.doc('invitations/'+id).set({tpl:tid,ownerId:uid,paid:false,published:false,createdAt:Date.now(),step:0,theme:t.theme,font:1,envelope:true,sections:freeSecs(),langs:['uk'],data:clone(t.defaults),tr:{}});
+    await db.doc('invitations/'+id).set({tpl:tid,ownerId:uid,paid:false,published:false,createdAt:Date.now(),step:0,theme:t.theme,font:1,envelope:true,sections:(t.secs||freeSecs()),langs:['uk'],data:clone(t.defaults),tr:{}});
     location.replace(baseUrl()+'#edit-'+id);
   }catch(e){msg('Не вдалося створити чернетку','Спробуйте ще раз.','<p style="margin-top:20px"><a class="btn ghost" href="#shop">До каталогу</a></p>')}
 }
 
 /* ---------- wizard ---------- */
+function secPrice(t,s){return (t.incl&&t.incl.indexOf(s)>=0)?0:(SEC[s]?SEC[s].price:0)}
 function calcPrice(cur){
   var t=TPL[cur.tpl],lines=[{n:'Шаблон «'+t.name+'»',p:t.base}];
-  cur.sections.forEach(function(s){if(SEC[s]&&SEC[s].price)lines.push({n:'Секція «'+SEC[s].name+'»',p:SEC[s].price})});
+  cur.sections.forEach(function(s){var sp=secPrice(t,s);if(sp)lines.push({n:'Секція «'+SEC[s].name+'»',p:sp})});
   cur.langs.forEach(function(l){if(l!=='uk')lines.push({n:'Мова: '+langOf(l).name,p:PRICING.lang})});
   var total=lines.reduce(function(a,x){return a+x.p},0);
   return {lines:lines,total:total};
@@ -1093,10 +1197,10 @@ async function viewEdit(id){
   cur.langs=cur.langs&&cur.langs.length?cur.langs:['uk'];
   cur.sections=cur.sections||freeSecs();cur.theme=cur.theme||t.theme;cur.font=cur.font||1;if(cur.envelope==null)cur.envelope=true;
   var FM=fieldMap(t),ph={},step=cur.step||0,editLang='uk',tab='form',agreed=false,paying=false;
-  envOpen=true;
+  envOpen=true;palOn=true;
 
   function steps(){
-    var s=[{k:'theme',n:'Тема',h:'Оберіть стиль'},{k:'sections',n:'Секції',h:'Виберіть секції'},{k:'langs',n:'Мови',h:'Оберіть мови'},{k:'head',n:'Деталі',h:'Заповніть інформацію'}];
+    var s=(t.noTheme?[]:[{k:'theme',n:'Тема',h:'Оберіть стиль'}]).concat([{k:'sections',n:'Секції',h:'Виберіть секції'},{k:'langs',n:'Мови',h:'Оберіть мови'},{k:'head',n:'Деталі',h:'Заповніть інформацію'}]);
     SEC_ORDER.forEach(function(sid){if(cur.sections.indexOf(sid)>=0&&fieldsOf(t,sid).length)s.push({k:sid,n:SEC[sid].name,h:'Налаштуйте розділ'})});
     s.push({k:'pay',n:'Публікація',h:'Перевірте й опублікуйте'});return s;
   }
@@ -1188,15 +1292,15 @@ async function viewEdit(id){
     if(k==='theme'){
       h='<h2>Оберіть тему запрошення</h2><p class="muted">Колір, який задає настрій вашого свята.</p><div class="themes">'+THEMES.map(function(x){return '<button type="button" class="theme" data-theme-id="'+x.id+'" aria-pressed="'+(cur.theme===x.id)+'"><i style="background:linear-gradient(135deg,'+x.dark+','+x.mid+')"></i><span>'+x.name+'</span></button>'}).join('')+'</div>';
     }else if(k==='sections'){
-      var extra=cur.sections.reduce(function(a,s){return a+(SEC[s]?SEC[s].price:0)},0);
-      h='<h2>Виберіть секції запрошення</h2><p class="muted">Налаштуйте структуру: які блоки побачать гості. Частина секцій входить у вартість, кожна додаткова коштує '+money(PRICING.section)+'. Зараз доплата за секції: '+money(extra)+'.</p><div class="secgrid">'+SEC_ORDER.map(function(s){var on=cur.sections.indexOf(s)>=0;return '<button type="button" class="seccard" data-sec-toggle="'+s+'" aria-pressed="'+on+'">'+icon(s)+'<span class="tx"><b>'+esc(SEC[s].name)+(SEC[s].price?'<span class="tag">+'+money(SEC[s].price)+'</span>':'<span class="tag free">входить</span>')+'</b><small>'+esc(SEC[s].desc)+'</small></span><span class="chk">'+CHECK+'</span></button>'}).join('')+'</div>';
+      var extra=cur.sections.reduce(function(a,s){return a+secPrice(t,s)},0);
+      h='<h2>Виберіть секції запрошення</h2><p class="muted">Налаштуйте структуру: які блоки побачать гості. Частина секцій входить у вартість, кожна додаткова коштує '+money(PRICING.section)+'. Зараз доплата за секції: '+money(extra)+'.</p><div class="secgrid">'+SEC_ORDER.map(function(s){var on=cur.sections.indexOf(s)>=0;return '<button type="button" class="seccard" data-sec-toggle="'+s+'" aria-pressed="'+on+'">'+icon(s)+'<span class="tx"><b>'+esc(SEC[s].name)+(secPrice(t,s)?'<span class="tag">+'+money(secPrice(t,s))+'</span>':'<span class="tag free">входить</span>')+'</b><small>'+esc(SEC[s].desc)+'</small></span><span class="chk">'+CHECK+'</span></button>'}).join('')+'</div>';
     }else if(k==='langs'){
       h='<h2>Мови запрошення</h2><p class="muted">Оберіть мови, якими гості зможуть читати запрошення. Українська входить у вартість, кожна додаткова коштує '+money(PRICING.lang)+'.</p><div class="langgrid">'+LANGS.map(function(l){var on=cur.langs.indexOf(l.id)>=0;return '<button type="button" class="lang" data-lang-toggle="'+l.id+'" aria-pressed="'+on+'"'+(l.id==='uk'?' aria-disabled="true"':'')+'><code>'+l.code+'</code><span class="tx"><b style="font-weight:500">'+l.name+'</b><small>'+(l.id==='uk'?'Основна':'+'+money(PRICING.lang))+'</small></span><span class="chk" style="width:24px;height:24px;display:grid;place-items:center;border-radius:6px;background:'+(on?'var(--accent)':'transparent')+';color:var(--accent-ink)">'+(on?CHECK:'')+'</span></button>'}).join('')+'</div><div class="note" style="margin-top:16px">Основна мова відкривається за замовчуванням. Решту гість обере перемикачем. Далі кожне текстове поле можна заповнити окремо для кожної мови, а порожні поля показують українську.</div>';
     }else if(k==='head'){
       var fs=t.fields.head;
       h='<h2>Деталі головної сторінки</h2><p class="muted">Заповніть основну інформацію, яка відображатиметься на першому екрані запрошення.</p>'+
-      '<div class="switchcard"><div><b>Чи потрібен конверт відкриття?</b><small>Конверт буде показано перед відкриттям запрошення</small></div><button type="button" class="sw" role="switch" aria-checked="'+cur.envelope+'" aria-label="Конверт відкриття" data-act="env"></button></div>'+
-      '<h3 class="grp" style="margin-top:0">Шрифт</h3><div class="fontgrid">'+[1,2,3].map(function(n){return '<button type="button" class="fontopt" data-font-pick="'+n+'" aria-pressed="'+(cur.font===n)+'" style="font-family:'+(n===1?"'Pinyon Script','Marck Script'":n===2?"'Marck Script'":"'Bad Script'")+',cursive">Шрифт '+n+'</button>'}).join('')+'</div>'+langTabs(fs)+fieldsHTML(fs);
+      '<div class="switchcard"><div><b>Чи потрібна '+(t.gate?'завіса':'конверт')+' відкриття?</b><small>'+(t.gate?'Завіса закриває перший екран і відкривається дотиком гостя':'Конверт буде показано перед відкриттям запрошення')+'</small></div><button type="button" class="sw" role="switch" aria-checked="'+cur.envelope+'" aria-label="Конверт відкриття" data-act="env"></button></div>'+
+      (t.noFont?'':'<h3 class="grp" style="margin-top:0">Шрифт</h3><div class="fontgrid">'+[1,2,3].map(function(n){return '<button type="button" class="fontopt" data-font-pick="'+n+'" aria-pressed="'+(cur.font===n)+'" style="font-family:'+(n===1?"'Pinyon Script','Marck Script'":n===2?"'Marck Script'":"'Bad Script'")+',cursive">Шрифт '+n+'</button>'}).join('')+'</div>')+langTabs(fs)+fieldsHTML(fs);
     }else if(k==='pay'){
       h=payHTML();
     }else{
@@ -1322,20 +1426,21 @@ async function viewPublic(id){
   function draw(){
     var top=mine?'<div class="bar"><div class="in"><div class="t"><b>Так бачать гості</b>'+(live?'':'<span class="pill wait">чернетка, ще не опубліковано</span>')+'</div><div class="linkrow"><a class="btn ghost sm" href="#edit-'+id+'">Редагувати</a><a class="btn sm" href="#cab-'+id+'">Кабінет</a></div></div></div>':'';
     var sw=langs.length>1?'<div class="langsw'+(mine?' low':'')+'" role="group" aria-label="Мова">'+langs.map(function(l){return '<button type="button" data-l="'+l+'" aria-pressed="'+(l===lang)+'">'+langOf(l).code+'</button>'}).join('')+'</div>':'';
-    app.innerHTML=top+sw+'<div class="demo-col" style="padding-block:0">'+renderInv(cur.tpl,stt(),ph,{live:live,sent:sent})+'</div>'+((base.envelope&&!envOpen)?envHTML(cur.tpl,stt(),true):'');
+    app.innerHTML=top+sw+'<div class="demo-col" style="padding-block:0">'+renderInv(cur.tpl,stt(),ph,{live:live,sent:sent,anim:true})+'</div>'+((base.envelope&&!envOpen)?envHTML(cur.tpl,stt(),true):'');
     app.querySelectorAll('[data-l]').forEach(function(b){b.addEventListener('click',function(){lang=b.getAttribute('data-l');var y=window.scrollY;draw();window.scrollTo(0,y)})});
     var f=document.getElementById('rsvpForm');
     if(f&&live){
       var yo=document.getElementById('r_yes'),gw=document.getElementById('r_gw'),cs=document.getElementById('r_cnt');
-      f.querySelectorAll('input[name=r_st]').forEach(function(r){r.addEventListener('change',function(){yo.hidden=f.querySelector('input[name=r_st]:checked').value==='no'})});
+      f.querySelectorAll('input[name=r_st]').forEach(function(r){r.addEventListener('change',function(){yo.hidden=f.querySelector('input[name=r_st]:checked').value!=='yes'})});
       cs.addEventListener('change',function(){gw.hidden=Number(cs.value)<2});
     }
     if(f&&live)f.addEventListener('submit',async function(e){
       e.preventDefault();
       var name=document.getElementById('r_name').value.trim();if(!name)return;
-      var s=f.querySelector('input[name=r_st]:checked').value,cnt=s==='yes'?Number(document.getElementById('r_cnt').value):0;
+      var s0=f.querySelector('input[name=r_st]:checked').value,s=s0==='yes'?'yes':'no',cnt=s==='yes'?Number(document.getElementById('r_cnt').value):0;
       var gv=function(i){var e=document.getElementById(i);return e?e.value.trim():''},tr=document.getElementById('r_trf');
       var np=[];if(s==='yes'){if(cnt>1&&gv('r_guests'))np.push('Гості: '+gv('r_guests'));if(gv('r_diet'))np.push('Дієта: '+gv('r_diet'));if(tr&&tr.checked)np.push('Трансфер: так')}
+      if(s0==='later')np.unshift('Повідомить пізніше');
       if(gv('r_note'))np.push(gv('r_note'));
       var noteText=np.join(' · ').slice(0,300);
       var b=f.querySelector('button');b.disabled=true;b.textContent=u(lang,'sending');
@@ -1397,7 +1502,7 @@ async function viewMy(){
 
 /* ---------- router ---------- */
 function route(){
-  clearSubs();closeModal();unmountMusic();rvWait=false;rvDone=false;
+  clearSubs();closeModal();unmountMusic();rvWait=false;rvDone=false;palOn=false;
   var h=location.hash.slice(1)||'shop',i=h.indexOf('-'),name=i<0?h:h.slice(0,i),arg=i<0?'':h.slice(i+1);
   var v={shop:viewShop,demo:viewDemo,new:viewNew,edit:viewEdit,i:viewPublic,cab:viewCab,my:viewMy}[name]||viewShop;
   window.scrollTo(0,0);v(arg);
