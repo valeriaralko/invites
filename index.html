@@ -581,7 +581,7 @@ td.num{font-variant-numeric:tabular-nums}
 
 <div id="app"></div>
 <div id="toast" class="toast" hidden></div>
-<link rel="stylesheet" href="tpl/palace/palace.css?v=5">
+<link rel="stylesheet" href="tpl/palace/palace.css?v=6">
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.js"></script>
 <script src="config.js"></script>
 <script src="supabase-adapter.js"></script>
@@ -809,6 +809,10 @@ function palGate(v){
   return '<div class="env cgate" role="button" tabindex="0" aria-label="'+esc(u(v.L,'open'))+'"><div class="cg-in"><div class="cg-a cg-l"></div><div class="cg-a cg-r"></div><img class="cg-f" src="'+PAL+'gate-frame.webp" alt=""><div class="cg-t"><img src="'+PAL+'cherub.webp" alt=""><span>'+esc(d.gateText||u(v.L,'tapCurtain'))+'</span></div></div></div>';
 }
 function petals(n){var s='';for(var i=0;i<n;i++)s+='<i class="pt"></i>';return '<div class="pl-pts" aria-hidden="true">'+s+'</div>'}
+function palTips(v,pa){var d=v.d,h='';[1,2,3].forEach(function(i){var a=d['tip'+i+'T'],b=d['tip'+i+'X'];if(a||b)h+='<div class="pl-tip'+pa+'" style="--d:'+(i*.1)+'s">'+(a?'<h4>'+esc(a)+'</h4>':'')+(b?'<p>'+tx(b)+'</p>':'')+'</div>'});return '<section class="pl-xs pl-tipsw" data-sec="tips"><h2 class="pl-h2'+pa+'">'+esc(u(v.L,'tips'))+'</h2><div class="pl-tips">'+h+'</div></section>'}
+function palTransfer(v,pa){var d=v.d;return '<section class="pl-xs pl-trw" data-sec="transfer"><h2 class="pl-h2'+pa+'">'+esc(u(v.L,'transfer'))+'</h2><p class="pl-trt'+pa+'" style="--d:.1s">'+esc(d.trTime)+'</p><p class="pl-trr'+pa+'" style="--d:.15s">'+esc(d.trFrom)+' → '+esc(d.trTo)+'</p><p class="pl-trx'+pa+'" style="--d:.2s">'+tx(d.trText)+'</p></section>'}
+function palFaq(v,pa){var d=v.d,h='';[1,2,3].forEach(function(i){if(d['q'+i])h+='<details class="pl-q'+pa+'" style="--d:'+(i*.1)+'s"><summary>'+esc(d['q'+i])+'</summary><p>'+tx(d['a'+i])+'</p></details>'});return '<section class="pl-xs pl-faqw" data-sec="faq"><h2 class="pl-h2'+pa+'">'+esc(u(v.L,'faq'))+'</h2><div class="pl-faq">'+h+'</div></section>'}
+function palCountdown(v,pa){var L=v.L;return '<section class="pl-xs pl-cdw" data-sec="countdown"><h2 class="pl-h2'+pa+'">'+esc(u(L,'countdown'))+'</h2><div class="cd pl-cd'+pa+'" style="--d:.1s" data-date="'+esc(v.d.date)+'"><div><b>00</b><span>'+u(L,'days')+'</span></div><div><b>00</b><span>'+u(L,'hours')+'</span></div><div><b>00</b><span>'+u(L,'minutes')+'</span></div><div><b>00</b><span>'+u(L,'seconds')+'</span></div></div></section>'}
 function buildPalace(v,o){
   var d=v.d,L=v.L,pa=(o.anim&&!rvDone)?' pa':'',ph=function(k){return esc(photo(v,k))};
   var h=[];
@@ -825,6 +829,7 @@ function buildPalace(v,o){
    '<h3 class="pl-script'+pa+'">'+esc(d.saveHead)+'</h3><p class="pl-t pl-sv'+pa+'">'+tx(d.saveText)+'</p><div class="pl-gw'+pa+'"><img class="pl-garden" data-par=".05" loading="lazy" src="'+PAL+'garden.webp" alt=""></div><p class="pl-scroll"><span>Гортайте далі</span><i></i></p></section>');
   h.push('<div class="pl-after'+(lock?' pl-lock':'')+'">');
   if(v.on('countdown'))h.push('<section class="pl-sec pl-cdw'+pa+'" data-sec="countdown"><h2 class="pl-h2">'+esc(u(L,'countdown'))+'</h2><div class="cd" data-date="'+esc(d.date)+'"><div><b>00</b><span>'+u(L,'days')+'</span></div><div><b>00</b><span>'+u(L,'hours')+'</span></div><div><b>00</b><span>'+u(L,'minutes')+'</span></div><div><b>00</b><span>'+u(L,'seconds')+'</span></div></div></section>');
+  if(v.on('countdown'))h.push(palCountdown(v,pa));
   if(v.on('location')){
     var map=/^https?:\/\//.test(d.mapUrl||'')?d.mapUrl:'https://www.google.com/maps/search/?api=1&query='+encodeURIComponent(d.venueAddr||'');
     h.push('<section class="pl-loc" data-sec="location">'+petals(6)+'<p class="pl-kk'+pa+'">'+esc(d.placeKick)+'</p><h2 class="pl-h1 pl-vn'+pa+'" style="--d:.1s">'+tx(d.venueName)+'</h2><p class="pl-addr'+pa+'" style="--d:.2s"><svg viewBox="0 0 24 24"><path d="M12 22s7-6.5 7-12a7 7 0 0 0-14 0c0 5.5 7 12 7 12z" fill="currentColor"/><circle cx="12" cy="10" r="2.6" fill="#fbf4e4"/></svg>'+esc(d.venueAddr)+'</p>'+
@@ -837,9 +842,9 @@ function buildPalace(v,o){
   }
   if(v.on('dress'))h.push('<section class="pl-dress" data-sec="dress">'+petals(5)+'<h2 class="pl-h2'+pa+'">'+esc(d.dressTitle)+'</h2><div class="pl-tx'+pa+'">'+mk(d.dressText).replace(/<br><br>/g,'</p><p class="pl-t">').replace(/^/,'<p class="pl-t">')+'</p></div><img class="pl-ppl'+pa+'" loading="lazy" src="'+PAL+'people.webp" alt=""><div class="pl-sw'+pa+'">'+sw+'</div></section>');
   if(v.on('gifts'))h.push('<section class="pl-wish" data-sec="gifts"><h2 class="pl-h2'+pa+'">'+esc(d.wishTitle)+'</h2><div class="pl-tx'+pa+'">'+mk(d.wishText).replace(/<br><br>/g,'</p><p class="pl-t">').replace(/^/,'<p class="pl-t">')+'</p></div><div class="pl-hands'+pa+'"><img data-par=".06" loading="lazy" src="'+ph('photo2')+'" alt=""></div></section>');
-  if(v.on('tips'))h.push(blkTips(v).replace('class="sec"','class="pl-sec"'));
-  if(v.on('transfer'))h.push(blkTransfer(v).replace('class="sec"','class="pl-sec"'));
-  if(v.on('faq'))h.push(blkFaq(v).replace('class="sec"','class="pl-sec"'));
+  if(v.on('tips'))h.push(palTips(v,pa));
+  if(v.on('transfer'))h.push(palTransfer(v,pa));
+  if(v.on('faq'))h.push(palFaq(v,pa));
   if(v.on('rsvp')){
     h.push('<section class="pl-join" data-sec="rsvp">'+petals(6)+'<div class="pl-fl fa1 pa-l'+pa+'"><img loading="lazy" src="'+PAL+'fl1.webp" alt=""></div><div class="pl-fl fa2 pa-r'+pa+'"><img loading="lazy" src="'+PAL+'fl2.webp" alt=""></div><div class="pl-fl fa3'+pa+'"><img loading="lazy" src="'+PAL+'fl3.webp" alt=""></div>'+palForm(v,o,pa)+'</section>');
   }

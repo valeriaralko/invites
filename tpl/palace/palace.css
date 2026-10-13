@@ -113,11 +113,6 @@
 .rv-on .pal .pl-card.pa{transform:translateY(calc(var(--u)*330));opacity:1;transition:transform 2.2s cubic-bezier(.2,.7,.2,1)}
 .rv-on .pal .pl-card.pa.in{transform:none}
 /* generic blocks reused inside Palace */
-.pal .pl-sec{padding:calc(var(--u)*150) calc(var(--u)*120) 0}
-.pal .pl-sec .scr{font:400 calc(var(--u)*86)/1 var(--fd);color:var(--navy);margin-bottom:calc(var(--u)*40)}
-.pal .pl-sec .tips,.pal .pl-sec .q{margin-top:calc(var(--u)*30);text-align:left}
-.pal .pl-sec h4{font:400 calc(var(--u)*50)/1.1 var(--fd);color:var(--navy);margin:0 0 calc(var(--u)*10)}
-.pal .pl-sec summary{font-family:var(--fd);font-size:calc(var(--u)*46);color:var(--navy);cursor:pointer;padding:calc(var(--u)*20) 0}
 .pal .pl-cdw{margin-top:calc(var(--u)*150)}
 .pal .cd{display:flex;justify-content:center;gap:calc(var(--u)*34);margin-top:calc(var(--u)*50)}
 .pal .cd div{display:grid;gap:calc(var(--u)*10);width:calc(var(--u)*190)}
@@ -271,3 +266,31 @@
 .cg-a{z-index:1}
 .cg-t{z-index:4}
 .pal .pl-join .pl-form{padding-top:0}
+
+/* EXTRA BLOCKS (tips / transfer / faq / countdown) */
+.pal .pl-xs{position:relative;padding:calc(var(--u)*170) calc(var(--u)*120) 0;text-align:center}
+.pal .pl-xs .pl-h2{font-size:calc(var(--u)*86);line-height:calc(var(--u)*96)}
+.pal .pl-xs p,.pal .pl-xs h4{margin:0}
+.pal .pl-xs p{font-size:calc(var(--u)*33.5);line-height:calc(var(--u)*49);color:var(--ink)}
+.pal .pl-tips{margin-top:calc(var(--u)*70)}
+.pal .pl-tip{padding:0 calc(var(--u)*40)}
+.pal .pl-tip+.pl-tip{margin-top:calc(var(--u)*64);padding-top:calc(var(--u)*64);background:linear-gradient(90deg,transparent,#b89a5e,transparent) top center/calc(var(--u)*320) 1px no-repeat}
+.pal .pl-tip h4{font:400 calc(var(--u)*52)/calc(var(--u)*60) var(--fd);color:var(--navy);margin-bottom:calc(var(--u)*22)}
+.pal .pl-trt{font:400 calc(var(--u)*150)/1 var(--fd)!important;color:var(--navy)!important;margin-top:calc(var(--u)*60)!important}
+.pal .pl-trr{font:400 calc(var(--u)*48)/calc(var(--u)*60) var(--fd)!important;color:var(--navy)!important;margin-top:calc(var(--u)*26)!important}
+.pal .pl-trx{margin-top:calc(var(--u)*44)!important;padding:0 calc(var(--u)*40)}
+.pal .pl-faq{margin-top:calc(var(--u)*70);text-align:left}
+.pal .pl-q{border-bottom:1px solid rgba(184,154,94,.7)}
+.pal .pl-q:first-child{border-top:1px solid rgba(184,154,94,.7)}
+.pal .pl-q summary{list-style:none;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:calc(var(--u)*30);padding:calc(var(--u)*36) 0;font:400 calc(var(--u)*46)/calc(var(--u)*56) var(--fd);color:var(--navy)}
+.pal .pl-q summary::-webkit-details-marker{display:none}
+.pal .pl-q summary::after{content:"+";font:300 calc(var(--u)*64)/1 var(--fb);color:#b89a5e;transition:transform .4s}
+.pal .pl-q[open] summary::after{transform:rotate(45deg)}
+.pal .pl-q p{padding:0 0 calc(var(--u)*40);text-align:left}
+.inv.pal .pl-cd{display:grid;grid-template-columns:repeat(4,1fr);gap:calc(var(--u)*22);max-width:none;margin:calc(var(--u)*70) 0 0}
+.inv.pal .pl-cd div{display:grid;place-items:center;align-content:center;gap:calc(var(--u)*8);aspect-ratio:1;padding:0;border:1.5px solid var(--navy);border-radius:50%}
+.inv.pal .pl-cd b{font:400 calc(var(--u)*76)/1 var(--fd);color:var(--navy)}
+.inv.pal .pl-cd span{font:400 calc(var(--u)*24)/1 var(--fb);letter-spacing:.14em;text-transform:uppercase;color:var(--ink)}
+/* перегляд у конструкторі: без zoom (cqw у Safari з zoom рахується невірно) */
+.phone-shell .inv.pal{width:100%;zoom:1}
+.lp-shell .z:has(.pal){zoom:1}.lp-shell .z:has(.pal) .inv{width:100%}
